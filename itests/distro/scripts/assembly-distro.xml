@@ -30,7 +30,7 @@
     
     <fileSets>
         <fileSet>
-            <directory>wildfly-${version.wildfly}</directory>
+            <directory>jboss-eap-6.4</directory>
         </fileSet>
     </fileSets>
 

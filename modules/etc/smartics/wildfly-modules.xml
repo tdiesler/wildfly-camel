@@ -25,22 +25,6 @@
         -->
 <modules xmlns="http://smartics.de/ns/jboss-modules-descriptor/2">
 
-    <module name="com.fasterxml.jackson.core.jackson-core" skip="true">
-        <include artifact="com.fasterxml.jackson.core:jackson-core" />
-    </module>
-
-    <module name="com.fasterxml.jackson.core.jackson-databind" skip="true">
-        <include artifact="com.fasterxml.jackson.core:jackson-databind" />
-    </module>
-
-    <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" skip="true">
-        <include artifact=":jackson-module-jaxb-annotations" />
-    </module>
-
-    <module name="io.netty" skip="true">
-        <include artifact="io.netty:netty-(.*)" />
-    </module>
-
     <module name="javax.activation.api" skip="true">
         <include artifact=":geronimo-activation_1.1_spec" />
     </module>
@@ -120,6 +104,7 @@
     </module>
 
     <module name="javax.xml.bind.api" skip="true">
+        <include artifact=":jaxb-api" />
         <include artifact=":jaxb-impl" />
         <include artifact=":jaxb-core" />
     </module>
@@ -186,11 +171,6 @@
         <include artifact="xml-resolver:xml-resolver" />
     </module>
 
-    <module name="org.bouncycastle" skip="true">
-        <include artifact="org.bouncycastle:bcprov-(.*)" />
-        <include artifact="org.bouncycastle:bcpg-(.*)" />
-    </module>
-
     <module name="org.codehaus.jackson.jackson-core-asl" skip="true">
         <include artifact=":jackson-core-asl" />
     </module>
@@ -238,6 +218,10 @@
 
     <module name="org.osgi.core" skip="true">
         <include artifact=":org.osgi.core" />
+    </module>
+
+    <module name="org.osgi.enterprise" skip="true">
+        <include artifact=":org.osgi.enterprise" />
     </module>
 
     <module name="org.slf4j" skip="true">

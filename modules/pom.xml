@@ -37,7 +37,7 @@
     <!-- Properties -->
     <properties>
         <wildfly.patch>${project.build.directory}/${project.artifactId}-${project.version}</wildfly.patch>
-        <wildfly.module.dir>${project.build.directory}/wildfly-${version.wildfly}/modules/system/layers/base</wildfly.module.dir>
+        <wildfly.module.dir>${project.build.directory}/jboss-eap-6.4/modules/system/layers/base</wildfly.module.dir>
         <smartics.module.dir>${project.build.directory}/wildfly-patch/modules/system/layers/fuse</smartics.module.dir>
 
         <!-- Used for dependency checking in module-checker.groovy -->
@@ -412,11 +412,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.enterprise</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.python</groupId>
             <artifactId>jython</artifactId>
             <scope>provided</scope>
@@ -591,8 +586,8 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wildfly</groupId>
-                                    <artifactId>wildfly-dist</artifactId>
+                                    <groupId>org.jboss.as</groupId>
+                                    <artifactId>jboss-as-dist</artifactId>
                                     <version>${version.wildfly}</version>
                                     <type>zip</type>
                                     <overWrite>false</overWrite>

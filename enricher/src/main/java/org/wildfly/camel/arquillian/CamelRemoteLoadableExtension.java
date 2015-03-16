@@ -19,14 +19,8 @@
  */
 package org.wildfly.camel.arquillian;
 
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import org.jboss.arquillian.container.test.spi.RemoteLoadableExtension;
 import org.jboss.arquillian.test.spi.enricher.resource.ResourceProvider;
-import org.jboss.as.arquillian.service.DependenciesProvider;
-import org.jboss.modules.ModuleIdentifier;
 
 /**
  * CamelRemoteLoadableExtension
@@ -34,13 +28,7 @@ import org.jboss.modules.ModuleIdentifier;
  * @author Thomas.Diesler@jboss.com
  * @since 07-Jun-2011
  */
-public class CamelRemoteLoadableExtension implements RemoteLoadableExtension, DependenciesProvider {
-
-    private static Set<ModuleIdentifier> dependencies = new LinkedHashSet<ModuleIdentifier>();
-    static {
-        dependencies.add(ModuleIdentifier.create("org.jboss.gravia"));
-        dependencies.add(ModuleIdentifier.create("org.wildfly.extension.camel"));
-    }
+public class CamelRemoteLoadableExtension implements RemoteLoadableExtension {
 
     @Override
     public void register(ExtensionBuilder builder) {
@@ -48,10 +36,4 @@ public class CamelRemoteLoadableExtension implements RemoteLoadableExtension, De
         builder.service(ResourceProvider.class, CamelContextRegistryProvider.class);
         builder.service(ResourceProvider.class, ProvisionerProvider.class);
     }
-
-    @Override
-    public Set<ModuleIdentifier> getDependencies() {
-        return Collections.unmodifiableSet(dependencies);
-    }
-
 }

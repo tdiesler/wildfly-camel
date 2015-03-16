@@ -27,6 +27,10 @@
     <module name="com.jcraft.jsch">
         <include artifact=":jsch" />
     </module>
+    
+    <module name="io.netty"  slot="4.0">
+        <include artifact="io.netty:netty-(.*)" />
+    </module>
 
     <module name="javax.el">
         <include artifact=":el-api" />
@@ -161,8 +165,9 @@
         <include artifact="org.apache.xbean:xbean-(.*)" />
     </module>
 
-    <module name="org.fusesource.hawtbuf">
-        <include artifact="org.fusesource.hawtbuf:hawtbuf" />
+    <module name="org.bouncycastle">
+        <include artifact="org.bouncycastle:bcpg-(.*)" />
+        <include artifact="org.bouncycastle:bcprov-(.*)" />
     </module>
 
     <module name="org.fusesource.hawtbuf">
@@ -181,13 +186,6 @@
         <include artifact="org.jasypt:jasypt" />
     </module>
     
-    <module name="org.osgi.enterprise">
-        <include artifact=":org.osgi.enterprise" />
-        <dependencies>
-            <module name="javax.api"/>
-        </dependencies>
-    </module>
-
     <module name="org.restlet">
         <include artifact=":org.restlet" />
         <include artifact=":org.restlet.ext.httpclient" />

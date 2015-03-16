@@ -38,7 +38,7 @@ import org.wildfly.camel.test.smoke.subA.HelloBean;
 @RunWith(Arquillian.class)
 public class SpringBeanDeploymentTest {
 
-    @Resource(name = "java:jboss/camel/context/spring-context")
+    @Resource(mappedName = "java:jboss/camel/context/spring-context")
     CamelContext camelContext;
 
     @Deployment
