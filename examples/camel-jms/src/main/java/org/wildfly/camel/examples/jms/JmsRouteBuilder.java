@@ -33,7 +33,7 @@ import javax.jms.ConnectionFactory;
 @ContextName("jms-cdi-context")
 public class JmsRouteBuilder extends RouteBuilder {
 
-    @Resource(mappedName = "java:jboss/DefaultJMSConnectionFactory")
+    @Resource(mappedName = "java:/ConnectionFactory")
     private ConnectionFactory connectionFactory;
 
     @Override

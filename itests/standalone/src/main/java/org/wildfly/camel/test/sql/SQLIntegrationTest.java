@@ -42,7 +42,7 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class SQLIntegrationTest {
 
-    @Resource(name = "java:jboss/datasources/ExampleDS")
+    @Resource(mappedName = "java:jboss/datasources/ExampleDS")
     DataSource dataSource;
 
     @Deployment

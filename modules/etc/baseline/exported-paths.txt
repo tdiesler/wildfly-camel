@@ -246,7 +246,6 @@ com/wordnik/swagger/core/util
 com/wordnik/swagger/jaxrs
 com/wordnik/swagger/jaxrs/config
 com/wordnik/swagger/jaxrs/filter
-com/wordnik/swagger/jaxrs/json
 com/wordnik/swagger/jaxrs/listing
 com/wordnik/swagger/jaxrs/reader
 com/wordnik/swagger/model

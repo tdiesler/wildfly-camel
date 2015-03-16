@@ -49,7 +49,7 @@
 
     <!-- Properties -->
     <properties>
-        <jboss.home>${project.build.directory}/wildfly-${version.wildfly}</jboss.home>
+        <jboss.home>${project.build.directory}/jboss-eap-6.4</jboss.home>
         <jboss.data.dir>${jboss.home}/standalone/data</jboss.data.dir>
         <server.config>standalone-full-camel.xml</server.config>
         <jvmArgs>-Xmx1G -XX:MaxPermSize=512m -Djava.net.preferIPv4Stack=true</jvmArgs>
@@ -70,6 +70,19 @@
             <groupId>org.wildfly.camel</groupId>
             <artifactId>wildfly-camel-itests-common</artifactId>
             <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- [TODO] Remove explicit xnio override -->
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-api</artifactId>
+            <version>${version.jboss.xnio}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-nio</artifactId>
+            <version>${version.jboss.xnio}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -126,8 +139,8 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>org.wildfly</groupId>
-                                            <artifactId>wildfly-dist</artifactId>
+                                            <groupId>org.jboss.as</groupId>
+                                            <artifactId>jboss-as-dist</artifactId>
                                             <version>${version.wildfly}</version>
                                             <type>zip</type>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
@@ -161,6 +174,11 @@
                         <!-- wildfly startup and deployment not inherited -->
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
+                        <configuration>
+                            <jbossHome>${jboss.home}</jbossHome>
+                            <serverConfig>${server.config}</serverConfig>
+                            <port>9999</port>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>wildfly-start</id>
@@ -237,8 +255,8 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>org.wildfly</groupId>
-                                            <artifactId>wildfly-dist</artifactId>
+                                            <groupId>org.jboss.as</groupId>
+                                            <artifactId>jboss-as-dist</artifactId>
                                             <version>${version.wildfly}</version>
                                             <type>zip</type>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
@@ -270,6 +288,11 @@
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
+                        <configuration>
+                            <jbossHome>${jboss.home}</jbossHome>
+                            <serverConfig>${server.config}</serverConfig>
+                            <port>9999</port>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>wildfly-start</id>

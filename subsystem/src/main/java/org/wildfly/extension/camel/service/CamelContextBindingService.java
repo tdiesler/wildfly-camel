@@ -22,8 +22,8 @@ package org.wildfly.extension.camel.service;
 import static org.wildfly.extension.camel.CamelLogger.LOGGER;
 
 import org.apache.camel.CamelContext;
-import org.jboss.as.naming.ImmediateManagedReferenceFactory;
 import org.jboss.as.naming.ServiceBasedNamingStore;
+import org.jboss.as.naming.ValueManagedReferenceFactory;
 import org.jboss.as.naming.deployment.ContextNames;
 import org.jboss.as.naming.deployment.ContextNames.BindInfo;
 import org.jboss.as.naming.service.BinderService;
@@ -34,6 +34,7 @@ import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
+import org.jboss.msc.value.ImmediateValue;
 import org.wildfly.extension.camel.CamelConstants;
 
 /**
@@ -59,7 +60,7 @@ final class CamelContextBindingService extends AbstractService<CamelContext> {
                 super.stop(context);
             }
         };
-        binderService.getManagedObjectInjector().inject(new ImmediateManagedReferenceFactory(camelctx));
+        binderService.getManagedObjectInjector().inject(new ValueManagedReferenceFactory(new ImmediateValue<CamelContext>(camelctx)));
         ServiceBuilder<?> builder = serviceTarget.addService(bindInfo.getBinderServiceName(), binderService);
         builder.addDependency(bindInfo.getParentContextServiceName(), ServiceBasedNamingStore.class, binderService.getNamingStoreInjector());
         return builder.install();

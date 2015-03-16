@@ -29,7 +29,7 @@ final class WildflyCamelConfigEditor implements ConfigEditor {
     public void applyStandaloneConfigChange(boolean enable, Document doc) {
         updateExtension(enable, doc);
         updateSubsystem(enable, doc);
-        updateWeldConfig(enable, doc);
+        // updateWeldConfig(enable, doc);
         updateHawtIOSystemProperties(enable, doc);
         updateHawtIOSecurityDomain(enable, doc);
     }

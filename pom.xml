@@ -36,20 +36,20 @@
 
     <!-- Source Control -->
     <scm>
-        <connection>scm:git:git://github.com/wildflyext/wildfly-camel.git</connection>
-        <developerConnection>scm:git:git@github.com:wildflyext/wildfly-camel.git</developerConnection>
-        <url>http://github.com/wildflyext/wildfly-camel</url>
-        <tag>2.3.0</tag>
+        <connection>scm:git:git://github.com/jboss-fuse/wildfly-camel.git</connection>
+        <developerConnection>scm:git:git@github.com:jboss-fuse/wildfly-camel.git</developerConnection>
+        <url>http://github.com/jboss-fuse/wildfly-camel</url>
     </scm>
 
     <!-- Properties -->
     <properties>
         
         <!-- Camel version -->
-        <version.apache.camel>2.15.2</version.apache.camel>
+        <version.apache.camel>2.15.1.redhat-620121</version.apache.camel>
         
-        <!-- WildFly versions -->
-        <version.wildfly>8.2.0.Final</version.wildfly>
+        <!-- WildFly Versions -->
+        <!-- http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven/org/jboss/as/jboss-as-build -->
+        <version.wildfly>7.5.0.Final-redhat-20</version.wildfly>
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
@@ -58,7 +58,7 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.freeside.betamax>1.1.2</version.freeside.betamax>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>1.4.50</version.hawtio>
+        <version.hawtio>1.4.redhat-121</version.hawtio>
         <version.hibernate.jpa21.api>1.0.0.Final</version.hibernate.jpa21.api>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.javax.enterprise>1.2</version.javax.enterprise>
@@ -70,12 +70,14 @@
         <version.jboss.shrinkwrap>1.2.1</version.jboss.shrinkwrap>
         <version.jboss.shrinkwrap.resolver>2.1.1</version.jboss.shrinkwrap.resolver>
         <version.jboss.resteasy.atom.provider>3.0.10.Final</version.jboss.resteasy.atom.provider>
-        <version.jboss.spec.javax.annotation>1.0.0.Final</version.jboss.spec.javax.annotation>
-        <version.jboss.spec.javax.ejb>1.0.0.Final</version.jboss.spec.javax.ejb>
-        <version.jboss.spec.javax.ws.rs>1.0.0.Final</version.jboss.spec.javax.ws.rs>
-        <version.jboss.spec.javax.jms>1.0.0.Final</version.jboss.spec.javax.jms>
-        <version.jboss.spec.javax.servlet>1.0.0.Final</version.jboss.spec.javax.servlet>
-        <version.jboss.spec.javax.transaction>1.0.0.Final</version.jboss.spec.javax.transaction>
+        <!-- Definitions come from https://github.com/jbossas/jboss-eap -->
+        <version.jboss.spec.javax.annotation>1.0.1.Final-redhat-2</version.jboss.spec.javax.annotation>
+        <version.jboss.spec.javax.ejb>1.0.2.Final-redhat-2</version.jboss.spec.javax.ejb>
+        <version.jboss.spec.javax.jms>1.0.1.Final-redhat-2</version.jboss.spec.javax.jms>
+        <version.jboss.spec.javax.servlet>1.0.2.Final-redhat-1</version.jboss.spec.javax.servlet>
+        <version.jboss.spec.javax.transaction>1.0.1.Final-redhat-2</version.jboss.spec.javax.transaction>
+        <version.jboss.spec.javax.ws.rs>1.0.1.Final-redhat-2</version.jboss.spec.javax.ws.rs>
+        <version.jboss.xnio>3.0.11.GA-redhat-2</version.jboss.xnio>
         <version.jvnet.mock.javamail>1.9</version.jvnet.mock.javamail>
         <version.junit>4.11</version.junit>
         <version.osgi>5.0.0</version.osgi>
@@ -160,6 +162,12 @@
             <dependency>
                 <groupId>org.jboss.gravia</groupId>
                 <artifactId>gravia-container-wildfly-extension</artifactId>
+                <exclusions>
+                	<exclusion>
+                		<groupId>org.wildfly</groupId>
+                		<artifactId>wildfly-server</artifactId>
+                	</exclusion>
+                </exclusions>
                 <version>${version.jboss.gravia}</version>
             </dependency>
             <dependency>
@@ -208,12 +216,12 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.spec.javax.annotation</groupId>
-                <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+                <artifactId>jboss-annotations-api_1.1_spec</artifactId>
                 <version>${version.jboss.spec.javax.annotation}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.spec.javax.ejb</groupId>
-                <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+                <artifactId>jboss-ejb-api_3.1_spec</artifactId>
                 <version>${version.jboss.spec.javax.ejb}</version>
             </dependency>
             <dependency>
@@ -228,12 +236,12 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.spec.javax.jms</groupId>
-                <artifactId>jboss-jms-api_2.0_spec</artifactId>
+                <artifactId>jboss-jms-api_1.1_spec</artifactId>
                 <version>${version.jboss.spec.javax.jms}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.spec.javax.servlet</groupId>
-                <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+                <artifactId>jboss-servlet-api_3.0_spec</artifactId>
                 <version>${version.jboss.spec.javax.servlet}</version>
             </dependency>
             <dependency>
@@ -321,38 +329,38 @@
 
             <!-- WildFly -->
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-arquillian-container-managed</artifactId>
-                <version>${version.wildfly.arquillian}</version>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-arquillian-container-managed</artifactId>
+                <version>${version.wildfly}</version>
             </dependency>
-            <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-arquillian-container-remote</artifactId>
-                <version>${version.wildfly.arquillian}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-arquillian-protocol-jmx</artifactId>
-                <version>${version.wildfly.arquillian}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-controller-client</artifactId>
+	        <dependency>
+	            <groupId>org.jboss.as</groupId>
+	            <artifactId>jboss-as-arquillian-container-remote</artifactId>
                 <version>${version.wildfly}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-ee</artifactId>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-arquillian-protocol-jmx</artifactId>
                 <version>${version.wildfly}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-naming</artifactId>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-ee</artifactId>
                 <version>${version.wildfly}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-server</artifactId>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-naming</artifactId>
+                <version>${version.wildfly}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-server</artifactId>
+                <version>${version.wildfly}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-controller-client</artifactId>
                 <version>${version.wildfly}</version>
                 <exclusions>
                     <exclusion>
@@ -362,16 +370,24 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-subsystem-test</artifactId>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-subsystem-test</artifactId>
                 <version>${version.wildfly}</version>
                 <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-testsuite-shared</artifactId>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-testsuite-shared</artifactId>
                 <version>${version.wildfly}</version>
                 <exclusions>
+                    <exclusion>
+                        <groupId>org.jboss.as</groupId>
+                        <artifactId>jboss-as-build</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.jboss.as</groupId>
+                        <artifactId>jboss-as-client-all</artifactId>
+                    </exclusion>
                     <exclusion>
                         <groupId>org.apache.directory.jdbm</groupId>
                         <artifactId>apacheds-jdbm1</artifactId>
@@ -561,7 +577,7 @@
                                     <version>1.7</version>
                                 </requireJavaVersion>
                                 <requireMavenVersion>
-                                    <version>3.2.3</version>
+                                    <version>3.1.1</version>
                                 </requireMavenVersion>                
                             </rules>
                         </configuration>
@@ -589,15 +605,10 @@
     <!-- Distribution Management -->
     <distributionManagement>
         <repository>
-            <id>jboss-releases-repository</id>
-            <name>JBoss Releases Repository</name>
+            <id>fusesource-staging</id>
+            <name>Fusesource Staging</name>
             <url>https://repository.jboss.org/nexus/service/local/staging/deploy/maven2</url>
         </repository>
-        <snapshotRepository>
-            <id>jboss-snapshots-repository</id>
-            <name>JBoss Snapshots Repository</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <!-- Issue Management -->
@@ -610,14 +621,25 @@
     <repositories>
         <repository>
             <id>jboss-public-repository</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <url>http://repository.jboss.org/nexus/content/groups/public</url>
         </repository>
         <repository>
-            <!-- for restlet -->
+            <!-- restlet -->
             <id>springsource-libs-releases</id>
             <url>http://repo.springsource.org/libs-release-remote</url>
         </repository>
+        
+        <repository>
+            <id>jboss-early-access-repository</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven</url>
+        </repository>
+        <repository>
+            <id>fuse-early-access-repository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+        </repository>
     </repositories>
+    
+    <!-- Plugin Repositories -->
     <pluginRepositories>
         <pluginRepository>
             <id>smartics</id>
@@ -634,7 +656,7 @@
             <id>docker</id>
             <activation>
                 <property>
-                    <name>env.DOCKER_HOST</name>
+                    <name>docker</name>
                 </property>
             </activation>
             <modules>

@@ -35,7 +35,7 @@
 
     <!-- Properties -->    
     <properties>
-        <jboss.home>${project.build.directory}/wildfly-${version.wildfly}</jboss.home>
+        <jboss.home>${project.build.directory}/jboss-eap-6.4</jboss.home>
     </properties>
     
 	<modules>
@@ -50,7 +50,7 @@
             <id>docker</id>
             <activation>
                 <property>
-                    <name>env.DOCKER_HOST</name>
+                    <name>docker</name>
                 </property>
             </activation>
             <modules>

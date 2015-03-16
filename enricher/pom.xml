@@ -47,10 +47,6 @@
             <groupId>org.jboss.arquillian.container</groupId>
             <artifactId>arquillian-container-test-spi</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-arquillian-protocol-jmx</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

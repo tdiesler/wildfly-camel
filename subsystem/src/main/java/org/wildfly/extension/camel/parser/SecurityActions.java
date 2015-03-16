@@ -21,14 +21,9 @@
 
 package org.wildfly.extension.camel.parser;
 
-import static java.lang.System.getProperty;
-import static java.lang.System.getSecurityManager;
-import static java.lang.System.setProperty;
-import static java.security.AccessController.doPrivileged;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
-import org.wildfly.security.manager.action.GetClassLoaderAction;
-import org.wildfly.security.manager.action.ReadPropertyAction;
-import org.wildfly.security.manager.action.WritePropertyAction;
 
 /**
  * Privileged actions used by this package.
@@ -41,15 +36,39 @@ class SecurityActions {
     private SecurityActions() {
     }
 
-    static String getSystemProperty(final String key, final String defaultValue) {
-        return getSecurityManager() == null ? getProperty(key, defaultValue) : doPrivileged(new ReadPropertyAction(key, defaultValue));
+    static String getSystemProperty(final String key) {
+        if (System.getSecurityManager() == null) {
+            return System.getProperty(key);
+        }
+        return AccessController.doPrivileged(new PrivilegedAction<String>() {
+            public String run() {
+                return System.getProperty(key);
+            }
+        });
     }
 
-    static String setSystemProperty(final String key, final String value) {
-        return getSecurityManager() == null ? setProperty(key, value) : doPrivileged(new WritePropertyAction(key, value));
+    static void setSystemProperty(final String key, final String value) {
+        if (System.getSecurityManager() == null) {
+            System.setProperty(key, value);
+        } else {
+            AccessController.doPrivileged(new PrivilegedAction<Void>() {
+                public Void run() {
+                    System.setProperty(key, value);
+                    return null;
+                }
+            });
+        }
     }
 
     static ClassLoader getClassLoader(final Class<?> clazz) {
-        return getSecurityManager() == null ? clazz.getClassLoader() : doPrivileged(new GetClassLoaderAction(clazz));
+        if (System.getSecurityManager() == null) {
+            return clazz.getClassLoader();
+        } else {
+            return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+                public ClassLoader run() {
+                    return clazz.getClassLoader();
+                }
+            });
+        }
     }
 }

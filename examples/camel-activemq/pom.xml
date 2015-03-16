@@ -59,12 +59,12 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -75,8 +75,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-arquillian-container-remote</artifactId>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-arquillian-container-remote</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -126,7 +126,7 @@
                 </property>
             </activation>
             <properties>
-                <jboss.home>${basedir}/../target/wildfly-${version.wildfly}</jboss.home>
+                <jboss.home>${basedir}/../target/jboss-eap-6.4</jboss.home>
             </properties>
         </profile>
     </profiles>

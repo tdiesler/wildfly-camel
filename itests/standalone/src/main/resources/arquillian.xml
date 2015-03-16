@@ -30,6 +30,10 @@
             <property name="serverConfig">${server.config}</property>
             <property name="javaVmArguments">${jvmArgs} ${jvmDebugArgs}</property>
             <property name="allowConnectingToRunningServer">true</property>
+            <property name="managementAddress">127.0.0.1</property>
+            <property name="managementPort">9999</property>
+            <property name="waitForPorts">8787 9999</property>
+            <property name="waitForPortsTimeoutInSeconds">8</property>
         </configuration>
     </container>
     

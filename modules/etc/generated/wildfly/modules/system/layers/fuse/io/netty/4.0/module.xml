@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="io.netty" slot="4.0">
+  <resources>
+    <resource-root path="netty-buffer-4.0.27.Final.jar" />
+    <resource-root path="netty-codec-4.0.27.Final.jar" />
+    <resource-root path="netty-common-4.0.27.Final.jar" />
+    <resource-root path="netty-handler-4.0.27.Final.jar" />
+    <resource-root path="netty-transport-4.0.27.Final.jar" />
+  </resources>
+  <dependencies />
+</module>

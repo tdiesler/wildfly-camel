@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="org.scala-lang.scala-compiler">
+  <resources>
+    <resource-root path="scala-compiler-2.10.0.jar" />
+  </resources>
+  <dependencies>
+    <module name="org.scala-lang.scala-library" />
+    <module name="org.scala-lang.scala-reflect" />
+  </dependencies>
+</module>
