@@ -378,11 +378,6 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.gravia</groupId>
-            <artifactId>gravia-repository</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.gravia</groupId>
             <artifactId>gravia-runtime-embedded</artifactId>
             <scope>provided</scope>
         </dependency>
