@@ -32,9 +32,6 @@
     <module name="javax.jws.api" />
     <module name="javax.servlet.api" />
     <module name="javax.xml.ws.api" />
-    <module name="org.springframework.beans" />
-    <module name="org.springframework.context" />
-    <module name="org.springframework.core" />
     <module name="cglib.cglib-nodep" />
     <module name="javax.annotation.api" />
     <module name="javax.jms.api" />
@@ -43,13 +40,17 @@
     <module name="javax.wsdl4j.api" />
     <module name="javax.xml.bind.api" />
     <module name="net.oauth.core.oauth-provider" />
+    <module name="net.sf.ehcache" />
     <module name="org.apache.commons.lang" />
     <module name="org.apache.mina.core" />
     <module name="org.apache.neethi" />
     <module name="org.apache.ws.security" slot="2.0" />
     <module name="org.apache.ws.xmlschema" />
+    <module name="org.apache.xml-resolver" />
     <module name="org.bouncycastle" />
     <module name="org.codehaus.woodstox" />
+    <module name="org.springframework.beans" />
+    <module name="org.springframework.context" />
     <module name="org.springframework.core" />
   </dependencies>
   <exports>
