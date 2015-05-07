@@ -74,7 +74,7 @@ public class EjbEarIntegrationTest {
     }
 
     private void assertContextAccess(String contextName) {
-        CamelContext camelctx = contextRegistry.getContext(contextName);
+        CamelContext camelctx = contextRegistry.getCamelContext(contextName);
         Assert.assertEquals(ServiceStatus.Started, camelctx.getStatus());
         ProducerTemplate producer = camelctx.createProducerTemplate();
         String result = producer.requestBody("direct:start", "Kermit", String.class);
