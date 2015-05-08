@@ -26,6 +26,28 @@
         <format>dir</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
+    
+    <fileSets>
+      <fileSet>
+        <directory>etc/wildfly</directory>
+        <outputDirectory>/</outputDirectory>
+        <filtered>true</filtered>
+      </fileSet>
+      <fileSet>
+        <directory>../subsystem/src/main/resources/schema</directory>
+        <outputDirectory>docs/schema</outputDirectory>
+      </fileSet>
+      <fileSet>
+        <directory>../examples</directory>
+        <outputDirectory>docs/examples/camel</outputDirectory>
+        <excludes>
+            <exclude>**/.classpath</exclude>
+            <exclude>**/.project</exclude>
+            <exclude>**/.settings/**</exclude>
+            <exclude>**/target/**</exclude>
+        </excludes>
+      </fileSet>
+    </fileSets>
 
     <!-- Dependency Sets -->
     <dependencySets>
