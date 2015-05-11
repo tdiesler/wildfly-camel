@@ -25,13 +25,13 @@
 
     <parent>
         <groupId>org.wildfly.camel</groupId>
-        <artifactId>wildfly-camel-itests</artifactId>
+        <artifactId>wildfly-camel-example</artifactId>
         <version>2.2.0-redhat-620001-SNAPSHOT</version>
     </parent>
 
-    <name>Wildfly Camel :: Testsuite :: Distro</name>
+    <name>Wildfly Camel :: Example :: Distro</name>
 
-    <artifactId>wildfly-camel-itests-distro</artifactId>
+    <artifactId>wildfly-camel-example-distro</artifactId>
 	<packaging>pom</packaging>
 	
     <!-- Properties -->    
@@ -61,7 +61,7 @@
                 <executions>
                     <execution>
                         <id>unpack-wildfly</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
@@ -80,7 +80,7 @@
                     </execution>
                     <execution>
                         <id>unpack-wildfly-patch</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>unpack</goal>
                         </goals>
@@ -105,7 +105,7 @@
                 <executions>
                     <execution>
                         <id>copy-configurations</id>
-                        <phase>package</phase>
+                        <phase>generate-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   #%L
-  Wildfly Camel :: Example :: Camel ActiveMQ
+  Wildfly Camel :: Example :: Camel CXF
   %%
   Copyright (C) 2013 - 2014 RedHat
   %%
@@ -25,13 +25,13 @@
 
     <parent>
         <groupId>org.wildfly.camel</groupId>
-        <artifactId>wildfly-camel-example</artifactId>
+        <artifactId>wildfly-camel-example-projects</artifactId>
         <version>2.2.0-redhat-620001-SNAPSHOT</version>
     </parent>
 
-    <name>Wildfly Camel :: Example :: Camel ActiveMQ</name>
+    <name>Wildfly Camel :: Example :: Camel CXF</name>
 
-    <artifactId>example-camel-activemq</artifactId>
+    <artifactId>example-camel-cxf</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
@@ -40,11 +40,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-camel</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

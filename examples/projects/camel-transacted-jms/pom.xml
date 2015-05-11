@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   #%L
-  Wildfly Camel :: Example :: Camel JAX-WS
+  Wildfly Camel :: Example :: Camel Transacted JMS
   %%
-  Copyright (C) 2013 - 2014 RedHat
+  Copyright (C) 2013 - 2015 RedHat
   %%
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
-
+  
        http://www.apache.org/licenses/LICENSE-2.0
-
+  
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,25 +18,28 @@
   limitations under the License.
   #L%
   -->
-
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.wildfly.camel</groupId>
-        <artifactId>wildfly-camel-example</artifactId>
+        <artifactId>wildfly-camel-example-projects</artifactId>
         <version>2.2.0-redhat-620001-SNAPSHOT</version>
     </parent>
 
-    <name>Wildfly Camel :: Example :: Camel JAX-WS</name>
+    <name>Wildfly Camel :: Example :: Camel Transacted JMS</name>
 
-    <artifactId>example-camel-jaxws</artifactId>
+    <artifactId>example-camel-transacted-jms</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
 
         <!-- Provided -->
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
@@ -48,8 +51,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jpa</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -58,13 +66,23 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.jms</groupId>
+            <artifactId>jboss-jms-api_1.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
             <artifactId>jboss-servlet-api_3.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -131,7 +149,7 @@
                 </property>
             </activation>
             <properties>
-                <jboss.home>${basedir}/../target/wildfly-${version.wildfly}</jboss.home>
+                <jboss.home>${basedir}/../target/jboss-eap-6.4</jboss.home>
             </properties>
         </profile>
     </profiles>
