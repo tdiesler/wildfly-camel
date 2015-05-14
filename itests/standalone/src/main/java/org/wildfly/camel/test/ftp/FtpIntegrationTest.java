@@ -54,7 +54,7 @@ import org.junit.runner.RunWith;
 public class FtpIntegrationTest {
 
     static final File FTP_ROOT_DIR = new File("./target/res/home");
-    static final File USERS_FILE = new File("./src/test/resources/users.properties");
+    static final File USERS_FILE = new File("./src/main/resources/users.properties");
     static final int PORT = AvailablePortFinder.getNextAvailable(21000);
 
     FtpServer ftpServer;
