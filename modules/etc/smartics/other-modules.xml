@@ -168,6 +168,9 @@
     <module name="org.bouncycastle">
         <include artifact="org.bouncycastle:bcpg-(.*)" />
         <include artifact="org.bouncycastle:bcprov-(.*)" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
     </module>
 
     <module name="org.fusesource.hawtbuf">

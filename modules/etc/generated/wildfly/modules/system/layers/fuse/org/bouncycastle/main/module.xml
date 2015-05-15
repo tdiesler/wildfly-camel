@@ -4,5 +4,7 @@
     <resource-root path="bcpg-jdk15on-1.52.jar" />
     <resource-root path="bcprov-jdk15on-1.52.jar" />
   </resources>
-  <dependencies />
+  <dependencies>
+    <module name="javax.api" />
+  </dependencies>
 </module>
