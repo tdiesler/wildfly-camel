@@ -124,66 +124,6 @@
 
 	<!-- Profiles -->
 	<profiles>
-		<profile>
-			<id>docker</id>
-            <activation>
-                <property>
-                    <name>env.DOCKER_HOST</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <exec executable="docker" failonerror="false">
-                                            <arg value="rmi" />
-                                            <arg value="--force=true" />
-                                            <arg value="${docker.image.name}" />
-                                        </exec>
-                                    </target>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.jolokia</groupId>
-                        <artifactId>docker-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>build-docker-image</id>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>build</goal>
-                                </goals>
-                                <configuration>
-                                    <images>
-                                        <image>
-                                            <name>${docker.image.name}</name>
-                                            <build>
-                                                <from>wildflyext/wildfly-camel</from>
-                                                <assembly>
-                                                    <basedir>/opt/jboss/wildfly/standalone/deployments</basedir>
-                                                    <descriptorRef>artifact</descriptorRef>
-                                                </assembly>
-                                            </build>
-                                        </image>
-                                    </images>
-                                </configuration>
-                            </execution>
-                        </executions>
-                     </plugin>
-                </plugins>
-            </build>
-		</profile>
         <profile>
             <id>ts.all</id>
             <activation>

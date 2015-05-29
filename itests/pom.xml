@@ -44,18 +44,4 @@
 		<module>standalone</module>
 	</modules>
 
-	<!-- Profiles -->
-	<profiles>
-        <profile>
-            <id>docker</id>
-            <activation>
-                <property>
-                    <name>docker</name>
-                </property>
-            </activation>
-            <modules>
-                <module>docker</module>
-            </modules>
-        </profile>
-	</profiles>
 </project>
