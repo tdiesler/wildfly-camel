@@ -34,6 +34,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.cdi.subA.Constants;
@@ -44,6 +45,7 @@ import org.wildfly.camel.test.cdi.subA.RoutesContextD;
 import org.wildfly.extension.camel.CamelContextRegistry;
 
 @RunWith(Arquillian.class)
+@Ignore("[ENTESB-3167] Cannot define multiple CDI camel contexts with @ContextName")
 public class CDIIntegrationTest {
 
     @ArquillianResource
