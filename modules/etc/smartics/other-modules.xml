@@ -43,9 +43,26 @@
         <include artifact="io.netty:netty-(.*)" />
     </module>
 
+    <module name="com.thoughtworks.xstream">
+        <include artifact="com.thoughtworks.xstream:xstream" />
+        <include artifact="xmlpull:xmlpull" />
+        <include artifact="xpp3:xpp3_min" />
+        <dependencies>
+            <module name="javax.api" />
+            <module name="javax.xml.stream.api"/>
+        </dependencies>
+    </module>
+
     <module name="javax.el">
         <include artifact=":el-api" />
         <include artifact=":el-impl" />
+    </module>
+
+    <module name="org.joda.time" slot="2.0">
+        <include artifact="joda-time:joda-time" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
     </module>
     
     <module name="ognl">

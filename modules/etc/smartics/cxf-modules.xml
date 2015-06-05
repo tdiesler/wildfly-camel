@@ -63,7 +63,6 @@
 
     <module name="org.opensaml" slot="2.6" inherit-slot="false">
         <include artifact="org.opensaml:opensaml(.*)" />
-        <include artifact="joda-time:joda-time" />
     </module>
 
     <module name="org.opensaml.xmltooling" slot="1.4.1" inherit-slot="false">

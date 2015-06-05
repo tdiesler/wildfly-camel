@@ -12,7 +12,7 @@
     <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="com.thoughtworks.paranamer" />
     <module name="org.joda.joda-convert" />
-    <module name="org.opensaml" slot="2.6" />
+    <module name="org.joda.time" slot="2.0" />
     <module name="org.scala-lang.scala-library" />
     <module name="org.scala-lang.scalap" />
   </dependencies>

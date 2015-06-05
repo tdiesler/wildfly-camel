@@ -13,6 +13,6 @@
     <module name="org.apache.xerces" />
     <module name="org.apache.xml-resolver" />
     <module name="org.bouncycastle" />
-    <module name="org.opensaml" slot="2.6" />
+    <module name="org.joda.time" slot="2.0" />
   </dependencies>
 </module>
