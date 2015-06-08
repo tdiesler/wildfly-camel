@@ -148,18 +148,6 @@
         </dependencies>
     </module>
 
-    <module name="org.apache.httpcomponents" slot="4.3" inherit-slot="false">
-        <include artifact=":httpcore" />
-        <include artifact=":httpclient" />
-        <include artifact=":httpmime" />
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="org.apache.commons.codec" />
-            <module name="org.apache.commons.logging" />
-            <module name="org.apache.james.mime4j" />
-        </dependencies>
-    </module>
-
     <module name="org.apache.lucene" slot="4.10">
         <include artifact="org.apache.lucene:lucene-(.*)" />
         <include artifact=":jakarta-regexp" />

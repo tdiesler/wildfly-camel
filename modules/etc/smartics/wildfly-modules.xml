@@ -154,6 +154,12 @@
         <include artifact="commons-pool:commons-pool" />
     </module>
 
+    <module name="org.apache.httpcomponents" skip="true">
+        <include artifact=":httpcore" />
+        <include artifact=":httpclient" />
+        <include artifact=":httpmime" />
+    </module>
+
     <module name="org.apache.james.mime4j" skip="true">
         <include artifact=":apache-mime4j-core" />
     </module>

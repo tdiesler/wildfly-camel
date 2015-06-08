@@ -41,8 +41,8 @@
         <smartics.module.dir>${project.build.directory}/wildfly-patch/modules/system/layers/fuse</smartics.module.dir>
 
         <!-- Used for dependency checking in module-checker.groovy -->
-        <appserver.groupId>org.wildfly</appserver.groupId>
-        <appserver.artifactId>wildfly-build</appserver.artifactId>
+        <appserver.groupId>org.jboss.as</appserver.groupId>
+        <appserver.artifactId>jboss-as-build</appserver.artifactId>
         <appserver.version>${version.wildfly}</appserver.version>
     </properties>
 

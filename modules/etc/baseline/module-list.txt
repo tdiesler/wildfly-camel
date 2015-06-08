@@ -148,9 +148,6 @@
 /org/apache/deltaspike/cdictrl/api/main/deltaspike-cdictrl-api-1.2.1.jar
 /org/apache/deltaspike/core/api/main/deltaspike-core-api-1.2.1.jar
 /org/apache/deltaspike/core/impl/main/deltaspike-core-impl-1.2.1.jar
-/org/apache/httpcomponents/4.3/httpclient-4.3.6.jar
-/org/apache/httpcomponents/4.3/httpcore-4.3.1.jar
-/org/apache/httpcomponents/4.3/httpmime-4.3.jar
 /org/apache/lucene/4.10/lucene-analyzers-common-4.10.3.jar
 /org/apache/lucene/4.10/lucene-core-4.10.3.jar
 /org/apache/lucene/4.10/lucene-queries-4.10.3.jar
