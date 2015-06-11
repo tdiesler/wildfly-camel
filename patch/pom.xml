@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel</artifactId>
-        <version>2.3.0-redhat-620002-SNAPSHOT</version>
+        <version>2.3.0-redhat-621002</version>
     </parent>
 
     <name>Wildfly Camel :: Patch</name>
@@ -110,8 +110,8 @@
                                 <java classname="org.wildfly.extension.camel.config.ConfigMain" failonerror="true">
                                     <sysproperty key="jboss.home" value="${jboss.home}" />
                                     <classpath>
-                                        <pathelement location="../config/target/wildfly-camel-config-${project.version}.jar"/>
-                                        <pathelement location="${jboss.home}/modules/system/layers/base/org/jdom/main/jdom-${version.jdom}.jar"/>
+                                        <pathelement location="../config/target/wildfly-camel-config-${project.version}.jar" />
+                                        <pathelement location="${jboss.home}/modules/system/layers/base/org/jdom/main/jdom-${version.jdom}.jar" />
                                     </classpath>
                                     <arg value="enable" />
                                 </java>
