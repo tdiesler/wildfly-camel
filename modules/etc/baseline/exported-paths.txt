@@ -326,6 +326,8 @@ org/apache/camel/component/rss
 org/apache/camel/component/salesforce
 org/apache/camel/component/salesforce/api
 org/apache/camel/component/salesforce/api/dto
+org/apache/camel/component/salesforce/api/dto/analytics
+org/apache/camel/component/salesforce/api/dto/analytics/reports
 org/apache/camel/component/salesforce/api/dto/bulk
 org/apache/camel/component/servlet
 org/apache/camel/component/servlet/osgi
