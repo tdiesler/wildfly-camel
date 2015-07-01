@@ -67,23 +67,6 @@
             <artifactId>jboss-servlet-api_3.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <!-- Test -->
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.as</groupId>
-            <artifactId>jboss-as-arquillian-container-remote</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <!-- Build -->
@@ -137,7 +120,7 @@
             </properties>
         </profile>
         <profile>
-            <id>!ts.all</id>
+            <id>no.ts.all</id>
             <activation>
                 <property>
                     <name>!ts.all</name>
@@ -146,26 +129,60 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <configuration>
+                            <jbossHome>${jboss.home}</jbossHome>
+                            <serverConfig>${server.config}</serverConfig>
+                            <jvmArgs>${jvmArgs} ${jvmDebugArgs}</jvmArgs>
+                            <port>9999</port>
+                        </configuration>
                         <executions>
                             <execution>
-                                <id>greenmail-deploy</id>
-                                <phase>package</phase>
+                                <id>wildfly-start</id>
+                                <phase>pre-integration-test</phase>
                                 <goals>
-                                    <goal>copy</goal>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>deploy-greenmail</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>deploy-artifact</goal>
                                 </goals>
                                 <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>com.icegreen</groupId>
-                                            <artifactId>greenmail-webapp</artifactId>
-                                            <version>${version.greenmail}</version>
-                                            <type>war</type>
-                                            <artifactId>greenmail-webapp</artifactId>
-                                        </artifactItem>
-                                    </artifactItems>
-                                    <outputDirectory>${jboss.home}/standalone/deployments</outputDirectory>
+                                    <groupId>com.icegreen</groupId>
+                                    <artifactId>greenmail-webapp</artifactId>
+                                    <version>${version.greenmail}</version>
+                                    <type>war</type>
+                                    <artifactId>greenmail-webapp</artifactId>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>wildfly-shutdown</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>shutdown</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                    <systemPropertyVariables>
+                                        <jboss.data.dir>${jboss.data.dir}</jboss.data.dir>
+                                        <log4j.configuration>${log4j.configuration}</log4j.configuration>
+                                    </systemPropertyVariables>
                                 </configuration>
                             </execution>
                         </executions>
