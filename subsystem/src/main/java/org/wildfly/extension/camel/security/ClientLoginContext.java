@@ -50,7 +50,7 @@ public final class ClientLoginContext  {
     private ClientLoginContext() {
     }
 
-    public static LoginContext newLoginContext(final String username, final String password) throws LoginException {
+    public static LoginContext newLoginContext(final String username, final char[] password) throws LoginException {
         final String configurationName = "WildFly-Camel";
         CallbackHandler cbh = new CallbackHandler() {
             public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
@@ -58,7 +58,7 @@ public final class ClientLoginContext  {
                     if (current instanceof NameCallback) {
                         ((NameCallback) current).setName(username);
                     } else if (current instanceof PasswordCallback) {
-                        ((PasswordCallback) current).setPassword(password.toCharArray());
+                        ((PasswordCallback) current).setPassword(password);
                     } else {
                         throw new UnsupportedCallbackException(current);
                     }

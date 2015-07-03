@@ -223,14 +223,14 @@
             </modules>
         </profile>
         <profile>
-            <id>ts.extras</id>
+            <id>ts.extra</id>
             <activation>
                 <property>
-                    <name>ts.extras</name>
+                    <name>ts.extra</name>
                 </property>
             </activation>
             <modules>
-                <module>extras</module>
+                <module>extra</module>
             </modules>
         </profile>
         <profile>
@@ -243,7 +243,7 @@
             <modules>
                 <module>smoke</module>
                 <module>basic</module>
-                <module>extras</module>
+                <module>extra</module>
             </modules>
         </profile>
         <profile>
