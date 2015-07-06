@@ -242,6 +242,10 @@
         <include artifact=":jdom" />
     </module>
 
+    <module name="org.jgroups" skip="true">
+        <include artifact=":jgroups" />
+    </module>
+
     <module name="org.osgi.core" skip="true">
         <include artifact=":org.osgi.core" />
     </module>
