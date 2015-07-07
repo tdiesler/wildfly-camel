@@ -19,7 +19,7 @@
     <module name="org.apache.camel.core" />
     <module name="org.apache.commons.lang" />
     <module name="org.json4s" />
-    <module name="org.scala-lang.scala-library" />
+    <module name="org.scala.lang" />
     <module name="org.slf4j" />
   </dependencies>
   <exports>

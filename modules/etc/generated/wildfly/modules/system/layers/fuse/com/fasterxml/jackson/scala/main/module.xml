@@ -9,7 +9,6 @@
     <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="com.google.guava" />
     <module name="com.thoughtworks.paranamer" />
-    <module name="org.scala-lang.scala-library" />
-    <module name="org.scala-lang.scala-reflect" />
+    <module name="org.scala.lang" />
   </dependencies>
 </module>
