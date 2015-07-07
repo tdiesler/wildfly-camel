@@ -173,6 +173,7 @@
 /org/beanshell/main/bsh-2.0b5.jar
 /org/bouncycastle/main/bcpg-jdk15on-1.52.jar
 /org/bouncycastle/main/bcprov-jdk15on-1.52.jar
+/org/fusesource/camel/component/sap/main/camel-sap-6.2.1.redhat-001.jar
 /org/fusesource/hawtbuf/main/hawtbuf-1.11.jar
 /org/fusesource/hawtdispatch/main/hawtdispatch-1.21.jar
 /org/fusesource/hawtdispatch/main/hawtdispatch-transport-1.21.jar
