@@ -234,10 +234,6 @@
         <include artifact=":javassist" />
     </module>
 
-    <module name="org.jboss.netty" skip="true">
-        <include artifact="io.netty:netty" />
-    </module>
-
     <module name="org.jdom" skip="true">
         <include artifact=":jdom" />
     </module>

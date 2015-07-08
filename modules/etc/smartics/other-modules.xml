@@ -43,7 +43,11 @@
         <include artifact=":jsch" />
     </module>
     
-    <module name="io.netty"  slot="4.0">
+    <module name="io.netty" slot="3.9">
+        <include artifact="io.netty:netty" />
+    </module>
+
+    <module name="io.netty" slot="4.0">
         <include artifact="io.netty:netty-(.*)" />
     </module>
 
@@ -158,6 +162,7 @@
         <include artifact="net.sf.jopt-simple:jopt-simple" />
         <include artifact="com.101tec:zkclient" />
         <dependencies>
+            <module name="javax.api"/>
             <module name="org.scala.lang" />
         </dependencies>
     </module>
@@ -212,8 +217,13 @@
         <include artifact="org.apache.zookeeper:zookeeper" />
         <apply-to-dependencies skip="true">
             <include module="jline" />
-            <include module="org.apache.log4j" />
         </apply-to-dependencies>
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
+        <exports>
+            <exclude path="org/apache/jute**" />
+        </exports>
     </module>
 
     <module name="org.beanshell">
