@@ -120,7 +120,7 @@ public class ExportedPathsTest {
 
         Path exportedPaths = resolvePath(FILE_EXPORTED_PATHS);
         pw = new PrintWriter(new FileWriter(exportedPaths.toFile()));
-        List<String> camelExtraDeps = getDependentModuleNames(mbean.getDependencies(MODULE_WILDFLY_CAMEL_EXTRAS));
+        List<String> camelExtraDeps = getDependentModuleNames(mbean);
         try {
             for (String module : new String[] { MODULE_CAMEL, MODULE_CAMEL_COMPONENT }) {
                 pw.println("[Exported Paths: " + module + "]");
@@ -217,14 +217,18 @@ public class ExportedPathsTest {
         }
     }
 
-    private List<String> getDependentModuleNames(List<DependencyInfo> dependencyInfos) {
+    private List<String> getDependentModuleNames(ModuleLoaderMXBean mbean) {
         List<String> moduleNames = new ArrayList<>();
-        for (DependencyInfo dependencyInfo : dependencyInfos) {
-            String moduleName = dependencyInfo.getModuleName();
-            if (moduleName != null) {
-                moduleNames.add(moduleName);
+
+        if (mbean.queryLoadedModuleNames().contains(MODULE_WILDFLY_CAMEL_EXTRAS)) {
+            for (DependencyInfo dependencyInfo : mbean.getDependencies(MODULE_WILDFLY_CAMEL_EXTRAS)) {
+                String moduleName = dependencyInfo.getModuleName();
+                if (moduleName != null) {
+                    moduleNames.add(moduleName);
+                }
             }
         }
+
         return moduleNames;
     }
 
