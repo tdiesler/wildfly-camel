@@ -43,7 +43,8 @@
         <include artifact=":jsch" />
     </module>
     
-    <module name="io.netty" slot="3.9">
+    <!-- skip io.netty-3.9 -->
+    <module name="io.netty" skip="true">
         <include artifact="io.netty:netty" />
     </module>
 
@@ -217,9 +218,11 @@
         <include artifact="org.apache.zookeeper:zookeeper" />
         <apply-to-dependencies skip="true">
             <include module="jline" />
+            <include module="io.netty" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
+            <module name="io.netty" slot="4.0" />
         </dependencies>
         <exports>
             <exclude path="org/apache/jute**" />
