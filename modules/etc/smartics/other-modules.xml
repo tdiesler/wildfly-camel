@@ -70,7 +70,7 @@
     </module>
     
     <module name="ognl">
-        <include artifact="ognl" />
+        <include artifact=":ognl" />
         <apply-to-dependencies skip="true">
             <include module=".*" />
         </apply-to-dependencies>
