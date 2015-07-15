@@ -62,11 +62,6 @@
         </dependencies>
     </module>
 
-    <module name="javax.el">
-        <include artifact=":el-api" />
-        <include artifact=":el-impl" />
-    </module>
-
     <module name="org.joda.time" slot="2.0">
         <include artifact="joda-time:joda-time" />
         <dependencies>

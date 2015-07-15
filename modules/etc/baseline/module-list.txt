@@ -17,8 +17,6 @@
 /io/netty/4.0/netty-common-4.0.27.Final.jar
 /io/netty/4.0/netty-handler-4.0.27.Final.jar
 /io/netty/4.0/netty-transport-4.0.27.Final.jar
-/javax/el/main/el-api-2.2.jar
-/javax/el/main/el-impl-2.2.jar
 /net/oauth/core/oauth-provider/main/oauth-provider-20100527.jar
 /net/oauth/core/oauth/main/oauth-20100527.jar
 /net/sf/ehcache/main/ehcache-2.9.1.jar
