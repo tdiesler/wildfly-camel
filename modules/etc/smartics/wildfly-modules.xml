@@ -236,6 +236,10 @@
         <include artifact=":javassist" />
     </module>
 
+    <module name="org.jboss.modules" skip="true">
+        <include artifact=":jboss-modules" />
+    </module>
+    
     <module name="org.jdom" skip="true">
         <include artifact=":jdom" />
     </module>
@@ -261,6 +265,18 @@
 
     <module name="org.yaml.snakeyaml" skip="true">
         <include artifact="org.yaml:snakeyaml" />
+    </module>
+    
+    <module name="org.wildfly.ee" skip="true">
+        <include artifact=":jboss-as-ee" />
+    </module>
+    
+    <module name="org.wildfly.naming" skip="true">
+        <include artifact=":jboss-as-naming" />
+    </module>
+    
+    <module name="org.wildfly.server" skip="true">
+        <include artifact=":jboss-as-server" />
     </module>
     
 </modules>
