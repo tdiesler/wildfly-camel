@@ -33,12 +33,14 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.HttpRequest;
 import org.wildfly.camel.test.common.HttpRequest.HttpResponse;
 
 @RunWith(Arquillian.class)
+@Ignore("[WFLY-5016] MBeanServer returns MBean names that do not match filter")
 public class SwaggerIntegrationTest {
 
     @Deployment
@@ -69,8 +71,9 @@ public class SwaggerIntegrationTest {
 
             MBeanServer server = ManagementFactory.getPlatformMBeanServer();
             for (ObjectName oname : server.queryNames(new ObjectName("*:type=context,*"), null)) {
+                Object camelVersion = server.getAttribute(oname, "CamelVersion");
                 Object jmxret = server.invoke(oname, "dumpRestsAsXml", null, null);
-                System.out.println(oname + ": " + jmxret);
+                System.out.println(oname + "\n" + camelVersion + "\n" + jmxret);
             }
 
             result = HttpRequest.get("http://localhost:8080/swagger-tests/api-docs").getResponse();
