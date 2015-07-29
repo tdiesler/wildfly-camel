@@ -39,6 +39,19 @@
         <deploy.skip>true</deploy.skip>
     </properties>
 
+    <!-- Build -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <configuration>
+                    <port>9999</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <!-- Repositories -->
     <repositories>
         <repository>
