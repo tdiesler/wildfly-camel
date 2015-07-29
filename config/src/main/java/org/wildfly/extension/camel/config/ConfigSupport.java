@@ -254,6 +254,8 @@ public class ConfigSupport {
         domainPaths.add(Paths.get("domain", "configuration", "domain.xml"));
 
         String message = (enable ? "\tEnable " : "\tDisable ") + plugin.getConfigName() + " configuration in: ";
+
+        String lineSeparator = System.getProperty("line.separator");
         
         SAXBuilder jdom = new SAXBuilder();
         for (Path p : standalonePaths) {
@@ -266,7 +268,7 @@ public class ConfigSupport {
             plugin.applyStandaloneConfigChange(context, enable);
 
             XMLOutputter output = new XMLOutputter();
-            output.setFormat(Format.getRawFormat());
+            output.setFormat(Format.getRawFormat().setLineSeparator(lineSeparator));
             String newXML = output.outputString(doc);
             backup(path);
             writeFile(path, newXML, "UTF-8");
@@ -282,7 +284,7 @@ public class ConfigSupport {
             plugin.applyDomainConfigChange(context, enable);
 
             XMLOutputter output = new XMLOutputter();
-            output.setFormat(Format.getRawFormat());
+            output.setFormat(Format.getRawFormat().setLineSeparator(lineSeparator));
             String newXML = output.outputString(doc);
             backup(path);
             writeFile(path, newXML, "UTF-8");
