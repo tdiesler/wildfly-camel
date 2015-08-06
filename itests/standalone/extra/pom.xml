@@ -169,6 +169,7 @@
                                             <directory>${env.SAP_TMP_DIR}/modules</directory>
                                         </resource>
                                     </resources>
+                                    <overwrite>true</overwrite>
                                 </configuration>
                             </execution>
                         </executions>
