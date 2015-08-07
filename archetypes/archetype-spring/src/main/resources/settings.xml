@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Avoids adding pre-release repos to archetype pom.xml for integration tests -->
+    <profiles>
+        <profile>
+            <id>pre-release-repository-group</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>fuse-early-access-repository</id>
+                    <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+                </repository>
+                <repository>
+                    <id>jboss-early-access-repository</id>
+                    <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+</settings>
