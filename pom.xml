@@ -56,6 +56,7 @@
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
+        <version.apache.activemq>5.11.0.redhat-621019</version.apache.activemq>
         <version.apache.ftpserver>1.0.6</version.apache.ftpserver>
         <version.apache.xmlbeans>2.6.0</version.apache.xmlbeans>
         <version.args4j>2.0.31</version.args4j>
@@ -137,7 +138,44 @@
     <!-- DependencyManagement -->
     <dependencyManagement>
         <dependencies>
-        
+
+            <!-- ActiveMQ -->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-broker</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-camel</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-client</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-jms-pool</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-openwire-legacy</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-pool</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-spring</artifactId>
+                <version>${version.apache.activemq}</version>
+            </dependency>
+
             <!-- Args4J -->
             <dependency>
                 <groupId>args4j</groupId>
