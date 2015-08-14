@@ -56,7 +56,7 @@
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
-        <version.apache.activemq>5.11.0.redhat-621019</version.apache.activemq>
+        <version.apache.activemq>5.11.0.redhat-621025</version.apache.activemq>
         <version.apache.ftpserver>1.0.6</version.apache.ftpserver>
         <version.apache.xmlbeans>2.6.0</version.apache.xmlbeans>
         <version.args4j>2.0.31</version.args4j>
