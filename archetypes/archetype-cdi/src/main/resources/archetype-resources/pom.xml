@@ -99,7 +99,7 @@
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
             <version>${version.jboss.servlet.api}</version>
             <scope>provided</scope>
         </dependency>
@@ -171,6 +171,7 @@
                 <configuration>
                     <version>${version.wildfly}</version>
                     <serverConfig>${server.config}</serverConfig>
+                    <port>9999</port>
                 </configuration>
             </plugin>
         </plugins>
