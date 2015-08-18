@@ -41,6 +41,9 @@
 
     <module name="com.jcraft.jsch">
         <include artifact=":jsch" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
     </module>
     
     <!-- skip io.netty-3.9 -->
