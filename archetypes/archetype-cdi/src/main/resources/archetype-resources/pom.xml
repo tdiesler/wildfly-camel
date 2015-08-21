@@ -236,5 +236,17 @@
             <id>fuse-public-repository</id>
             <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>redhat-earlyaccess-all-repository</id>
+            <url>https://maven.repository.redhat.com/earlyaccess/all/</url>
+        </repository>
+        <repository>
+            <id>fuse-early-access-repository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+        </repository>
+        <repository>
+            <id>jboss-early-access-repository</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven</url>
+        </repository>
     </repositories>
 </project>

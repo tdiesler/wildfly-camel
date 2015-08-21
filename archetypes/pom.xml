@@ -94,13 +94,6 @@
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-archetype-plugin</artifactId>
-                        <configuration>
-                            <settingsFile>${project.basedir}/src/main/resources/settings.xml</settingsFile>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
                         <executions>
                             <execution>
