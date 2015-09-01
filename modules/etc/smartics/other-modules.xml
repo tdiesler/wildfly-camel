@@ -158,28 +158,6 @@
             <module name="javax.xml.bind.api" />
         </dependencies>
     </module>
-
-    <module name="org.apache.kafka">
-        <include artifact="org.apache.kafka:kafka_2.10" />
-        <include artifact="com.yammer.metrics:metrics-core" />
-        <include artifact="net.sf.jopt-simple:jopt-simple" />
-        <include artifact="com.101tec:zkclient" />
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="org.scala.lang" />
-        </dependencies>
-        <exports>
-            <exclude path="com/yammer**" />
-            <exclude path="joptsimple**" />
-            <exclude path="org/I0Itec**" />
-        </exports>
-    </module>
-    
-    <module name="org.apache.kafka.clients">
-        <include artifact="org.apache.kafka:kafka-clients" />
-        <include artifact="org.xerial.snappy:snappy-java" />
-        <include artifact="net.jpountz.lz4:lz4" />
-    </module>
     
     <module name="org.apache.lucene" slot="4.10">
         <include artifact="org.apache.lucene:lucene-(.*)" />
