@@ -34,19 +34,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- WildFly versions -->
-        <version.wildfly>${version-wildfly}</version.wildfly>
-        <version.wildfly.arquillian>${version-wildfly-arquillian}</version.wildfly.arquillian>
+        <!-- JBoss versions -->
+        <version.jboss.bom.eap>${version-jboss-bom-eap}</version.jboss.bom.eap>
 
         <!-- Other versions -->
         <version.apache.camel>${version-apache-camel}</version.apache.camel>
-        <version.javax.enterprise>${version-javax-enterprise}</version.javax.enterprise>
-        <version.jboss.arquillian>${version-jboss-arquillian}</version.jboss.arquillian>
-        <version.jboss.xnio>${version-jboss-xnio}</version.jboss.xnio>
-        <version.jboss.servlet.api>${version-jboss-servlet-api}</version.jboss.servlet.api>
-        <version.jboss.spec.javax.ejb>${version-jboss-spec-javax-ejb}</version.jboss.spec.javax.ejb>
         <version.junit>${version-junit}</version.junit>
-        <version.wildfly.camel>${version-wildfly-camel}</version.wildfly.camel>
 
         <!-- Plugin versions -->
         <version.maven.compiler.plugin>${version-maven-compiler-plugin}</version.maven.compiler.plugin>
@@ -67,11 +60,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.jboss.arquillian</groupId>
-                <artifactId>arquillian-bom</artifactId>
-                <scope>import</scope>
+                <groupId>org.jboss.bom.eap</groupId>
+                <artifactId>jboss-javaee-6.0-with-tools</artifactId>
+                <version>${version.jboss.bom.eap}</version>
                 <type>pom</type>
-                <version>${version.jboss.arquillian}</version>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -88,19 +81,16 @@
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>${version.javax.enterprise}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.1_spec</artifactId>
-            <version>${version.jboss.spec.javax.ejb}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
             <artifactId>jboss-servlet-api_3.0_spec</artifactId>
-            <version>${version.jboss.servlet.api}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -114,25 +104,6 @@
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <!-- [TODO] Remove explicit xnio override -->
-        <dependency>
-            <groupId>org.jboss.xnio</groupId>
-            <artifactId>xnio-api</artifactId>
-            <version>${version.jboss.xnio}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.xnio</groupId>
-            <artifactId>xnio-nio</artifactId>
-            <version>${version.jboss.xnio}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly.camel</groupId>
-            <artifactId>wildfly-camel-enricher</artifactId>
-            <version>${version.wildfly.camel}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -206,7 +177,6 @@
                 <dependency>
                     <groupId>org.jboss.as</groupId>
                     <artifactId>jboss-as-arquillian-container-managed</artifactId>
-                    <version>${version.wildfly.arquillian}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -219,7 +189,6 @@
                 <dependency>
                     <groupId>org.jboss.as</groupId>
                     <artifactId>jboss-as-arquillian-container-remote</artifactId>
-                    <version>${version.wildfly.arquillian}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -229,20 +198,86 @@
     <!-- Repositories -->
     <repositories>
         <repository>
-            <id>jboss-public-repository</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
             <id>jboss-ga-repository</id>
             <url>http://maven.repository.redhat.com/techpreview/all</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
-            <id>fuse-public-repository</id>
+            <id>jboss-earlyaccess-repository</id>
+            <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>fusesource-release-repository</id>
             <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </repository>
         <repository>
-            <id>fuse-early-access-repository</id>
-            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+            <id>fusesource-earlyaccess-repository</id>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
         </repository>
     </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-earlyaccess-plugin-repository</id>
+            <url>http://maven.repository.redhat.com/earlyaccess/all/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-ga-plugin-repository</id>
+            <url>http://maven.repository.redhat.com/techpreview/all</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>fusesource-release-plugin-repository</id>
+            <url>https://repo.fusesource.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>fusesource-earlyaccess-plugin-repository</id>
+            <url>https://repo.fusesource.com/nexus/content/groups/ea</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
