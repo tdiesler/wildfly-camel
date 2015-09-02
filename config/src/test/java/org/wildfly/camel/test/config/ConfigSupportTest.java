@@ -19,9 +19,6 @@
  */
 package org.wildfly.camel.test.config;
 
-import static org.wildfly.extension.camel.config.LayerConfig.Type.INSTALLING;
-import static org.wildfly.extension.camel.config.LayerConfig.Type.OPTIONAL;
-import static org.wildfly.extension.camel.config.LayerConfig.Type.REQUIRED;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,10 +26,11 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.wildfly.extension.camel.config.ConfigContext;
-import org.wildfly.extension.camel.config.ConfigPlugin;
-import org.wildfly.extension.camel.config.ConfigSupport;
-import org.wildfly.extension.camel.config.LayerConfig;
+import org.wildfly.extras.config.ConfigContext;
+import org.wildfly.extras.config.ConfigPlugin;
+import org.wildfly.extras.config.ConfigSupport;
+import org.wildfly.extras.config.LayerConfig;
+import org.wildfly.extras.config.LayerConfig.Type;
 
 public class ConfigSupportTest {
 
@@ -40,7 +38,7 @@ public class ConfigSupportTest {
     public void testApplyLayerConfigChange() throws Exception {
 
         ConfigPlugin plugin = new ConfigPlugin () {
-            
+
             @Override
             public String getConfigName() {
                 return "foo";
@@ -49,16 +47,16 @@ public class ConfigSupportTest {
             @Override
             public List<LayerConfig> getLayerConfigs() {
                 return Arrays.asList(
-                        new LayerConfig("fuse_6.2.1", INSTALLING, -10),
-                        new LayerConfig("soa_6.2.1", INSTALLING, -10),
-                        new LayerConfig("brms_6.2.1", OPTIONAL, -11)
+                        new LayerConfig("fuse_6.2.1", Type.INSTALLING, -10),
+                        new LayerConfig("soa_6.2.1", Type.INSTALLING, -10),
+                        new LayerConfig("brms_6.2.1", Type.OPTIONAL, -11)
                 );
             }
-            
+
             @Override
             public void applyStandaloneConfigChange(ConfigContext context, boolean enable) {
             }
-            
+
             @Override
             public void applyDomainConfigChange(ConfigContext context, boolean enable) {
             }
@@ -91,25 +89,25 @@ public class ConfigSupportTest {
     public void testApplyLayerConfigChange2() throws Exception {
 
         ConfigPlugin plugin = new ConfigPlugin() {
-            
+
             @Override
             public String getConfigName() {
                 return "foo";
             }
-            
+
             @Override
             public List<LayerConfig> getLayerConfigs() {
                 return Arrays.asList(
-                        new LayerConfig("fuse_6.2.1", REQUIRED, -10),
-                        new LayerConfig("soa_6.2.1", REQUIRED, -10),
-                        new LayerConfig("brms_6.2.1", INSTALLING, -9)
+                        new LayerConfig("fuse_6.2.1", Type.REQUIRED, -10),
+                        new LayerConfig("soa_6.2.1", Type.REQUIRED, -10),
+                        new LayerConfig("brms_6.2.1", Type.INSTALLING, -9)
                 );
             }
-            
+
             @Override
             public void applyStandaloneConfigChange(ConfigContext context, boolean enable) {
             }
-            
+
             @Override
             public void applyDomainConfigChange(ConfigContext context, boolean enable) {
             }
