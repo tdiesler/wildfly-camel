@@ -11,11 +11,11 @@ ${symbol_hash}${symbol_hash} Prerequisites
 
 * Minimum of Java 1.7
 * Maven 3.2 or greater
-* WildFly application server version ${version-wildfly}
+* JBOSS EAP 6.4
 
 ${symbol_hash}${symbol_hash} Getting started
 
-1. Install WildFly-Camel subsystem distribution version ${version} on your application server
+1. Install the WildFly-Camel subsystem distribution on your application server
 
 2. Conifgure a `$JBOSS_HOME` environment variable to point at your application server installation directory
 
