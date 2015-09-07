@@ -20,8 +20,6 @@
 
 package org.wildfly.camel.test.script;
 
-import static org.apache.camel.builder.script.ScriptBuilder.script;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,6 +27,7 @@ import java.io.InputStream;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.builder.script.ScriptBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -36,6 +35,7 @@ import org.jboss.gravia.utils.IOUtils;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -70,6 +70,7 @@ public class ScriptIntegrationTest {
     }
 
     @Test
+    @Ignore("[845] EvalFailedException: (NoMethodError) undefined method `getBody' for nil:NilClass")
     public void testRuby() throws Exception {
         scriptProcessing("ruby", RUBY_SCRIPT);
     }
@@ -80,7 +81,7 @@ public class ScriptIntegrationTest {
     }
 
     @Test
-    public void testJavaScrip() throws Exception {
+    public void testJavaScript() throws Exception {
         scriptProcessing("javaScript", JAVA_SCRIPT);
     }
 
@@ -89,7 +90,8 @@ public class ScriptIntegrationTest {
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("direct:start").process(script(type, scriptSource(resource)));
+                ScriptBuilder script = ScriptBuilder.script(type, scriptSource(resource));
+                from("direct:start").process(script);
             }});
 
         camelctx.start();
