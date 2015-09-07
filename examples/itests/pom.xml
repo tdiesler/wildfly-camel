@@ -18,58 +18,41 @@
   limitations under the License.
   #L%
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.wildfly.camel</groupId>
-        <artifactId>wildfly-camel-itests</artifactId>
+        <artifactId>wildfly-camel-example</artifactId>
         <version>2.3.0.redhat-621000-SNAPSHOT</version>
     </parent>
 
-    <name>Wildfly Camel :: Testsuite :: Standalone</name>
+    <name>Wildfly Camel :: Example :: Testsuite</name>
 
-    <artifactId>wildfly-camel-itests-standalone</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>wildfly-camel-itests-standalone-examples</artifactId>
 
     <!-- Properties -->
     <properties>
+        <jboss.home>${project.build.directory}/jboss-eap-6.4</jboss.home>
         <jvmArgs>-Xmx1G -XX:MaxPermSize=512m -Djava.net.preferIPv4Stack=true</jvmArgs>
         <jvmDebugArgs>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</jvmDebugArgs>
+        <server.config>standalone-full-camel.xml</server.config>
     </properties>
     
     <!-- Dependencies -->
     <dependencies>
         <dependency>
-            <groupId>org.wildfly.camel</groupId>
-            <artifactId>wildfly-camel-itests-common</artifactId>
-            <version>${project.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly.camel</groupId>
-            <artifactId>wildfly-camel-enricher</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-xmlsecurity</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly.camel</groupId>
-            <artifactId>wildfly-camel-patch</artifactId>
-            <version>${project.version}</version>
-            <type>tar.gz</type>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly.camel</groupId>
-            <artifactId>wildfly-camel-subsystem</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.shrinkwrap.resolver</groupId>
-            <artifactId>shrinkwrap-resolver-depchain</artifactId>
-            <type>pom</type>
+            <groupId>org.jboss.as</groupId>
+            <artifactId>jboss-as-cli</artifactId>
+            <version>${version.wildfly}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.as</groupId>
@@ -90,8 +73,16 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-arquillian-container-managed</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
         </dependency>
         <!-- [TODO] Remove explicit xnio override -->
         <dependency>
@@ -107,15 +98,76 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>wildfly-camel-itests-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail-webapp</artifactId>
+            <version>${version.greenmail}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-activemq</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-cdi</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-cxf</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-jaxws</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-jms</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-jpa</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-mail</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-rest</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.camel</groupId>
+            <artifactId>example-camel-transacted-jms</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
     </dependencies>
-    
+
     <build>
         <resources>
             <resource>
@@ -134,6 +186,24 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-example-wars</id>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>org.wildfly.camel,com.icegreen</includeGroupIds>
+                            <includeTypes>war</includeTypes>
+                            <stripVersion>true</stripVersion>
+                            <outputDirectory>${project.build.directory}/examples</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -195,54 +265,4 @@
             </plugin>
         </plugins>
     </build>
-    
-    <!-- Profiles -->
-    <profiles>
-        <profile>
-            <id>no.ts.smoke</id>
-            <activation>
-                <property>
-                    <name>!no.ts.smoke</name>
-                </property>
-            </activation>
-            <modules>
-                <module>smoke</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ts.basic</id>
-            <activation>
-                <property>
-                    <name>ts.basic</name>
-                </property>
-            </activation>
-            <modules>
-                <module>basic</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ts.extra</id>
-            <activation>
-                <property>
-                    <name>ts.extra</name>
-                </property>
-            </activation>
-            <modules>
-                <module>extra</module>
-            </modules>
-        </profile>
-        <profile>
-            <id>ts.all</id>
-            <activation>
-                <property>
-                    <name>ts.all</name>
-                </property>
-            </activation>
-            <modules>
-                <module>smoke</module>
-                <module>basic</module>
-                <module>extra</module>
-            </modules>
-        </profile>
-    </profiles>
 </project>

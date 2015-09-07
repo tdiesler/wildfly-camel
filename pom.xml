@@ -133,9 +133,9 @@
         <module>modules</module>
         <module>patch</module>
         <module>subsystem</module>
-        <module>examples</module>
         <module>archetypes</module>
         <module>itests</module>
+        <module>examples</module>
     </modules>
 
     <!-- DependencyManagement -->
