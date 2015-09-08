@@ -40,6 +40,7 @@
             <include module="org.wildfly.server" />
         </apply-to-dependencies>
         <dependencies>
+            <module name="com.sun.xml.bind"/>
             <module name="javax.api"/>
             <module name="org.apache.camel" services="export"/>
             <module name="org.apache.camel.component" services="export"/>

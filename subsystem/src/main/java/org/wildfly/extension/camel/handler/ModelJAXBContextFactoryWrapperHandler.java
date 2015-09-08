@@ -45,10 +45,12 @@ public final class ModelJAXBContextFactoryWrapperHandler implements ContextCreat
             @Override
             public JAXBContext newJAXBContext() throws JAXBException {
                 ClassLoader tccl = Thread.currentThread().getContextClassLoader();
-                if (tccl == null) {
-                    Thread.currentThread().setContextClassLoader(ModelJAXBContextFactoryWrapperHandler.class.getClassLoader());
-                }
                 try {
+                    Thread.currentThread().setContextClassLoader(ModelJAXBContextFactoryWrapperHandler.class.getClassLoader());
+                    // see: https://github.com/wildfly-extras/wildfly-camel/issues/765
+                    // let's force initialize com.sun.xml.bind.DatatypeConverterImpl.datatypeFactory
+                    // field while TCCL is set
+                    com.sun.xml.bind.DatatypeConverterImpl._printInt(1);
                     return factory.newJAXBContext();
                 } finally {
                     Thread.currentThread().setContextClassLoader(tccl);
