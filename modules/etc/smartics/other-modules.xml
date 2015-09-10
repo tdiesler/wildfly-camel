@@ -49,6 +49,9 @@
 
     <module name="io.netty" slot="4.0">
         <include artifact="io.netty:netty-(.*)" />
+        <dependencies>
+            <module name="sun.jdk" />
+        </dependencies>
     </module>
 
     <module name="com.rometools.rome">
