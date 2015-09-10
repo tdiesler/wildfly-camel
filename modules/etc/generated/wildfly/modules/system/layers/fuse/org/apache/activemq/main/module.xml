@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.apache.activemq">
   <resources>
-    <resource-root path="activemq-broker-5.11.0.redhat-621031.jar" />
-    <resource-root path="activemq-client-5.11.0.redhat-621031.jar" />
-    <resource-root path="activemq-jms-pool-5.11.0.redhat-621031.jar" />
-    <resource-root path="activemq-openwire-legacy-5.11.0.redhat-621031.jar" />
-    <resource-root path="activemq-pool-5.11.0.redhat-621031.jar" />
-    <resource-root path="activemq-spring-5.11.0.redhat-621031.jar" />
+    <resource-root path="activemq-broker-5.11.0.redhat-621034.jar" />
+    <resource-root path="activemq-client-5.11.0.redhat-621034.jar" />
+    <resource-root path="activemq-jms-pool-5.11.0.redhat-621034.jar" />
+    <resource-root path="activemq-openwire-legacy-5.11.0.redhat-621034.jar" />
+    <resource-root path="activemq-pool-5.11.0.redhat-621034.jar" />
+    <resource-root path="activemq-spring-5.11.0.redhat-621034.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
