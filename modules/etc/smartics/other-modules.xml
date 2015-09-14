@@ -243,6 +243,9 @@
 
     <module name="org.jasypt">
         <include artifact="org.jasypt:jasypt" />
+        <dependencies>
+            <module name="javax.api"/>
+        </dependencies>
     </module>
     
     <module name="org.json4s">
