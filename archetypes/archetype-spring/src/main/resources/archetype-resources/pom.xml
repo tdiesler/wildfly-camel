@@ -130,7 +130,6 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>${version.wildfly.maven.plugin}</version>
                 <configuration>
-                    <version>${version.wildfly}</version>
                     <serverConfig>${server.config}</serverConfig>
                     <port>9999</port>
                 </configuration>
