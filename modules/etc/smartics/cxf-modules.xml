@@ -72,7 +72,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
-            <module name="org.bouncycastle" slot="1.52" />
+            <module name="org.bouncycastle" />
         </dependencies>
     </module>
 

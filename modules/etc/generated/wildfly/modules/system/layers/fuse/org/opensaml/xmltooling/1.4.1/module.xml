@@ -5,14 +5,13 @@
   </resources>
   <dependencies>
     <module name="javax.api" />
-    <module name="org.bouncycastle" slot="1.52" />
+    <module name="org.bouncycastle" />
     <module name="ca.juliusdavies.not-yet-commons-ssl" />
     <module name="org.apache.commons.codec" />
     <module name="org.apache.santuario.xmlsec" slot="2.0" />
     <module name="org.apache.xalan" />
     <module name="org.apache.xerces" />
     <module name="org.apache.xml-resolver" />
-    <module name="org.bouncycastle" />
     <module name="org.joda.time" slot="2.0" />
   </dependencies>
 </module>
