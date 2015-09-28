@@ -37,7 +37,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.cxf.rs.subA.GreetingService;
+import org.wildfly.extension.camel.CamelAware;
 
+@CamelAware
 @RunWith(Arquillian.class)
 @Ignore("[ENTESB-2748] NoClassDefFoundError: javax/ws/rs/BeanParam")
 public class RestConsumerIntegrationTest {
