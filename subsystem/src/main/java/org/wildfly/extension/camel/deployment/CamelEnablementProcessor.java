@@ -104,6 +104,9 @@ public final class CamelEnablementProcessor implements DeploymentUnitProcessor {
 
     private AnnotationInstance getAnnotation(DeploymentUnit depUnit, String className) {
         List<AnnotationInstance> annotations = getAnnotations(depUnit, className);
-        return annotations.size() == 1 ? annotations.get(0) : null;
+        if (annotations.size() > 1) {
+            LOGGER.warn("Multiple annotations found: {}", annotations);
+        }
+        return annotations.size() > 0 ? annotations.get(0) : null;
     }
 }
