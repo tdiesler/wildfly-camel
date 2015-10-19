@@ -664,6 +664,7 @@
         <dependencies>
             <module name="javax.api"/>
             <module name="org.slf4j"/>
+            <module name="org.springframework.tx" />
         </dependencies>
     </module>
     
