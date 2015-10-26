@@ -53,7 +53,7 @@
 
         <!-- Arquillian application server properties -->
         <jboss.home>${env.JBOSS_HOME}</jboss.home>
-        <server.config>standalone-camel.xml</server.config>
+        <server.config>${server-config}</server.config>
     </properties>
 
     <!-- DependencyManagement -->

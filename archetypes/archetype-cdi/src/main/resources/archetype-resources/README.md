@@ -18,7 +18,7 @@ Prerequisites
 Getting started
 ---------------
 
-1. Install the WildFly Camel subsystem distribution on your application server
+1. Install JBoss Fuse on your application server
 
 2. Configure a $JBOSS_HOME environment variable to point at your application server installation directory
 
@@ -26,11 +26,11 @@ Getting started
 
 For Linux:
 
-    $JBOSS_HOME/bin/standalone.sh -c standalone-camel.xml
+    $JBOSS_HOME/bin/standalone.sh -c standalone.xml
 
 For Windows:
 
-    %JBOSS_HOME%\bin\standalone.bat -c standalone-camel.xml
+    %JBOSS_HOME%\bin\standalone.bat -c standalone.xml
 
 
 Building the application

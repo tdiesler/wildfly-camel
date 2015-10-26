@@ -29,6 +29,11 @@
         <requiredProperty key="version-wildfly-maven-plugin">
             <defaultValue>${version-wildfly-maven-plugin}</defaultValue>
         </requiredProperty>
+
+        <!-- Other properties -->
+        <requiredProperty key="server-config">
+            <defaultValue>standalone.xml</defaultValue>
+        </requiredProperty>
     </requiredProperties>
     <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
