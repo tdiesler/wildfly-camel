@@ -34,7 +34,7 @@
 
     <!-- Properties -->
     <properties>
-        <server.config>standalone-full-camel.xml</server.config>
+        <server.config>standalone-camel.xml</server.config>
     </properties>
     
     <!-- Dependencies -->
