@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.jasypt">
   <resources>
-    <resource-root path="jasypt-1.9.3.redhat_1.jar" />
+    <resource-root path="jasypt-1.9.3.redhat_2.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
