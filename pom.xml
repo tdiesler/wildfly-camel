@@ -130,10 +130,10 @@
         <module>archetypes</module>
         <module>config</module>
         <module>docs</module>
-        <module>enricher</module>
         <module>modules</module>
         <module>patch</module>
         <module>subsystem</module>
+        <module>testenricher</module>
         <module>itests</module>
     </modules>
 
