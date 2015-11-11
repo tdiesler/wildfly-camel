@@ -23,7 +23,6 @@
 	^org/apache/xmlbeans/impl/values
 	^org/apache/zookeeper(.*)
 	^org/codehaus/groovy(.*)
-	^org/dozer(.*)
 	^org/quartz(.*)
 	^org/springframework(.*)
 	^org/xmlsoap(.*)
