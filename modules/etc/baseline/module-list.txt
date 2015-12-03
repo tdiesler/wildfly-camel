@@ -206,5 +206,5 @@
 /org/springframework/security/main/spring-security-core-3.2.5.RELEASE.jar
 /org/springframework/spring-messaging/main/spring-messaging-4.1.6.RELEASE.jar
 /org/springframework/tx/main/spring-tx-4.1.6.RELEASE.jar
-/org/wildfly/extras/config/plugin/camel/main/wildfly-camel-config-2.3.0.redhat-621084.jar
+/org/wildfly/extras/config/plugin/camel/main/wildfly-camel-config-2.4.0.redhat-630000-SNAPSHOT.jar
 /xml-apis/main/xml-apis-1.4.01.jar
