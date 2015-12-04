@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-example-projects</artifactId>
-        <version>2.2.0.redhat-620119-SNAPSHOT</version>
+        <version>2.2.0.redhat-620173</version>
     </parent>
 
     <name>Wildfly Camel :: Example :: Camel ActiveMQ</name>
