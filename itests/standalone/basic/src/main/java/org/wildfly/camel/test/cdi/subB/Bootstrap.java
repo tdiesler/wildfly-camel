@@ -29,8 +29,8 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.wildfly.extension.camel.CamelAware;
 
-@Singleton
 @Startup
+@Singleton
 @CamelAware
 public class Bootstrap {
 
@@ -45,8 +45,7 @@ public class Bootstrap {
                 public void configure() {
 
                     from("direct:start")
-                        // [FIXME #978] With the correct bean manager in use we should use .bean("helloBean")
-                        .bean(HelloBean.class)
+                        .beanRef("helloBean")
                         .to("mock:result");
                 }
             });
