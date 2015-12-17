@@ -94,7 +94,8 @@
         <version.maven.archetype.packaging>2.3</version.maven.archetype.packaging>
         <version.osgi>5.0.0</version.osgi>
         <version.slf4j>1.6.6</version.slf4j>
-
+        <version.xalan>2.7.1</version.xalan>
+        
         <!-- Plugin versions -->
         <version-build-helper-plugin>1.9.1</version-build-helper-plugin>
         <version-groovy-maven-plugin>2.0</version-groovy-maven-plugin>
@@ -410,22 +411,6 @@
                 <version>${version.apache.sshd.sftp}</version>
             </dependency>
 
-            <!-- Shrinkwrap -->
-            <dependency>
-                <groupId>org.jboss.shrinkwrap</groupId>
-                <artifactId>shrinkwrap-bom</artifactId>
-                <version>${version.jboss.shrinkwrap}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.shrinkwrap.resolver</groupId>
-                <artifactId>shrinkwrap-resolver-bom</artifactId>
-                <version>${version.jboss.shrinkwrap.resolver}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-
             <!-- SLF4J -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -486,26 +471,14 @@
                 <version>${version.wildfly}</version>
                 <type>pom</type>
             </dependency>
+
+            <!-- Xalan -->
             <dependency>
-                <groupId>org.jboss.as</groupId>
-                <artifactId>jboss-as-testsuite-shared</artifactId>
-                <version>${version.wildfly}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.jboss.as</groupId>
-                        <artifactId>jboss-as-build</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.jboss.as</groupId>
-                        <artifactId>jboss-as-client-all</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.directory.jdbm</groupId>
-                        <artifactId>apacheds-jdbm1</artifactId>
-                    </exclusion>
-                </exclusions>
+                <groupId>xalan</groupId>
+                <artifactId>xalan</artifactId>
+                <version>${version.xalan}</version>
             </dependency>
-            
+
             <!-- Xmlbeans -->
             <dependency>
                 <groupId>org.apache.xmlbeans</groupId>
