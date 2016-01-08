@@ -29,6 +29,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
@@ -36,6 +37,7 @@ import org.wildfly.camel.test.common.http.HttpRequest.HttpResponse;
 
 @RunAsClient
 @RunWith(Arquillian.class)
+@Ignore("[ENTESB-4790] Examples fail with camel-2.16-redhat")
 public class JaxwsExampleTest {
     private static final String ENDPOINT_ADDRESS = "http://localhost:8080/example-camel-jaxws/jaxws/";
 

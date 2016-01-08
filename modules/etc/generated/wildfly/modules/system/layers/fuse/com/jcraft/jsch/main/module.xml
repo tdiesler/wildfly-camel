@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="jsch-0.1.51.jar" />
+    <resource-root path="jsch-0.1.53.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />

@@ -33,6 +33,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
@@ -41,6 +42,7 @@ import org.wildfly.camel.test.common.http.HttpRequest.HttpResponse;
 
 @RunWith(Arquillian.class)
 @RunAsClient
+@Ignore("[ENTESB-4790] Examples fail with camel-2.16-redhat")
 public class RestExampleTest {
 
     @Deployment

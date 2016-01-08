@@ -27,14 +27,38 @@
         <include artifact=":cglib-nodep" />
     </module>
 
-    <module name="com.fasterxml.jackson.json">
+    <module name="com.fasterxml.jackson.core">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-annotations" />
+        <include artifact=":jackson-core" />
+        <include artifact=":jackson-databind" />
+    </module>
+    
+    <module name="com.fasterxml.jackson.jaxrs">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-jaxrs-base" />
+        <include artifact=":jackson-jaxrs-json-provider" />
+    </module>
+    
+    <module name="com.fasterxml.jackson.module.json">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-module-jsonSchema" />
     </module>
 
-    <module name="com.fasterxml.jackson.scala">
+    <module name="com.fasterxml.jackson.module.jaxb">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-module-jaxb-annotations" />
+    </module>
+
+    <module name="com.fasterxml.jackson.module.scala">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
@@ -54,19 +78,6 @@
         </dependencies>
     </module>
     
-    <!-- skip io.netty-3.9 -->
-    <module name="io.netty" skip="true">
-        <include artifact="io.netty:netty" />
-    </module>
-
-    <module name="io.netty" slot="4.0">
-        <include artifact="io.netty:netty-(.*)" />
-        <dependencies>
-            <module name="javax.api" />
-            <module name="sun.jdk" />
-        </dependencies>
-    </module>
-
     <module name="com.rometools.rome">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -90,6 +101,19 @@
         </dependencies>
     </module>
 
+    <!-- skip io.netty-3.9 -->
+    <module name="io.netty" skip="true">
+        <include artifact="io.netty:netty" />
+    </module>
+
+    <module name="io.netty" slot="4.0">
+        <include artifact="io.netty:netty-(.*)" />
+        <dependencies>
+            <module name="javax.api" />
+            <module name="sun.jdk" />
+        </dependencies>
+    </module>
+
     <module name="net.sf.dozer">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -107,7 +131,7 @@
         </dependencies>
     </module>
     
-    <module name="org.joda.time" slot="2.0">
+    <module name="org.joda.time" slot="2.9">
         <include artifact="joda-time:joda-time" />
         <dependencies>
             <module name="javax.api" />
@@ -166,13 +190,6 @@
         <include artifact=":commons-csv" />
     </module>
     
-    <module name="org.apache.commons.httpclient">
-        <include artifact="commons-httpclient:commons-httpclient" />
-        <dependencies>
-            <module name="javax.api" />
-        </dependencies>
-    </module>
-    
     <module name="org.apache.commons.lang3">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -190,6 +207,13 @@
         </dependencies>
     </module>
 
+    <module name="org.apache.commons.pool2">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.apache.commons:commons-pool2" />
+    </module>
+    
     <module name="org.apache.deltaspike.$1.$2">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -344,7 +368,11 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="org.quartz-scheduler:quartz" />
-        <include artifact="c3p0:c3p0" />
+        <include artifact="com.mchange:mchange-commons-java" />
+        <include artifact="com.mchange:c3p0" />
+        <apply-to-dependencies skip="true">
+            <include module="c3p0" />
+        </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
         </dependencies>

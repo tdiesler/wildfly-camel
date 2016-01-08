@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="jruby-complete-1.7.18.redhat-001.jar" />
+    <resource-root path="jruby-complete-1.7.18.jar" />
     <resource-root path="scriptengines-jruby-1.1.1.jar" />
   </resources>
   <dependencies>

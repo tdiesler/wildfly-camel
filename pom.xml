@@ -46,9 +46,7 @@
     <properties>
         
         <!-- Camel version -->
-        <version.apache.camel>2.15.1.redhat-621084</version.apache.camel>
-        <!-- [#726] Remove explicit spring-security version -->
-        <version.spring.security>3.2.5.RELEASE</version.spring.security>
+        <version.apache.camel>2.16.1.redhat-630004</version.apache.camel>
         
         <!-- WildFly Versions -->
         <!-- http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven/org/jboss/as/jboss-as-build -->
@@ -207,11 +205,6 @@
                 <version>${version.apache.camel}</version>
                 <scope>import</scope>
                 <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-core</artifactId>
-                <version>${version.spring.security}</version>
             </dependency>
             <dependency>
                 <groupId>org.fusesource</groupId>

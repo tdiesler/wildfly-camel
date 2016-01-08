@@ -20,7 +20,7 @@
   -->
 <modules xmlns="http://smartics.de/ns/jboss-modules-descriptor/2">
 
-    <module name="org.apache.cxf" slot="3.0" inherit-slot="false">
+    <module name="org.apache.cxf" slot="3.1" inherit-slot="false">
         <include artifact=":cxf-core" />
         <include artifact=":cxf-rt-bindings-soap" />
         <include artifact=":cxf-rt-bindings-xml" />
@@ -33,6 +33,7 @@
         <include artifact=":cxf-rt-rs-client" />
         <include artifact=":cxf-rt-rs-security-oauth" />
         <include artifact=":cxf-rt-security" />
+        <include artifact=":cxf-rt-security-saml" />
         <include artifact=":cxf-rt-transports-http" />
         <include artifact=":cxf-rt-transports-jms" />
         <include artifact=":cxf-rt-transports-local" />
@@ -48,6 +49,7 @@
         <apply-to-dependencies skip="true">
             <include module="org.osgi.compendium" />
             <include module="org.osgi.core" />
+            <include module="org.ow2.asm" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
@@ -61,22 +63,15 @@
         </exports>
     </module>
 
-    <module name="org.opensaml" slot="2.6" inherit-slot="false">
+    <module name="org.opensaml" slot="3.1" inherit-slot="false">
+        <include artifact="org.cryptacular:cryptacular" />
         <include artifact="org.opensaml:opensaml(.*)" />
-    </module>
-
-    <module name="org.opensaml.xmltooling" slot="1.4.1" inherit-slot="false">
-        <include artifact="org.opensaml:xmltooling" />
         <apply-to-dependencies skip="true">
-            <include module="org.bouncycastle.bcprov-jdk15" />
+            <include module="net.shibboleth" />
         </apply-to-dependencies>
-        <dependencies>
-            <module name="javax.api" />
-            <module name="org.bouncycastle" />
-        </dependencies>
     </module>
 
-    <module name="org.apache.ws.security" slot="2.0" inherit-slot="false">
+    <module name="org.apache.ws.security" slot="2.1" inherit-slot="false">
         <include artifact="org.apache.wss4j:wss4j-(.*)" />
         <dependencies>
             <module name="javax.api" />

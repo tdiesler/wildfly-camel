@@ -35,6 +35,10 @@
         <include artifact="asm:asm-util" />
     </module>
     
+    <module name="c3p0" skip="true">
+        <include artifact="c3p0:c3p0" />
+    </module>
+    
     <module name="ch.qos.logback" skip="true">
         <include artifact="ch.qos.logback:logback-classic" />
         <include artifact="ch.qos.logback:logback-core" />
@@ -77,6 +81,10 @@
         <include artifact="net.jcip:jcip-annotations" />
     </module>
     
+    <module name="net.shibboleth" skip="true">
+        <include artifact="net.shibboleth.utilities:(.*)" />
+    </module>
+    
     <module name="org.apache.aries.blueprint" skip="true">
         <include artifact="org.apache.aries.blueprint:(.*)" />
     </module>
@@ -111,6 +119,10 @@
     
     <module name="org.glassfish.web" skip="true">
         <include artifact="org.glassfish.web:javax.el" />
+    </module>
+    
+    <module name="org.ow2.asm" skip="true">
+        <include artifact="org.ow2.asm:(.*)" />
     </module>
     
     <module name="org.jboss.shrinkwrap" skip="true">
