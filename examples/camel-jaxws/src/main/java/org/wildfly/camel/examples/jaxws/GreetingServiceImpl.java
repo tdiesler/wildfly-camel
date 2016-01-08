@@ -19,36 +19,30 @@
  */
 package org.wildfly.camel.examples.jaxws;
 
-import org.apache.camel.CamelContext;
-import org.apache.camel.Endpoint;
-import org.apache.camel.cdi.ContextName;
-import org.apache.camel.component.bean.ProxyHelper;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+import org.apache.camel.CamelContext;
+import org.apache.camel.builder.ProxyBuilder;
+import org.apache.camel.cdi.ContextName;
+
 @WebService(serviceName="greeting", endpointInterface = "org.wildfly.camel.examples.jaxws.GreetingService")
 public class GreetingServiceImpl {
 
     @Inject
-    @ContextName("jaxrs-camel-context")
+    @ContextName("jaxws-camel-context")
     private CamelContext context;
-
-    /**
-     * Greeting service to proxy
-     */
     private GreetingService greetingService;
 
+    /**
+     * Configures a proxy for the direct:start endpoint
+     */
     @PostConstruct
     public void initServiceProxy() throws Exception {
-        /**
-         * Create a proxy for the direct:start endpoint using the Camel ProxyHelper
-         */
-        Endpoint endpoint = context.getEndpoint("direct:start");
-        greetingService = ProxyHelper.createProxy(endpoint, GreetingService.class);
+        greetingService = new ProxyBuilder(context).endpoint("direct:start").binding(false).build(GreetingService.class);
     }
 
     @WebMethod(operationName = "greet")
