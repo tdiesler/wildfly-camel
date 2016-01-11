@@ -41,6 +41,7 @@
 /org/apache/camel/component/cxf/main/camel-cxf-transport-2.16.1.redhat-630005.jar
 /org/apache/camel/component/dozer/main/camel-dozer-2.16.1.redhat-630005.jar
 /org/apache/camel/component/ejb/main/camel-ejb-2.16.1.redhat-630005.jar
+/org/apache/camel/component/elasticsearch/main/camel-elasticsearch-2.16.1.redhat-630005.jar
 /org/apache/camel/component/flatpack/main/camel-flatpack-2.16.1.redhat-630005.jar
 /org/apache/camel/component/flatpack/main/flatpack-3.4.3.jar
 /org/apache/camel/component/ftp/main/camel-ftp-2.16.1.redhat-630005.jar
@@ -143,9 +144,17 @@
 /org/apache/deltaspike/core/impl/main/deltaspike-core-impl-1.5.1.jar
 /org/apache/lucene/4.10/lucene-analyzers-common-4.10.4.jar
 /org/apache/lucene/4.10/lucene-core-4.10.4.jar
+/org/apache/lucene/4.10/lucene-memory-4.10.4.jar
 /org/apache/lucene/4.10/lucene-queries-4.10.4.jar
 /org/apache/lucene/4.10/lucene-queryparser-4.10.4.jar
-/org/apache/lucene/4.10/lucene-sandbox-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-grouping-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-highlighter-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-join-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-misc-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-sandbox-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-spatial-4.10.4.jar
+/org/apache/lucene/ext/main/lucene-suggest-4.10.4.jar
+/org/apache/lucene/ext/main/spatial4j-0.4.1.jar
 /org/apache/mina/core/main/mina-core-2.0.9.jar
 /org/apache/santuario/xmlsec/2.0/xmlsec-2.0.6.jar
 /org/apache/ws/commons/axiom/axiom-api/main/axiom-api-1.2.14.jar
@@ -162,6 +171,7 @@
 /org/beanshell/main/bsh-2.0b5.jar
 /org/bouncycastle/main/bcpg-jdk15on-1.52.jar
 /org/bouncycastle/main/bcprov-jdk15on-1.52.jar
+/org/elasticsearch/main/elasticsearch-1.7.3.jar
 /org/fusesource/camel/component/sap/main/camel-sap-6.3.0.redhat-005.jar
 /org/fusesource/hawtbuf/main/hawtbuf-1.11.jar
 /org/fusesource/hawtdispatch/main/hawtdispatch-1.21.jar

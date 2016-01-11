@@ -24,6 +24,7 @@
 	^org/apache/zookeeper(.*)
 	^org/codehaus/groovy(.*)
 	^org/dozer(.*)
+	^org/elasticsearch(.*)
 	^org/quartz(.*)
 	^org/springframework(.*)
 	^org/xmlsoap(.*)
