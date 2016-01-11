@@ -163,8 +163,4 @@
         <include artifact="org.ow2.asm:asm-commons"/>
     </module>
     
-    <module name="org.reflections" skip="true">
-        <include artifact="org.reflections:reflections" />
-    </module>
-    
 </modules>

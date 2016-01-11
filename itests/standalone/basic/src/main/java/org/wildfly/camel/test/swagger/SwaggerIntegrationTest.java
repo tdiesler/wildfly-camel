@@ -25,6 +25,7 @@ import java.net.HttpURLConnection;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -33,23 +34,22 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
 import org.wildfly.camel.test.common.http.HttpRequest.HttpResponse;
+import org.wildfly.camel.test.swagger.subA.User;
 import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
 @RunWith(Arquillian.class)
-@Ignore("[ENTESB-4789] NumberFormatException for input string: 2161redhat-630004")
 public class SwaggerIntegrationTest {
 
     @Deployment
     public static WebArchive createDeployment() {
         final WebArchive archive = ShrinkWrap.create(WebArchive.class, "swagger-tests.war");
         archive.addAsWebInfResource("swagger/web.xml", "web.xml");
-        archive.addClasses(HttpRequest.class);
+        archive.addClasses(HttpRequest.class, User.class);
         return archive;
     }
 
@@ -60,8 +60,11 @@ public class SwaggerIntegrationTest {
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                restConfiguration().component("servlet").contextPath("swagger-tests/rest").port(8080);
-                rest("/hello").get("/{name}").to("direct:hello");
+                restConfiguration().component("servlet").contextPath("swagger-tests/rest").port(8080).apiProperty("cors", "true");
+                rest("/hello")
+                    .get("/{name}").description("A user object").outType(User.class).to("direct:hello")
+                    .produces(MediaType.APPLICATION_JSON)
+                    .consumes(MediaType.APPLICATION_JSON);
                 from("direct:hello").transform(simple("Hello ${header.name}"));
             }
         });
@@ -79,7 +82,7 @@ public class SwaggerIntegrationTest {
 
             result = HttpRequest.get("http://localhost:8080/swagger-tests/api-docs").getResponse();
             Assert.assertEquals(HttpURLConnection.HTTP_OK, result.getStatusCode());
-            Assert.assertTrue("Contains substr: " + result.getBody(), result.getBody().contains("Camel Rest Example with Swagger"));
+            Assert.assertTrue("Contains substr: " + result.getBody(), result.getBody().contains("\"name\" : \"hello\""));
         } finally {
             camelctx.stop();
         }

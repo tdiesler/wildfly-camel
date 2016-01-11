@@ -36,6 +36,33 @@
         <include artifact=":jackson-databind" />
     </module>
     
+    <module name="com.fasterxml.jackson.dataformat.xml">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-dataformat-xml" />
+    </module>
+
+    <module name="com.fasterxml.jackson.dataformat.yaml">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-dataformat-yaml" />
+    </module>
+
+    <module name="com.fasterxml.jackson.datatype.joda">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-datatype-joda" />
+        <apply-to-dependencies skip="true">
+            <include module="joda-time"/>
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="org.joda.time" />
+        </dependencies>
+    </module>
+
     <module name="com.fasterxml.jackson.jaxrs">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -56,16 +83,6 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-module-jaxb-annotations" />
-    </module>
-
-    <module name="com.fasterxml.jackson.module.scala">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":jackson-module-scala(.*)" />
-        <apply-to-dependencies skip="true">
-            <include module="com.google.code.findbugs" />
-        </apply-to-dependencies>
     </module>
 
     <module name="com.jcraft.jsch">
@@ -373,16 +390,6 @@
         </dependencies>
     </module>
     
-    <module name="org.json4s">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.json4s:json4s-(.*)" />
-        <dependencies>
-            <module name="com.fasterxml.jackson.core.jackson-core"/>
-        </dependencies>
-    </module>
-
     <module name="org.quartz">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -417,11 +424,4 @@
         </dependencies>
     </module>
 
-    <module name="org.scala.lang">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.scala-lang:(.*)" />
-    </module>
-    
 </modules>
