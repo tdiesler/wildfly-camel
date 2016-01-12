@@ -4,17 +4,9 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="lucene-grouping-4.10.4.jar" />
-    <resource-root path="lucene-highlighter-4.10.4.jar" />
-    <resource-root path="lucene-join-4.10.4.jar" />
-    <resource-root path="lucene-misc-4.10.4.jar" />
-    <resource-root path="lucene-sandbox-4.10.4.jar" />
-    <resource-root path="lucene-spatial-4.10.4.jar" />
-    <resource-root path="lucene-suggest-4.10.4.jar" />
     <resource-root path="spatial4j-0.4.1.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
-    <module name="org.apache.lucene" slot="4.10" />
   </dependencies>
 </module>
