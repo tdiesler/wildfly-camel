@@ -234,6 +234,7 @@
         </properties>
         <include artifact="org.apache.lucene:lucene-(.*)" />
         <include artifact=":jakarta-regexp" />
+        <include artifact=":spatial4j" />
     </module>
 
     <module name="org.apache.mina.$1">

@@ -154,7 +154,7 @@
 /org/apache/lucene/4.10/lucene-sandbox-4.10.4.jar
 /org/apache/lucene/4.10/lucene-spatial-4.10.4.jar
 /org/apache/lucene/4.10/lucene-suggest-4.10.4.jar
-/org/apache/lucene/ext/main/spatial4j-0.4.1.jar
+/org/apache/lucene/4.10/spatial4j-0.4.1.jar
 /org/apache/mina/core/main/mina-core-2.0.9.jar
 /org/apache/santuario/xmlsec/2.0/xmlsec-2.0.6.jar
 /org/apache/ws/commons/axiom/axiom-api/main/axiom-api-1.2.14.jar
