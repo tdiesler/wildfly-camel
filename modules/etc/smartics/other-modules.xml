@@ -131,13 +131,6 @@
         </dependencies>
     </module>
     
-    <module name="org.joda.time" slot="2.9">
-        <include artifact="joda-time:joda-time" />
-        <dependencies>
-            <module name="javax.api" />
-        </dependencies>
-    </module>
-    
     <module name="ognl">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -148,6 +141,13 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="org.javassist"/>
+        </dependencies>
+    </module>
+    
+    <module name="org.joda.time" slot="2.9">
+        <include artifact="joda-time:joda-time" />
+        <dependencies>
+            <module name="javax.api" />
         </dependencies>
     </module>
     
