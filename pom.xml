@@ -46,7 +46,7 @@
     <properties>
         
         <!-- Camel version -->
-        <version.apache.camel>2.15.1.redhat-621086</version.apache.camel>
+        <version.apache.camel>2.15.1.redhat-621087</version.apache.camel>
         <!-- [#726] Remove explicit spring-security version -->
         <version.spring.security>3.2.5.RELEASE</version.spring.security>
         
@@ -56,7 +56,7 @@
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
-        <version.apache.activemq>5.11.0.redhat-621086</version.apache.activemq>
+        <version.apache.activemq>5.11.0.redhat-621087</version.apache.activemq>
         <version.apache.ftpserver>1.0.6</version.apache.ftpserver>
         <version.apache.sshd.sftp>0.11.0</version.apache.sshd.sftp>
         <version.apache.xmlbeans>2.6.0</version.apache.xmlbeans>
