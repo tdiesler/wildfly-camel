@@ -11,6 +11,21 @@
         <exclude path="org/dozer**" />
       </exports>
     </module>
+    <module name="org.jboss.as.web" export="true">
+      <exports>
+        <include path="org/apache/el" />
+        <exclude path="org/apache/el/**" />
+        <exclude path="org/apache/catalina**" />
+        <exclude path="org/apache/cometd**" />
+        <exclude path="org/apache/coyote**" />
+        <exclude path="org/apache/jasper**" />
+        <exclude path="org/apache/naming**" />
+        <exclude path="org/apache/tomcat**" />
+        <exclude path="org/eclipse**" />
+        <exclude path="org/jboss**" />
+        <exclude path="javax/websocket**" />
+      </exports>
+    </module>
     <module name="org.apache.commons.lang3" />
     <module name="org.slf4j" />
     <module name="javax.el.api" />
