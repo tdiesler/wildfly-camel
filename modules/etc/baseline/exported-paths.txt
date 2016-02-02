@@ -536,6 +536,7 @@ org/apache/cxf/ws/security/trust/delegation
 org/apache/cxf/ws/security/wss4j
 org/apache/cxf/ws/security/wss4j/policyhandlers
 org/apache/cxf/ws/security/wss4j/policyvalidators
+org/apache/el
 org/apache/xmlbeans
 org/apache/xmlbeans/impl/schema
 org/apache/xmlbeans/impl/values
