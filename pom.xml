@@ -272,6 +272,12 @@
                 <version>${version.hawtio}</version>
                 <type>war</type>
             </dependency>
+            <dependency>
+                <groupId>io.hawt</groupId>
+                <artifactId>hawtio-redhat-fuse-branding</artifactId>
+                <version>${version.hawtio}</version>
+                <type>war</type>
+            </dependency>
 
             <!-- Hibernate -->
             <dependency>

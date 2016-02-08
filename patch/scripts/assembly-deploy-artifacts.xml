@@ -102,6 +102,13 @@
             </includes>
         </dependencySet>
         <dependencySet>
+            <outputDirectory>standalone/deployments</outputDirectory>
+            <outputFileNameMapping>redhat-branding.war</outputFileNameMapping>
+            <includes>
+                <include>io.hawt:hawtio-redhat-fuse-branding:war</include>
+            </includes>
+        </dependencySet>
+        <dependencySet>
             <outputDirectory>/</outputDirectory>
             <includes>
                 <include>org.wildfly.camel:wildfly-camel-modules:tar.gz</include>

@@ -66,6 +66,11 @@
             <artifactId>hawtio-wildfly</artifactId>
             <type>war</type>
         </dependency>
+        <dependency>
+            <groupId>io.hawt</groupId>
+            <artifactId>hawtio-redhat-fuse-branding</artifactId>
+            <type>war</type>
+        </dependency>
     </dependencies>
 
     <!-- Build -->
