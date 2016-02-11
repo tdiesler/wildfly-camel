@@ -90,8 +90,6 @@
                         <configuration>
                             <groupId>com.icegreen</groupId>
                             <artifactId>greenmail-webapp</artifactId>
-                            <version>${version.greenmail}</version>
-                            <type>war</type>
                         </configuration>
                     </execution>
                     <execution>

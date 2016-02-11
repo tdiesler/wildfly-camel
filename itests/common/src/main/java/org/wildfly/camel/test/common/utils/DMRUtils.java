@@ -46,7 +46,12 @@ public class DMRUtils {
                 String args = matcher.group(1);
                 for (String argSegment : args.split(",")) {
                     String[] argElements = argSegment.split("=");
-                    op.get(argElements[0].trim()).set(argElements[1].trim());
+                    if (argElements.length > 2) {
+                        String argName = argElements[0].trim();
+                        op.get(argName).set(argSegment.replace(argName + "=", ""));
+                    } else {
+                        op.get(argElements[0].trim()).set(argElements[1].trim());
+                    }
                 }
             }
         } else {

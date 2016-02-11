@@ -19,8 +19,10 @@
  */
 package org.wildfly.camel.examples.activemq;
 
+import javax.annotation.Resource;
 import javax.ejb.Startup;
 import javax.enterprise.context.ApplicationScoped;
+import javax.jms.ConnectionFactory;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.builder.RouteBuilder;
@@ -31,16 +33,20 @@ import org.apache.camel.cdi.ContextName;
 @ContextName("amq-cdi-context")
 public class ActiveMQRouteBuilder extends RouteBuilder {
 
-    private static String BROKER_URL = "vm://localhost?broker.persistent=false&broker.useJmx=false&broker.useShutdownHook=false";
+    /**
+     * Inject the ActiveMQConnectionFactory that has been configured through the ActiveMQ Resource Adapter
+     */
+    @Resource(mappedName = "java:/ActiveMQConnectionFactory")
+    private ConnectionFactory connectionFactory;
 
     @Override
     public void configure() throws Exception {
 
         /**
-         * Configure the ActiveMQ component to use an embedded VM transport broker
+         * Configure the ActiveMQ component
          */
-        ActiveMQComponent activeMQComponent = new ActiveMQComponent();
-        activeMQComponent.setBrokerURL(BROKER_URL);
+        ActiveMQComponent activeMQComponent = ActiveMQComponent.activeMQComponent();
+        activeMQComponent.setConnectionFactory(connectionFactory);
         getContext().addComponent("activemq", activeMQComponent);
 
         /**

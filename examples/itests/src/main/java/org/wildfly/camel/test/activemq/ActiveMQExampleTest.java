@@ -29,10 +29,17 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
+import org.jboss.arquillian.container.test.api.Deployer;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.test.api.ArquillianResource;
+import org.jboss.as.arquillian.api.ServerSetup;
+import org.jboss.as.arquillian.api.ServerSetupTask;
+import org.jboss.as.arquillian.container.ManagementClient;
+import org.jboss.dmr.ModelNode;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.ResourceAdapterArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.After;
 import org.junit.Assert;
@@ -41,16 +48,53 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
 import org.wildfly.camel.test.common.http.HttpRequest.HttpResponse;
+import org.wildfly.camel.test.common.utils.DMRUtils;
 
 @RunAsClient
 @RunWith(Arquillian.class)
+@ServerSetup(ActiveMQExampleTest.ActiveMQRarSetupTask.class)
 public class ActiveMQExampleTest {
 
+    private static final String ACTIVEMQ_EXAMPLE_WAR = "example-camel-activemq.war";
+    private static final String ACTIVEMQ_RAR = "activemq-rar.rar";
     private File destination = new File(System.getProperty("jboss.home") + "/standalone/data/orders");
 
-    @Deployment
+    @ArquillianResource
+    Deployer deployer;
+
+    static class ActiveMQRarSetupTask implements ServerSetupTask {
+
+        @Override
+        public void setup(ManagementClient managementClient, String s) throws Exception {
+            ModelNode batchNode = DMRUtils.batchNode()
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar", "add(archive=activemq-rar.rar)")
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar", "write-attribute(name=transaction-support,value=NoTransaction)")
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar/connection-definitions=QueueConnectionFactory", "add(class-name=org.apache.activemq.ra.ActiveMQManagedConnectionFactory, jndi-name=java:/ActiveMQConnectionFactory)")
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar/connection-definitions=QueueConnectionFactory/config-properties=ServerUrl", "add(value=vm://localhost?broker.persistent=false&broker.useJmx=false&broker.useShutdownHook=false)")
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar/admin-objects=OrdersQueue", "add(class-name=org.apache.activemq.command.ActiveMQQueue, jndi-name=java:/OrdersQueue)")
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar/admin-objects=OrdersQueue/config-properties=PhysicalName", "add(value=OrdersQueue)")
+                .build();
+            managementClient.getControllerClient().execute(batchNode);
+        }
+
+        @Override
+        public void tearDown(ManagementClient managementClient, String s) throws Exception {
+            ModelNode batchNode = DMRUtils.batchNode()
+                .addStep("subsystem=resource-adapters/resource-adapter=activemq-rar.rar", "remove")
+                .build();
+
+            managementClient.getControllerClient().execute(batchNode);
+        }
+    }
+
+    @Deployment(name = ACTIVEMQ_EXAMPLE_WAR, managed = false)
     public static WebArchive createDeployment() {
         return ShrinkWrap.createFromZipFile(WebArchive.class, new File("target/examples/example-camel-activemq.war"));
+    }
+
+    @Deployment(name = ACTIVEMQ_RAR, managed = false, testable = false)
+    public static ResourceAdapterArchive createRarDeployment() {
+        return ShrinkWrap.createFromZipFile(ResourceAdapterArchive.class, new File("target/examples/activemq-rar.rar"));
     }
 
     @Before
@@ -87,16 +131,24 @@ public class ActiveMQExampleTest {
 
     @Test
     public void testFileToActiveMQRoute() throws Exception {
-        InputStream input = getClass().getResourceAsStream("/activemq/order.xml");
-        Path targetPath = destination.toPath().resolve("order.xml");
-        Files.copy(input, targetPath);
-        input.close();
+        try {
+            deployer.deploy(ACTIVEMQ_RAR);
+            deployer.deploy(ACTIVEMQ_EXAMPLE_WAR);
 
-        // Give camel a chance to consume the test order file
-        Thread.sleep(2000);
+            InputStream input = getClass().getResourceAsStream("/activemq/order.xml");
+            Path targetPath = destination.toPath().resolve("order.xml");
+            Files.copy(input, targetPath);
+            input.close();
 
-        HttpResponse result = HttpRequest.get(getEndpointAddress("/example-camel-activemq/orders")).getResponse();
-        Assert.assertTrue(result.getBody().contains("UK: 1"));
+            // Give camel a chance to consume the test order file
+            Thread.sleep(2000);
+
+            HttpResponse result = HttpRequest.get(getEndpointAddress("/example-camel-activemq/orders")).getResponse();
+            Assert.assertTrue(result.getBody().contains("UK: 1"));
+        } finally {
+            deployer.undeploy(ACTIVEMQ_EXAMPLE_WAR);
+            deployer.undeploy(ACTIVEMQ_RAR);
+        }
     }
 
     private String getEndpointAddress(String contextPath) throws MalformedURLException {
