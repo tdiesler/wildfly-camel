@@ -36,7 +36,6 @@ import org.apache.camel.spi.CamelContextTracker;
 import org.apache.camel.spi.ManagementStrategy;
 import org.apache.camel.support.EventNotifierSupport;
 import org.jboss.as.controller.ServiceVerificationHandler;
-import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.gravia.runtime.ModuleContext;
 import org.jboss.gravia.runtime.Runtime;
 import org.jboss.gravia.runtime.ServiceRegistration;
@@ -59,7 +58,7 @@ import org.wildfly.extension.camel.ContextCreateHandler;
 import org.wildfly.extension.camel.ContextCreateHandlerRegistry;
 import org.wildfly.extension.camel.SpringCamelContextFactory;
 import org.wildfly.extension.camel.deployment.CamelDeploymentSettings;
-import org.wildfly.extension.camel.deployment.CamelEnablementProcessor;
+import org.wildfly.extension.camel.deployment.CamelDeploymentSettingsProcessor;
 import org.wildfly.extension.camel.handler.ModuleClassLoaderAssociationHandler;
 import org.wildfly.extension.camel.parser.SubsystemState;
 import org.wildfly.extension.gravia.GraviaConstants;
@@ -190,8 +189,7 @@ public class CamelContextRegistryService extends AbstractService<CamelContextReg
             ModuleIdentifier moduleId = moduleClassLoader.getModule().getIdentifier();
             if (moduleId.getName().startsWith("deployment.")) {
                 String depName = moduleId.getName().substring(11);
-                DeploymentUnit depUnit = CamelEnablementProcessor.getDeploymentUnitForName(depName);
-                CamelDeploymentSettings depSettings = depUnit.getAttachment(CamelDeploymentSettings.ATTACHMENT_KEY);
+                CamelDeploymentSettings depSettings = CamelDeploymentSettingsProcessor.getDeploymentSettings(depName);
                 enableIntegration = depSettings.isEnabled();
             }
 

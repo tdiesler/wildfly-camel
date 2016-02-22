@@ -80,6 +80,7 @@
         <version.jboss.spec.javax.annotation>1.0.1.Final-redhat-2</version.jboss.spec.javax.annotation>
         <version.jboss.spec.javax.ejb>1.0.2.Final-redhat-2</version.jboss.spec.javax.ejb>
         <version.jboss.spec.javax.jms>1.0.1.Final-redhat-2</version.jboss.spec.javax.jms>
+        <version.jboss.spec.javax.resource>1.0.1.Final-redhat-3</version.jboss.spec.javax.resource>
         <version.jboss.spec.javax.servlet>1.0.2.Final-redhat-1</version.jboss.spec.javax.servlet>
         <version.jboss.spec.javax.transaction>1.0.1.Final-redhat-2</version.jboss.spec.javax.transaction>
         <version.jboss.spec.javax.ws.rs>1.0.1.Final-redhat-2</version.jboss.spec.javax.ws.rs>
@@ -328,6 +329,11 @@
                 <groupId>org.jboss.spec.javax.jms</groupId>
                 <artifactId>jboss-jms-api_1.1_spec</artifactId>
                 <version>${version.jboss.spec.javax.jms}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.spec.javax.resource</groupId>
+                <artifactId>jboss-connector-api_1.6_spec</artifactId>
+                <version>${version.jboss.spec.javax.resource}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.spec.javax.servlet</groupId>

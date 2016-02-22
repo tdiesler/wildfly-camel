@@ -51,7 +51,7 @@ public final class CamelDependenciesProcessor implements DeploymentUnitProcessor
         DeploymentUnit depUnit = phaseContext.getDeploymentUnit();
         CamelDeploymentSettings depSettings = depUnit.getAttachment(CamelDeploymentSettings.ATTACHMENT_KEY);
 
-        // Camel dependecies disabled
+        // Camel dependencies disabled
         if (!depSettings.isEnabled()) {
             return;
         }
@@ -67,10 +67,10 @@ public final class CamelDependenciesProcessor implements DeploymentUnitProcessor
         moddep.addImportFilter(PathFilters.getMetaInfFilter(), true);
         moduleSpec.addUserDependency(moddep);
 
-        List<String> deploymentDefinedModules = depSettings.getModules();
+        List<ModuleIdentifier> deploymentDefinedModules = depSettings.getModuleDependencies();
         if (!deploymentDefinedModules.isEmpty()) {
-            for (String name : deploymentDefinedModules) {
-                moduleSpec.addUserDependency(new ModuleDependency(moduleLoader, ModuleIdentifier.create(name), false, false, true, false));
+            for (ModuleIdentifier modid : deploymentDefinedModules) {
+                moduleSpec.addUserDependency(new ModuleDependency(moduleLoader, modid, false, false, true, false));
             }
         } else {
             moddep = new ModuleDependency(moduleLoader, ModuleIdentifier.create(APACHE_CAMEL_COMPONENT_MODULE), false, false, true, false);
