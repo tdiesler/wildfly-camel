@@ -15,6 +15,9 @@
         <requiredProperty key="version-junit">
             <defaultValue>${version.junit}</defaultValue>
         </requiredProperty>
+        <requiredProperty key="version-wildfly-camel">
+            <defaultValue>${project.version}</defaultValue>
+        </requiredProperty>
 
         <!-- Plugin versions -->
         <requiredProperty key="version-maven-compiler-plugin">

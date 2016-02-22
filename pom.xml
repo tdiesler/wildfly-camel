@@ -46,7 +46,7 @@
     <properties>
         
         <!-- Camel version -->
-        <version.apache.camel>2.16.1.redhat-630015</version.apache.camel>
+        <version.apache.camel>2.16.1.redhat-630020</version.apache.camel>
         
         <!-- WildFly Versions -->
         <!-- http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven/org/jboss/as/jboss-as-build -->

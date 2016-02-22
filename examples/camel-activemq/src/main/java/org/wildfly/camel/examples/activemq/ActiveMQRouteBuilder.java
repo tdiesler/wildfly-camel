@@ -26,11 +26,11 @@ import javax.jms.ConnectionFactory;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.cdi.ContextName;
+import org.wildfly.extension.camel.CamelAware;
 
 @Startup
+@CamelAware
 @ApplicationScoped
-@ContextName("amq-cdi-context")
 public class ActiveMQRouteBuilder extends RouteBuilder {
 
     /**

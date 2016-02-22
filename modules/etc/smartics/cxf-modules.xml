@@ -31,9 +31,11 @@
         <include artifact=":cxf-rt-frontend-simple" />
         <include artifact=":cxf-rt-management" />
         <include artifact=":cxf-rt-rs-client" />
+        <include artifact=":cxf-rt-rs-json-basic" />
         <include artifact=":cxf-rt-rs-security-oauth" />
         <include artifact=":cxf-rt-security" />
         <include artifact=":cxf-rt-security-saml" />
+        <include artifact=":cxf-rt-rs-security-jose" />
         <include artifact=":cxf-rt-transports-http" />
         <include artifact=":cxf-rt-transports-jms" />
         <include artifact=":cxf-rt-transports-local" />
