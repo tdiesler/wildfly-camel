@@ -21,7 +21,7 @@
 package org.wildfly.camel.test.dozer;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.ConsumerTemplate;
+import org.apache.camel.ProducerTemplate;
 import org.apache.camel.ServiceStatus;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -58,8 +58,10 @@ public class DozerSpringIntegrationTest {
         CamelContext camelctx = contextRegistry.getCamelContext("dozer-spring-context");
         Assert.assertEquals(ServiceStatus.Started, camelctx.getStatus());
 
-        ConsumerTemplate consumer = camelctx.createConsumerTemplate();
-        CustomerB customer = consumer.receiveBody("direct:end", CustomerB.class);
+        String json = "{" + CustomerA.class.getName() + ":{firstName:John,lastName:Doe,street:Street,zip:1234}}";
+
+        ProducerTemplate template = camelctx.createProducerTemplate();
+        CustomerB customer = template.requestBody("direct:start", json, CustomerB.class);
         Assert.assertEquals("John", customer.getFirstName());
         Assert.assertEquals("Doe", customer.getLastName());
         Assert.assertEquals("Street", customer.getAddress().getStreet());

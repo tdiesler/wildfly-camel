@@ -13,9 +13,8 @@
             <json library="XStream" id="json" unmarshalTypeName="org.wildfly.camel.test.dozer.subA.CustomerA" />
         </dataFormats>
 		<route>
-			<from uri="file:src/main/resources/dozer?fileName=customerA.json&amp;noop=true" />
+			<from uri="direct:start" />
 			<to ref="json2obj" />
-			<to uri="direct:end" />
 		</route>
 	</camelContext>
 </beans>
