@@ -127,7 +127,6 @@
     <modules>
         <module>archetypes</module>
         <module>config</module>
-        <module>docs</module>
         <module>modules</module>
         <module>patch</module>
         <module>subsystem</module>

@@ -86,11 +86,6 @@ Undeploying the application
 Further reading
 ---------------
 
-WildFly Camel documentation
-
-http://wildflyext.gitbooks.io/wildfly-camel/content/
-
-
 Apache Camel documentation
 
 http://camel.apache.org/

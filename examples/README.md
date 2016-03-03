@@ -1,13 +1,13 @@
-## WildFly Camel Examples
+## JBoss Fuse on EAP Examples
 
-This directory contains a suite of useful modules to demonstrate various features of the WildFly Camel Subsystem.
+This directory contains a suite of useful modules to demonstrate various features of JBoss Fuse on EAP.
 Their aim is to provide small, specific and working examples that can be used for reference in your own projects.
 
 ### Prerequisites
 
 Please refer to the project [README documentation](../README.md) for information on how to build and test the project.
 Please take into consideration the minimum Java and Maven requirements. The examples also require a running application server 
-with the wildfly-camel subsystem deployed.
+with JBoss Fuse on EAP deployed.
 
 ### Running Examples
 

@@ -2,13 +2,13 @@ Camel JAX-WS Example
 --------------------
 
 This example demonstrates using the [CamelProxy](http://camel.apache.org/using-camelproxy.html) to mimic the behaviour
-of a Camel JAX-WS consumer. This is an alternative to using CXF consumers **which are not currently supported by the WildFly Camel Subsystem**.
+of a Camel JAX-WS consumer. This is an alternative to using CXF consumers **which are not currently supported by JBoss Fuse on EAP**.
 
 Prerequisites
 -------------
 
 * Maven
-* An application server with the wildfly-camel subsystem installed
+* An application server with JBoss Fuse installed
 
 Running the example
 -------------------
@@ -27,8 +27,8 @@ There are 2 service operations:
 * greet - Which takes 2 String parameters named 'message' and 'name'
 * greetWithMessage - Which takes a single parameter 'name'
 
-Testing Camel CXF
------------------
+Testing Camel JAX-WS
+--------------------
 
 Web UI
 ------
@@ -119,9 +119,3 @@ Undeploy
 --------
 
 To undeploy the example run `mvn clean -Pdeploy`.
-
-Learn more
-----------
-
-Additional camel-jaxws documentation can be found at the [WildFly Camel GitBook](http://wildflyext.gitbooks.io/wildfly-camel/content/javaee/jaxws.html
-) site.

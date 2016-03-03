@@ -1,9 +1,9 @@
 Camel CXF Example
 -----------------
 
-This example demonstrates using the camel-cxf component with the WildFly Camel Subsystem to consume JAX-WS web services.
+This example demonstrates using the camel-cxf component with JBoss Fuse on EAP to consume JAX-WS web services.
 
-> **IMPORTANT: At present the WildFly Camel Subsytem does not support CXF consumers. E.g endpoints defined as from("cxf://...").
+> **IMPORTANT: At present JBoss Fuse on EAP does not support CXF consumers. E.g endpoints defined as from("cxf://...").
 Although, it is possible to mimic CXF consumer behaviour using the [CamelProxy](http://camel.apache.org/using-camelproxy.html).
 See the [camel-jaxws example](../camel-jaxws/README.md) for more information.**
 
@@ -14,7 +14,7 @@ Prerequisites
 -------------
 
 * Maven
-* An application server with the wildfly-camel subsystem installed
+* An application server with JBoss Fuse installed
 
 Running the example
 -------------------
@@ -54,8 +54,3 @@ The web service response is used by `CamelCxfServlet` to display the greeting on
 ## Undeploy
 
 To undeploy the example run `mvn clean -Pdeploy`.
-
-## Learn more
-
-Additional camel-cxf documentation can be found at the [WildFly Camel GitBook](http://wildflyext.gitbooks.io/wildfly-camel/content/javaee/jaxws.html
-) site.

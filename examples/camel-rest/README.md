@@ -1,11 +1,11 @@
 Camel REST Example
 ------------------
 
-This example demonstrates how to write JAX-RS REST routes with the WildFly Camel Subsystem.
+This example demonstrates how to write JAX-RS REST routes with JBoss Fuse on EAP.
 
 The example demonstrates two methods for creating JAX-RS consumer endpoints using the [Camel REST DSL](http://camel.apache.org/rest-dsl.html)
-and using the [CamelProxy](http://camel.apache.org/using-camelproxy.html) in conjunction with the WildFly JAX-RS subsystem. These methods are alternatives to
-using the CXFRS and Restlet component consumer endpoints **which are not currently supported by the WildFly Camel Subsystem**.
+and using the [CamelProxy](http://camel.apache.org/using-camelproxy.html) in conjunction with the EAP JAX-RS subsystem. These methods are alternatives to
+using the CXFRS and Restlet component consumer endpoints **which are not currently supported by JBoss Fuse on EAP**.
 
 A JAX-RS producer example is demonstrated with the [camel-restlet component](http://camel.apache.org/restlet.html).
 
@@ -13,7 +13,7 @@ Prerequisites
 -------------
 
 * Maven
-* An application server with the wildfly-camel subsystem installed
+* An application server with JBoss Fuse installed
 
 Running the example
 -------------------
@@ -37,7 +37,7 @@ The exposed REST endpoints are:
 | DELETE | /example-camel-rest/rest/customer  | Deletes all customers |
 | DELETE | /example-camel-rest/rest/{id}  | Deletes a specific customer |
 
-You may be wondering why some paths are written as `/example-camel-rest/camel` and others as `/example-camel-rest/rest`. This example demonstrates two methods of implementing Camel REST consumers. Requests made to paths under `/example-camel-rest/camel` are handled by the Camel REST DSL and requests made to paths `/example-camel-rest/rest` are handled by the WildFly JAX-RS subsystem together with the CamelProxy.  
+You may be wondering why some paths are written as `/example-camel-rest/camel` and others as `/example-camel-rest/rest`. This example demonstrates two methods of implementing Camel REST consumers. Requests made to paths under `/example-camel-rest/camel` are handled by the Camel REST DSL and requests made to paths `/example-camel-rest/rest` are handled by the EAP JAX-RS subsystem together with the CamelProxy.  
 
 
 Testing Camel REST Consumers
@@ -107,7 +107,7 @@ Now change the data in the 'first name' and 'last name' form fields and click Su
 }
 ````
 
-This time the request is handled by the WildFly JAX-RS subsystem which has created a REST endpoint for the CustomerService interface.
+This time the request is handled by the EAP JAX-RS subsystem which has created a REST endpoint for the CustomerService interface.
 ````java
 @Path("/customer")
 public interface CustomerService {
@@ -212,9 +212,3 @@ Undeploy
 --------
 
 To undeploy the example run `mvn clean -Pdeploy`.
-
-Learn more
-----------
-
-Additional camel-rest documentation can be found at the [WildFly Camel GitBook](http://wildflyext.gitbooks.io/wildfly-camel/content/javaee/jaxrs.html
-) site.
