@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.dozer">
   <resources>
-    <resource-root path="camel-dozer-2.16.1.redhat-630026.jar" />
+    <resource-root path="camel-dozer-2.16.1.redhat-630027.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
@@ -31,5 +31,6 @@
     <module name="javax.el.api" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
+    <module name="org.apache.commons.beanutils" />
   </dependencies>
 </module>
