@@ -23,10 +23,12 @@ package org.wildfly.extension.camel.service;
 import static org.wildfly.extension.camel.CamelLogger.LOGGER;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.CamelContextTrackerRegistry;
@@ -180,7 +182,19 @@ public class CamelContextRegistryService extends AbstractService<CamelContextReg
         }
 
         @Override
+        public Set<CamelContext> getCamelContexts() {
+            synchronized (contexts) {
+                return Collections.unmodifiableSet(contexts.keySet());
+            }
+        }
+
+        @Override
         public void contextCreated(CamelContext camelctx) {
+
+            // Ignore proxied camel contexts
+            if (camelctx.getClass().getName().contains("Proxy")) {
+                return;
+            }
 
             boolean enableIntegration = true;
 
