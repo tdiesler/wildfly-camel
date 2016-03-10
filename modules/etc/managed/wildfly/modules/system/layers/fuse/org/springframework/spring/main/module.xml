@@ -19,14 +19,13 @@
   #L%
   -->
 
-
-
-
-<module xmlns="urn:jboss:module:1.1" name="org.apache.camel">
+<!-- 
+    This is referenced in the base layer from org.apache.cxf as an optional dependency 
+-->
+<module xmlns="urn:jboss:module:1.1" name="org.springframework.spring">
 
     <dependencies>
-        <module name="org.apache.camel.core" export="true" services="export" />
-        <module name="org.apache.camel.spring" export="true" services="export">
+        <module name="org.springframework.beans" export="true">
             <imports>
                 <include path="META-INF" />
             </imports>
@@ -34,7 +33,16 @@
                 <include path="META-INF" />
             </exports>
         </module>
-        <module name="org.springframework.spring" export="true">
+        <module name="org.springframework.context" export="true">
+            <imports>
+                <include path="META-INF" />
+            </imports>
+            <exports>
+                <include path="META-INF" />
+            </exports>
+        </module>
+        <module name="org.springframework.context-support" export="true" />
+        <module name="org.springframework.core" export="true">
             <imports>
                 <include path="META-INF" />
             </imports>
