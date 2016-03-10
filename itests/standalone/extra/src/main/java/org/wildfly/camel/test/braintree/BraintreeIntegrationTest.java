@@ -115,9 +115,9 @@ public class BraintreeIntegrationTest {
                     .process(new Processor() {
                         @Override
                         public void process(Exchange exchange) throws Exception {
+                            LOG.info("Braintree client token generated");
                             latch.countDown();
-                        }})
-                    .to("mock:result");
+                        }});
             }
         });
 
