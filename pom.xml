@@ -50,7 +50,7 @@
         
         <!-- WildFly Versions -->
         <!-- http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven/org/jboss/as/jboss-as-build -->
-        <version.wildfly>7.5.0.Final-redhat-21</version.wildfly>
+        <version.wildfly>7.5.6.Final-redhat-2</version.wildfly>
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
@@ -65,25 +65,24 @@
         <version.fusepatch>2.1.1</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.4.redhat-630029</version.hawtio>
-        <version.hibernate.jpa21.api>1.0.0.Final</version.hibernate.jpa21.api>
+        <version.hibernate.jpa.api>1.0.1.Final-redhat-3</version.hibernate.jpa.api>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.javax.enterprise>1.2</version.javax.enterprise>
         <version.jboss.arquillian.core>1.1.10.Final</version.jboss.arquillian.core>
         <version.jboss.bom.eap>6.4.0.GA</version.jboss.bom.eap>
-        <version.jboss.dmr>1.2.1.Final</version.jboss.dmr>
-        <version.jboss.ejb3.ext.api>2.1.0</version.jboss.ejb3.ext.api>
+        <version.jboss.dmr>1.2.2.Final-redhat-1</version.jboss.dmr>
+        <version.jboss.ejb3.ext.api>2.1.0.redhat-1</version.jboss.ejb3.ext.api>
         <version.jboss.gravia>1.1.3</version.jboss.gravia>
-        <version.jboss.jbossws.api>1.0.2.Final</version.jboss.jbossws.api>
-        <version.jboss.modules>1.4.3.Final</version.jboss.modules>
-        <version.jboss.resteasy.atom.provider>3.0.10.Final</version.jboss.resteasy.atom.provider>
+        <version.jboss.jbossws.api>1.0.2.Final-redhat-1</version.jboss.jbossws.api>
+        <version.jboss.resteasy.atom.provider>2.3.12.Final-redhat-1</version.jboss.resteasy.atom.provider>
         <!-- Definitions come from https://github.com/jbossas/jboss-eap -->
-        <version.jboss.spec.javax.annotation>1.0.1.Final-redhat-2</version.jboss.spec.javax.annotation>
-        <version.jboss.spec.javax.ejb>1.0.2.Final-redhat-2</version.jboss.spec.javax.ejb>
-        <version.jboss.spec.javax.jms>1.0.1.Final-redhat-2</version.jboss.spec.javax.jms>
+        <version.jboss.spec.javax.annotation>1.0.1.Final-redhat-3</version.jboss.spec.javax.annotation>
+        <version.jboss.spec.javax.ejb>1.0.2.Final-redhat-3</version.jboss.spec.javax.ejb>
+        <version.jboss.spec.javax.jms>1.0.1.Final-redhat-3</version.jboss.spec.javax.jms>
         <version.jboss.spec.javax.resource>1.0.1.Final-redhat-3</version.jboss.spec.javax.resource>
-        <version.jboss.spec.javax.servlet>1.0.2.Final-redhat-1</version.jboss.spec.javax.servlet>
-        <version.jboss.spec.javax.transaction>1.0.1.Final-redhat-2</version.jboss.spec.javax.transaction>
-        <version.jboss.spec.javax.ws.rs>1.0.1.Final-redhat-2</version.jboss.spec.javax.ws.rs>
+        <version.jboss.spec.javax.servlet>1.0.2.Final-redhat-2</version.jboss.spec.javax.servlet>
+        <version.jboss.spec.javax.transaction>1.0.1.Final-redhat-3</version.jboss.spec.javax.transaction>
+        <version.jboss.spec.javax.ws.rs>1.0.1.Final-redhat-3</version.jboss.spec.javax.ws.rs>
         <version.jboss.xnio>3.0.11.GA-redhat-2</version.jboss.xnio>
         <version.jvnet.mock.javamail>1.9</version.jvnet.mock.javamail>
         <version.jdom>1.1.3.redhat-2</version.jdom>
@@ -281,8 +280,8 @@
             <!-- Hibernate -->
             <dependency>
                 <groupId>org.hibernate.javax.persistence</groupId>
-                <artifactId>hibernate-jpa-2.1-api</artifactId>
-                <version>${version.hibernate.jpa21.api}</version>
+                <artifactId>hibernate-jpa-2.0-api</artifactId>
+                <version>${version.hibernate.jpa.api}</version>
             </dependency>
 
             <!-- Javax -->
@@ -297,11 +296,6 @@
                 <groupId>org.jboss</groupId>
                 <artifactId>jboss-dmr</artifactId>
                 <version>${version.jboss.dmr}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.modules</groupId>
-                <artifactId>jboss-modules</artifactId>
-                <version>${version.jboss.modules}</version>
             </dependency>
             <dependency>
                 <groupId>org.jboss.spec.javax.annotation</groupId>
