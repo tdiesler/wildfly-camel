@@ -20,5 +20,7 @@
     <resource-root path="lucene-suggest-5.4.1.jar" />
     <resource-root path="spatial4j-0.5.jar" />
   </resources>
-  <dependencies />
+  <dependencies>
+    <module name="javax.api" />
+  </dependencies>
 </module>

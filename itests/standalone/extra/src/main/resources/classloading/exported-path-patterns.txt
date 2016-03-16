@@ -11,14 +11,15 @@
 	^org/apache/cxf
 	^org/apache/cxf/binding(.*)
 	^org/apache/cxf/bus(.*)
-    ^org/apache/cxf/headers(.*)
+  ^org/apache/cxf/headers(.*)
 	^org/apache/cxf/interceptor(.*)
-    ^org/apache/cxf/message(.*)
+  ^org/apache/cxf/message(.*)
 	^org/apache/cxf/sts(.*)
 	^org/apache/cxf/transport/http(.*)
 	^org/apache/cxf/ws/discovery(.*)
 	^org/apache/cxf/ws/security(.*)
 	^org/apache/el
+	^org/apache/kafka(.*)
 	^org/apache/xmlbeans
 	^org/apache/xmlbeans/impl/schema
 	^org/apache/xmlbeans/impl/values

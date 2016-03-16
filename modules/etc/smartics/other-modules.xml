@@ -247,14 +247,68 @@
         </properties>
         <include artifact="org.apache.commons:commons-pool2" />
     </module>
-    
+
+    <module name="org.apache.kafka">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.apache.kafka:kafka_2.11" />
+        <include artifact="com.yammer.metrics:metrics-core" />
+        <include artifact="net.sf.jopt-simple:jopt-simple" />
+        <include artifact="com.101tec:zkclient" />
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="org.scala.library" />
+        </dependencies>
+        <exports>
+            <exclude path="com/yammer**" />
+            <exclude path="joptsimple**" />
+            <exclude path="org/I0Itec**" />
+        </exports>
+    </module>
+
+    <module name="org.apache.kafka.clients">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.apache.kafka:kafka-clients" />
+        <include artifact="org.xerial.snappy:snappy-java" />
+        <include artifact="net.jpountz.lz4:lz4" />
+        <dependencies>
+            <module name="javax.api"/>
+        </dependencies>
+        <exports>
+            <exclude path="darwin/*" />
+            <exclude path="linux/*" />
+            <exclude path="win32/*" />
+            <exclude path="net/jpountz**" />
+            <exclude path="org/xerial**" />
+        </exports>
+    </module>
+
     <module name="org.apache.lucene" slot="5.4">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
-        <include artifact="org.apache.lucene:lucene-(.*)" />
-        <include artifact=":jakarta-regexp" />
-        <include artifact=":spatial4j" />
+        <include artifact="org.apache.lucene:lucene-analyzers-common" />
+        <include artifact="org.apache.lucene:lucene-backward-codecs" />
+        <include artifact="org.apache.lucene:lucene-core" />
+        <include artifact="org.apache.lucene:lucene-facet" />
+        <include artifact="org.apache.lucene:lucene-queries" />
+        <include artifact="org.apache.lucene:lucene-queryparser" />
+        <include artifact="org.apache.lucene:lucene-grouping" />
+        <include artifact="org.apache.lucene:lucene-highlighter" />
+        <include artifact="org.apache.lucene:lucene-join" />
+        <include artifact="org.apache.lucene:lucene-memory" />
+        <include artifact="org.apache.lucene:lucene-misc" />
+        <include artifact="org.apache.lucene:lucene-sandbox" />
+        <include artifact="org.apache.lucene:lucene-spatial" />
+        <include artifact="org.apache.lucene:lucene-spatial3d" />
+        <include artifact="org.apache.lucene:lucene-suggest" />
+        <include artifact="com.spatial4j:spatial4j" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
     </module>
 
     <module name="org.apache.mina.$1">
@@ -443,4 +497,17 @@
         </dependencies>
     </module>
 
+    <module name="org.scala.library">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.scala-lang:scala-library" />
+    </module>
+
+    <module name="org.scala.modules">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.scala-lang.modules:(.*)" />
+    </module>
 </modules>

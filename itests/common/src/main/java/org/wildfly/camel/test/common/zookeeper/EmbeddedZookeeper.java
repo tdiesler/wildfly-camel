@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.wildfly.camel.test.zookeeper;
+package org.wildfly.camel.test.common.zookeeper;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,20 +39,20 @@ import org.apache.zookeeper.server.persistence.FileTxnSnapLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EmbeddedZookeeperServer {
+public class EmbeddedZookeeper {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EmbeddedZookeeperServer.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EmbeddedZookeeper.class);
 
     private final NIOServerCnxnFactory connectionFactory;
     private final ZooKeeperServer zkServer;
     private final Path zookeeperBaseDir;
     private final int port;
 
-    public EmbeddedZookeeperServer() throws Exception {
+    public EmbeddedZookeeper() throws Exception {
         this(PortUtils.getAvailablePort(), Files.createTempDirectory(Paths.get("target").toAbsolutePath(), "zktemp"));
     }
 
-    public EmbeddedZookeeperServer(int port, Path baseDir) throws Exception {
+    public EmbeddedZookeeper(int port, Path baseDir) throws Exception {
         this.port = port;
 
         zookeeperBaseDir = baseDir;
@@ -80,7 +80,7 @@ public class EmbeddedZookeeperServer {
         return "localhost:" + port;
     }
 
-    public EmbeddedZookeeperServer startup(int timeout, TimeUnit unit) throws Exception {
+    public EmbeddedZookeeper startup(int timeout, TimeUnit unit) throws Exception {
         connectionFactory.startup(zkServer);
         if (timeout > 0) {
             waitForServerUp(getConnection(), unit.toMillis(timeout));
