@@ -38,7 +38,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
@@ -115,7 +114,6 @@ public class HawtIOIntegrationTest {
     }
 
     @Test
-    @Ignore("[ENTESB-5134] Hawtio findComponentNames lookup fails")
     public void testHawtioGetCamelContextComponents() throws Exception {
         String userpass = USERNAME + ":" + PASSWORD;
         String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
