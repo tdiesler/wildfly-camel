@@ -2,7 +2,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.braintree">
   <resources>
     <resource-root path="braintree-java-2.55.0.jar" />
-    <resource-root path="camel-braintree-2.16.1.redhat-630035.jar" />
+    <resource-root path="camel-braintree-2.16.1.redhat-630039.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
