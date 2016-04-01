@@ -123,7 +123,7 @@ public class BraintreeIntegrationTest {
 
         camelctx.start();
         try {
-            Assert.assertTrue("Countdown reached zero", latch.await(30, TimeUnit.SECONDS));
+            Assert.assertTrue("Countdown reached zero", latch.await(5, TimeUnit.MINUTES));
         } finally {
             camelctx.stop();
         }
