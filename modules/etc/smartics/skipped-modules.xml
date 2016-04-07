@@ -43,7 +43,7 @@
         <include artifact="ch.qos.logback:logback-classic" />
         <include artifact="ch.qos.logback:logback-core" />
     </module>
-    
+
     <module name="com.github.jnr" skip="true">
         <include artifact="com.github.jnr:jnr-(.*)" />
         <include artifact="com.github.jnr:jffi" />
@@ -52,7 +52,11 @@
     <module name="com.google.code.findbugs" skip="true">
         <include artifact="com.google.code.findbugs:(.*)" />
     </module>
-    
+
+    <module name="org.hdrhistogram" skip="true">
+        <include artifact="org.hdrhistogram:HdrHistogram"/>
+    </module>
+
     <module name="com.headius" skip="true">
         <include artifact="com.headius:(.*)" />
     </module>
@@ -64,7 +68,11 @@
     <module name="com.martiansoftware" skip="true">
         <include artifact="com.martiansoftware:nailgun-server" />
     </module>
-    
+
+    <module name="com.sun.mail" skip="true">
+        <include artifact="com.sun.mail:javax.mail"/>
+    </module>
+
     <module name="jexcelapi" skip="true">
         <include artifact="jexcelapi:jxl" />
     </module>
@@ -131,6 +139,10 @@
     
     <module name="org.jboss.shrinkwrap" skip="true">
         <include artifact="org.jboss.shrinkwrap:(.*)" />
+    </module>
+
+    <module name="org.joda.convert" skip="true">
+        <include artifact=":joda-convert"/>
     </module>
     
     <module name="org.jruby" skip="true">

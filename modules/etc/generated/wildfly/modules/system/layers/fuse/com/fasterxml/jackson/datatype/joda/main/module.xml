@@ -4,10 +4,12 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="jackson-datatype-joda-2.6.3.jar" />
+    <resource-root path="jackson-datatype-joda-2.7.2.jar" />
   </resources>
   <dependencies>
-    <module name="org.joda.time" />
-    <module name="com.fasterxml.jackson.core" />
+    <module name="com.fasterxml.jackson.core.jackson-annotations" />
+    <module name="com.fasterxml.jackson.core.jackson-core" />
+    <module name="com.fasterxml.jackson.core.jackson-databind" />
+    <module name="org.joda.time" slot="2.9" />
   </dependencies>
 </module>

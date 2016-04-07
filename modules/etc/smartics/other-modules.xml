@@ -27,15 +27,47 @@
         <include artifact=":cglib-nodep" />
     </module>
 
-    <module name="com.fasterxml.jackson.core">
+    <module name="com.fasterxml.jackson.core.jackson-annotations">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-annotations" />
-        <include artifact=":jackson-core" />
-        <include artifact=":jackson-databind" />
     </module>
-    
+
+    <module name="com.fasterxml.jackson.core.jackson-core">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-core" />
+    </module>
+
+    <module name="com.fasterxml.jackson.core.jackson-databind">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-databind" />
+        <dependencies>
+            <module name="javax.api"/>
+        </dependencies>
+    </module>
+
+    <module name="com.fasterxml.jackson.dataformat.cbor">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-dataformat-cbor" />
+    </module>
+
+    <module name="com.fasterxml.jackson.dataformat.smile">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-dataformat-smile" />
+        <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+        </dependencies>
+    </module>
+
     <module name="com.fasterxml.jackson.dataformat.xml">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -55,34 +87,19 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-datatype-joda" />
-        <apply-to-dependencies skip="true">
-            <include module="joda-time"/>
-        </apply-to-dependencies>
+    </module>
+
+    <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider">
+        <include artifact=":jackson-jaxrs-base" />
+        <include artifact=":jackson-jaxrs-json-provider" />
+        <include artifact=":jackson-module-jaxb-annotations" />
         <dependencies>
-            <module name="org.joda.time" />
+            <module name="com.fasterxml.jackson.core.jackson-annotations" />
         </dependencies>
     </module>
 
-    <module name="com.fasterxml.jackson.jaxrs">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":jackson-jaxrs-base" />
-        <include artifact=":jackson-jaxrs-json-provider" />
-    </module>
-    
-    <module name="com.fasterxml.jackson.module.json">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":jackson-module-jsonSchema" />
-    </module>
-
-    <module name="com.fasterxml.jackson.module.jaxb">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":jackson-module-jaxb-annotations" />
+    <module name="com.google.guava" slot="19.0">
+        <include artifact=":guava" />
     </module>
 
     <module name="com.jcraft.jsch">
@@ -231,7 +248,7 @@
         <include artifact="org.apache.commons:commons-pool2" />
     </module>
     
-    <module name="org.apache.lucene" slot="4.10">
+    <module name="org.apache.lucene" slot="5.4">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
@@ -333,8 +350,18 @@
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
+        <include artifact="com.carrotsearch:hppc" />
+        <include artifact="com.ning:compress-lzf" />
+        <include artifact="com.tdunning:t-digest" />
+        <include artifact="com.twitter:jsr166e" />
         <include artifact="org.elasticsearch:elasticsearch" />
+        <include artifact="org.elasticsearch:securesm" />
         <apply-to-dependencies skip="true">
+            <include module="io.netty" />
+            <include module="org.antlr.antlr-runtime"/>
+            <include module="org.apache.commons.cli" />
+            <include module="org.hdrhistogram" />
+            <include module="org.joda.convert" />
             <include module="org.ow2.asm"/>
         </apply-to-dependencies>
         <dependencies>
@@ -346,6 +373,12 @@
                 </imports>
             </module>
         </dependencies>
+        <exports>
+            <exclude path="com/carrotsearch**" />
+            <exclude path="com/ning**" />
+            <exclude path="com/tdunning**" />
+            <exclude path="com/twitter**" />
+        </exports>
     </module>
     
     <module name="org.fusesource.hawtbuf">

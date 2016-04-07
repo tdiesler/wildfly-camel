@@ -145,6 +145,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
+            <module name="org.jboss.logging.jul-to-slf4j-stub" />
             <module name="org.slf4j"/>
         </dependencies>
         <exports>
@@ -509,10 +510,12 @@
         <include artifact="org.apache.camel:camel-mail" />
         <apply-to-dependencies skip="true">
             <include module="org.apache.camel.apt" />
+            <include module="com.sun.mail" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
             <module name="javax.activation.api"/>
+            <module name="javax.mail.api"/>
             <module name="org.slf4j"/>
         </dependencies>
     </module>
@@ -742,6 +745,7 @@
         <dependencies>
             <module name="javax.api"/>
             <module name="org.slf4j"/>
+            <module name="org.springframework.core" />
             <module name="org.springframework.tx" />
         </dependencies>
     </module>
@@ -768,7 +772,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
-            <module name="com.fasterxml.jackson.core" />
+            <module name="com.fasterxml.jackson.core.jackson-core" />
         </dependencies>
         <exports>
             <exclude path="io/swagger" />

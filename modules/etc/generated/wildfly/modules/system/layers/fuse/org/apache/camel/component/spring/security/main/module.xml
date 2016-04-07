@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.spring.security">
   <resources>
-    <resource-root path="camel-spring-security-2.16.1.redhat-630045.jar" />
+    <resource-root path="camel-spring-security-2.17.0.redhat-630047.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
@@ -14,7 +14,11 @@
     </module>
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
-    <module name="org.apache.camel.spring" />
     <module name="org.apache.commons.logging" />
+    <module name="org.springframework.aop" />
+    <module name="org.springframework.beans" />
+    <module name="org.springframework.context" />
+    <module name="org.springframework.core" />
+    <module name="org.springframework.expression" />
   </dependencies>
 </module>

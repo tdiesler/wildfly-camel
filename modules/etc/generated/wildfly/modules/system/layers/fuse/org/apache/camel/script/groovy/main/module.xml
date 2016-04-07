@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="groovy-all-2.4.5.jar" />
+    <resource-root path="groovy-all-2.4.6.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
