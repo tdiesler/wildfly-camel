@@ -8,6 +8,7 @@
   </resources>
   <dependencies>
     <module name="org.jdom" />
+    <module name="org.jboss.modules" />
     <module name="org.wildfly.extras.config" />
   </dependencies>
 </module>
