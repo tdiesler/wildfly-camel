@@ -21,9 +21,14 @@ package org.wildfly.camel.test.common.types;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.wildfly.extension.camel.CamelAware;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 
+@XmlRootElement(name = "Customer")
+@JsonRootName("Customer")
 @CamelAware
 public class Customer implements Serializable {
 
