@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="jasypt-1.9.3.redhat_2.jar" />
+    <resource-root path="jasypt-1.9.3.redhat_3.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />

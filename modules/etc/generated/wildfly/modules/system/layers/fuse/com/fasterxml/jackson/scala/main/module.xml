@@ -4,14 +4,13 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="jackson-module-scala_2.10-2.1.5.jar" />
+    <resource-root path="jackson-module-scala_2.10-2.6.3.jar" />
   </resources>
   <dependencies>
     <module name="com.fasterxml.jackson.core.jackson-annotations" />
     <module name="com.fasterxml.jackson.core.jackson-core" />
     <module name="com.fasterxml.jackson.core.jackson-databind" />
-    <module name="com.google.guava" />
-    <module name="com.thoughtworks.paranamer" />
+    <module name="com.fasterxml.jackson.module.jackson-module-paranamer" />
     <module name="org.scala.lang" />
   </dependencies>
 </module>

@@ -6,7 +6,7 @@
   <resources>
     <resource-root path="scala-compiler-2.10.0.jar" />
     <resource-root path="scala-library-2.10.4.jar" />
-    <resource-root path="scala-reflect-2.10.0.jar" />
+    <resource-root path="scala-reflect-2.10.5.jar" />
     <resource-root path="scalap-2.10.0.jar" />
   </resources>
   <dependencies />

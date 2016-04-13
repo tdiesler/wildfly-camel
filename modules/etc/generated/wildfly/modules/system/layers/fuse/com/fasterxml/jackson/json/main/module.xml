@@ -4,11 +4,12 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="jackson-module-jsonSchema-2.1.0.jar" />
+    <resource-root path="jackson-module-jsonSchema-2.6.3.jar" />
   </resources>
   <dependencies>
     <module name="com.fasterxml.jackson.core.jackson-annotations" />
     <module name="com.fasterxml.jackson.core.jackson-core" />
     <module name="com.fasterxml.jackson.core.jackson-databind" />
+    <module name="javax.validation.validation-api" />
   </dependencies>
 </module>
