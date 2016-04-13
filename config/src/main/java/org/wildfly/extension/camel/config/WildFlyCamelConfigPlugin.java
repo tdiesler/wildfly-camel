@@ -30,7 +30,7 @@ import org.wildfly.extras.config.LayerConfig;
 
 public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
 
-    public static final Namespace NS_DOMAIN = Namespace.getNamespace("urn:jboss:domain:1.7");
+    public static final Namespace NS_DOMAIN = Namespace.getNamespace("urn:jboss:domain:1.8");
     public static final Namespace NS_CAMEL = Namespace.getNamespace("urn:jboss:domain:camel:1.0");
     public static final Namespace NS_LOGGING = Namespace.getNamespace("urn:jboss:domain:logging:1.5");
     public static final Namespace NS_SECURITY = Namespace.getNamespace("urn:jboss:domain:security:1.2");
@@ -113,19 +113,6 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
             }
             if (!enable && element != null) {
                 element.getParentElement().removeContent(element);
-            }
-        }
-    }
-
-    private static void updateWeldConfig(ConfigContext context, boolean enable) {
-        List<Element> profiles = ConfigSupport.findProfileElements(context.getDocument(), NS_DOMAIN);
-        for (Element profile : profiles) {
-            Element weld = profile.getChild("subsystem", NS_WELD);
-            ConfigSupport.assertExists(weld, "Did not find the weld subsystem");
-            if (enable) {
-                weld.setAttribute("require-bean-descriptor", "true");
-            } else {
-                weld.removeAttribute("require-bean-descriptor");
             }
         }
     }
