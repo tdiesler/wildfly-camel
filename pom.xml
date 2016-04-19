@@ -62,7 +62,7 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.freeside.betamax>1.1.2</version.freeside.betamax>
         <version.fusesource.camel.sap>6.3.0.redhat-055</version.fusesource.camel.sap>
-        <version.fusepatch>2.2.1</version.fusepatch>
+        <version.fusepatch>2.2.2</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.4.redhat-630055</version.hawtio>
         <version.hibernate.jpa.api>1.0.1.Final-redhat-3</version.hibernate.jpa.api>
