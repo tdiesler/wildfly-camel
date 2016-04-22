@@ -16,9 +16,9 @@
 package org.wildfly.camel.test.config;
 
 import static org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin.NS_CAMEL;
-import static org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin.NS_DOMAIN;
-import static org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin.NS_SECURITY;
-import static org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin.NS_WELD;
+import static org.wildfly.extras.config.NamespaceConstants.NS_DOMAIN;
+import static org.wildfly.extras.config.NamespaceConstants.NS_SECURITY;
+import static org.wildfly.extras.config.NamespaceConstants.NS_WELD;
 
 import java.net.URL;
 import java.nio.file.Paths;
@@ -26,17 +26,25 @@ import java.util.List;
 
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin;
 import org.wildfly.extras.config.ConfigContext;
+import org.wildfly.extras.config.ConfigException;
 import org.wildfly.extras.config.ConfigPlugin;
 import org.wildfly.extras.config.ConfigSupport;
+import org.wildfly.extras.config.NamespaceRegistry;
 
 public class StandaloneConfigTest {
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void testStandaloneConfig() throws Exception {
@@ -45,37 +53,67 @@ public class StandaloneConfigTest {
         SAXBuilder jdom = new SAXBuilder();
         Document doc = jdom.build(resurl);
 
+        NamespaceRegistry registry = new NamespaceRegistry();
+        ConfigPlugin plugin = new WildFlyCamelConfigPlugin(registry);
+
+        Namespace[] domain = registry.getNamespaces(NS_DOMAIN);
+        Namespace[] security = registry.getNamespaces(NS_SECURITY);
+        Namespace[] camel = registry.getNamespaces(NS_CAMEL);
+        Namespace[] weld = registry.getNamespaces(NS_WELD);
+
         ConfigContext context = ConfigSupport.createContext(null, Paths.get(resurl.toURI()), doc);
-        ConfigPlugin plugin = new WildFlyCamelConfigPlugin();
         plugin.applyStandaloneConfigChange(context, true);
 
         // Verify extension
-        Element element = ConfigSupport.findElementWithAttributeValue(doc.getRootElement(), "extension", NS_DOMAIN, "module", "org.wildfly.extension.camel");
+        Element element = ConfigSupport.findElementWithAttributeValue(doc.getRootElement(), "extension", "module", "org.wildfly.extension.camel", domain);
         Assert.assertNotNull("Extension not null", element);
 
         // Verify system-properties
-        element = doc.getRootElement().getChild("system-properties", NS_DOMAIN);
+        element = ConfigSupport.findChildElement(doc.getRootElement(), "system-properties", domain);
         Assert.assertNotNull("system-properties not null", element);
-        element = ConfigSupport.findElementWithAttributeValue(element, "property", NS_DOMAIN, "name", "hawtio.realm");
+        element = ConfigSupport.findElementWithAttributeValue(element, "property", "name", "hawtio.realm", domain);
         Assert.assertNotNull("property not null", element);
 
         // Verify weld
-        List<Element> profiles = ConfigSupport.findProfileElements(doc, NS_DOMAIN);
+        List<Element> profiles = ConfigSupport.findProfileElements(doc, domain);
         Assert.assertEquals("One profile", 1, profiles.size());
-        element = profiles.get(0).getChild("subsystem", NS_WELD);
+        element = ConfigSupport.findChildElement(profiles.get(0), "subsystem", weld);
         Assert.assertNotNull("weld not null", element);
         //Assert.assertEquals("true", element.getAttribute("require-bean-descriptor").getValue());
 
         // Verify camel
-        element = profiles.get(0).getChild("subsystem", NS_CAMEL);
+        element = ConfigSupport.findChildElement(profiles.get(0), "subsystem", camel);
         Assert.assertNotNull("camel not null", element);
 
         // Verify hawtio-domain
-        element = ConfigSupport.findElementWithAttributeValue(doc.getRootElement(), "security-domain", NS_SECURITY, "name", "hawtio-domain");
+        element = ConfigSupport.findElementWithAttributeValue(doc.getRootElement(), "security-domain", "name", "hawtio-domain", security);
         Assert.assertNotNull("hawtio-domain not null", element);
 
         XMLOutputter output = new XMLOutputter();
         output.setFormat(Format.getRawFormat());
         //System.out.println(output.outputString(doc));
+    }
+
+    @Test
+    public void testUnsupportedNamespaceVersion() throws Exception {
+        URL resurl = StandaloneConfigTest.class.getResource("/standalone.xml");
+        SAXBuilder jdom = new SAXBuilder();
+        Document doc = jdom.build(resurl);
+
+        NamespaceRegistry fakeRegistry = new FakeNamespaceRegistry();
+
+        ConfigContext context = ConfigSupport.createContext(null, Paths.get(resurl.toURI()), doc);
+        ConfigPlugin plugin = new WildFlyCamelConfigPlugin(fakeRegistry);
+
+        expectedException.expect(ConfigException.class);
+
+        plugin.applyStandaloneConfigChange(context, true);
+    }
+
+    private class FakeNamespaceRegistry extends NamespaceRegistry {
+        @Override
+        public void registerNamespace(String namespace, String version) {
+            super.registerNamespace(NS_DOMAIN, "1.99");
+        }
     }
 }

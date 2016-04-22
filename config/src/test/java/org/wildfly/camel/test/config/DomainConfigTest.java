@@ -15,13 +15,14 @@
  */
 package org.wildfly.camel.test.config;
 
-import static org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin.NS_DOMAIN;
+import static org.wildfly.extras.config.NamespaceConstants.NS_DOMAIN;
 
 import java.net.URL;
 import java.nio.file.Paths;
 
 import org.jdom.Document;
 import org.jdom.Element;
+import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.jdom.output.XMLOutputter;
@@ -31,6 +32,7 @@ import org.wildfly.extension.camel.config.WildFlyCamelConfigPlugin;
 import org.wildfly.extras.config.ConfigContext;
 import org.wildfly.extras.config.ConfigPlugin;
 import org.wildfly.extras.config.ConfigSupport;
+import org.wildfly.extras.config.NamespaceRegistry;
 
 public class DomainConfigTest {
 
@@ -41,13 +43,17 @@ public class DomainConfigTest {
         SAXBuilder jdom = new SAXBuilder();
         Document doc = jdom.build(resurl);
 
+        NamespaceRegistry registry = new NamespaceRegistry();
+        ConfigPlugin plugin = new WildFlyCamelConfigPlugin(registry);
+
+        Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
+
         ConfigContext context = ConfigSupport.createContext(null, Paths.get(resurl.toURI()), doc);
-        ConfigPlugin plugin = new WildFlyCamelConfigPlugin();
         plugin.applyDomainConfigChange(context, true);
 
-        Element element = doc.getRootElement().getChild("server-groups", NS_DOMAIN);
+        Element element = ConfigSupport.findChildElement(doc.getRootElement(), "server-groups", domainNamespaces);
         Assert.assertNotNull("server-groups not null", element);
-        element = ConfigSupport.findElementWithAttributeValue(element, "server-group", NS_DOMAIN, "name", "camel-server-group");
+        element = ConfigSupport.findElementWithAttributeValue(element, "server-group", "name", "camel-server-group", domainNamespaces);
         Assert.assertNotNull("camel-server-group not null", element);
 
         XMLOutputter output = new XMLOutputter();
