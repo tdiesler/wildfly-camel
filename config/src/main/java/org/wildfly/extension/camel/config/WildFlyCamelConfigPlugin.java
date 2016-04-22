@@ -15,6 +15,11 @@
  */
 package org.wildfly.extension.camel.config;
 
+import static org.wildfly.extras.config.NamespaceConstants.NS_DOMAIN;
+import static org.wildfly.extras.config.NamespaceConstants.NS_LOGGING;
+import static org.wildfly.extras.config.NamespaceConstants.NS_SECURITY;
+import static org.wildfly.extras.config.NamespaceConstants.NS_WELD;
+
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -27,14 +32,21 @@ import org.wildfly.extras.config.ConfigContext;
 import org.wildfly.extras.config.ConfigPlugin;
 import org.wildfly.extras.config.ConfigSupport;
 import org.wildfly.extras.config.LayerConfig;
+import org.wildfly.extras.config.NamespaceRegistry;
 
 public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
 
-    public static final Namespace NS_DOMAIN = Namespace.getNamespace("urn:jboss:domain:1.8");
-    public static final Namespace NS_CAMEL = Namespace.getNamespace("urn:jboss:domain:camel:1.0");
-    public static final Namespace NS_LOGGING = Namespace.getNamespace("urn:jboss:domain:logging:1.5");
-    public static final Namespace NS_SECURITY = Namespace.getNamespace("urn:jboss:domain:security:1.2");
-    public static final Namespace NS_WELD = Namespace.getNamespace("urn:jboss:domain:weld:1.0");
+    public static final String NS_CAMEL = "urn:jboss:domain:camel";
+
+    private NamespaceRegistry registry;
+
+    public WildFlyCamelConfigPlugin() {
+        registerNamespaceVersions(new NamespaceRegistry());
+    }
+
+    public WildFlyCamelConfigPlugin(NamespaceRegistry registry) {
+        registerNamespaceVersions(registry);
+    }
 
     @Override
     public String getConfigName() {
@@ -51,7 +63,6 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         updateExtension(context, enable);
         updateSystemProperties(context, enable);
         updateSubsystem(context, enable);
-        // updateWeldConfig(context, enable);
         updateSecurityDomain(context, enable);
     }
 
@@ -61,13 +72,16 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         updateServergroup(enable, context);
     }
 
-    private static void updateExtension(ConfigContext context, boolean enable) {
-        Element extensions = context.getDocument().getRootElement().getChild("extensions", NS_DOMAIN);
+    private void updateExtension(ConfigContext context, boolean enable) {
+        Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
+        Element extensions = ConfigSupport.findChildElement(context.getDocument().getRootElement(), "extensions", domainNamespaces);
         ConfigSupport.assertExists(extensions, "Did not find the <extensions> element");
-        Element element = ConfigSupport.findElementWithAttributeValue(extensions, "extension", NS_DOMAIN, "module", "org.wildfly.extension.camel");
+        Element element = ConfigSupport.findElementWithAttributeValue(extensions, "extension", "module", "org.wildfly.extension.camel", domainNamespaces);
+
+        Namespace domainNamespace = context.getDocument().getRootElement().getNamespace();
         if (enable && element == null) {
             extensions.addContent(new Text("    "));
-            extensions.addContent(new Element("extension", NS_DOMAIN).setAttribute("module", "org.wildfly.extension.camel"));
+            extensions.addContent(new Element("extension", domainNamespace).setAttribute("module", "org.wildfly.extension.camel"));
             extensions.addContent(new Text("\n    "));
         }
         if (!enable && element != null) {
@@ -76,14 +90,17 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
     }
 
     @SuppressWarnings("unchecked")
-    private static void updateSystemProperties(ConfigContext context, boolean enable) {
+    private void updateSystemProperties(ConfigContext context, boolean enable) {
+        Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
+        Namespace domainNamespace = context.getDocument().getRootElement().getNamespace();
+
         Element rootElement = context.getDocument().getRootElement();
-        Element element = rootElement.getChild("system-properties", NS_DOMAIN);
+        Element element = ConfigSupport.findChildElement(rootElement, "system-properties", domainNamespaces);
         if (element == null) {
-            element = new Element("system-properties", NS_DOMAIN);
+            element = new Element("system-properties", domainNamespace);
             element.addContent(new Text("\n    "));
 
-            int pos = rootElement.indexOf(rootElement.getChild("extensions", NS_DOMAIN));
+            int pos = rootElement.indexOf(rootElement.getChild("extensions", domainNamespace));
             rootElement.addContent(pos + 1, new Text("    "));
             rootElement.addContent(pos + 1, element);
             rootElement.addContent(pos + 1, new Text("\n"));
@@ -91,9 +108,9 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
 
         Map<String, Element> propertiesByName = ConfigSupport.mapByAttributeName(element.getChildren(), "name");
         if (enable) {
-            addProperty(element, propertiesByName, "hawtio.authenticationEnabled", "true");
-            addProperty(element, propertiesByName, "hawtio.offline", "true");
-            addProperty(element, propertiesByName, "hawtio.realm", "hawtio-domain");
+            addProperty(element, propertiesByName, "hawtio.authenticationEnabled", "true", domainNamespace);
+            addProperty(element, propertiesByName, "hawtio.offline", "true", domainNamespace);
+            addProperty(element, propertiesByName, "hawtio.realm", "hawtio-domain", domainNamespace);
         } else {
             removeProperty(propertiesByName, "hawtio.authenticationEnabled");
             removeProperty(propertiesByName, "hawtio.offline");
@@ -101,10 +118,13 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         }
     }
 
-    private static void updateSubsystem(ConfigContext context, boolean enable) {
-        List<Element> profiles = ConfigSupport.findProfileElements(context.getDocument(), NS_DOMAIN);
+    private void updateSubsystem(ConfigContext context, boolean enable) {
+        Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
+        Namespace[] camelNamespaces = registry.getNamespaces(NS_DOMAIN);
+
+        List<Element> profiles = ConfigSupport.findProfileElements(context.getDocument(), domainNamespaces);
         for (Element profile : profiles) {
-            Element element = profile.getChild("subsystem", NS_CAMEL);
+            Element element = ConfigSupport.findChildElement(profile, "subsystem", camelNamespaces);
             if (enable && element == null) {
                 URL resource = WildFlyCamelConfigPlugin.class.getResource("/camel-subsystem.xml");
                 profile.addContent(new Text("    "));
@@ -117,14 +137,17 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         }
     }
 
-    private static void updateSecurityDomain(ConfigContext context, boolean enable) {
-        List<Element> profiles = ConfigSupport.findProfileElements(context.getDocument(), NS_DOMAIN);
+    private void updateSecurityDomain(ConfigContext context, boolean enable) {
+        Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
+        Namespace[] securityNamespaces = registry.getNamespaces(NS_SECURITY);
+
+        List<Element> profiles = ConfigSupport.findProfileElements(context.getDocument(), domainNamespaces);
         for (Element profile : profiles) {
-            Element security = profile.getChild("subsystem", NS_SECURITY);
+            Element security = ConfigSupport.findChildElement(profile, "subsystem", securityNamespaces);
             ConfigSupport.assertExists(security, "Did not find the security subsystem");
-            Element domains = security.getChild("security-domains", NS_SECURITY);
+            Element domains = ConfigSupport.findChildElement(security, "security-domains", securityNamespaces);
             ConfigSupport.assertExists(domains, "Did not find the <security-domains> element");
-            Element domain = ConfigSupport.findElementWithAttributeValue(domains, "security-domain", NS_SECURITY, "name", "hawtio-domain");
+            Element domain = ConfigSupport.findElementWithAttributeValue(domains, "security-domain", "name", "hawtio-domain", securityNamespaces);
             if (enable && domain == null) {
                 URL resource = WildFlyCamelConfigPlugin.class.getResource("/hawtio-security-domain.xml");
                 domains.addContent(new Text("    "));
@@ -137,9 +160,11 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         }
     }
 
-    private static void updateServergroup(boolean enable, ConfigContext context) {
-        Element serverGroups = context.getDocument().getRootElement().getChild("server-groups", NS_DOMAIN);
-        Element camel = ConfigSupport.findElementWithAttributeValue(serverGroups, "server-group", NS_DOMAIN, "name", "camel-server-group");
+    private void updateServergroup(boolean enable, ConfigContext context) {
+        Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
+
+        Element serverGroups = ConfigSupport.findChildElement(context.getDocument().getRootElement(), "server-groups", domainNamespaces);
+        Element camel = ConfigSupport.findElementWithAttributeValue(serverGroups, "server-group", "name", "camel-server-group", domainNamespaces);
         if (enable && camel == null) {
             URL resource = WildFlyCamelConfigPlugin.class.getResource("/camel-servergroup.xml");
             serverGroups.addContent(new Text("    "));
@@ -151,18 +176,28 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         }
     }
 
-    private static void addProperty(Element systemProperties, Map<String, Element> propertiesByName, String name, String value) {
+    private void addProperty(Element systemProperties, Map<String, Element> propertiesByName, String name, String value, Namespace namespace) {
         if (!propertiesByName.containsKey(name)) {
             systemProperties.addContent(new Text("   "));
-            systemProperties.addContent(new Element("property", NS_DOMAIN).setAttribute("name", name).setAttribute("value", value));
+            systemProperties.addContent(new Element("property", namespace).setAttribute("name", name).setAttribute("value", value));
             systemProperties.addContent(new Text("\n    "));
         }
     }
 
-    private static void removeProperty(Map<String, Element> propertiesByName, String name) {
+    private void removeProperty(Map<String, Element> propertiesByName, String name) {
         Element element = propertiesByName.get(name);
         if (element != null) {
             element.getParentElement().removeContent(element);
         }
+    }
+
+    private void registerNamespaceVersions(NamespaceRegistry registry) {
+        this.registry = registry;
+        registry.registerNamespace(NS_DOMAIN, "1.8");
+        registry.registerNamespace(NS_DOMAIN, "1.7");
+        registry.registerNamespace(NS_CAMEL, "1.0");
+        registry.registerNamespace(NS_LOGGING, "1.5");
+        registry.registerNamespace(NS_SECURITY, "1.2");
+        registry.registerNamespace(NS_WELD, "1.0");
     }
 }
