@@ -2,10 +2,10 @@
 /com/fasterxml/jackson/core/jackson-annotations/main/jackson-annotations-2.6.0.jar
 /com/fasterxml/jackson/core/jackson-core/main/jackson-core-2.6.3.jar
 /com/fasterxml/jackson/core/jackson-databind/main/jackson-databind-2.6.3.jar
-/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/main/jackson-jaxrs-base-2.6.3.jar
+/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/main/jackson-jaxrs-base-2.6.3.jar
 /com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/main/jackson-jaxrs-json-provider-2.6.3.jar
+/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/main/jackson-module-jaxb-annotations-2.6.3.jar
 /com/fasterxml/jackson/json/main/jackson-module-jsonSchema-2.6.3.jar
-/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/main/jackson-module-jaxb-annotations-2.6.3.jar
 /com/fasterxml/jackson/module/jackson-module-paranamer/main/jackson-module-paranamer-2.6.3.jar
 /com/fasterxml/jackson/scala/main/jackson-module-scala_2.10-2.6.3.jar
 /com/jcraft/jsch/main/jsch-0.1.51.jar
@@ -19,7 +19,6 @@
 /io/netty/4.0/netty-common-4.0.27.Final.jar
 /io/netty/4.0/netty-handler-4.0.27.Final.jar
 /io/netty/4.0/netty-transport-4.0.27.Final.jar
-/javax/validation/validation-api/main/validation-api-1.1.0.Final.jar
 /net/oauth/core/oauth-provider/main/oauth-provider-20100527.jar
 /net/oauth/core/oauth/main/oauth-20100527.jar
 /net/sf/dozer/main/dozer-5.5.1.jar
