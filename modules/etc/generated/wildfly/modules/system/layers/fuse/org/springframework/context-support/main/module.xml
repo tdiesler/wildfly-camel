@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="spring-context-support-4.2.5.RELEASE.jar" />
+    <resource-root path="spring-context-support-3.2.16.RELEASE.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
@@ -12,6 +12,7 @@
     <module name="org.springframework.tx" optional="true" />
     <module name="org.springframework.jdbc" optional="true" />
     <module name="org.quartz" optional="true" />
+    <module name="javax.activation" />
     <module name="org.springframework.beans" />
     <module name="org.springframework.context" />
     <module name="org.springframework.core" />

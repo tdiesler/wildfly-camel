@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="spring-jms-4.2.5.RELEASE.jar" />
+    <resource-root path="spring-jms-3.2.16.RELEASE.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
@@ -14,7 +14,6 @@
     <module name="org.springframework.beans" />
     <module name="org.springframework.context" />
     <module name="org.springframework.core" />
-    <module name="org.springframework.spring-messaging" />
     <module name="org.springframework.tx" />
   </dependencies>
 </module>
