@@ -78,6 +78,7 @@ public class HawtIOIntegrationTest {
 
     }
 
+
     @Test
     public void testUnauthedAccessHawtIO() throws Exception {
 
@@ -96,6 +97,7 @@ public class HawtIOIntegrationTest {
         }
 
     }
+
 
 
     private byte[] readFully(InputStream inputStream) throws IOException {
