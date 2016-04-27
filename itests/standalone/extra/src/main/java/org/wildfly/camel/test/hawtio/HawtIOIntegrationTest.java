@@ -38,7 +38,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
@@ -115,7 +114,6 @@ public class HawtIOIntegrationTest {
     }
 
     @Test
-    @Ignore("[ENTESB-5134] Hawtio findComponentNames lookup fails")
     public void testHawtioGetCamelContextComponents() throws Exception {
         String userpass = USERNAME + ":" + PASSWORD;
         String basicAuth = "Basic " + javax.xml.bind.DatatypeConverter.printBase64Binary(userpass.getBytes());
@@ -128,9 +126,9 @@ public class HawtIOIntegrationTest {
                 .content("{\"type\":\"exec\",\"mbean\":\"org.apache.camel:context=cdi-context,type=context,name=\\\"cdi-context\\\"\",\"operation\":\"findComponentNames\"}")
                 .getResponse();
 
-            System.out.println("===========================================================");
-            System.out.println(response.getBody());
-            System.out.println("===========================================================");
+//            System.out.println("===========================================================");
+//            System.out.println(response.getBody());
+//            System.out.println("===========================================================");
 
             Assert.assertTrue(response.getBody().contains("\"status\":200"));
         } finally {

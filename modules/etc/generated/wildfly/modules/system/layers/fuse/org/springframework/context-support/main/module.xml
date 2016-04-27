@@ -12,7 +12,7 @@
     <module name="org.springframework.tx" optional="true" />
     <module name="org.springframework.jdbc" optional="true" />
     <module name="org.quartz" optional="true" />
-    <module name="javax.activation" />
+    <module name="javax.annotation.api" />
     <module name="org.springframework.beans" />
     <module name="org.springframework.context" />
     <module name="org.springframework.core" />

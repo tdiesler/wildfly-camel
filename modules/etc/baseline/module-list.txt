@@ -17,7 +17,6 @@
 /com/thoughtworks/xstream/main/xpp3_min-1.1.4c.jar
 /com/thoughtworks/xstream/main/xstream-1.4.8.jar
 /io/netty/4.0/netty-all-4.0.34.Final.jar
-/javax/activation/main/activation-1.1.jar
 /net/oauth/core/oauth-provider/main/oauth-provider-20100527.jar
 /net/oauth/core/oauth/main/oauth-20100527.jar
 /net/sf/dozer/main/dozer-5.5.1.jar
@@ -177,7 +176,7 @@
 /org/apache/xbean/spring/main/xbean-spring-3.18.jar
 /org/apache/xmlbeans/main/xmlbeans-2.6.0.jar
 /org/apache/zookeeper/main/zookeeper-3.4.7.jar
-/org/beanshell/main/bsh-2.0b5.jar
+/org/beanshell/main/bsh-2.0b6.jar
 /org/bouncycastle/main/bcpg-jdk15on-1.54.jar
 /org/bouncycastle/main/bcprov-jdk15on-1.54.jar
 /org/elasticsearch/main/compress-lzf-1.0.2.jar
