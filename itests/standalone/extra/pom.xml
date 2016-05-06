@@ -56,6 +56,12 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
         </dependency>
+        <!-- [FIXME #1188] Upgrade Betamax to 2.0.0 -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-util</artifactId>
+            <version>8.1.17.v20150415</version>
+        </dependency>
         <dependency>
             <groupId>org.fusesource</groupId>
             <artifactId>camel-sap</artifactId>

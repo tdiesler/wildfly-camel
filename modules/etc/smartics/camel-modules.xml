@@ -638,6 +638,7 @@
         <include artifact=":jetty-http" />
         <include artifact=":jetty-io" />
         <include artifact=":jetty-util" />
+        <include artifact=":jetty-util-ajax" />
         <apply-to-dependencies skip="true">
             <include module="org.apache.camel.apt" />
             <include module="org.eclipse.jetty.orbit" />

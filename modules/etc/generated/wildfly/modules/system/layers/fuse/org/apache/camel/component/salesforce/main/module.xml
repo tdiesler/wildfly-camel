@@ -9,6 +9,7 @@
     <resource-root path="jetty-http-9.2.15.v20160210.jar" />
     <resource-root path="jetty-io-9.2.15.v20160210.jar" />
     <resource-root path="jetty-util-9.2.15.v20160210.jar" />
+    <resource-root path="jetty-util-ajax-9.2.15.v20160210.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
@@ -18,7 +19,6 @@
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
     <module name="org.codehaus.jackson.jackson-mapper-asl" />
-    <module name="org.eclipse.jetty.jetty-util-ajax" />
     <module name="org.joda.time" slot="2.9" />
     <module name="org.slf4j" />
   </dependencies>
