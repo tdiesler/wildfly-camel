@@ -167,9 +167,11 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         Element camel = ConfigSupport.findElementWithAttributeValue(serverGroups, "server-group", "name", "camel-server-group", domainNamespaces);
         if (enable && camel == null) {
             URL resource = WildFlyCamelConfigPlugin.class.getResource("/camel-servergroup.xml");
+            Element serverGroup = ConfigSupport.loadElementFrom(resource);
             serverGroups.addContent(new Text("    "));
-            serverGroups.addContent(ConfigSupport.loadElementFrom(resource));
+            serverGroups.addContent(serverGroup);
             serverGroups.addContent(new Text("\n    "));
+            applyNamespace(serverGroup);
         }
         if (!enable && camel != null) {
             camel.getParentElement().removeContent(camel);
@@ -199,5 +201,14 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         registry.registerNamespace(NS_LOGGING, "1.5");
         registry.registerNamespace(NS_SECURITY, "1.2");
         registry.registerNamespace(NS_WELD, "1.0");
+    }
+
+    private void applyNamespace(Element element) {
+        if (element.getParentElement() != null) {
+            element.setNamespace(element.getParentElement().getNamespace());
+        }
+        for (Element child : (List<Element>) element.getChildren()) {
+            applyNamespace(child);
+        }
     }
 }
