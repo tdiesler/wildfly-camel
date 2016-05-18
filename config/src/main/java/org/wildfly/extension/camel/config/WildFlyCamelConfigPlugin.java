@@ -120,7 +120,7 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
 
     private void updateSubsystem(ConfigContext context, boolean enable) {
         Namespace[] domainNamespaces = registry.getNamespaces(NS_DOMAIN);
-        Namespace[] camelNamespaces = registry.getNamespaces(NS_DOMAIN);
+        Namespace[] camelNamespaces = registry.getNamespaces(NS_CAMEL);
 
         List<Element> profiles = ConfigSupport.findProfileElements(context.getDocument(), domainNamespaces);
         for (Element profile : profiles) {
