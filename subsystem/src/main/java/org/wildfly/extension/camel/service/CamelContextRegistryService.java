@@ -191,11 +191,6 @@ public class CamelContextRegistryService extends AbstractService<CamelContextReg
         @Override
         public void contextCreated(CamelContext camelctx) {
 
-            // Ignore proxied camel contexts
-            if (camelctx.getClass().getName().contains("Proxy")) {
-                return;
-            }
-
             boolean enableIntegration = true;
 
             // Enable the integration based on deployment settings

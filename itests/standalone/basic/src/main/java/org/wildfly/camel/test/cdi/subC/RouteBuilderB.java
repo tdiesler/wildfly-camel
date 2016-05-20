@@ -2,7 +2,7 @@
  * #%L
  * Wildfly Camel :: Testsuite
  * %%
- * Copyright (C) 2013 - 2015 RedHat
+ * Copyright (C) 2013 - 2016 RedHat
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,11 @@ package org.wildfly.camel.test.cdi.subC;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.cdi.ContextName;
 
-@ContextName("cdi-context-a")
-public class RouteBuilderA extends RouteBuilder {
+@ContextName("cdi-context-b")
+public class RouteBuilderB extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("direct:start").to("log:foo");
+        from("direct:start").to("mock:foo");
     }
 }

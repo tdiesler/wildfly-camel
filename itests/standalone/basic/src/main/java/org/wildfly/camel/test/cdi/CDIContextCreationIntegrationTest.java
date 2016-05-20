@@ -34,10 +34,11 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.cdi.subC.InjectedContextBean;
+import org.wildfly.camel.test.cdi.subC.RouteBuilderA;
+import org.wildfly.camel.test.cdi.subC.RouteBuilderB;
 import org.wildfly.extension.camel.CamelAware;
 import org.wildfly.extension.camel.CamelContextRegistry;
 
@@ -46,7 +47,6 @@ import org.wildfly.extension.camel.CamelContextRegistry;
  */
 @RunWith(Arquillian.class)
 @CamelAware
-@Ignore
 public class CDIContextCreationIntegrationTest {
 
     private static final String CDI_CONTEXT_A = "cdi-context-a.jar";
@@ -65,18 +65,16 @@ public class CDIContextCreationIntegrationTest {
 
     @Deployment(name = CDI_CONTEXT_A, managed = false, testable = false)
     public static JavaArchive createCdiTestJar() {
-        return createCamelCdiDeployment(CDI_CONTEXT_A);
+        return ShrinkWrap.create(JavaArchive.class, CDI_CONTEXT_A)
+            .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+            .addClasses(InjectedContextBean.class, RouteBuilderA.class);
     }
 
     @Deployment(name = CDI_CONTEXT_B, managed = false , testable = false)
     public static JavaArchive createOtherCdiTestJar() {
-        return createCamelCdiDeployment(CDI_CONTEXT_B);
-    }
-
-    private static JavaArchive createCamelCdiDeployment(String name) {
-        return ShrinkWrap.create(JavaArchive.class, name)
+        return ShrinkWrap.create(JavaArchive.class, CDI_CONTEXT_B)
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addPackage(InjectedContextBean.class.getPackage());
+            .addClasses(InjectedContextBean.class, RouteBuilderB.class);
     }
 
     @After
