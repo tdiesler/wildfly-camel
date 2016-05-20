@@ -4,11 +4,11 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="json4s-ast_2.10-3.2.4.jar" />
-    <resource-root path="json4s-core_2.10-3.2.4.jar" />
-    <resource-root path="json4s-ext_2.10-3.2.4.jar" />
-    <resource-root path="json4s-jackson_2.10-3.2.4.jar" />
-    <resource-root path="json4s-native_2.10-3.2.4.jar" />
+    <resource-root path="json4s-ast_2.10-3.2.11.jar" />
+    <resource-root path="json4s-core_2.10-3.2.11.jar" />
+    <resource-root path="json4s-ext_2.10-3.2.11.jar" />
+    <resource-root path="json4s-jackson_2.10-3.2.11.jar" />
+    <resource-root path="json4s-native_2.10-3.2.11.jar" />
   </resources>
   <dependencies>
     <module name="com.fasterxml.jackson.core.jackson-core" />
