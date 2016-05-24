@@ -4,9 +4,20 @@
     <resource-root path="camel-jackson-2.15.1.redhat-621119.jar" />
   </resources>
   <dependencies>
+    <module name="com.fasterxml.jackson.core.jackson-annotations" export="true">
+      <exports>
+        <include path="com/fasterxml/jackson/annotation**" />
+        <exclude path="com/fasterxml**" />
+      </exports>
+    </module>
+    <module name="com.fasterxml.jackson.core.jackson-databind" export="true">
+      <exports>
+        <include path="com/fasterxml/jackson/databind/annotation**" />
+        <exclude path="com/fasterxml**" />
+      </exports>
+    </module>
     <module name="javax.api" />
     <module name="org.slf4j" />
-    <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
