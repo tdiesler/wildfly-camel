@@ -293,6 +293,8 @@ ca/uhn/hl7v2/validation/builder
 ca/uhn/hl7v2/validation/builder/support
 ca/uhn/hl7v2/validation/impl
 ca/uhn/hl7v2/view
+com/fasterxml/jackson/annotation
+com/fasterxml/jackson/databind/annotation
 com/google/protobuf
 groovy/beans
 groovy/grape
