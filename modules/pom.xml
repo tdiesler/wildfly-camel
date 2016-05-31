@@ -396,10 +396,6 @@
             <artifactId>jruby-complete</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.python</groupId>
-            <artifactId>jython</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.restlet.jee</groupId>
             <artifactId>org.restlet</artifactId>
         </dependency>

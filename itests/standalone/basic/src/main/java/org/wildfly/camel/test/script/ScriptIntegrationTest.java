@@ -67,11 +67,6 @@ public class ScriptIntegrationTest {
     }
 
     @Test
-    public void testPhyton() throws Exception {
-        scriptProcessing("python", PYTHON_SCRIPT);
-    }
-
-    @Test
     public void testRuby() throws Exception {
         scriptProcessing("ruby", RUBY_SCRIPT);
     }

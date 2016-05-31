@@ -711,7 +711,6 @@
             <module name="javax.api"/>
             <module name="org.apache.camel.script.groovy" export="true" services="export"/>
             <module name="org.apache.camel.script.jruby" services="export"/>
-            <module name="org.apache.camel.script.python" services="export"/>
             <module name="org.apache.camel.script.rhino" services="export"/>
             <module name="org.beanshell" services="export"/>
             <module name="org.osgi.core"/>
@@ -948,16 +947,6 @@
         <dependencies>
             <module name="javax.api"/>
             <module name="sun.jdk"/>
-        </dependencies>
-    </module>
-    
-    <module name="org.apache.camel.script.python">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.python:jython" />
-        <dependencies>
-            <module name="javax.api"/>
         </dependencies>
     </module>
     
