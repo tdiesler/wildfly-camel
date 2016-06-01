@@ -2,7 +2,7 @@
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.salesforce">
   <resources>
     <resource-root path="bayeux-api-2.4.3.jar" />
-    <resource-root path="camel-salesforce-2.15.1.redhat-621119.jar" />
+    <resource-root path="camel-salesforce-2.15.1.redhat-621121.jar" />
     <resource-root path="cometd-java-client-2.4.3.jar" />
     <resource-root path="cometd-java-common-2.4.3.jar" />
     <resource-root path="jetty-client-8.1.19.v20160209.jar" />
