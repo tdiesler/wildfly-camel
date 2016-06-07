@@ -67,7 +67,7 @@
         <version.hawtio>1.4.redhat-630085</version.hawtio>
         <version.hibernate.jpa.api>1.0.1.Final-redhat-3</version.hibernate.jpa.api>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
-        <version.javax.enterprise>1.2</version.javax.enterprise>
+        <version.javax.enterprise>1.2.0.redhat-2</version.javax.enterprise>
         <version.jboss.arquillian.core>1.1.10.Final</version.jboss.arquillian.core>
         <version.jboss.bom.eap>6.4.0.GA</version.jboss.bom.eap>
         <version.jboss.dmr>1.2.2.Final-redhat-1</version.jboss.dmr>
@@ -90,7 +90,7 @@
         <version.maven.archetype.packaging>2.3</version.maven.archetype.packaging>
         <version.osgi>5.0.0</version.osgi>
         <version.slf4j>1.6.6</version.slf4j>
-        <version.xalan>2.7.1</version.xalan>
+        <version.xalan>2.7.1.redhat-8</version.xalan>
         
         <!-- Plugin versions -->
         <version-build-helper-plugin>1.9.1</version-build-helper-plugin>
