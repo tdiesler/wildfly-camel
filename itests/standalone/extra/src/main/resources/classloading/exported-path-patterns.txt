@@ -26,6 +26,7 @@
 	^org/apache/xmlbeans/impl/schema
 	^org/apache/xmlbeans/impl/values
 	^org/apache/zookeeper(.*)
+    ^com/braintreegateway(.*)
 	^org/codehaus/groovy(.*)
 	^org/dozer(.*)
 	^org/elasticsearch(.*)
