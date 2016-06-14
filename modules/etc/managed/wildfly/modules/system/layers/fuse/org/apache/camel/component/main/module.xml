@@ -73,6 +73,7 @@
         <module name="org.apache.camel.component.script" export="true" services="export" />
         <module name="org.apache.camel.component.servlet" export="true" services="export" />
         <module name="org.apache.camel.component.soap" export="true" services="export" />
+        <module name="org.apache.camel.component.smpp" export="true" services="export" />
         <module name="org.apache.camel.component.spring.security" export="true" services="export" />
         <module name="org.apache.camel.component.sql" export="true" services="export" />
         <module name="org.apache.camel.component.stream" export="true" services="export" />
