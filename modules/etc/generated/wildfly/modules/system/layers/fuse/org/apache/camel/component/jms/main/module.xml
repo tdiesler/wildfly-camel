@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.jms">
   <resources>
-    <resource-root path="camel-jms-2.17.0.redhat-630107.jar" />
+    <resource-root path="camel-jms-2.17.0.redhat-630111.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />
     <module name="org.apache.commons.logging" />
     <module name="org.springframework.core" />
     <module name="org.slf4j" />
-    <module name="javax.jms.api" />
+    <module name="javax.jms.javax.jms-api" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
     <module name="org.apache.camel.spring" />
