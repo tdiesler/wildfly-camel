@@ -710,9 +710,6 @@
             <id>central</id>
             <name>Central Repository</name>
             <url>http://repo.maven.apache.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
         <repository>
             <id>jboss-public-repository</id>
@@ -720,37 +717,28 @@
         </repository>
         <repository>
             <id>redhat-ga-repository</id>
-            <url>https://maven.repository.redhat.com/ga</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <url>http://maven.repository.redhat.com/ga</url>
         </repository>
         <repository>
-            <id>redhat-ea-repository</id>
-            <url>https://maven.repository.redhat.com/earlyaccess/all</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
+            <id>redhat-early-access-repository</id>
+            <url>http://maven.repository.redhat.com/earlyaccess/all</url>
+        </repository>
+        <repository>
+            <id>jbeap-latest-repository</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven</url>
+        </repository>
+        <repository>
+            <id>jbfuse-latest-repository</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fuse-6.2-build/latest/maven</url>
+        </repository>
+        <repository>
+            <id>fuse-early-access-repository</id>
+            <url>http://repository.jboss.org/nexus/content/groups/ea</url>
         </repository>
         <repository>
             <!-- restlet -->
             <id>springsource-libs-releases</id>
             <url>http://repo.springsource.org/libs-release-remote</url>
-        </repository>
-        
-        <repository>
-            <id>jboss-early-access-repository</id>
-            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven</url>
-        </repository>
-        <repository>
-            <id>fuse-early-access-repository</id>
-            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
         </repository>
     </repositories>
     
