@@ -1246,4 +1246,8 @@ org/xmlsoap
 org/xmlsoap/schemas
 org/xmlsoap/schemas/soap
 org/xmlsoap/schemas/soap/envelope
+schema/configuration
+schemas/configuration
+schemas/wsdl
+schemas/wsdl/spec
 
