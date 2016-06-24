@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="camel-core-xml-2.17.0.redhat-630123.jar" />
+    <resource-root path="camel-core-xml-2.17.0.redhat-630125.jar" />
   </resources>
   <dependencies>
     <module name="org.slf4j" />
