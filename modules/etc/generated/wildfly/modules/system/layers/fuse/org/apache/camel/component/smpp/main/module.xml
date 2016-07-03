@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.smpp">
   <resources>
-    <resource-root path="camel-smpp-2.17.0.redhat-630131.jar" />
+    <resource-root path="camel-smpp-2.17.0.redhat-630135.jar" />
     <resource-root path="jsmpp-2.1.1.jar" />
   </resources>
   <dependencies>
