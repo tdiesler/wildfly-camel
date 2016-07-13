@@ -12,9 +12,11 @@
     <module name="javax.xml.ws.api" />
     <module name="org.apache.cxf" export="true" slot="3.0">
       <imports>
+        <include path="META-INF" />
         <include path="META-INF/cxf**" />
       </imports>
       <exports>
+        <include path="META-INF" />
         <include path="META-INF/cxf**" />
         <include path="org/apache/cxf/binding/**" />
         <include path="org/apache/cxf/bus**" />
@@ -27,7 +29,8 @@
         <include path="org/apache/cxf/ws/security/**" />
         <exclude path="org/apache/cxf/**" />
         <exclude path="org/objectweb/asm**" />
-        <exclude path="schemas**" />
+        <exclude path="schemas/configuration/blueprint" />
+        <exclude path="schemas/blueprint" />
       </exports>
     </module>
     <module name="org.slf4j" />
@@ -41,6 +44,5 @@
   <exports>
     <exclude path="OSGI-INF/blueprint" />
     <exclude path="schema/blueprint" />
-    <exclude path="schema/configuration" />
   </exports>
 </module>

@@ -30,7 +30,6 @@ import org.jboss.as.controller.descriptions.ModelDescriptionConstants;
 import org.jboss.dmr.ModelNode;
 import org.jboss.msc.service.ServiceController;
 import org.wildfly.extension.camel.CamelConstants;
-import org.wildfly.extension.camel.CamelContextRegistry;
 import org.wildfly.extension.camel.service.CamelContextRegistryService;
 
 /**
@@ -61,7 +60,7 @@ final class CamelContextAdd extends AbstractAddStepHandler {
         ServiceController<?> container = context.getServiceRegistry(false).getService(CamelConstants.CAMEL_CONTEXT_REGISTRY_SERVICE_NAME);
         if (container != null) {
             CamelContextRegistryService serviceRegistry = CamelContextRegistryService.class.cast(container.getService());
-            serviceRegistry.createCamelContext(CamelContextRegistry.class.getClassLoader(), propName, propValue);
+            serviceRegistry.createCamelContext(propName, propValue);
         }
     }
 
