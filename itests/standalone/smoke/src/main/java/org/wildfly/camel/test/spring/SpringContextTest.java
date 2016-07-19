@@ -50,7 +50,7 @@ public class SpringContextTest {
     @Deployment
     public static JavaArchive createdeployment() {
         final JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "camel-spring-tests");
-        archive.addAsResource("spring/transform1-camel-context.xml", "some-other-name.xml");
+        archive.addAsResource("spring/transform4-camel-context.xml", "some-other-name.xml");
         return archive;
     }
 
@@ -62,7 +62,7 @@ public class SpringContextTest {
         try {
             ProducerTemplate producer = camelctx.createProducerTemplate();
             String result = producer.requestBody("direct:start", "Kermit", String.class);
-            Assert.assertEquals("Hello Kermit", result);
+            Assert.assertEquals("Hello green Frog", result);
         } finally {
             camelctx.stop();
         }

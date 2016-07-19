@@ -33,7 +33,7 @@ import org.jboss.gravia.utils.IllegalArgumentAssertion;
 import org.jboss.modules.Module;
 import org.jboss.modules.ModuleClassLoader;
 import org.jboss.modules.ModuleIdentifier;
-
+import javax.lang.model.SourceVersion;
 
 /**
  * A class resolver that delegates to a module class loader
@@ -64,10 +64,12 @@ final class WildFlyClassResolver extends DefaultClassResolver {
     protected Class<?> loadClass(String className, ClassLoader defaultClassLoader) {
         IllegalArgumentAssertion.assertNotNull(className, "className");
         Class<?> loadedClass = null;
-        try {
-            loadedClass = classLoader.loadClass(className);
-        } catch (ClassNotFoundException e) {
-            LOGGER.warn("Cannot load '{}' from module: {}", className, moduleId);
+        if (SourceVersion.isName(className) && className.contains(".")) {
+            try {
+                loadedClass = classLoader.loadClass(className);
+            } catch (ClassNotFoundException e) {
+                LOGGER.warn("Cannot load '{}' from module: {}", className, moduleId);
+            }
         }
         return loadedClass;
     }
