@@ -1,8 +1,11 @@
 .idea
 .classpath
 .project
+.repository
 .settings
+.vagrant
 target
 *.iml
 .DS_Store
-dependency-reduced-pom.xml
+settings.xml
+
