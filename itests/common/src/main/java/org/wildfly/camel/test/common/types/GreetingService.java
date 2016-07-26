@@ -17,13 +17,26 @@
  * limitations under the License.
  * #L%
  */
-package org.wildfly.camel.test.cxf.rs.subA;
+package org.wildfly.camel.test.common.types;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-public class GreetingServiceImpl implements GreetingService {
+@Path("/greet")
+public interface GreetingService {
+    
+    @GET
+    @Path("/hello/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    Response sayHello(@PathParam("name") String name);
 
-    public Response sayHello(String name) {
-        return Response.ok("Hello " + name).build();
-    }
+    @POST
+    @Path("/goodbye/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    Response sayGoodbye(@PathParam("name") String name);
 }
