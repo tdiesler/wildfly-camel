@@ -22,9 +22,12 @@ package org.wildfly.camel.test.cdi;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.spi.Container;
+import org.apache.camel.ServiceStatus;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.spi.CamelContextTracker;
 import org.jboss.arquillian.container.test.api.Deployer;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -32,23 +35,24 @@ import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.wildfly.camel.test.cdi.subC.InjectedContextBean;
+import org.wildfly.camel.test.cdi.subA.RouteBuilderE;
+import org.wildfly.camel.test.cdi.subA.RouteBuilderF;
 import org.wildfly.extension.camel.CamelAware;
 import org.wildfly.extension.camel.CamelContextRegistry;
 
 /**
  * Verifies that CDI proxied camel contexts do not become candidates for lifecycle management.
  */
-@RunWith(Arquillian.class)
 @CamelAware
+@RunWith(Arquillian.class)
 public class CDIContextCreationIntegrationTest {
 
     private static final String CDI_CONTEXT_A = "cdi-context-a.jar";
     private static final String CDI_CONTEXT_B = "cdi-context-b.jar";
+    private static final String CDI_CONTEXT_C = "cdi-context-c.jar";
 
     @ArquillianResource
     private Deployer deployer;
@@ -61,60 +65,81 @@ public class CDIContextCreationIntegrationTest {
         return ShrinkWrap.create(JavaArchive.class);
     }
 
-    @Deployment(name = CDI_CONTEXT_A, managed = false, testable = false)
-    public static JavaArchive createCdiTestJar() {
-        return createCamelCdiDeployment(CDI_CONTEXT_A);
-    }
+    @Test
+    public void testCDIContextCreation() throws InterruptedException {
+        try (FakeContextTracker tracker = new FakeContextTracker()) {
+            tracker.open();
 
-    @Deployment(name = CDI_CONTEXT_B, managed = false , testable = false)
-    public static JavaArchive createOtherCdiTestJar() {
-        return createCamelCdiDeployment(CDI_CONTEXT_B);
-    }
+            Assert.assertEquals(0, tracker.getContextCount());
+            Assert.assertEquals(0, contextRegistry.getCamelContexts().size());
 
-    private static JavaArchive createCamelCdiDeployment(String name) {
-        return ShrinkWrap.create(JavaArchive.class, name)
-            .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addPackage(InjectedContextBean.class.getPackage());
-    }
+            deployer.deploy(CDI_CONTEXT_A);
+            Assert.assertEquals(1, tracker.getContextCount());
+            Assert.assertEquals(1, contextRegistry.getCamelContexts().size());
 
-    @After
-    public void tearDown() {
-        Container.Instance.set(null);
+            deployer.deploy(CDI_CONTEXT_B);
+            Assert.assertEquals(2, tracker.getContextCount());
+            Assert.assertEquals(2, contextRegistry.getCamelContexts().size());
+
+            deployer.undeploy(CDI_CONTEXT_A);
+            deployer.undeploy(CDI_CONTEXT_B);
+
+            Assert.assertEquals(0, contextRegistry.getCamelContexts().size());
+        }
     }
 
     @Test
-    public void testCDIContextCreation() throws InterruptedException {
-        final FakeContainer container = new FakeContainer();
-        Container.Instance.set(container);
+    public void testManualComponentConfig() throws InterruptedException {
+        deployer.deploy(CDI_CONTEXT_C);
+        try {
+            Assert.assertEquals(1, contextRegistry.getCamelContexts().size());
+            CamelContext camelctx = contextRegistry.getCamelContext("contextF");
+            Assert.assertNotNull("Context not null", camelctx);
 
-        Assert.assertEquals(0, container.getContextCount());
-        Assert.assertEquals(0, contextRegistry.getCamelContexts().size());
-
-        deployer.deploy(CDI_CONTEXT_A);
-        Assert.assertEquals(1, container.getContextCount());
-        Assert.assertEquals(1, contextRegistry.getCamelContexts().size());
-
-        deployer.deploy(CDI_CONTEXT_B);
-        Assert.assertEquals(2, container.getContextCount());
-        Assert.assertEquals(2, contextRegistry.getCamelContexts().size());
-
-        deployer.undeploy(CDI_CONTEXT_A);
-        deployer.undeploy(CDI_CONTEXT_B);
-
-        Assert.assertEquals(0, contextRegistry.getCamelContexts().size());
+            Assert.assertEquals(ServiceStatus.Started, camelctx.getStatus());
+            
+            MockEndpoint mock = camelctx.getEndpoint("mock:result", MockEndpoint.class);
+            Assert.assertTrue("All messages received", mock.await(500, TimeUnit.MILLISECONDS));
+        } finally {
+            deployer.undeploy(CDI_CONTEXT_C);
+        }
     }
 
-    private static final class FakeContainer implements Container {
+    @Deployment(name = CDI_CONTEXT_A, managed = false, testable = false)
+    public static JavaArchive createTestJarA() {
+        JavaArchive archive = ShrinkWrap.create(JavaArchive.class, CDI_CONTEXT_A);
+        archive.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+        archive.addClasses(RouteBuilderE.class);
+        return archive;
+    }
+
+    @Deployment(name = CDI_CONTEXT_B, managed = false , testable = false)
+    public static JavaArchive createTestJarB() {
+        JavaArchive archive = ShrinkWrap.create(JavaArchive.class, CDI_CONTEXT_B);
+        archive.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+        archive.addClasses(RouteBuilderE.class);
+        return archive;
+    }
+
+    @Deployment(name = CDI_CONTEXT_C, managed = false , testable = false)
+    public static JavaArchive createTestJarC() {
+        JavaArchive archive = ShrinkWrap.create(JavaArchive.class, CDI_CONTEXT_C);
+        archive.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+        archive.addClasses(RouteBuilderF.class);
+        return archive;
+    }
+
+    private class FakeContextTracker extends CamelContextTracker {
         private List<CamelContext> camelContextList = new ArrayList<>();
 
         @Override
-        public void manage(CamelContext camelContext) {
+        public void contextCreated(CamelContext camelctx) {
             synchronized (camelContextList) {
-                camelContextList.add(camelContext);
+                camelContextList.add(camelctx);
             }
         }
 
-        public int getContextCount() {
+        int getContextCount() {
             synchronized (camelContextList) {
                 return camelContextList.size();
             }
