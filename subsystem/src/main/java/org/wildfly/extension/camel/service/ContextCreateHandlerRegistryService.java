@@ -27,6 +27,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.jboss.as.controller.ServiceVerificationHandler;
+import org.jboss.gravia.runtime.ModuleContext;
+import org.jboss.gravia.runtime.Runtime;
+import org.jboss.gravia.runtime.ServiceRegistration;
 import org.jboss.msc.service.AbstractService;
 import org.jboss.msc.service.ServiceBuilder;
 import org.jboss.msc.service.ServiceController;
@@ -34,6 +37,8 @@ import org.jboss.msc.service.ServiceRegistry;
 import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
+import org.jboss.msc.service.StopContext;
+import org.jboss.msc.value.InjectedValue;
 import org.wildfly.extension.camel.CamelConstants;
 import org.wildfly.extension.camel.ContextCreateHandler;
 import org.wildfly.extension.camel.ContextCreateHandlerRegistry;
@@ -42,6 +47,7 @@ import org.wildfly.extension.camel.handler.ContextValidationHandler;
 import org.wildfly.extension.camel.handler.ModelJAXBContextFactoryWrapperHandler;
 import org.wildfly.extension.camel.handler.ModuleClassLoaderAssociationHandler;
 import org.wildfly.extension.camel.handler.NamingContextAssociationHandler;
+import org.wildfly.extension.gravia.GraviaConstants;
 
 /**
  * The {@link ContextCreateHandlerRegistry} service
@@ -51,11 +57,15 @@ import org.wildfly.extension.camel.handler.NamingContextAssociationHandler;
  */
 public class ContextCreateHandlerRegistryService extends AbstractService<ContextCreateHandlerRegistry> {
 
+    private final InjectedValue<Runtime> injectedRuntime = new InjectedValue<>();
+
+    private ServiceRegistration<ContextCreateHandlerRegistry> registration;
     private ContextCreateHandlerRegistry createHandlerRegistry;
 
     public static ServiceController<ContextCreateHandlerRegistry> addService(ServiceTarget serviceTarget, ServiceVerificationHandler verificationHandler) {
         ContextCreateHandlerRegistryService service = new ContextCreateHandlerRegistryService();
         ServiceBuilder<ContextCreateHandlerRegistry> builder = serviceTarget.addService(CamelConstants.CONTEXT_CREATE_HANDLER_REGISTRY_SERVICE_NAME, service);
+        builder.addDependency(GraviaConstants.RUNTIME_SERVICE_NAME, Runtime.class, service.injectedRuntime);
         builder.addListener(verificationHandler);
         return builder.install();
     }
@@ -64,6 +74,17 @@ public class ContextCreateHandlerRegistryService extends AbstractService<Context
     public void start(StartContext startContext) throws StartException {
         ServiceRegistry serviceRegistry = startContext.getController().getServiceContainer();
         createHandlerRegistry = new ContextCreateHandlerRegistryImpl(serviceRegistry, startContext.getChildTarget());
+
+        Runtime runtime = injectedRuntime.getValue();
+        ModuleContext syscontext = runtime.getModuleContext();
+        registration = syscontext.registerService(ContextCreateHandlerRegistry.class, createHandlerRegistry, null);
+    }
+
+    @Override
+    public void stop(StopContext context) {
+        if (registration != null) {
+            registration.unregister();
+        }
     }
 
     @Override
@@ -115,6 +136,9 @@ public class ContextCreateHandlerRegistryService extends AbstractService<Context
                 List<ContextCreateHandler> handlers = handlerMapping.get(classsLoader);
                 if (handlers != null) {
                     handlers.remove(handler);
+                    if (handlers.isEmpty()) {
+                        handlerMapping.remove(classsLoader);
+                    }
                 }
             }
         }
@@ -123,6 +147,13 @@ public class ContextCreateHandlerRegistryService extends AbstractService<Context
         public void removeContextCreateHandlers(ClassLoader classsLoader) {
             synchronized (handlerMapping) {
                 handlerMapping.remove(classsLoader);
+            }
+        }
+
+        @Override
+        public boolean containsKey(ClassLoader classLoader) {
+            synchronized (handlerMapping) {
+                return handlerMapping.containsKey(classLoader);
             }
         }
     }
