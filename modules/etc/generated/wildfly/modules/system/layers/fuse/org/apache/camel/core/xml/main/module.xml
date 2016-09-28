@@ -4,7 +4,7 @@
     <property name="jboss.api" value="private" />
   </properties>
   <resources>
-    <resource-root path="camel-core-xml-2.15.1.redhat-621164.jar" />
+    <resource-root path="camel-core-xml-2.15.1.redhat-621165.jar" />
   </resources>
   <dependencies>
     <module name="javax.xml.bind.api" />
