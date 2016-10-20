@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.fusesource.camel.component.sap">
   <resources>
-    <resource-root path="camel-sap-6.3.0.redhat-194.jar" />
+    <resource-root path="camel-sap-6.3.0.redhat-195.jar" />
   </resources>
   <dependencies>
     <module name="com.sap.conn.jco" />
