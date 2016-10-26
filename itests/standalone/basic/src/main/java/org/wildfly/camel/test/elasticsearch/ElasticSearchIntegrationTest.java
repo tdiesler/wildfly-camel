@@ -47,12 +47,14 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
 @RunWith(Arquillian.class)
+@Ignore("[ENTESB-6217] camel-elasticsearch cannot use EAP provided com.fasterxml.jackson")
 public class ElasticSearchIntegrationTest {
 
     private static final Path DATA_PATH = Paths.get("target", "elasticsearch", "data");

@@ -34,10 +34,6 @@
         <include artifact=":jackson-annotations" />
     </module>
     
-    <module name="com.fasterxml.jackson.core.jackson-core" skip="true">
-        <include artifact=":jackson-core" />
-    </module>
-    
     <module name="com.fasterxml.jackson.core.jackson-databind" skip="true">
         <include artifact=":jackson-databind" />
     </module>
