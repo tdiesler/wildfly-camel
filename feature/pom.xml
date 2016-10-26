@@ -36,7 +36,7 @@
 
     <properties>
         <wildfly.patch>${project.build.directory}/${project.artifactId}-${project.version}</wildfly.patch>
-        <wildfly.module.dir>${project.build.directory}/wildfly-${version.wildfly}/modules/system/layers/base</wildfly.module.dir>
+        <wildfly.module.dir>${project.build.directory}/jboss-eap-7.0/modules/system/layers/base</wildfly.module.dir>
         <smartics.module.dir>${project.build.directory}/wildfly-patch/modules/system/layers/fuse</smartics.module.dir>
     </properties>
     
@@ -476,7 +476,7 @@
         </dependency>
         
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-feature-pack</artifactId>
             <type>zip</type>
             <exclusions>
@@ -548,7 +548,7 @@
                     </modules>
                     <dependencyExcludes>
                         <exclude>
-                            <groupId>org.wildfly</groupId>
+                            <groupId>org.jboss.eap</groupId>
                             <artifactId>wildfly-feature-pack</artifactId>
                         </exclude>
                         <exclude>
@@ -595,7 +595,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wildfly</groupId>
+                                    <groupId>org.jboss.eap</groupId>
                                     <artifactId>wildfly-feature-pack</artifactId>
                                     <version>${version.wildfly}</version>
                                     <type>zip</type>
@@ -616,7 +616,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wildfly</groupId>
+                                    <groupId>org.jboss.eap</groupId>
                                     <artifactId>wildfly-dist</artifactId>
                                     <version>${version.wildfly}</version>
                                     <type>tar.gz</type>
