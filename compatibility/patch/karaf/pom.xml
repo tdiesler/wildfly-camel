@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>compatibility-patch</artifactId>
-        <version>4.3.0.redhat-700001-SNAPSHOT</version>
+        <version>4.3.0.redhat-1</version>
     </parent>
 
     <name>Compatibility :: Patch :: Karaf</name>
