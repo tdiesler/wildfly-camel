@@ -7,6 +7,6 @@
     <artifact name="${com.fasterxml.jackson.dataformat:jackson-dataformat-smile}" />
   </resources>
   <dependencies>
-    <module name="com.fasterxml.jackson.core.jackson-core" />
+    <module name="com.fasterxml.jackson.core.jackson-core" slot="2.8" />
   </dependencies>
 </module>

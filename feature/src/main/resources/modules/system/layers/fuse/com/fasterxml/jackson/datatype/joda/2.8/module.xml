@@ -7,8 +7,8 @@
     <artifact name="${com.fasterxml.jackson.datatype:jackson-datatype-joda}" />
   </resources>
   <dependencies>
-    <module name="com.fasterxml.jackson.core.jackson-annotations" />
     <module name="com.fasterxml.jackson.core.jackson-core" />
+    <module name="com.fasterxml.jackson.core.jackson-annotations" />
     <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="org.joda.time" />
   </dependencies>
