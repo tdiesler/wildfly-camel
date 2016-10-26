@@ -79,6 +79,13 @@
         <include artifact="com.google.code.gson:gson" />
     </module>
 
+    <module name="com.google.guava" slot="19.0">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":guava" />
+    </module>
+
     <module name="com.jcraft.jsch">
         <properties>
             <property name="jboss.api" value="private"/>

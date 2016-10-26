@@ -70,8 +70,8 @@
                 <version>${version.jboss.arquillian}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-parent</artifactId>
+                <groupId>org.jboss.eap</groupId>
+                <artifactId>jboss-eap-parent</artifactId>
                 <version>${version.wildfly}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -214,6 +214,10 @@
         <repository>
             <id>jboss-public-repository</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>jboss-early-access-repository</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.0-rhel-7-maven-build/latest/maven</url>
         </repository>
     </repositories>
 </project>
