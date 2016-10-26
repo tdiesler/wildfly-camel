@@ -38,11 +38,24 @@
         </dependencies>
     </module>
     
-    <module name="com.fasterxml.jackson.dataformat.cbor">
+    <module name="com.fasterxml.jackson.core.jackson-core" inherit-slot="false" slot="2.8">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":jackson-core" />
+    </module>
+    
+    <module name="com.fasterxml.jackson.dataformat.cbor" inherit-slot="false" slot="2.8">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-dataformat-cbor" />
+        <apply-to-dependencies skip="true">
+            <include module="com.fasterxml.jackson.core.jackson-core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+        </dependencies>
     </module>
 
     <module name="com.fasterxml.jackson.dataformat.smile">
@@ -60,6 +73,12 @@
             <include module="org.codehaus.woodstox.core" />
         </apply-to-dependencies>
         <include artifact=":jackson-dataformat-xml" />
+        <apply-to-dependencies skip="true">
+            <include module="com.fasterxml.jackson.core.jackson-core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+        </dependencies>
     </module>
 
     <module name="com.fasterxml.jackson.dataformat.yaml">
@@ -67,6 +86,12 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-dataformat-yaml" />
+        <apply-to-dependencies skip="true">
+            <include module="com.fasterxml.jackson.core.jackson-core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+        </dependencies>
     </module>
 
     <module name="com.fasterxml.jackson.datatype.joda">
@@ -74,6 +99,12 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact=":jackson-datatype-joda" />
+        <apply-to-dependencies skip="true">
+            <include module="com.fasterxml.jackson.core.jackson-core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+        </dependencies>
     </module>
 
     <module name="com.google.code.gson">
@@ -106,6 +137,12 @@
         <include artifact="com.netflix.hystrix:hystrix-serialization" />
         <include artifact="io.reactivex:rxjava" />
         <include artifact="org.hdrhistogram:HdrHistogram" />
+        <apply-to-dependencies skip="true">
+            <include module="com.fasterxml.jackson.core.jackson-core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-core" />
+        </dependencies>
     </module>
 
     <module name="com.rometools.rome">

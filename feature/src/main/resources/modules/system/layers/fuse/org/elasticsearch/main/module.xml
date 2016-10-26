@@ -19,8 +19,8 @@
         <include path="sun/misc/Unsafe" />
       </imports>
     </module>
-    <module name="com.fasterxml.jackson.core.jackson-core" />
-    <module name="com.fasterxml.jackson.dataformat.cbor" />
+    <module name="com.fasterxml.jackson.core.jackson-core" slot="2.8" />
+    <module name="com.fasterxml.jackson.dataformat.cbor" slot="2.8" />
     <module name="com.fasterxml.jackson.dataformat.smile" />
     <module name="com.fasterxml.jackson.dataformat.yaml" />
     <module name="com.google.guava" />

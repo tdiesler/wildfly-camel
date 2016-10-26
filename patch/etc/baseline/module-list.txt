@@ -1,5 +1,6 @@
 /args4j/main/args4j-2.0.31.jar
-/com/fasterxml/jackson/dataformat/cbor/main/jackson-dataformat-cbor-2.5.4.jar
+/com/fasterxml/jackson/core/jackson-core/2.8/jackson-core-2.8.3.jar
+/com/fasterxml/jackson/dataformat/cbor/2.8/jackson-dataformat-cbor-2.5.4.jar
 /com/fasterxml/jackson/dataformat/smile/main/jackson-dataformat-smile-2.5.4.jar
 /com/fasterxml/jackson/dataformat/xml/main/jackson-dataformat-xml-2.5.4.jar
 /com/fasterxml/jackson/dataformat/yaml/main/jackson-dataformat-yaml-2.5.4.jar
