@@ -93,7 +93,7 @@
             <artifactId>jbossws-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-undertow</artifactId>
         </dependency>
         <dependency>

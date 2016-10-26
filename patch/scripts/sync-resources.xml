@@ -24,7 +24,7 @@
     <!-- Setup                                                              -->
     <!-- ================================================================== -->
     <property name="output.dir" value="${basedir}/target" />
-    <property name="wildfly.home.dir" value="${output.dir}/wildfly-camel-${version.wildfly}" />
+    <property name="wildfly.home.dir" value="${output.dir}/wildfly-camel-${project.version}" />
     <property name="wildfly.config.dir" value="${wildfly.home.dir}/standalone/configuration" />
 
     <!-- ================================================================== -->
@@ -33,7 +33,7 @@
     <target name="build">
 
         <!-- Store file patterns for generated modules -->
-        <fileset id="wildfly.dist" dir="${output.dir}/wildfly-${version.wildfly}">
+        <fileset id="wildfly.dist" dir="${output.dir}/jboss-eap-${version.wildfly}">
     	<exclude name="modules/layers.conf"/>
     	</fileset>
         <echo file="${output.dir}/wildfly-dist-patterns">${toString:wildfly.dist}</echo>

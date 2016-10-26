@@ -34,7 +34,8 @@
 
     <!-- Properties -->
     <properties>
-        <jboss.home>${project.build.directory}/wildfly-${version.wildfly}</jboss.home>
+        <jboss.server.name>jboss-eap-${version.wildfly}</jboss.server.name>
+        <jboss.home>${project.build.directory}/${jboss.server.name}</jboss.home>
         <server.config>standalone.xml</server.config>
         <test.skip>true</test.skip>
     </properties>
@@ -116,7 +117,7 @@
                                     <phase>generate-resources</phase>
                                     <configuration>
                                         <config-file>src/main/resources/server-provisioning.xml</config-file>
-                                        <server-name>wildfly-${version.wildfly}</server-name>
+                                        <server-name>${jboss.server.name}</server-name>
                                     </configuration>
                                 </execution>
                             </executions>
