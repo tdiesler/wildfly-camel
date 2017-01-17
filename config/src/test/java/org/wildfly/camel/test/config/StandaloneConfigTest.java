@@ -69,6 +69,7 @@ public class StandaloneConfigTest extends ConfigTestSupport {
         Element element = ConfigSupport.findChildElement(doc.getRootElement(), "system-properties", domain);
         Assert.assertNotNull("system-properties not null", element);
         assertElementWithAttributeValueNotNull(element, "property", "name", "hawtio.realm", domain);
+        assertElementWithAttributeValueNotNull(element, "property", "name", "hawtio.proxyWhitelist", domain);
 
         // Verify weld
         List<Element> profiles = ConfigSupport.findProfileElements(doc, domain);
@@ -144,6 +145,7 @@ public class StandaloneConfigTest extends ConfigTestSupport {
         // Verify system-properties removed
         Element element = ConfigSupport.findChildElement(doc.getRootElement(), "system-properties", domain);
         Assert.assertNotNull("system-properties not null", element);
+        assertElementWithAttributeValueNull(element, "property", "name", "hawtio.proxyWhitelist", domain);
         assertElementWithAttributeValueNull(element, "property", "name", "hawtio.realm", domain);
         assertElementWithAttributeValueNull(element, "property", "name", "hawtio.offline", domain);
         assertElementWithAttributeValueNull(element, "property", "name", "hawtio.authenticationEnabled", domain);

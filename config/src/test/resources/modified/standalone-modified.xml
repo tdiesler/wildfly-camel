@@ -29,6 +29,7 @@
         <property name="hawtio.authenticationEnabled" value="true" />
         <property name="hawtio.offline" value="true" />
         <property name="hawtio.realm" value="hawtio-domain" />
+        <property name="hawtio.proxyWhitelist" value="localhost, 127.0.0.1" />
     </system-properties>
     <management>
         <security-realms>
