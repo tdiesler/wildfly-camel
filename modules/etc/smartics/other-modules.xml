@@ -98,7 +98,7 @@
         </dependencies>
     </module>
 
-    <module name="com.google.guava" slot="19.0">
+    <module name="com.google.guava" slot="18.0">
         <include artifact=":guava" />
     </module>
 

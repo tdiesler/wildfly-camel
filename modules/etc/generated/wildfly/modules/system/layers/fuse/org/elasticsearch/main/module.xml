@@ -23,7 +23,7 @@
     <module name="com.fasterxml.jackson.dataformat.cbor" />
     <module name="com.fasterxml.jackson.dataformat.smile" />
     <module name="com.fasterxml.jackson.dataformat.yaml" />
-    <module name="com.google.guava" slot="19.0" />
+    <module name="com.google.guava" slot="18.0" />
     <module name="org.apache.lucene" slot="5.4" />
     <module name="org.joda.time" slot="2.9" />
   </dependencies>
