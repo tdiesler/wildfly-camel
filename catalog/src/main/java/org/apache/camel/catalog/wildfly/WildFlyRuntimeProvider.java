@@ -16,100 +16,18 @@
  */
 package org.apache.camel.catalog.wildfly;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.camel.catalog.CamelCatalog;
-import org.apache.camel.catalog.CatalogHelper;
+import org.apache.camel.catalog.DefaultRuntimeProvider;
 import org.apache.camel.catalog.RuntimeProvider;
 
 /**
  * A WildFly based {@link RuntimeProvider} which only includes the supported Camel components, data formats, and languages
  * for WildFly.
  */
-public class WildFlyRuntimeProvider implements RuntimeProvider {
-
-    private static final String COMPONENT_DIR = "org/apache/camel/catalog/components";
-    private static final String DATAFORMAT_DIR = "org/apache/camel/catalog/dataformats";
-    private static final String LANGUAGE_DIR = "org/apache/camel/catalog/languages";
-    private static final String COMPONENTS_CATALOG = "org/apache/camel/catalog/components.properties";
-    private static final String DATA_FORMATS_CATALOG = "org/apache/camel/catalog/dataformats.properties";
-    private static final String LANGUAGE_CATALOG = "org/apache/camel/catalog/languages.properties";
-
-    private CamelCatalog camelCatalog;
-
-    @Override
-    public CamelCatalog getCamelCatalog() {
-        return camelCatalog;
-    }
-
-    @Override
-    public void setCamelCatalog(CamelCatalog camelCatalog) {
-        this.camelCatalog = camelCatalog;
-    }
+public class WildFlyRuntimeProvider extends DefaultRuntimeProvider {
 
     @Override
     public String getProviderName() {
         return "wildfly";
-    }
-
-    @Override
-    public String getComponentJSonSchemaDirectory() {
-        return COMPONENT_DIR;
-    }
-
-    @Override
-    public String getDataFormatJSonSchemaDirectory() {
-        return DATAFORMAT_DIR;
-    }
-
-    @Override
-    public String getLanguageJSonSchemaDirectory() {
-        return LANGUAGE_DIR;
-    }
-
-    @Override
-    public List<String> findComponentNames() {
-        List<String> names = new ArrayList<String>();
-        InputStream is = camelCatalog.getVersionManager().getResourceAsStream(COMPONENTS_CATALOG);
-        if (is != null) {
-            try {
-                CatalogHelper.loadLines(is, names);
-            } catch (IOException e) {
-                // ignore
-            }
-        }
-        return names;
-    }
-
-    @Override
-    public List<String> findDataFormatNames() {
-        List<String> names = new ArrayList<String>();
-        InputStream is = camelCatalog.getVersionManager().getResourceAsStream(DATA_FORMATS_CATALOG);
-        if (is != null) {
-            try {
-                CatalogHelper.loadLines(is, names);
-            } catch (IOException e) {
-                // ignore
-            }
-        }
-        return names;
-    }
-
-    @Override
-    public List<String> findLanguageNames() {
-        List<String> names = new ArrayList<String>();
-        InputStream is = camelCatalog.getVersionManager().getResourceAsStream(LANGUAGE_CATALOG);
-        if (is != null) {
-            try {
-                CatalogHelper.loadLines(is, names);
-            } catch (IOException e) {
-                // ignore
-            }
-        }
-        return names;
     }
 
 }

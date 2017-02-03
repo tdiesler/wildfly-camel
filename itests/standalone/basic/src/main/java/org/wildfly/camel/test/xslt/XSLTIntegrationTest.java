@@ -39,7 +39,6 @@ import org.jboss.gravia.utils.IOUtils;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.xslt.subA.OrderBean;
@@ -115,7 +114,6 @@ public class XSLTIntegrationTest {
     }
 
     @Test
-    @Ignore("[ENTESB-6531] OneTimeXMLReader can only be used once")
     public void testXSLTTransform() throws Exception {
 
         CamelContext camelctx = new DefaultCamelContext();
