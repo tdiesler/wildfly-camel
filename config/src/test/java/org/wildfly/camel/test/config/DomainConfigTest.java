@@ -48,7 +48,7 @@ public class DomainConfigTest {
         Element element = ConfigSupport.findChildElement(doc.getRootElement(), "server-groups", NS_DOMAINS);
         Assert.assertNotNull("server-groups not null", element);
         element = ConfigSupport.findElementWithAttributeValue(element, "server-group", "name", "camel-server-group", NS_DOMAINS);
-        Assert.assertNotNull("camel-server-group not null", element);
+        Assert.assertNull("camel-server-group is null", element);
 
         XMLOutputter output = new XMLOutputter();
         output.setFormat(Format.getRawFormat());
