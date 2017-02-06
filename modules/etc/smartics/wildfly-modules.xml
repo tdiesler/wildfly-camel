@@ -206,14 +206,6 @@
         <include artifact="xml-resolver:xml-resolver" />
     </module>
 
-    <module name="org.codehaus.jackson.jackson-core-asl" skip="true">
-        <include artifact=":jackson-core-asl" />
-    </module>
-    
-    <module name="org.codehaus.jackson.jackson-mapper-asl" skip="true">
-        <include artifact=":jackson-mapper-asl" />
-    </module>
-    
     <module name="org.codehaus.jettison" skip="true">
         <include artifact=":jettison" />
     </module>

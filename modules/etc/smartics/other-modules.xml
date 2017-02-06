@@ -510,4 +510,21 @@
         </properties>
         <include artifact="org.scala-lang.modules:(.*)" />
     </module>
+
+    <module name="org.codehaus.jackson.jackson-mapper-asl" slot="1.9">
+        <include artifact="org.codehaus.jackson:jackson-mapper-asl" />
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="org.codehaus.jackson.jackson-core-asl" slot="1.9" />
+            <module name="org.joda.time" slot="2.9" />
+        </dependencies>
+    </module>
+
+    <module name="org.codehaus.jackson.jackson-core-asl" slot="1.9">
+        <include artifact="org.codehaus.jackson:jackson-core-asl" />
+        <dependencies>
+            <module name="javax.api"/>
+        </dependencies>
+    </module>
+
 </modules>
