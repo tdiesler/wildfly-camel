@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>4.5.0.redhat-2-SNAPSHOT</version>
+    <version>4.5.0-2.fuse-000001</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildfly-extras/wildfly-camel</url>
@@ -46,7 +46,7 @@
     <properties>
         
         <!-- Camel versions -->
-        <version.apache.camel>2.19.0-SNAPSHOT</version.apache.camel>
+        <version.apache.camel>2.19.0.fuse-000008</version.apache.camel>
         <version.apache.lucene>5.5.2</version.apache.lucene>
 
         <!-- WildFly versions -->
@@ -823,7 +823,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
@@ -835,9 +834,7 @@
             </activation>
             <modules>
                 <module>archetypes</module>
-                <module>docs</module>
                 <module>patch</module>
-                <module>compatibility</module>
             </modules>
         </profile>
     </profiles>
