@@ -71,7 +71,7 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>2.7.0.redhat-2</version.fusepatch>
+        <version.fusepatch>2.7.0.redhat-3</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.4.67</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
