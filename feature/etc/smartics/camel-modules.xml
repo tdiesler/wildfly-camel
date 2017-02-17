@@ -123,7 +123,12 @@
             <include module="io.netty.parts" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="org.apache.avro" export="true"/>
+            <module name="org.apache.avro" export="true">
+                <exports>
+                    <exclude path="org/apache/avro/util/internal" />
+                    <exclude path="avro/shaded**" />
+                </exports>
+            </module>
             <module name="org.slf4j" />
         </dependencies>
     </module>
@@ -134,6 +139,7 @@
         <include artifact="org.apache.camel:camel-barcode" />
         <apply-to-dependencies skip="true">
             <include module="com.beust.jcommander" />
+            <include module="com.github.jai-imageio" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
@@ -1603,11 +1609,12 @@
 
     <module name="org.apache.camel.component.zipkin">
         <include artifact="org.apache.camel:camel-zipkin" />
-        <include artifact="com.github.kristofa:brave-core" />
-        <include artifact="com.github.kristofa:brave-spancollector-scribe" />
         <include artifact="org.apache.thrift:libthrift" />
+        <include artifact="io.zipkin.java:zipkin" />
+        <include artifact="io.zipkin.brave:brave-core" />
+        <include artifact="io.zipkin.brave:brave-spancollector-scribe" />
+        <include artifact="io.zipkin.reporter:zipkin-reporter" />
         <apply-to-dependencies skip="true">
-            <include module="com.github.kristofa" />
             <include module="com.google.auto.value" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
@@ -1622,6 +1629,7 @@
             <exclude path="com/github/kristofa/brave/internal**" />
             <exclude path="com/twitter**" />
             <exclude path="org/apache/thrift**" />
+            <exclude path="zipkin/**" />
         </exports>
     </module>
 

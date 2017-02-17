@@ -36,7 +36,7 @@
 	
     <!-- Properties -->
     <properties>
-    	<jboss.server.name>wildfly-${version.wildfly}</jboss.server.name>
+    	<jboss.server.name>jboss-eap-${version.wildfly}</jboss.server.name>
         <jboss.home>${project.build.directory}/wildfly-patch</jboss.home>
         <wildfly.module.dir>${project.build.directory}/${jboss.server.name}/modules/system/layers/base</wildfly.module.dir>
         <smartics.module.dir>${jboss.home}/modules/system/layers/fuse</smartics.module.dir>

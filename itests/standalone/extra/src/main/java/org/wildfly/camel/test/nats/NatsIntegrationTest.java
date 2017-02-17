@@ -23,6 +23,8 @@ import java.util.Properties;
 
 import io.nats.client.Connection;
 import io.nats.client.ConnectionFactory;
+import io.nats.client.Nats;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.builder.RouteBuilder;
@@ -100,7 +102,7 @@ public class NatsIntegrationTest {
             }
 
             Properties opts = new Properties();
-            opts.put("servers", "nats://localhost:4222");
+            opts.put(Nats.PROP_URL, "nats://localhost:4222");
 
             ConnectionFactory factory = new ConnectionFactory(opts);
             Connection connection = factory.createConnection();

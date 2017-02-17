@@ -35,7 +35,8 @@
 
     <!-- Properties -->
     <properties>
-        <jboss.home>${project.build.directory}/wildfly-${version.wildfly}</jboss.home>
+        <jboss.server.name>jboss-eap-${version.wildfly}</jboss.server.name>
+        <jboss.home>${project.build.directory}/${jboss.server.name}</jboss.home>
         <jvmArgs>-Xmx1G -XX:MaxPermSize=512m -Djava.net.preferIPv4Stack=true</jvmArgs>
         <jvmDebugArgs>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</jvmDebugArgs>
     </properties>
@@ -106,7 +107,7 @@
                             </goals>
                             <configuration>
                                 <config-file>src/main/resources/server-provisioning.xml</config-file>
-                                <server-name>wildfly-${version.wildfly}</server-name>
+                                <server-name>${jboss.server.name}</server-name>
                             </configuration>
                         </execution>
                     </executions>

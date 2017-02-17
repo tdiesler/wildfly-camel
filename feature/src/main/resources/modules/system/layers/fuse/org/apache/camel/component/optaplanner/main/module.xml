@@ -5,7 +5,7 @@
     <artifact name="${org.optaplanner:optaplanner-core}" />
   </resources>
   <dependencies>
-    <module name="com.google.guava" />
+    <module name="com.google.guava" slot="19.0" />
     <module name="com.thoughtworks.xstream" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
