@@ -36,7 +36,8 @@
 	
     <!-- Properties -->
     <properties>
-        <jboss.home>${project.build.directory}/wildfly-camel-${version.wildfly}</jboss.home>
+        <jboss.server.name>wildfly-camel-${project.version}</jboss.server.name>
+        <jboss.home>${project.build.directory}/${jboss.server.name}</jboss.home>
     </properties>
     
     <!-- Dependencies -->
@@ -68,7 +69,7 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <config-file>scripts/wildfly-provisioning.xml</config-file>
-                            <server-name>wildfly-${version.wildfly}</server-name>
+                            <server-name>jboss-eap-${version.wildfly}</server-name>
                         </configuration>
                     </execution>
                     <execution>
@@ -79,7 +80,7 @@
                         <phase>generate-resources</phase>
                         <configuration>
                             <config-file>scripts/wildfly-camel-provisioning.xml</config-file>
-                            <server-name>wildfly-camel-${version.wildfly}</server-name>
+                            <server-name>${jboss.server.name}</server-name>
                         </configuration>
                     </execution>
                 </executions>

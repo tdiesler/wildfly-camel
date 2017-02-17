@@ -77,6 +77,20 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="com.google.code.gson:gson" />
+        <dependencies>
+            <module name="sun.jdk">
+                <imports>
+                    <include path="sun/misc/Unsafe" />
+                </imports>
+            </module>
+        </dependencies>
+    </module>
+
+    <module name="com.google.guava" slot="19.0">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":guava" />
     </module>
 
     <module name="com.jcraft.jsch">
@@ -471,6 +485,9 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="org.apache.zookeeper:zookeeper" />
+        <include artifact="org.apache.curator:curator-client" />
+        <include artifact="org.apache.curator:curator-framework" />
+        <include artifact="org.apache.curator:curator-recipes" />
         <apply-to-dependencies skip="true">
             <include module="io.netty.parts" />
             <include module="jline" />
@@ -520,6 +537,7 @@
             <include module="org.osgi.compendium" />
         </apply-to-dependencies>
         <dependencies>
+            <module name="javax.api" />
             <module name="com.thoughtworks.xstream" />
         </dependencies>
     </module>

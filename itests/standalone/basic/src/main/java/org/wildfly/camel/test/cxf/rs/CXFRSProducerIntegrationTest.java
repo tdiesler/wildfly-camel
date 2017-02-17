@@ -35,6 +35,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.types.GreetingService;
@@ -44,6 +45,7 @@ import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
 @RunWith(Arquillian.class)
+@Ignore("[ENTESB-6565] Camel release not usable on EAP")
 public class CXFRSProducerIntegrationTest {
 
     static final String SIMPLE_WAR = "simple-rs-endpoint.war";
