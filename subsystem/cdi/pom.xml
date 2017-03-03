@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-subsystem</artifactId>
-        <version>4.5.0.redhat-4-SNAPSHOT</version>
+        <version>4.5.0-4.fuse-000001</version>
     </parent>
 
     <name>Wildfly Camel :: Subsystem :: CDI</name>
