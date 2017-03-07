@@ -139,7 +139,12 @@
             <include module="io.netty.parts" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="org.apache.avro" export="true"/>
+            <module name="org.apache.avro" export="true">
+                <exports>
+                    <exclude path="org/apache/avro/util/internal" />
+                    <exclude path="avro/shaded**" />
+                </exports>
+            </module>
             <module name="org.slf4j" />
         </dependencies>
     </module>
@@ -154,24 +159,7 @@
         <dependencies>
             <module name="com.amazon.aws" export="true" >
                 <exports>
-                    <exclude path="com/amazonaws/auth/internal" />
-                    <exclude path="com/amazonaws/auth/policy/internal" />
-                    <exclude path="com/amazonaws/auth/profile/internal**" />
                     <exclude path="com/amazonaws/http**" />
-                    <exclude path="com/amazonaws/internal**" />
-                    <exclude path="com/amazonaws/metrics/internal**" />
-                    <exclude path="com/amazonaws/retry/internal" />
-                    <exclude path="com/amazonaws/services/apigateway/internal" />
-                    <exclude path="com/amazonaws/services/dynamodbv2/document/internal" />
-                    <exclude path="com/amazonaws/services/glacier/internal" />
-                    <exclude path="com/amazonaws/services/logs/internal" />
-                    <exclude path="com/amazonaws/services/machinelearning/internal" />
-                    <exclude path="com/amazonaws/services/route53/internal" />
-                    <exclude path="com/amazonaws/services/s3/internal**" />
-                    <exclude path="com/amazonaws/services/s3/transfer/internal" />
-                    <exclude path="com/amazonaws/services/securitytoken/internal" />
-                    <exclude path="com/amazonaws/services/simpledb/internal" />
-                    <exclude path="com/amazonaws/services/sqs/internal" />
                 </exports>
             </module>
             <module name="org.slf4j" />
@@ -184,6 +172,7 @@
         <include artifact="org.apache.camel:camel-barcode" />
         <apply-to-dependencies skip="true">
             <include module="com.beust.jcommander" />
+            <include module="com.github.jai-imageio" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
@@ -498,6 +487,7 @@
         <include artifact="org.apache.camel:camel-dropbox" />
         <include artifact="com.dropbox.core:dropbox-core-sdk" />
         <apply-to-dependencies skip="true">
+            <include module="com.squareup.okhttp"/>
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
@@ -1280,6 +1270,7 @@
 
     <module name="org.apache.camel.component.protobuf">
         <include artifact="org.apache.camel:camel-protobuf" />
+        <include artifact=":protobuf-java-util" />
         <include artifact=":protobuf-java" />
         <apply-to-dependencies skip="true">
             <include module="org.apache.camel.apt" />
@@ -1436,6 +1427,67 @@
         </dependencies>
     </module>
 
+    <module name="org.apache.camel.script.groovy">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.codehaus.groovy:groovy-all" />
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="org.slf4j"/>
+        </dependencies>
+        <exports>
+            <exclude path="groovy/json/internal"/>
+            <exclude path="groovyjarjarantlr/**"/>
+            <exclude path="groovyjarjarasm/**"/>
+            <exclude path="org/codehaus"/>
+        </exports>
+    </module>
+    
+    <module name="org.apache.camel.script.python">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.python:jython" />
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="org.slf4j"/>
+        </dependencies>
+    </module>
+    
+    <module name="org.apache.camel.script.rhino">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact=":scriptengines-javascript" />
+        <include artifact=":livetribe-jsr223" />
+        <include artifact="rhino:js" />
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="org.slf4j"/>
+        </dependencies>
+    </module>
+
+    <module name="org.apache.camel.script.jruby">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.jruby:jruby-complete" />
+        <include artifact=":scriptengines-jruby" />
+        <include artifact="bsf:bsf" />
+        <apply-to-dependencies skip="true">
+            <include module="org.apache.camel.script.rhino" />
+            <include module="org.jruby.extras" />
+            <include module="org.jruby" />
+            <include module="ant" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="org.slf4j"/>
+            <module name="sun.jdk"/>
+        </dependencies>
+    </module>
+    
     <module name="org.apache.camel.component.servicenow">
         <include artifact="org.apache.camel:camel-servicenow"/>
         <apply-to-dependencies skip="true">
@@ -1586,6 +1638,7 @@
         <dependencies>
             <module name="javax.api"/>
             <module name="org.slf4j"/>
+            <module name="org.apache.commons.lang" />
             <module name="org.springframework.ldap" export="true" />
         </dependencies>
     </module>
@@ -1812,7 +1865,7 @@
         </dependencies>
         <exports>
             <exclude path="io/vertx" />
-            <exclude path="vertx-java/template" />
+            <exclude path="vertx-core/template" />
         </exports>
     </module>
 
@@ -1890,11 +1943,12 @@
 
     <module name="org.apache.camel.component.zipkin">
         <include artifact="org.apache.camel:camel-zipkin" />
-        <include artifact="com.github.kristofa:brave-core" />
-        <include artifact="com.github.kristofa:brave-spancollector-scribe" />
         <include artifact="org.apache.thrift:libthrift" />
+        <include artifact="io.zipkin.java:zipkin" />
+        <include artifact="io.zipkin.brave:brave-core" />
+        <include artifact="io.zipkin.brave:brave-spancollector-scribe" />
+        <include artifact="io.zipkin.reporter:zipkin-reporter" />
         <apply-to-dependencies skip="true">
-            <include module="com.github.kristofa" />
             <include module="com.google.auto.value" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
@@ -1909,6 +1963,7 @@
             <exclude path="com/github/kristofa/brave/internal**" />
             <exclude path="com/twitter**" />
             <exclude path="org/apache/thrift**" />
+            <exclude path="zipkin/**" />
         </exports>
     </module>
 
@@ -1922,67 +1977,6 @@
         <dependencies>
             <module name="javax.api" />
             <module name="org.apache.zookeeper" export="true" />
-            <module name="org.slf4j"/>
-        </dependencies>
-    </module>
-
-    <module name="org.apache.camel.script.groovy">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.codehaus.groovy:groovy-all" />
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="org.slf4j"/>
-        </dependencies>
-        <exports>
-            <exclude path="groovy/json/internal"/>
-            <exclude path="groovyjarjarantlr/**"/>
-            <exclude path="groovyjarjarasm/**"/>
-            <exclude path="org/codehaus"/>
-        </exports>
-    </module>
-    
-    <module name="org.apache.camel.script.jruby">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.jruby:jruby-complete" />
-        <include artifact=":scriptengines-jruby" />
-        <include artifact="bsf:bsf" />
-        <apply-to-dependencies skip="true">
-            <include module="org.apache.camel.script.rhino" />
-            <include module="org.jruby.extras" />
-            <include module="org.jruby" />
-            <include module="ant" />
-        </apply-to-dependencies>
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="org.slf4j"/>
-            <module name="sun.jdk"/>
-        </dependencies>
-    </module>
-    
-    <module name="org.apache.camel.script.python">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.python:jython" />
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="org.slf4j"/>
-        </dependencies>
-    </module>
-    
-    <module name="org.apache.camel.script.rhino">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":scriptengines-javascript" />
-        <include artifact=":livetribe-jsr223" />
-        <include artifact="rhino:js" />
-        <dependencies>
-            <module name="javax.api"/>
             <module name="org.slf4j"/>
         </dependencies>
     </module>

@@ -48,10 +48,6 @@
         <include artifact=":jackson-module-jaxb-annotations" />
     </module>
     
-    <module name="com.google.guava" skip="true">
-        <include artifact=":guava" />
-    </module>
-
     <module name="io.undertow.core" skip="true">
         <include artifact=":undertow-core" />
     </module>

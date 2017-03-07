@@ -25,6 +25,7 @@
 	^org/apache/activemq/camel(.*)
 	^org/apache/avro(.*)
 	^org/apache/camel(.*)
+	^org/apache/curator(.*)
 	^org/apache/cxf
 	^org/apache/cxf/binding(.*)
 	^org/apache/cxf/bus(.*)
