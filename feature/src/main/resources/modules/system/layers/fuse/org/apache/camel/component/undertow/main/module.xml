@@ -10,6 +10,7 @@
     <module name="org.slf4j" />
     <module name="io.undertow.core" />
     <module name="javax.xml.bind.api" />
+    <module name="org.apache.camel.component.http.common" />
     <module name="org.apache.camel.core" />
   </dependencies>
 </module>
