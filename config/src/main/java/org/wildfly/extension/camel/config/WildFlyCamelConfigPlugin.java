@@ -30,11 +30,13 @@ import org.wildfly.extras.config.LayerConfig;
 
 public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
 
-    public static final Namespace NS_DOMAIN_40 = Namespace.getNamespace("urn:jboss:domain:4.0");
-    public static final Namespace NS_DOMAIN_41 = Namespace.getNamespace("urn:jboss:domain:4.1");
+    public static final Namespace NS_DOMAIN_50 = Namespace.getNamespace("urn:jboss:domain:5.0");
     public static final Namespace NS_DOMAIN_42 = Namespace.getNamespace("urn:jboss:domain:4.2");
+    public static final Namespace NS_DOMAIN_41 = Namespace.getNamespace("urn:jboss:domain:4.1");
+    public static final Namespace NS_DOMAIN_40 = Namespace.getNamespace("urn:jboss:domain:4.0");
 
     public static final Namespace[] NS_DOMAINS = { 
+            NS_DOMAIN_50, 
             NS_DOMAIN_42, 
             NS_DOMAIN_41, 
             NS_DOMAIN_40 };
@@ -54,15 +56,17 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
     }
 
     @Override
-    public void applyStandaloneConfigChange(ConfigContext context, boolean enable) {
+    public boolean applyStandaloneConfigChange(ConfigContext context, boolean enable) {
         updateExtension(context, enable);
         updateSystemProperties(context, enable);
         updateSubsystem(context, enable);
         updateSecurityDomain(context, enable);
+        return true;
     }
 
     @Override
-    public void applyDomainConfigChange(ConfigContext context, boolean enable) {
+    public boolean applyDomainConfigChange(ConfigContext context, boolean enable) {
+        return false;
     }
 
     private static void updateExtension(ConfigContext context, boolean enable) {

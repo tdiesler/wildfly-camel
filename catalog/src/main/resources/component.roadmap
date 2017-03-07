@@ -58,6 +58,7 @@ mvel
 mybatis
 nats
 netty4
+olingo2
 optaplanner
 paho
 pdf
@@ -150,7 +151,29 @@ nagios
 websocket
 
 [undecided]
+aws-kinesis-firehose
+azure-blob
+azure-queue
+bonita
+couchbase
+drill
+elasticsearch5
+google-pubsub
 http4s
+mongodb-gridfs
+mongodb3
+openstack-cinder
+openstack-glance
+openstack-keystone
+openstack-neutron
+openstack-nova
+openstack-swift
+reactive-streams
+rest-swagger
+sjms2
+tika
+zendesk
+zookeeper-master
 
 [rejected]
 apns
@@ -174,7 +197,6 @@ ganglia
 geocoder
 gora
 grape
-gridfs
 guava-eventbus
 hdfs
 hipchat
@@ -186,7 +208,6 @@ javaspace
 jcr
 jetty
 jing
-jira
 jolt
 jt400
 kestrel

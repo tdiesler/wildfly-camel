@@ -68,6 +68,10 @@
         <include artifact=":jackson-module-scala(.*)" />
     </module>
     
+    <module name="com.github.jai-imageio" skip="true">
+        <include artifact="com.github.jai-imageio:(.*)" />
+    </module>
+    
     <module name="com.github.jnr" skip="true">
         <include artifact="com.github.jnr:jnr-(.*)" />
         <include artifact="com.github.jnr:jffi" />
