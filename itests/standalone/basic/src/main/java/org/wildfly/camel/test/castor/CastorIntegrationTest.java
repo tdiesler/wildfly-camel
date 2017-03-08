@@ -29,8 +29,10 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.camel.test.common.EnvironmentUtils;
 import org.wildfly.camel.test.common.types.Customer;
 
 @RunWith(Arquillian.class)
@@ -41,7 +43,7 @@ public class CastorIntegrationTest {
     @Deployment
     public static JavaArchive createdeployment() {
         final JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "castor-dataformat-tests");
-        archive.addClasses(Customer.class);
+        archive.addClasses(Customer.class, EnvironmentUtils.class);
         archive.addAsResource("castor/castor-mapping.xml", "castor-mapping.xml");
         return archive;
     }
@@ -49,6 +51,8 @@ public class CastorIntegrationTest {
     @Test
     public void testMarshal() throws Exception {
 
+        Assume.assumeFalse("[ENTESB-6646] CastorIntegrationTest fails on AIX", EnvironmentUtils.isAIX());
+        
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
