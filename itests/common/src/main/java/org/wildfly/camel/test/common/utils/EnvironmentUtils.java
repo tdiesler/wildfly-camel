@@ -20,6 +20,10 @@
 
 package org.wildfly.camel.test.common.utils;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Locale;
+
 import org.jboss.modules.Module;
 import org.jboss.modules.ModuleIdentifier;
 import org.jboss.modules.ModuleLoadException;
@@ -33,8 +37,70 @@ import org.jboss.modules.ModuleLoader;
  */
 public final class EnvironmentUtils {
 
+    private static final boolean AIX;
+    private static final boolean LINUX;
+    private static final boolean MAC;
+    private static final boolean WINDOWS;
+    private static final boolean VENDOR_IBM_JDK;
+    private static final String JAVA;
+    private static final Path JAVA_HOME;
+
+    static {
+        final String os = getOSName();
+        AIX = os.equals("aix");
+        LINUX = os.equals("linux");
+        MAC = os.startsWith("mac");
+        WINDOWS = os.contains("win");
+
+        VENDOR_IBM_JDK = System.getProperty("java.vendor").startsWith("IBM");
+
+        String javaExecutable = "java";
+        if (WINDOWS) {
+            javaExecutable = "java.exe";
+        }
+        JAVA = javaExecutable;
+
+        String javaHome = System.getenv("JAVA_HOME");
+        if (javaHome == null) {
+            javaHome = System.getProperty("java.home");
+        }
+        JAVA_HOME = Paths.get(javaHome);
+    }
+
+    public static String getOSName() {
+        return System.getProperty("os.name").toLowerCase(Locale.ROOT);
+    }
+
     // hide ctor
     private EnvironmentUtils() {
+    }
+
+    public static boolean isAIX() {
+        return AIX;
+    }
+
+    public static boolean isLinux() {
+        return LINUX;
+    }
+
+    public static boolean isMac() {
+        return MAC;
+    }
+
+    public static boolean isWindows() {
+        return WINDOWS;
+    }
+
+    public static boolean isUnknown() {
+        return !AIX && !LINUX && !MAC && !WINDOWS;
+    }
+
+    public static boolean isIbmJDK() {
+        return VENDOR_IBM_JDK;
+    }
+
+    public static Path getJavaExecutablePath() {
+        return Paths.get(JAVA_HOME.toString(), "bin", JAVA);
     }
 
     public static boolean switchyardSupport() {

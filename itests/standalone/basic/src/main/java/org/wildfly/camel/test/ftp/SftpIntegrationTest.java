@@ -51,9 +51,11 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.camel.test.common.utils.EnvironmentUtils;
 import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
@@ -75,6 +77,7 @@ public class SftpIntegrationTest {
 
         final WebArchive archive = ShrinkWrap.create(WebArchive.class, "camel-ftp-tests.war");
         archive.addAsResource(new StringAsset(System.getProperty("basedir")), FILE_BASEDIR);
+        archive.addClasses(EnvironmentUtils.class);
         archive.addAsLibraries(libraryDependencies);
         addJarHolding(archive, AvailablePortFinder.class);
         return archive;
@@ -120,6 +123,8 @@ public class SftpIntegrationTest {
     @Test
     public void testSendFile() throws Exception {
 
+        Assume.assumeFalse("[ENTESB-6648] SftpIntegrationTest fails on AIX", EnvironmentUtils.isAIX());
+        
         File testFile = resolvePath(FTP_ROOT_DIR).resolve("test.txt").toFile();
 
         CamelContext camelctx = new DefaultCamelContext();

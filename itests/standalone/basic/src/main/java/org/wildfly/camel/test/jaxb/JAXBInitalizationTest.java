@@ -29,8 +29,10 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.camel.test.common.utils.EnvironmentUtils;
 import org.wildfly.extension.camel.CamelAware;
 
 /**
@@ -43,12 +45,16 @@ public class JAXBInitalizationTest {
 
     @Deployment
     public static WebArchive deployment() {
-        return ShrinkWrap.create(WebArchive.class, "jaxb-initialization-tests.war");
+        WebArchive archive = ShrinkWrap.create(WebArchive.class, "jaxb-initialization-tests.war");
+        archive.addClasses(EnvironmentUtils.class);
+        return archive;
     }
 
     @Test
     public void testDumpingCamelModel() throws Exception {
 
+        Assume.assumeFalse("[ENTESB-6649] JAXBInitalizationTest fails on AIX", EnvironmentUtils.isAIX());
+        
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override

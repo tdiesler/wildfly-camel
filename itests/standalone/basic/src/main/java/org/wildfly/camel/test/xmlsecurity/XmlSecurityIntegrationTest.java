@@ -20,6 +20,17 @@
 
 package org.wildfly.camel.test.xmlsecurity;
 
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.SecureRandom;
+
+import javax.naming.InitialContext;
+import javax.xml.crypto.KeySelector;
+import javax.xml.crypto.dsig.keyinfo.KeyInfo;
+import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.Message;
 import org.apache.camel.ProducerTemplate;
@@ -33,22 +44,13 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.w3c.dom.Node;
+import org.wildfly.camel.test.common.utils.EnvironmentUtils;
 import org.wildfly.extension.camel.CamelAware;
-
-import javax.naming.InitialContext;
-import javax.xml.crypto.KeySelector;
-import javax.xml.crypto.dsig.keyinfo.KeyInfo;
-import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
-
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.SecureRandom;
 
 @CamelAware
 @RunWith(Arquillian.class)
@@ -65,6 +67,7 @@ public class XmlSecurityIntegrationTest {
     @Deployment
     public static WebArchive createDeployment() {
         final WebArchive archive = ShrinkWrap.create(WebArchive.class, "camel-test.war");
+        archive.addClasses(EnvironmentUtils.class);
         return archive;
     }
 
@@ -83,8 +86,10 @@ public class XmlSecurityIntegrationTest {
 
     @Test
     public void testXmlSigning() throws Exception {
-        CamelContext camelctx = new DefaultCamelContext();
 
+        Assume.assumeFalse("[ENTESB-6650] XmlSecurityIntegrationTest fails on AIX", EnvironmentUtils.isAIX());
+        
+        CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
@@ -108,8 +113,10 @@ public class XmlSecurityIntegrationTest {
 
     @Test
     public void testXmlVerifySigning() throws Exception {
-        CamelContext camelctx = new DefaultCamelContext();
 
+        Assume.assumeFalse("[ENTESB-6650] XmlSecurityIntegrationTest fails on AIX", EnvironmentUtils.isAIX());
+        
+        CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
