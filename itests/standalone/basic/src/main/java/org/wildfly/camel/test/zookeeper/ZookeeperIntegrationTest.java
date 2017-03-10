@@ -32,9 +32,11 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.camel.test.common.EnvironmentUtils;
 import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
@@ -46,7 +48,7 @@ public class ZookeeperIntegrationTest {
     @Deployment
     public static JavaArchive deployment() {
         final JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "zookeeper-integration-tests");
-        archive.addClasses(EmbeddedZookeeperServer.class);
+        archive.addClasses(EmbeddedZookeeperServer.class, EnvironmentUtils.class);
         return archive;
     }
 
@@ -65,6 +67,8 @@ public class ZookeeperIntegrationTest {
     @Test
     public void testZookeeperEndpoint() throws Exception {
 
+        Assume.assumeFalse("[ENTESB-6558] ZookeeperIntegrationTest fails on Windows", EnvironmentUtils.isWindows());
+        
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
