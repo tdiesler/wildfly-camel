@@ -483,6 +483,8 @@ org/apache/camel/component/salesforce/api/dto
 org/apache/camel/component/salesforce/api/dto/analytics
 org/apache/camel/component/salesforce/api/dto/analytics/reports
 org/apache/camel/component/salesforce/api/dto/bulk
+org/apache/camel/component/salesforce/api/dto/composite
+org/apache/camel/component/salesforce/api/utils
 org/apache/camel/component/servlet
 org/apache/camel/component/servlet/osgi
 org/apache/camel/component/smpp
