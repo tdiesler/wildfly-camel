@@ -111,12 +111,10 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
             addProperty(element, propertiesByName, "hawtio.authenticationEnabled", "true", domainNamespace);
             addProperty(element, propertiesByName, "hawtio.offline", "true", domainNamespace);
             addProperty(element, propertiesByName, "hawtio.realm", "hawtio-domain", domainNamespace);
-            addProperty(element, propertiesByName, "hawtio.proxyWhitelist", "localhost, 127.0.0.1", domainNamespace);
         } else {
             removeProperty(propertiesByName, "hawtio.authenticationEnabled");
             removeProperty(propertiesByName, "hawtio.offline");
             removeProperty(propertiesByName, "hawtio.realm");
-            removeProperty(propertiesByName, "hawtio.proxyWhitelist");
         }
     }
 
