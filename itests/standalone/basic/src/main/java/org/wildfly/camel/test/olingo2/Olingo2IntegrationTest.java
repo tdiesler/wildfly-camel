@@ -37,6 +37,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.olingo2.subA.Olingo2TestServlet;
@@ -44,6 +45,7 @@ import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
 @RunWith(Arquillian.class)
+@Ignore("[ENTESB-6642] Camel CXF not compatible with EAP provided JAX-RS API")
 public class Olingo2IntegrationTest {
 
     private static final String OLINGO_SERVICE_URI = "http://localhost:8080/olingo-server/MyODataSample.svc/";
