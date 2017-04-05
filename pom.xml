@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>4.6.0.redhat-1-SNAPSHOT</version>
+    <version>4.6.0-1.fuse-000002</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildfly-extras/wildfly-camel</url>
@@ -75,7 +75,7 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>2.7.0.redhat-4</version.fusepatch>
+        <version.fusepatch>2.7.0-5.fuse-000007</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.5.0</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
@@ -856,7 +856,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
@@ -868,7 +867,6 @@
             </activation>
             <modules>
                 <module>archetypes</module>
-                <module>docs</module>
                 <module>patch</module>
             </modules>
         </profile>
