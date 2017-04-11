@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>4.6.0.redhat-1-SNAPSHOT</version>
+    <version>4.6.0-1.fuse-000006</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildfly-extras/wildfly-camel</url>
@@ -45,7 +45,7 @@
     <properties>
         
         <!-- Camel versions -->
-        <version.apache.camel>2.19.0.fuse-000035</version.apache.camel>
+        <version.apache.camel>2.19.0.fuse-000036</version.apache.camel>
         <version.apache.activemq>5.14.3</version.apache.activemq>
         <version.apache.lucene>5.5.2</version.apache.lucene>
 
@@ -75,9 +75,9 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>2.7.0.redhat-5</version.fusepatch>
+        <version.fusepatch>2.7.0-6.fuse-000001</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>1.5.0</version.hawtio>
+        <version.hawtio>2.0.0.fuse-000001</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
         <version.jboss.arquillian.core>1.1.10.Final</version.jboss.arquillian.core>
         <version.jboss.arquillian.osgi>2.1.0.Final</version.jboss.arquillian.osgi>
@@ -862,7 +862,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
@@ -874,7 +873,6 @@
             </activation>
             <modules>
                 <module>archetypes</module>
-                <module>docs</module>
                 <module>patch</module>
             </modules>
         </profile>
