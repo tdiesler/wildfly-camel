@@ -37,12 +37,14 @@
     <!-- Properties -->
     <properties>
         <!-- Standalone image properties -->
-        <docker.image.name>wildflyext/wildfly-camel</docker.image.name>
-        <docker.image.from>jboss/wildfly:${version.wildfly}</docker.image.from>
+        <docker.image.name>jboss-fuse/eap71-camel</docker.image.name>
+        <docker.image.from>jboss-eap-7-tech-preview/eap71</docker.image.from>
+        <jboss.home>/opt/eap</jboss.home>
 
-        <!-- S2I image properties -->
+        <!-- S2I image properties 
         <docker.image.s2i.from>openshift/wildfly-101-centos7</docker.image.s2i.from>
         <docker.image.s2i.name>wildflyext/s2i-wildfly-camel</docker.image.s2i.name>
+        -->
 
         <docker.image.maintainer>Thomas Diesler tdiesler@redhat.com</docker.image.maintainer>
         <docker.image.version>latest</docker.image.version>
@@ -81,12 +83,14 @@
                                 <image>
                                     <name>${docker.image.name}:${project.version}</name>
                                 </image>
+                                <!-- 
                                 <image>
                                     <name>${docker.image.s2i.name}:${docker.image.version}</name>
                                 </image>
                                 <image>
                                     <name>${docker.image.s2i.name}:${project.version}</name>
                                 </image>
+                                -->
                             </images>
                         </configuration>
                     </execution>
@@ -115,7 +119,7 @@
                                         </cmd>
                                         <entryPoint>
                                             <exec>
-                                                <args>/opt/jboss/wildfly/bin/entrypoint.sh</args>
+                                                <args>${jboss.home}/bin/entrypoint.sh</args>
                                             </exec>
                                         </entryPoint>
                                         <ports>
@@ -126,10 +130,10 @@
                                             <tag>${project.version}</tag>
                                         </tags>
                                         <runCmds>
-                                            <run>chmod -R g+rw /opt/jboss/wildfly</run>
+                                            <run>chmod -R g+rw ${jboss.home}</run>
                                         </runCmds>
                                         <assembly>
-                                            <basedir>/opt/jboss/wildfly</basedir>
+                                            <basedir>${jboss.home}</basedir>
                                             <descriptor>${project.basedir}/standalone/assembly-artifacts.xml</descriptor>
                                             <user>jboss:0:0</user>
                                         </assembly>
@@ -144,6 +148,7 @@
                                         -->
                                     </build>
                                 </image>
+                                <!-- 
                                 <image>
                                     <name>${docker.image.s2i.name}</name>
                                     <build>
@@ -164,11 +169,12 @@
                                             <user>default:root:1001</user>
                                         </assembly>
                                         <runCmds>
-                                            <run>/wildfly/bin/fuseconfig.sh --configs camel --enable</run>
+                                            <run>/wildfly/bin/fuseconfig.sh - -configs camel - -enable</run>
                                         </runCmds>
                                         <optimise>true</optimise>
                                     </build>
                                 </image>
+                                -->
                             </images>
                         </configuration>
                     </execution>

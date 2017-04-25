@@ -34,7 +34,7 @@
 
     <!-- Properties -->
     <properties>
-        <docker.image.name>wildflyext/wildfly-camel</docker.image.name>
+        <docker.image.name>jboss-fuse/eap71-camel</docker.image.name>
         <wildfly.mgmt.username>admin</wildfly.mgmt.username>
         <wildfly.mgmt.password>admin</wildfly.mgmt.password>
     </properties>
