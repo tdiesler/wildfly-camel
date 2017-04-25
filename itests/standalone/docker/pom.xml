@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-itests-standalone</artifactId>
-        <version>4.6.0.redhat-1-SNAPSHOT</version>
+        <version>4.6.0.redhat-1</version>
     </parent>
 
     <name>Wildfly Camel :: Testsuite :: Standalone :: Docker</name>
@@ -115,7 +115,7 @@
                                 images.add(matcher.group(1))
                             }
 
-                            images.each { image ->
+                            images.each { image -&gt;
                                 if ("docker images -q ${image}".execute().text.isEmpty()) {
                                     println "[DOCKER] Pulling Docker image: ${image}"
                                     "docker pull ${image}".execute().waitForProcessOutput(System.out, System.err)
