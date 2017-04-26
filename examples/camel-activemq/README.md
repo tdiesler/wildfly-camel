@@ -1,7 +1,7 @@
 Camel Activemq Example
 ----------------------
 
-This example demonstrates using the camel-activemq component with WildFly Camel susbsystem to produce and consume JMS messages.
+This example demonstrates using the camel-activemq component with JBoss Fuse on EAP to produce and consume JMS messages.
 
 In this example, a Camel route consumes files from ${JBOSS_JOME}/standalone/data/orders and places their contents onto an ActiveMQ embedded broker JMS queue
 named 'OrdersQueue'. A second route consumes any messages from 'OrdersQueue' and through a simple [content based router](http://camel.apache.org/content-based-router.html)
@@ -11,7 +11,7 @@ Prerequisites
 -------------
 
 * Maven
-* An application server with the wildfly-camel subsystem installed
+* An application server with JBoss Fuse installed
 
 Running the example
 -------------------
@@ -62,9 +62,3 @@ Undeploy
 --------
 
 To undeploy the example run `mvn clean -Pdeploy`.
-
-Learn more
-----------
-
-Additional camel-activemq documentation can be
-found at the [WildFly Camel User Guide](http://wildfly-extras.github.io/wildfly-camel/#_camel_activemq) site.
