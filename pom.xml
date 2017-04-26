@@ -52,7 +52,7 @@
 
         <!-- WildFly versions -->
         <!-- http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven/org/jboss/eap/wildfly-dist -->
-        <version.wildfly>7.1.0.Alpha1-redhat-16</version.wildfly>
+        <version.wildfly>7.1.0.Beta1-redhat-1</version.wildfly>
         <version.wildfly.arquillian>2.1.0.Alpha1</version.wildfly.arquillian>
         <version.wildfly.fasterxml.jackson>2.8.5</version.wildfly.fasterxml.jackson>
         <version.wildfly.infinispan>8.2.5.Final-redhat-1</version.wildfly.infinispan>
@@ -76,7 +76,7 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>2.7.0.redhat-6</version.fusepatch>
+        <version.fusepatch>2.7.0.redhat-7</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.5.0</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>

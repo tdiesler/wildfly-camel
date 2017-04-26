@@ -38,7 +38,7 @@
     <properties>
         <!-- Standalone image properties -->
         <docker.image.name>jboss-fuse/eap71-camel</docker.image.name>
-        <docker.image.from>jboss-eap-7-tech-preview/eap71</docker.image.from>
+        <docker.image.from>brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/jboss-eap-7-tech-preview/eap71</docker.image.from>
         <jboss.home>/opt/eap</jboss.home>
 
         <!-- S2I image properties 
