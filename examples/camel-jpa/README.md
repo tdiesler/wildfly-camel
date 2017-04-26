@@ -1,7 +1,7 @@
 Camel JPA example
 -----------------
 
-This example demonstrates using the camel-jpa component with WildFly Camel susbsystem to persist entities to an in-memory database.
+This example demonstrates using the camel-jpa component with JBoss Fuse on EAP to persist entities to an in-memory database.
 
 In this example, a Camel route consumes XML files from ${JBOSS_HOME}/standalone/data/customers. Camel then uses JAXB to
 unmarshal the data to a Customer entity. This entity is then passed to a jpa endpoint and is persisted to a 'customer' database
@@ -11,7 +11,7 @@ Prerequisites
 -------------
 
 * Maven
-* An application server with the wildfly-camel subsystem installed
+* An application server with JBoss Fuse installed
 
 Running the example
 -------------------
@@ -50,8 +50,3 @@ Undeploy
 --------
 
 To undeploy the example run `mvn clean -Pdeploy`.
-
-Learn more
-----------
-
-Additional camel-jpa documentation can be found at the [WildFly Camel User Guide](http://wildfly-extras.github.io/wildfly-camel/#_camel_jpa) site.
