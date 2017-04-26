@@ -43,7 +43,7 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
 
     public static final Namespace NS_CAMEL = Namespace.getNamespace("urn:jboss:domain:camel:1.0");
     public static final Namespace NS_LOGGING = Namespace.getNamespace("urn:jboss:domain:logging:3.0");
-    public static final Namespace NS_SECURITY = Namespace.getNamespace("urn:jboss:domain:security:1.2");
+    public static final Namespace NS_SECURITY = Namespace.getNamespace("urn:jboss:domain:security:3.0");
 
     @Override
     public String getConfigName() {
