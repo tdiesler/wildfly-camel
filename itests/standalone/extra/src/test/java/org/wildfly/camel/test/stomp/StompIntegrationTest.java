@@ -44,6 +44,7 @@ import org.jboss.as.arquillian.api.ServerSetupTask;
 import org.jboss.as.arquillian.container.ManagementClient;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.utils.JMSUtils;
@@ -55,6 +56,7 @@ import org.wildfly.extension.camel.CamelAware;
 @CamelAware
 @RunWith(Arquillian.class)
 @ServerSetup({ StompIntegrationTest.JmsQueueSetup.class })
+@Ignore("[#2271] Stopm integration fails on EAP-7.1")
 public class StompIntegrationTest {
 
     private static final int STOMP_PORT = 61613;
