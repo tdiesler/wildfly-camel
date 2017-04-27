@@ -697,8 +697,8 @@
 /org/igniterealtime/main/smack-resolver-javax-4.2.2.jar
 /org/igniterealtime/main/smack-sasl-javax-4.2.2.jar
 /org/igniterealtime/main/smack-tcp-4.2.2.jar
-/org/infinispan/jcache/main/infinispan-jcache-8.2.8.Final.jar
-/org/infinispan/jcache/main/infinispan-jcache-commons-8.2.8.Final.jar
+/org/infinispan/jcache/main/infinispan-jcache-8.2.8.Final-redhat-1.jar
+/org/infinispan/jcache/main/infinispan-jcache-commons-8.2.8.Final-redhat-1.jar
 /org/infinispan/query/dsl/main/infinispan-query-dsl-9.1.4.Final.jar
 /org/iq80/leveldb/main/leveldb-0.9.jar
 /org/iq80/leveldb/main/leveldb-api-0.9.jar
