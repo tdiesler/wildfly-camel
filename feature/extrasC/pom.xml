@@ -59,6 +59,10 @@
                     </modules>
                     <dependencyExcludes>
                         <exclude>
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api-java9</artifactId>
+                        </exclude>
+                        <exclude>
                             <groupId>xmlpull</groupId>
                             <artifactId>xmlpull</artifactId>
                         </exclude>

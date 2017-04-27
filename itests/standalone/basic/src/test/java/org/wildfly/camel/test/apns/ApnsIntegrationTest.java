@@ -36,6 +36,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.apns.subA.ApnsUtils;
@@ -47,6 +48,7 @@ import static org.wildfly.camel.test.apns.subA.ApnsUtils.TEST_GATEWAY_PORT;
 
 @CamelAware
 @RunWith(Arquillian.class)
+@Ignore("[#2292] APNS server uses hard coded ports")
 public class ApnsIntegrationTest {
 
     private static final String FAKE_TOKEN = "19308314834701ACD8313AEBD92AEFDE192120371FE13982392831701318B943";
