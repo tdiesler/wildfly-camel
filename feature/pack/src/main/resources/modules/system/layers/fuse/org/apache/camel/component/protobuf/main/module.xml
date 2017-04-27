@@ -12,7 +12,7 @@
       </imports>
     </module>
     <module name="com.google.code.gson" />
-    <module name="com.google.guava" />
+    <module name="com.google.guava" slot="19.0" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
     <module name="org.apache.commons.io" />

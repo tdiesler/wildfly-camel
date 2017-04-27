@@ -160,13 +160,17 @@
     <module name="org.apache.camel.component.avro">
         <include artifact="org.apache.camel:camel-avro" />
         <apply-to-dependencies skip="true">
-            <include module="io.netty.skipped" />
             <include module="org.apache.avro.ipc" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="org.apache.avro" export="true"/>
+            <module name="org.apache.avro" export="true">
+                <exports>
+                    <exclude path="org/apache/avro/util/internal" />
+                    <exclude path="avro/shaded**" />
+                </exports>
+            </module>
             <module name="org.slf4j" />
         </dependencies>
     </module>
@@ -823,7 +827,6 @@
             <module name="javax.interceptor.api" />
             <module name="org.apache.camel.component.netty4"/>
             <module name="org.apache.mina.core"/>
-            <module name="io.netty"/>
             <module name="org.slf4j"/>
         </dependencies>
         <exports>
@@ -1335,13 +1338,11 @@
     <module name="org.apache.camel.component.netty4">
         <include artifact="org.apache.camel:camel-netty4" />
         <apply-to-dependencies skip="true">
-            <include module="io.netty.skipped" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
-            <module name="io.netty" slot="4.1"/>
             <module name="org.slf4j" />
         </dependencies>
     </module>
@@ -2077,7 +2078,7 @@
         <dependencies>
             <module name="javax.api"/>
             <module name="org.slf4j"/>
-            <module name="io.netty" slot="4.1"/>
+            <module name="io.netty"/>
         </dependencies>
         <exports>
             <exclude path="io/vertx" />
@@ -2214,6 +2215,7 @@
         <include artifact="io.zipkin.reporter:zipkin-reporter" />
         <apply-to-dependencies skip="true">
             <include module="com.google.auto.value" />
+            <include module="com.google.code.findbugs" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
@@ -2234,7 +2236,6 @@
     <module name="org.apache.camel.component.zookeeper">
         <include artifact="org.apache.camel:camel-zookeeper" />
         <apply-to-dependencies skip="true">
-            <include module="io.netty.skipped" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>

@@ -48,8 +48,9 @@
         <include artifact=":jackson-module-jaxb-annotations" />
     </module>
     
-    <module name="com.google.guava" skip="true">
-        <include artifact=":guava" />
+
+    <module name="io.netty"  skip="true">
+        <include artifact="io.netty:netty-all" />
     </module>
 
     <module name="io.undertow.core" skip="true">

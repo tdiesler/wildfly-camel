@@ -36,10 +36,9 @@
 
     <!-- Source Control -->
     <scm>
-        <connection>scm:git:https://github.com/wildfly-extras/wildfly-camel.git</connection>
-        <developerConnection>scm:git:https://github.com/wildfly-extras/wildfly-camel.git</developerConnection>
-        <url>http://github.com/wildfly-extras/wildfly-camel</url>
-        <tag>HEAD</tag>
+        <connection>scm:git:https://github.com/jboss-fuse/wildfly-camel.git</connection>
+        <developerConnection>scm:git:https://github.com/jboss-fuse/wildfly-camel.git</developerConnection>
+        <url>http://github.com/jboss-fuse/wildfly-camel</url>
     </scm>
 
     <!-- Properties -->
@@ -50,10 +49,11 @@
         <version.apache.lucene>5.5.2</version.apache.lucene>
 
         <!-- WildFly versions -->
-        <version.wildfly>10.1.0.Final</version.wildfly>
-        <version.wildfly.arquillian>1.0.2.Final</version.wildfly.arquillian>
-        <version.wildfly.fasterxml.jackson>2.7.4</version.wildfly.fasterxml.jackson>
-        <version.wildfly.infinispan>8.2.4.Final</version.wildfly.infinispan>
+        <!-- http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven/org/jboss/eap/wildfly-dist -->
+        <version.wildfly>7.1.0.GA-redhat-6</version.wildfly>
+        <version.wildfly.arquillian>2.1.0.Final</version.wildfly.arquillian>
+        <version.wildfly.fasterxml.jackson>2.8.9</version.wildfly.fasterxml.jackson> <!-- not all dataformats, ~types in brew -->
+        <version.wildfly.infinispan>8.2.8.Final-redhat-1</version.wildfly.infinispan>
         
         <!-- Other versions -->
         <version.apache.ds>2.0.0-M21</version.apache.ds>
@@ -78,7 +78,7 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>2.6.0</version.fusepatch>
+        <version.fusepatch>2.8.0.fuse-000020</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.5.3</version.hawtio>
         <version.io.netty40>4.0.45.Final</version.io.netty40>
@@ -128,7 +128,7 @@
         <version-xmlbeans-maven-plugin>2.3.3</version-xmlbeans-maven-plugin>
 
         <!-- GitHub -->
-        <github.namespace>wildfly-extras</github.namespace>
+        <github.namespace>jboss-fuse</github.namespace>
         <github.project>wildfly-camel</github.project>
     </properties>
 
@@ -480,29 +480,29 @@
 
             <!-- WildFly -->
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-parent</artifactId>
+                <groupId>org.jboss.eap</groupId>
+                <artifactId>jboss-eap-parent</artifactId>
                 <version>${version.wildfly}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>org.wildfly.arquillian</groupId>
+                <groupId>org.jboss.eap.arquillian</groupId>
                 <artifactId>wildfly-arquillian-container-domain-managed</artifactId>
                 <version>${version.wildfly.arquillian}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly.arquillian</groupId>
+                <groupId>org.jboss.eap.arquillian</groupId>
                 <artifactId>wildfly-arquillian-container-managed</artifactId>
                 <version>${version.wildfly.arquillian}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly.arquillian</groupId>
+                <groupId>org.jboss.eap.arquillian</groupId>
                 <artifactId>wildfly-arquillian-container-remote</artifactId>
                 <version>${version.wildfly.arquillian}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly.arquillian</groupId>
+                <groupId>org.jboss.eap.arquillian</groupId>
                 <artifactId>wildfly-arquillian-protocol-jmx</artifactId>
                 <version>${version.wildfly.arquillian}</version>
             </dependency>
@@ -797,16 +797,32 @@
     <!-- Repositories -->
     <repositories>
         <repository>
-            <id>central</id>
-            <name>Central Repository</name>
+            <id>Maven Central</id>
             <url>http://repo.maven.apache.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
-            <id>jboss-public-repository</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <id>JBoss Public</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+          <id>Early Access Repository</id>
+          <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>JBoss EA</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
@@ -833,7 +849,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
@@ -845,7 +860,6 @@
             </activation>
             <modules>
                 <module>archetypes</module>
-                <module>docs</module>
                 <module>patch</module>
             </modules>
         </profile>
