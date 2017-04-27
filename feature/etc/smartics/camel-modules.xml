@@ -139,7 +139,12 @@
             <include module="io.netty.parts" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="org.apache.avro" export="true"/>
+            <module name="org.apache.avro" export="true">
+                <exports>
+                    <exclude path="org/apache/avro/util/internal" />
+                    <exclude path="avro/shaded**" />
+                </exports>
+            </module>
             <module name="org.slf4j" />
         </dependencies>
     </module>
