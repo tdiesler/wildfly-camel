@@ -12,7 +12,7 @@
   <dependencies>
     <module name="javax.api" />
     <module name="org.apache.log4j" />
-    <module name="com.google.guava" />
+    <module name="com.google.guava" slot="19.0" />
     <module name="io.netty" slot="3.10" />
     <module name="org.slf4j" />
   </dependencies>

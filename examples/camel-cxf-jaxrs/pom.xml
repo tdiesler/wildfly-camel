@@ -37,7 +37,9 @@
     <!-- Properties -->
     <properties>
         <docker.image.name>wildflyext/example-camel-rest</docker.image.name>
+        <docker.image.from>jboss-fuse/eap71-camel</docker.image.from>
         <docker.removeAll>true</docker.removeAll>
+        <jboss.home>/opt/eap</jboss.home>
     </properties>
 
     <!-- Dependencies -->    
@@ -143,9 +145,9 @@
                                         <image>
                                             <name>${docker.image.name}</name>
                                             <build>
-                                                <from>wildflyext/wildfly-camel</from>
+                                                <from>${docker.image.from}</from>
                                                 <assembly>
-                                                    <basedir>/wildfly/standalone/deployments</basedir>
+                                                    <basedir>${jboss.home}/standalone/deployments</basedir>
                                                     <descriptorRef>artifact</descriptorRef>
                                                 </assembly>
                                             </build>
