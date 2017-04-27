@@ -36,13 +36,13 @@
     
     <!-- Properties -->
     <properties>
-        <docker.image.name>wildflyext/wildfly-camel</docker.image.name>
-        <docker.image.from>openshift/wildfly-101-centos7:latest</docker.image.from>
+        <docker.image.name>jboss-fuse/eap71-camel</docker.image.name>
+        <docker.image.from>brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/jboss-eap-7-tech-preview/eap71</docker.image.from>
         <docker.image.maintainer>Thomas Diesler tdiesler@redhat.com</docker.image.maintainer>
         <docker.image.version>latest</docker.image.version>
         <docker.removeAll>true</docker.removeAll>
         <server.config>standalone-camel.xml</server.config>
-        <server.home>/wildfly</server.home>
+        <server.home>/opt/eap</server.home>
     </properties>
 	
     <!-- Dependencies -->
@@ -114,7 +114,7 @@
                                         <assembly>
                                             <basedir>/</basedir>
                                             <descriptor>${project.basedir}/s2i/assembly-artifacts.xml</descriptor>
-                                            <user>default:root:default</user>
+                                            <user>jboss:jboss:jboss</user>
                                         </assembly>
                                         <runCmds>
                                             <run>${server.home}/bin/fuseconfig.sh --configs camel --enable</run>
