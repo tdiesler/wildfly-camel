@@ -18,7 +18,7 @@
     <module name="com.fasterxml.jackson.dataformat.yaml" />
     <module name="com.fasterxml.jackson.datatype.joda" />
     <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider" />
-    <module name="com.google.guava" />
+    <module name="com.google.guava" slot="19.0" />
     <module name="javax.servlet.api" />
     <module name="javax.validation.api" />
     <module name="javax.ws.rs.api" />
