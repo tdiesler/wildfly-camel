@@ -1349,7 +1349,7 @@
             <include module="io.netty.skipped" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="io.netty" />
+            <module name="io.netty" slot="4.1"/>
             <module name="javax.api" />
             <module name="javax.xml.bind.api" />
         </dependencies>
