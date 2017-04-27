@@ -61,8 +61,8 @@
                 <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-parent</artifactId>
+                <groupId>org.jboss.eap</groupId>
+                <artifactId>jboss-eap-parent</artifactId>
                 <version>${version.wildfly}</version>
                 <scope>import</scope>
                 <type>pom</type>

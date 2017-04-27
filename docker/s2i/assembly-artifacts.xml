@@ -38,7 +38,9 @@
             <unpack>true</unpack>
             <unpackOptions>
                 <excludes>
-                    <exclude>standalone/configuration/*</exclude>
+                    <exclude>modules/layers.conf</exclude>
+                    <exclude>**/quickstarts/*</exclude>
+                    <exclude>**/standalone/configuration/*</exclude>
                 </excludes>
             </unpackOptions>
         </dependencySet>
@@ -46,10 +48,10 @@
 
     <fileSets>
         <fileSet>
-            <outputDirectory>usr/libexec/s2i</outputDirectory>
+            <outputDirectory>opt/eap/bin</outputDirectory>
             <directory>s2i/bin</directory>
             <includes>
-                <include>run</include>
+                <include>install.sh</include>
             </includes>
         </fileSet>
     </fileSets>
