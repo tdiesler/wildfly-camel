@@ -194,5 +194,13 @@
             <id>jboss-public-repository</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>jboss-early-access-repository</id>
+            <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+        </repository>
+        <repository>
+            <id>eap-7.1-early-access-repository</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven</url>
+        </repository>
     </repositories>
 </project>

@@ -35,7 +35,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <wildfly.module.dir>${project.build.directory}/wildfly-${version.wildfly}/modules/system/layers/base</wildfly.module.dir>
+        <wildfly.module.dir>${project.build.directory}/jboss-as-${version.wildfly}/modules/system/layers/base</wildfly.module.dir>
         <wildfly.camel.module.dir>${project.build.directory}/wildfly-camel-${project.version}/modules/system/layers/fuse</wildfly.camel.module.dir>
     </properties>
 
@@ -100,7 +100,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wildfly</groupId>
+                                    <groupId>org.jboss.eap</groupId>
                                     <artifactId>wildfly-feature-pack</artifactId>
                                     <version>${version.wildfly}</version>
                                     <type>zip</type>
@@ -141,7 +141,7 @@
                         </goals>
                         <configuration>
                             <config-file>src/main/resources/wildfly-provisioning.xml</config-file>
-                            <server-name>wildfly-${version.wildfly}</server-name>
+                            <server-name>jboss-as-${version.wildfly}</server-name>
                         </configuration>
                     </execution>
                     <execution>
