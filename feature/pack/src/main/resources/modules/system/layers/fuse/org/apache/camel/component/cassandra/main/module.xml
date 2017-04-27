@@ -8,7 +8,7 @@
     <module name="javax.api" />
     <module name="io.netty" />
     <module name="org.slf4j" />
-    <module name="com.google.guava" />
+    <module name="com.google.guava" slot="19.0" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.component.metrics" />
     <module name="org.apache.camel.core" />
