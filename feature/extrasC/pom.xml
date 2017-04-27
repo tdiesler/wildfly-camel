@@ -57,6 +57,12 @@
                         <dir>../common/etc/smartics</dir>
                         <dir>etc/smartics</dir>
                     </modules>
+                    <dependencyExcludes>
+                        <exclude>
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-api-java9</artifactId>
+                        </exclude>
+                    </dependencyExcludes>
                 </configuration>
             </plugin>
             <plugin>

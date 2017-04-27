@@ -872,13 +872,6 @@
         <include artifact="io.netty:netty" />
         <dependencies>
             <module name="javax.api"/>
-        </dependencies>
-    </module>
-
-    <module name="io.netty" inherit-slot="false" slot="4.1">
-        <include artifact="io.netty:netty-all" />
-        <dependencies>
-            <module name="javax.api"/>
             <module name="sun.jdk">
                 <imports>
                     <include path="sun/misc" />

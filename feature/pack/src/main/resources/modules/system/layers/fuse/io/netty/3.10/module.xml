@@ -8,5 +8,10 @@
   </resources>
   <dependencies>
     <module name="javax.api" />
+    <module name="sun.jdk">
+      <imports>
+        <include path="sun/misc" />
+      </imports>
+    </module>
   </dependencies>
 </module>

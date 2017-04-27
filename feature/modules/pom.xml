@@ -1057,7 +1057,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-feature-pack</artifactId>
             <type>zip</type>
             <exclusions>
@@ -1135,7 +1135,7 @@
                             <artifactId>osgi_R4_core</artifactId>
                         </exclude>
                         <exclude>
-                            <groupId>org.wildfly</groupId>
+                            <groupId>org.jboss.eap</groupId>
                             <artifactId>wildfly-feature-pack</artifactId>
                         </exclude>
                         <exclude>
