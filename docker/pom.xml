@@ -36,14 +36,14 @@
 
     <!-- Properties -->
     <properties>
-        <docker.image.name>wildflyext/wildfly-camel</docker.image.name>
-        <docker.image.from>openshift/wildfly-110-centos7:latest</docker.image.from>
+        <docker.image.name>jboss-fuse/fis-eap-openshift</docker.image.name>
+        <docker.image.from>brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888/jboss-eap-7-tech-preview/eap71-openshift</docker.image.from>
         <docker.image.maintainer>Thomas Diesler tdiesler@redhat.com</docker.image.maintainer>
         <docker.image.version>latest</docker.image.version>
         <docker.removeAll>true</docker.removeAll>
         <docker.skipPush>true</docker.skipPush>
         <server.config>standalone-camel.xml</server.config>
-        <server.home>/wildfly</server.home>
+        <server.home>/opt/eap</server.home>
     </properties>
 
     <!-- Dependencies -->
@@ -75,26 +75,19 @@
                                     <tag>${project.version}</tag>
                                 </tags>
                                 <labels>
-                                    <io.k8s.description>Platform for building and running Camel applications on WildFly ${version.wildfly}</io.k8s.description>
-                                    <io.k8s.display-name>WildFly Camel ${project.version}</io.k8s.display-name>
-                                    <io.openshift.tags>builder,wildfly,wildfly-camel,wildfly-camel-${project.version}</io.openshift.tags>
+                                    <io.k8s.description>Platform for building and running Apache Camel applications on EAP ${version.wildfly}</io.k8s.description>
+                                    <io.k8s.display-name>Fuse Integration Services - EAP</io.k8s.display-name>
+                                    <io.openshift.tags>builder,javaee,eap,eap7</io.openshift.tags>
                                 </labels>
-                                <cmd>
-                                    <exec>
-                                        <args>/usr/libexec/s2i/run</args>
-                                    </exec>
-                                </cmd>
-                                <env>
-                                    <JBOSS_HOME>${server.home}</JBOSS_HOME>
-                                    <LAUNCH_JBOSS_IN_BACKGROUND>true</LAUNCH_JBOSS_IN_BACKGROUND>
-                                </env>
                                 <assembly>
                                     <basedir>/</basedir>
                                     <descriptor>${project.basedir}/s2i/assembly-artifacts.xml</descriptor>
-                                    <user>1001:0:1001</user><!-- uid 1001 and gid 0 are used by our base image ${docker.image.from} -->
+                                    <user>jboss:0:185</user>
                                 </assembly>
                                 <runCmds>
-                                    <run>${server.home}/bin/fuseconfig.sh --configs camel --enable</run>
+                                    <!-- [CLOUD-1945] Initial state of standalone-openshift.xml should be valid XML -->
+                                    <!--<run>${server.home}/bin/fuseconfig.sh &#45;&#45;configs camel &#45;&#45;enable</run>-->
+                                    <run>${server.home}/bin/install.sh</run>
                                 </runCmds>
                                 <optimise>true</optimise>
                             </build>

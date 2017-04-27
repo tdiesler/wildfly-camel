@@ -36,10 +36,9 @@
 
     <!-- Source Control -->
     <scm>
-        <connection>scm:git:https://github.com/wildfly-extras/wildfly-camel.git</connection>
-        <developerConnection>scm:git:https://github.com/wildfly-extras/wildfly-camel.git</developerConnection>
-        <url>http://github.com/wildfly-extras/wildfly-camel</url>
-        <tag>HEAD</tag>
+        <connection>scm:git:https://github.com/jboss-fuse/wildfly-camel.git</connection>
+        <developerConnection>scm:git:https://github.com/jboss-fuse/wildfly-camel.git</developerConnection>
+        <url>http://github.com/jboss-fuse/wildfly-camel</url>
     </scm>
 
     <!-- Properties -->
@@ -58,12 +57,12 @@
         <version.camel.qpid.proton>0.25.0</version.camel.qpid.proton>
 
         <!-- WildFly versions -->
-        <version.wildfly>11.0.0.Final</version.wildfly>
+        <!-- http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven/org/jboss/eap/wildfly-dist -->
+        <version.wildfly>7.1.1.GA-redhat-2</version.wildfly>
         <version.wildfly.arquillian>2.1.0.Final</version.wildfly.arquillian>
-        <version.wildfly.cxf>3.1.12</version.wildfly.cxf>
-        <version.wildfly.fasterxml.jackson>2.8.9</version.wildfly.fasterxml.jackson>
-        <version.wildfly.infinispan>8.2.8.Final</version.wildfly.infinispan>
-
+        <version.wildfly.cxf>3.1.13</version.wildfly.cxf>
+        <version.wildfly.fasterxml.jackson>2.8.11</version.wildfly.fasterxml.jackson>
+        <version.wildfly.infinispan>8.2.9.Final-redhat-1</version.wildfly.infinispan>
         <!-- Other versions -->
         <version.apache.ds>2.0.0-M21</version.apache.ds>
         <version.apache.ds.codec>1.0.0-M33</version.apache.ds.codec>
@@ -77,7 +76,7 @@
         <version.arquillian.cube>1.6.0</version.arquillian.cube>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>3.0.0</version.fusepatch>
+        <version.fusepatch>3.0.0.fuse-000014</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.5.7</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
@@ -126,7 +125,7 @@
         <version-wildfly-maven-plugin>1.2.0.Final</version-wildfly-maven-plugin>
 
         <!-- GitHub -->
-        <github.namespace>wildfly-extras</github.namespace>
+        <github.namespace>jboss-fuse</github.namespace>
         <github.project>wildfly-camel</github.project>
 
         <!-- Common Maven properties -->
@@ -462,6 +461,28 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>Early Access Repository</id>
+            <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>JBoss EA</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <!-- everit is distributed in jitpack and not maven central -->
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <!-- Profiles -->
@@ -487,7 +508,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
