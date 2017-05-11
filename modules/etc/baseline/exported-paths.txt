@@ -638,6 +638,7 @@ org/apache/kafka/common/cache
 org/apache/kafka/common/config
 org/apache/kafka/common/config/types
 org/apache/kafka/common/errors
+org/apache/kafka/common/internals
 org/apache/kafka/common/metrics
 org/apache/kafka/common/metrics/stats
 org/apache/kafka/common/network
@@ -649,9 +650,13 @@ org/apache/kafka/common/security
 org/apache/kafka/common/security/auth
 org/apache/kafka/common/security/authenticator
 org/apache/kafka/common/security/kerberos
+org/apache/kafka/common/security/plain
+org/apache/kafka/common/security/scram
 org/apache/kafka/common/security/ssl
 org/apache/kafka/common/serialization
 org/apache/kafka/common/utils
+org/apache/kafka/server
+org/apache/kafka/server/policy
 org/apache/xmlbeans
 org/apache/xmlbeans/impl/schema
 org/apache/xmlbeans/impl/values

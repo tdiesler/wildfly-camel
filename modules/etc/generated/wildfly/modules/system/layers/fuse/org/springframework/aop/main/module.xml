@@ -5,7 +5,7 @@
   </properties>
   <resources>
     <resource-root path="aopalliance-1.0.jar" />
-    <resource-root path="spring-aop-3.2.16.RELEASE.jar" />
+    <resource-root path="spring-aop-3.2.18.RELEASE.jar" />
   </resources>
   <dependencies>
     <module name="javax.api" />

@@ -5,7 +5,6 @@
   </properties>
   <resources>
     <resource-root path="scala-parser-combinators_2.11-1.0.4.jar" />
-    <resource-root path="scala-xml_2.11-1.0.4.jar" />
   </resources>
   <dependencies>
     <module name="org.scala.library" />
