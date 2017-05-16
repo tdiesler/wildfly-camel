@@ -67,6 +67,19 @@ jmx
 jpa
 kafka
 kubernetes
+kubernetes-build-configs
+kubernetes-builds
+kubernetes-config-maps
+kubernetes-namespaces
+kubernetes-nodes
+kubernetes-persistent-volumes
+kubernetes-persistent-volumes-claims
+kubernetes-pods
+kubernetes-replication-controllers
+kubernetes-resources-quota
+kubernetes-secrets
+kubernetes-service-account
+kubernetes-services
 language
 ldap
 linkedin
@@ -199,6 +212,7 @@ hazelcast-ringbuffer
 hazelcast-seda
 hazelcast-set
 hazelcast-topic
+twilio
 
 [rejected]
 apns

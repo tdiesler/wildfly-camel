@@ -10,6 +10,7 @@ zipkin
 [planned]
 
 [undecided]
+headersmap
 kura
 leveldb
 opentracing

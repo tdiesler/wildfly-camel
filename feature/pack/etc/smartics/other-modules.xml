@@ -70,6 +70,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-api-gateway" />
         <include artifact="com.amazonaws:aws-java-sdk-applicationautoscaling" />
         <include artifact="com.amazonaws:aws-java-sdk-appstream" />
+        <include artifact="com.amazonaws:aws-java-sdk-athena" />
         <include artifact="com.amazonaws:aws-java-sdk-autoscaling" />
         <include artifact="com.amazonaws:aws-java-sdk-batch" />
         <include artifact="com.amazonaws:aws-java-sdk-budgets" />
@@ -121,6 +122,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-logs" />
         <include artifact="com.amazonaws:aws-java-sdk-machinelearning" />
         <include artifact="com.amazonaws:aws-java-sdk-marketplacecommerceanalytics" />
+        <include artifact="com.amazonaws:aws-java-sdk-marketplaceentitlement" />
         <include artifact="com.amazonaws:aws-java-sdk-marketplacemeteringservice" />
         <include artifact="com.amazonaws:aws-java-sdk-mechanicalturkrequester" />
         <include artifact="com.amazonaws:aws-java-sdk-models" />
@@ -460,23 +462,6 @@
 
     <module name="javax.cache.api" >
         <include artifact="javax.cache:cache-api" />
-    </module>
-
-    <module name="net.sf.dozer">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="net.sf.dozer:dozer" />
-        <apply-to-dependencies skip="true">
-            <include module="org.hibernate" />
-            <include module="org.osgi.core" />
-            <include module="junit" />
-        </apply-to-dependencies>
-        <dependencies>
-            <module name="javax.api"/>
-            <!-- circular dependency to allow dozer to load camel-dozer types -->
-            <module name="org.apache.camel.component.dozer"/>
-        </dependencies>
     </module>
 
     <module name="net.sourceforge.cssparser">
@@ -864,6 +849,23 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="org.bitbucket.b_c:jose4j" />
+    </module>
+
+    <module name="org.dozer.mapper">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="com.github.dozermapper:dozer-core" />
+        <apply-to-dependencies skip="true">
+            <include module="org.osgi.core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.el.api"/>
+            <module name="javax.xml.bind.api"/>
+            <!-- circular dependency to allow dozer to load camel-dozer types -->
+            <module name="org.apache.camel.component.dozer"/>
+        </dependencies>
     </module>
 
     <module name="org.drools.compiler">

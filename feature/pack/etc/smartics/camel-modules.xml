@@ -521,7 +521,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
-            <module name="net.sf.dozer" export="true">
+            <module name="org.dozer.mapper" export="true">
                 <exports>
                     <include path="org/dozer/util**" />
                     <exclude path="org/dozer**" />
