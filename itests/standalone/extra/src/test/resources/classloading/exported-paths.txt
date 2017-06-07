@@ -987,12 +987,11 @@ org/apache/camel/component/syslog
 org/apache/camel/component/syslog/netty
 org/apache/camel/component/twitter
 org/apache/camel/component/twitter/consumer
-org/apache/camel/component/twitter/consumer/directmessage
-org/apache/camel/component/twitter/consumer/search
-org/apache/camel/component/twitter/consumer/streaming
-org/apache/camel/component/twitter/consumer/timeline
 org/apache/camel/component/twitter/data
-org/apache/camel/component/twitter/producer
+org/apache/camel/component/twitter/directmessage
+org/apache/camel/component/twitter/search
+org/apache/camel/component/twitter/streaming
+org/apache/camel/component/twitter/timeline
 org/apache/camel/component/twitter/util
 org/apache/camel/component/undertow
 org/apache/camel/component/undertow/cloud
@@ -2279,6 +2278,7 @@ org/quartz/listeners
 org/quartz/management
 org/quartz/plugins
 org/quartz/plugins/history
+org/quartz/plugins/interrupt
 org/quartz/plugins/management
 org/quartz/plugins/xml
 org/quartz/simpl
@@ -2493,10 +2493,6 @@ org/springframework/ldap/pool2
 org/springframework/ldap/pool2/factory
 org/springframework/ldap/pool2/validation
 org/springframework/ldap/query
-org/springframework/ldap/repository
-org/springframework/ldap/repository/config
-org/springframework/ldap/repository/query
-org/springframework/ldap/repository/support
 org/springframework/ldap/support
 org/springframework/ldap/transaction
 org/springframework/ldap/transaction/compensating
