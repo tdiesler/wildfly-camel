@@ -37,6 +37,7 @@ zipfile
 [planned]
 
 [undecided]
+json-fastjson
 thrift
 
 [rejected]

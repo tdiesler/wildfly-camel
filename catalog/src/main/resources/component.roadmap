@@ -201,6 +201,14 @@ zendesk
 zookeeper-master
 
 [undecided]
+atomix-map
+atomix-messaging
+atomix-multimap
+atomix-queue
+atomix-set
+atomix-value
+caffeine-cache
+caffeine-loadcache
 hazelcast-atomicvalue
 hazelcast-instance
 hazelcast-list
@@ -212,6 +220,7 @@ hazelcast-ringbuffer
 hazelcast-seda
 hazelcast-set
 hazelcast-topic
+thrift
 twilio
 
 [rejected]
