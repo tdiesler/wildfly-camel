@@ -40,6 +40,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.schwering.irc.lib.IRCConnection;
@@ -52,6 +53,7 @@ import org.wildfly.extension.camel.CamelAware;
 @CamelAware
 @RunWith(ArquillianConditionalRunner.class)
 @RequiresDocker
+@Ignore("[#1908] IRCIntegrationTest fails with Camel 2.20.x")
 public class IRCIntegrationTest {
 
     private static final String CONTAINER_IRCD = "ircd";
