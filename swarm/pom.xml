@@ -25,7 +25,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel</artifactId>
-        <version>4.7.0.redhat-1-SNAPSHOT</version>
+        <version>4.7.0-1.fuse-000006</version>
     </parent>
     
     <name>Wildfly Camel :: Swarm</name>
