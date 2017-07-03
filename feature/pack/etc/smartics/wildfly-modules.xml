@@ -117,7 +117,7 @@
     </module>
 
     <module name="javax.persistence.api" skip="true">
-        <include artifact=":geronimo-jpa_2.0_spec" />
+        <include artifact=":geronimo-jpa_2.1_spec" />
     </module>
 
     <module name="javax.security.jacc.api" skip="true">

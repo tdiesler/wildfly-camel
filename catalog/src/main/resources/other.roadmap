@@ -11,8 +11,10 @@ zipkin
 [planned]
 
 [undecided]
+headersmap
 kura
 leveldb
+reactor
 ribbon
 shiro
 spring-cloud
@@ -32,7 +34,6 @@ scala (deprecated)
 scr (deprecated)
 servletlistener (deprecated)
 spring-boot
-spring-dm (deprecated)
 swagger (deprecated)
 test
 test-blueprint
