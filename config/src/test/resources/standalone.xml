@@ -299,7 +299,7 @@
             <jpa default-datasource="" default-extended-persistence-inheritance="DEEP"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:jsf:1.0"/>
-        <subsystem xmlns="urn:jboss:domain:mail:2.1">
+        <subsystem xmlns="urn:jboss:domain:mail:3.0">
             <mail-session name="default" jndi-name="java:jboss/mail/Default">
                 <smtp-server outbound-socket-binding-ref="mail-smtp"/>
             </mail-session>
@@ -322,7 +322,7 @@
                 </maximum-set>
             </deployment-permissions>
         </subsystem>
-        <subsystem xmlns="urn:wildfly:elytron:1.0" final-providers="combined-providers">
+        <subsystem xmlns="urn:wildfly:elytron:1.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
             <providers>
                 <provider-loader name="elytron" module="org.wildfly.security.elytron"/>
                 <provider-loader name="openssl" module="org.wildfly.openssl"/>
@@ -356,7 +356,13 @@
                 </properties-realm>
             </security-realms>
             <mappers>
-                <constant-permission-mapper name="default-permission-mapper">
+                <logical-permission-mapper name="default-permission-mapper" logical-operation="unless" left="constant-permission-mapper" right="anonymous-permission-mapper"/>
+                <simple-permission-mapper name="anonymous-permission-mapper">
+                    <permission-mapping principals="anonymous">
+                        <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
+                    </permission-mapping>
+                </simple-permission-mapper>
+                <constant-permission-mapper name="constant-permission-mapper">
                     <permission class-name="org.wildfly.security.auth.permission.LoginPermission"/>
                     <permission class-name="org.wildfly.extension.batch.jberet.deployment.BatchPermission" module="org.wildfly.extension.batch.jberet" target-name="*"/>
                     <permission class-name="org.wildfly.transaction.client.RemoteTransactionPermission" module="org.wildfly.transaction.client"/>
@@ -410,14 +416,6 @@
                     </filters>
                 </mechanism-provider-filtering-sasl-server-factory>
                 <configurable-sasl-server-factory name="configured" sasl-server-factory="elytron">
-                    <filters>
-                        <filter>
-                            <pattern-filter value="JBOSS-LOCAL-USER"/>
-                        </filter>
-                        <filter>
-                            <pattern-filter value="DIGEST-MD5"/>
-                        </filter>
-                    </filters>
                     <properties>
                         <property name="wildfly.sasl.local-user.default-user" value="$local"/>
                     </properties>
@@ -474,6 +472,7 @@
                     <location name="/" handler="welcome-content"/>
                     <filter-ref name="server-header"/>
                     <filter-ref name="x-powered-by-header"/>
+                    <http-invoker security-realm="ApplicationRealm"/>
                 </host>
             </server>
             <servlet-container name="default">

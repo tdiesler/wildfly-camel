@@ -10,9 +10,11 @@ zipkin
 [planned]
 
 [undecided]
+headersmap
 kura
 leveldb
 opentracing
+reactor
 ribbon
 shiro
 spring-cloud
