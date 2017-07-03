@@ -5,6 +5,7 @@
     <artifact name="${org.apache.camel:camel-jsonpath}" />
     <artifact name="${com.jayway.jsonpath:json-path}" />
     <artifact name="${net.minidev:json-smart}" />
+    <artifact name="${net.minidev:json-smart-action}" />
   </resources>
   <dependencies>
     <module name="javax.xml.bind.api" />

@@ -45,7 +45,7 @@
     <properties>
         
         <!-- Camel versions -->
-        <version.apache.camel>2.19.1</version.apache.camel>
+        <version.apache.camel>2.20.0.fuse-000058</version.apache.camel>
         <version.apache.lucene>5.5.2</version.apache.lucene>
 
         <!-- [#1702] Upgrade to netty-4.1.9 -->
@@ -78,9 +78,9 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>2.7.0.redhat-7</version.fusepatch>
+        <version.fuse.patch>2.8.0-700001.fuse-000002</version.fuse.patch>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>1.5.1</version.hawtio>
+        <version.hawtio>2.0.0.fuse-000044</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
         <version.jboss.arquillian.core>1.1.10.Final</version.jboss.arquillian.core>
         <version.jboss.arquillian.osgi>2.1.0.Final</version.jboss.arquillian.osgi>
@@ -246,17 +246,17 @@
             <dependency>
                 <groupId>org.wildfly.extras.patch</groupId>
                 <artifactId>fuse-patch-config</artifactId>
-                <version>${version.fusepatch}</version>
+                <version>${version.fuse.patch}</version>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.extras.patch</groupId>
                 <artifactId>fuse-patch-core</artifactId>
-                <version>${version.fusepatch}</version>
+                <version>${version.fuse.patch}</version>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.extras.patch</groupId>
                 <artifactId>fuse-patch-feature-pack</artifactId>
-                <version>${version.fusepatch}</version>
+                <version>${version.fuse.patch}</version>
                 <type>zip</type>
             </dependency>
 
@@ -780,20 +780,32 @@
     <!-- Repositories -->
     <repositories>
         <repository>
-            <id>central</id>
-            <name>Central Repository</name>
+            <id>Maven Central</id>
             <url>http://repo.maven.apache.org/maven2</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
-            <id>jboss-public-repository</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <id>JBoss Public</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
-            <id>jboss-early-access-repository</id>
+          <id>Early Access Repository</id>
+          <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>JBoss EA</id>
             <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 

@@ -5,6 +5,7 @@
     <artifact name="${org.mongodb:mongo-java-driver}" />
   </resources>
   <dependencies>
+    <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="javax.api" />
     <module name="org.slf4j" />
     <module name="javax.xml.bind.api" />
