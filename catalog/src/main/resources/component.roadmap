@@ -52,7 +52,7 @@ ftps
 git
 github
 http4
-http4s
+https4
 imap
 imaps
 infinispan
@@ -67,6 +67,19 @@ jmx
 jpa
 kafka
 kubernetes
+kubernetes-build-configs
+kubernetes-builds
+kubernetes-config-maps
+kubernetes-namespaces
+kubernetes-nodes
+kubernetes-persistent-volumes
+kubernetes-persistent-volumes-claims
+kubernetes-pods
+kubernetes-replication-controllers
+kubernetes-resources-quota
+kubernetes-secrets
+kubernetes-service-account
+kubernetes-services
 language
 ldap
 linkedin
@@ -129,6 +142,10 @@ stub
 test
 timer
 twitter
+twitter-directmessage
+twitter-search
+twitter-streaming
+twitter-timeline
 undertow
 validator
 velocity
@@ -184,6 +201,28 @@ zendesk
 zookeeper-master
 
 [undecided]
+atomix-map
+atomix-messaging
+atomix-multimap
+atomix-queue
+atomix-set
+atomix-value
+caffeine-cache
+caffeine-loadcache
+crypto-cms
+hazelcast-atomicvalue
+hazelcast-instance
+hazelcast-list
+hazelcast-map
+hazelcast-multimap
+hazelcast-queue
+hazelcast-replicatedmap
+hazelcast-ringbuffer
+hazelcast-seda
+hazelcast-set
+hazelcast-topic
+thrift
+twilio
 
 [rejected]
 apns
@@ -209,7 +248,6 @@ geocoder
 gora
 grape
 guava-eventbus
-hazelcast
 hdfs
 hipchat
 http
@@ -220,7 +258,6 @@ javaspace
 jcr
 jetty
 jing
-jira
 jolt
 jt400
 kestrel
