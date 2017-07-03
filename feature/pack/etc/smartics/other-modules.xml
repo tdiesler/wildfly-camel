@@ -70,6 +70,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-api-gateway" />
         <include artifact="com.amazonaws:aws-java-sdk-applicationautoscaling" />
         <include artifact="com.amazonaws:aws-java-sdk-appstream" />
+        <include artifact="com.amazonaws:aws-java-sdk-athena" />
         <include artifact="com.amazonaws:aws-java-sdk-autoscaling" />
         <include artifact="com.amazonaws:aws-java-sdk-batch" />
         <include artifact="com.amazonaws:aws-java-sdk-budgets" />
@@ -83,12 +84,14 @@
         <include artifact="com.amazonaws:aws-java-sdk-codecommit" />
         <include artifact="com.amazonaws:aws-java-sdk-codedeploy" />
         <include artifact="com.amazonaws:aws-java-sdk-codepipeline" />
+        <include artifact="com.amazonaws:aws-java-sdk-codestar" />
         <include artifact="com.amazonaws:aws-java-sdk-cognitoidentity" />
         <include artifact="com.amazonaws:aws-java-sdk-cognitoidp" />
         <include artifact="com.amazonaws:aws-java-sdk-cognitosync" />
         <include artifact="com.amazonaws:aws-java-sdk-config" />
         <include artifact="com.amazonaws:aws-java-sdk-costandusagereport" />
         <include artifact="com.amazonaws:aws-java-sdk-datapipeline" />
+        <include artifact="com.amazonaws:aws-java-sdk-dax" />
         <include artifact="com.amazonaws:aws-java-sdk-devicefarm" />
         <include artifact="com.amazonaws:aws-java-sdk-directconnect" />
         <include artifact="com.amazonaws:aws-java-sdk-directory" />
@@ -107,6 +110,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-events" />
         <include artifact="com.amazonaws:aws-java-sdk-gamelift" />
         <include artifact="com.amazonaws:aws-java-sdk-glacier" />
+        <include artifact="com.amazonaws:aws-java-sdk-greengrass" />
         <include artifact="com.amazonaws:aws-java-sdk-health" />
         <include artifact="com.amazonaws:aws-java-sdk-iam" />
         <include artifact="com.amazonaws:aws-java-sdk-importexport" />
@@ -115,10 +119,12 @@
         <include artifact="com.amazonaws:aws-java-sdk-kms" />
         <include artifact="com.amazonaws:aws-java-sdk-lambda" />
         <include artifact="com.amazonaws:aws-java-sdk-lex" />
+        <include artifact="com.amazonaws:aws-java-sdk-lexmodelbuilding" />
         <include artifact="com.amazonaws:aws-java-sdk-lightsail" />
         <include artifact="com.amazonaws:aws-java-sdk-logs" />
         <include artifact="com.amazonaws:aws-java-sdk-machinelearning" />
         <include artifact="com.amazonaws:aws-java-sdk-marketplacecommerceanalytics" />
+        <include artifact="com.amazonaws:aws-java-sdk-marketplaceentitlement" />
         <include artifact="com.amazonaws:aws-java-sdk-marketplacemeteringservice" />
         <include artifact="com.amazonaws:aws-java-sdk-mechanicalturkrequester" />
         <include artifact="com.amazonaws:aws-java-sdk-models" />
@@ -130,6 +136,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-rds" />
         <include artifact="com.amazonaws:aws-java-sdk-redshift" />
         <include artifact="com.amazonaws:aws-java-sdk-rekognition" />
+        <include artifact="com.amazonaws:aws-java-sdk-resourcegroupstaggingapi" />
         <include artifact="com.amazonaws:aws-java-sdk-route53" />
         <include artifact="com.amazonaws:aws-java-sdk-servermigration" />
         <include artifact="com.amazonaws:aws-java-sdk-servicecatalog" />
@@ -216,6 +223,7 @@
 
     <module name="com.fasterxml.jackson.skipped" skip="true">
         <include artifact=":jackson-module-afterburner" />
+        <include artifact=":jackson-module-jsonSchema" />
     </module>
     
     <module name="com.github.generex">
@@ -316,6 +324,7 @@
         <include artifact="com.squareup.okhttp3:"/>
         <apply-to-dependencies skip="true">
             <include module="com.google.android"/>
+            <include module="com.google.code.findbugs" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
@@ -327,6 +336,9 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="com.squareup.okio:okio"/>
+        <apply-to-dependencies skip="true">
+            <include module="com.google.code.findbugs" />
+        </apply-to-dependencies>
     </module>
 
     <module name="com.squareup.retrofit2">
@@ -334,6 +346,9 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="com.squareup.retrofit2:"/>
+        <apply-to-dependencies skip="true">
+            <include module="com.google.code.findbugs" />
+        </apply-to-dependencies>
         <dependencies>
             <module name="com.squareup.okio"/>
             <module name="com.squareup.okhttp3"/>
@@ -462,23 +477,6 @@
 
     <module name="javax.cache.api" >
         <include artifact="javax.cache:cache-api" />
-    </module>
-
-    <module name="net.sf.dozer">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="net.sf.dozer:dozer" />
-        <apply-to-dependencies skip="true">
-            <include module="org.hibernate" />
-            <include module="org.osgi.core" />
-            <include module="junit" />
-        </apply-to-dependencies>
-        <dependencies>
-            <module name="javax.api"/>
-            <!-- circular dependency to allow dozer to load camel-dozer types -->
-            <module name="org.apache.camel.component.dozer"/>
-        </dependencies>
     </module>
 
     <module name="net.sourceforge.cssparser">
@@ -815,6 +813,7 @@
         <include artifact="org.apache.curator:curator-client" />
         <include artifact="org.apache.curator:curator-framework" />
         <include artifact="org.apache.curator:curator-recipes" />
+        <include artifact="org.apache.curator:curator-x-discovery" />
         <apply-to-dependencies skip="true">
             <include module="io.netty.skipped" />
             <include module="jline" />
@@ -824,6 +823,7 @@
             <module name="org.apache.log4j" />
         </dependencies>
         <exports>
+            <exclude path="org/apache/curator/shaded/**" />
             <exclude path="org/apache/jute**" />
         </exports>
     </module>
@@ -866,6 +866,24 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="org.bitbucket.b_c:jose4j" />
+    </module>
+
+    <module name="org.dozer.mapper">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="com.github.dozermapper:dozer-core" />
+        <include artifact="com.github.dozermapper:dozer-schema" />
+        <apply-to-dependencies skip="true">
+            <include module="org.osgi.core" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="javax.api"/>
+            <module name="javax.el.api"/>
+            <module name="javax.xml.bind.api"/>
+            <!-- circular dependency to allow dozer to load camel-dozer types -->
+            <module name="org.apache.camel.component.dozer"/>
+        </dependencies>
     </module>
 
     <module name="org.drools.compiler">
@@ -1009,7 +1027,7 @@
         <include artifact="org.infinispan:infinispan-jcache-commons" />
         <apply-to-dependencies skip="true">
             <include module="org.jboss.logging.processor" />
-            <include module="org.infinispan.cdi" />
+            <include module="org.infinispan.skipped" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
@@ -1024,6 +1042,7 @@
         <include artifact="org.infinispan:infinispan-query-dsl" />
         <apply-to-dependencies skip="true">
             <include module="org.jboss.logging.processor" />
+            <include module="org.infinispan.skipped" />
         </apply-to-dependencies>
     </module>
 
@@ -1096,6 +1115,7 @@
         <include artifact="com.mchange:c3p0" />
         <apply-to-dependencies skip="true">
             <include module="c3p0" />
+            <include module="com.zaxxer" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>

@@ -521,7 +521,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
-            <module name="net.sf.dozer" export="true">
+            <module name="org.dozer.mapper" export="true">
                 <exports>
                     <include path="org/dozer/util**" />
                     <exclude path="org/dozer**" />
@@ -694,6 +694,7 @@
             <exclude path="org/eclipse/jgit/internal**" />
             <exclude path="org/eclipse/jgit/gitrepo/internal**" />
             <exclude path="org/eclipse/jgit/ignore/internal**" />
+            <exclude path="org/eclipse/jgit/lib/internal**" />
         </exports>
     </module>
 
@@ -807,6 +808,7 @@
         <include artifact="org.apache.camel:camel-infinispan"/>
         <apply-to-dependencies skip="true">
             <include module="org.apache.camel.apt"/>
+            <include module="org.infinispan.skipped" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
         <dependencies>
@@ -831,6 +833,7 @@
             <include module="org.springframework.boot"/>
         </apply-to-dependencies>
         <dependencies>
+            <module name="com.squareup.moshi" />
             <module name="javax.api"/>
             <module name="org.slf4j"/>
         </dependencies>
@@ -1028,6 +1031,7 @@
         <include artifact="com.jayway.jsonpath:json-path" />
         <include artifact="net.minidev:accessors-smart" />
         <include artifact="net.minidev:json-smart" />
+        <include artifact="net.minidev:json-smart-action" />
         <apply-to-dependencies skip="true">
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
@@ -1194,6 +1198,7 @@
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
         <dependencies>
+            <module name="com.fasterxml.jackson.core.jackson-databind" />
             <module name="javax.api" />
             <module name="com.fasterxml.jackson.core.jackson-databind" />
             <module name="org.slf4j"/>
@@ -1481,6 +1486,7 @@
             <include module="joda-time" />
             <include module="org.apache.camel.apt" />
             <include module="org.springframework.boot" />
+            <include module="com.fasterxml.jackson.skipped" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
@@ -2095,7 +2101,9 @@
         <include artifact="io.zipkin.reporter:zipkin-reporter" />
         <apply-to-dependencies skip="true">
             <include module="com.google.auto.value" />
+            <include module="com.google.code.findbugs" />
             <include module="org.apache.camel.apt" />
+            <include module="org.apache.servicemix.bundles" />
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
         <dependencies>
