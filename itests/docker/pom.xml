@@ -25,7 +25,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-itests</artifactId>
-        <version>4.7.0.fuse-700001-SNAPSHOT</version>
+        <version>4.7.0-700001.fuse-000001</version>
     </parent>
 
     <name>Wildfly Camel :: Testsuite :: Docker</name>
