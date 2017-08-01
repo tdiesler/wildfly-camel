@@ -12,6 +12,5 @@ Build the EAP Camel docker image
 
 Run the EAP Camel docker image
 
-    docker run --rm -ti -e WILDFLY_MANAGEMENT_USER=admin -e WILDFLY_MANAGEMENT_PASSWORD=admin -p 8080:8080 -p 9990:9990 jboss-fuse/eap71-camel
-    
-Test access to the console http://192.168.99.100:9990/console and to hawtio http://192.168.99.100:8080/hawtio
+    docker run --rm -ti -p 8080:8080 jboss-fuse/eap71-camel
+
