@@ -20,6 +20,7 @@
 /com/fasterxml/jackson/dataformat/xml/main/jackson-dataformat-xml-2.8.9.jar
 /com/fasterxml/jackson/dataformat/yaml/main/jackson-dataformat-yaml-2.8.9.jar
 /com/fasterxml/jackson/datatype/joda/main/jackson-datatype-joda-2.8.9.jar
+/com/fasterxml/jackson/module/jsonSchema/main/jackson-module-jsonSchema-2.8.9.jar
 /com/github/generex/main/generex-1.0.1.jar
 /com/google/code/gson/main/gson-2.8.1.jar
 /com/google/guava/19.0/guava-19.0.jar
