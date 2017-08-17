@@ -8,7 +8,6 @@
     <module name="org.slf4j" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
-    <module name="org.apache.mina.core" />
     <module name="org.apache.sshd" />
     <module name="org.bouncycastle" />
     <module name="org.bouncycastle.ext" />

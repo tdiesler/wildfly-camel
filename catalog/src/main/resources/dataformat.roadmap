@@ -48,6 +48,9 @@ univocity-fixed	#2046
 univocity-tsv  	#2047
 
 [undecided]
+asn1
+json-fastjson
+thrift
 
 [rejected]
 

@@ -78,7 +78,7 @@ public class HawtIOIntegrationTest {
             // Accessing hawtio requires an admin id/password since none is
             // given in this case, we should get a 403 error code.
             int code = ((HttpURLConnection) conn).getResponseCode();
-            assertEquals(403, code);
+            assertEquals(401, code);
         } finally {
             try {
                 conn.getInputStream().close();

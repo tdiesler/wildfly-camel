@@ -28,7 +28,6 @@
         <apply-to-dependencies skip="true">
             <include module="com.google.code.findbugs" />
         </apply-to-dependencies>
-        <include artifact="com.google.guava:guava" />
         <dependencies>
             <module name="javax.inject.api" />
         </dependencies>

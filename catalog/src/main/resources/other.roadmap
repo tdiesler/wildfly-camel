@@ -11,12 +11,6 @@ zipkin
 [planned]
 
 [undecided]
-leveldb             	#2063
-ribbon              	#2064
-shiro               	#2065
-spring-cloud        	#2066
-spring-cloud-netflix	#2067
-spring-javaconfig   	#2068
 
 [rejected]
 bam                 	#deprecated
@@ -25,14 +19,21 @@ eclipse             	#deprecated
 groovy-dsl          	#deprecated
 guice               	#deprecated
 hawtdb              	#deprecated
+headersmap
 kura                	#2062 OSGi specific
+leveldb
+reactor
+ribbon
 ruby                	#deprecated
 rx                  	#deprecated
 scala               	#deprecated
 scr                 	#deprecated
 servletlistener     	#deprecated
+shiro
 spring-boot         	#2051 SpringBoot specific
-spring-dm           	#deprecated
+spring-cloud
+spring-cloud-netflix
+spring-javaconfig
 swagger             	#deprecated
 test                	#2052 Testing utility
 test-blueprint      	#2053 Testing utility
