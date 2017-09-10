@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>4.8.0.fuse-SNAPSHOT</version>
+    <version>4.8.0.fuse-000014</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildfly-extras/wildfly-camel</url>
@@ -45,7 +45,7 @@
     <properties>
         
         <!-- Camel versions -->
-        <version.apache.camel>2.20.0.fuse-000085</version.apache.camel>
+        <version.apache.camel>2.20.0.fuse-000092</version.apache.camel>
         <version.apache.lucene>5.5.2</version.apache.lucene>
 
         <!-- [#1702] Upgrade to netty-4.1.9 -->
@@ -79,9 +79,9 @@
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fuse.patch>2.8.0.fuse-000015</version.fuse.patch>
+        <version.fuse.patch>2.8.0.fuse-000019</version.fuse.patch>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>2.0.0.fuse-000059</version.hawtio>
+        <version.hawtio>2.0.0.fuse-000062</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
         <version.jboss.arquillian.core>1.1.10.Final</version.jboss.arquillian.core>
         <version.jboss.arquillian.osgi>2.1.0.Final</version.jboss.arquillian.osgi>
@@ -847,7 +847,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
@@ -859,7 +858,6 @@
             </activation>
             <modules>
                 <module>archetypes</module>
-                <module>docs</module>
                 <module>patch</module>
             </modules>
         </profile>
