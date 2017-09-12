@@ -90,7 +90,7 @@
         </repository>
         <repository>
             <id>fuse-early-access-repository</id>
-            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+            <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
         </repository>
     </repositories>
 
