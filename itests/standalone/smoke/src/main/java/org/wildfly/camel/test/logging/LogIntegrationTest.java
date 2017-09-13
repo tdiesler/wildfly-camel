@@ -18,7 +18,7 @@
  * #L%
  */
 
-package org.wildfly.camel.test.core;
+package org.wildfly.camel.test.logging;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
@@ -31,6 +31,7 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.camel.test.common.utils.LogUtils;
 import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
@@ -38,9 +39,9 @@ import org.wildfly.extension.camel.CamelAware;
 public class LogIntegrationTest {
 
     @Deployment
-    public static JavaArchive createdeployment() {
-        final JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "log-tests");
-        return archive;
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class, "log-tests")
+            .addClass(LogUtils.class);
     }
 
     @Test
@@ -49,18 +50,17 @@ public class LogIntegrationTest {
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("direct:start").to("log:input").transform(body().prepend("Hello "));
+                from("direct:start").to("log:simple-log");
             }
         });
 
         camelctx.start();
         try {
             ProducerTemplate producer = camelctx.createProducerTemplate();
-            String result = producer.requestBody("direct:start", "Kermit", String.class);
-            Assert.assertEquals("Hello Kermit", result);
+            producer.requestBody("direct:start", "Hello Kermit", String.class);
+            Assert.assertTrue("Gave up waiting to find matching log message", LogUtils.awaitLogMessage(".*simple-log.*Hello Kermit]$", 5000));
         } finally {
             camelctx.stop();
         }
     }
-
 }

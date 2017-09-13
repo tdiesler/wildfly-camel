@@ -67,10 +67,9 @@ final class CamelSubsystemAdd extends AbstractBoottimeAddStepHandler {
     public static final int DEPENDENCIES_CAMEL_INTEGRATION = Phase.DEPENDENCIES_LOGGING + 0x01;
     public static final int DEPENDENCIES_CAMEL_WIRINGS = DEPENDENCIES_CAMEL_INTEGRATION + 0x01;
 
-    public static final int POST_MODULE_PACKAGE_SCAN_RESOLVER = Phase.POST_MODULE_LOCAL_HOME + 0x01;
-    public static final int POST_MODULE_CAMEL_CONTEXT_CREATE = POST_MODULE_PACKAGE_SCAN_RESOLVER + 0x01;
-
-    public static final int INSTALL_CAMEL_CONTEXT_ACTIVATION = Phase.INSTALL_BUNDLE_ACTIVATE + 0x01;
+    public static final int INSTALL_PACKAGE_SCAN_RESOLVER = Phase.INSTALL_BUNDLE_ACTIVATE + 0x01;
+    public static final int INSTALL_CAMEL_CONTEXT_CREATE = INSTALL_PACKAGE_SCAN_RESOLVER + 0x01;
+    public static final int INSTALL_CAMEL_CONTEXT_ACTIVATION = INSTALL_CAMEL_CONTEXT_CREATE + 0x01;
 
     private final SubsystemState subsystemState;
 
@@ -115,8 +114,8 @@ final class CamelSubsystemAdd extends AbstractBoottimeAddStepHandler {
                 processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.PARSE, PARSE_CAMEL_CONTEXT_DESCRIPTORS, new CamelContextDescriptorsProcessor());
                 processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.DEPENDENCIES, DEPENDENCIES_CAMEL_INTEGRATION, new CamelIntegrationProcessor());
                 processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.DEPENDENCIES, DEPENDENCIES_CAMEL_WIRINGS, new CamelDependenciesProcessor());
-                processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.POST_MODULE, POST_MODULE_CAMEL_CONTEXT_CREATE, new CamelContextCreateProcessor());
-                processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.POST_MODULE, POST_MODULE_PACKAGE_SCAN_RESOLVER, new PackageScanResolverProcessor());
+                processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.INSTALL, INSTALL_PACKAGE_SCAN_RESOLVER, new PackageScanResolverProcessor());
+                processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.INSTALL, INSTALL_CAMEL_CONTEXT_CREATE, new CamelContextCreateProcessor());
                 processorTarget.addDeploymentProcessor(CamelExtension.SUBSYSTEM_NAME, Phase.INSTALL, INSTALL_CAMEL_CONTEXT_ACTIVATION, new CamelContextActivationProcessor());
             }
         }, OperationContext.Stage.RUNTIME);
