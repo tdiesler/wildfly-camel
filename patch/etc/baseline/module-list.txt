@@ -194,7 +194,6 @@
 /org/apache/camel/component/coap/main/camel-coap-2.20.0.jar
 /org/apache/camel/component/cometd/main/camel-cometd-2.20.0.jar
 /org/apache/camel/component/connector/main/camel-connector-2.20.0.jar
-/org/apache/camel/component/context/main/camel-context-2.20.0.jar
 /org/apache/camel/component/couchbase/main/camel-couchbase-2.20.0.jar
 /org/apache/camel/component/couchbase/main/couchbase-client-1.4.13.jar
 /org/apache/camel/component/couchdb/main/camel-couchdb-2.20.0.jar
@@ -439,9 +438,6 @@
 /org/apache/camel/core/main/camel-core-2.20.0.jar
 /org/apache/camel/core/xml/main/camel-core-xml-2.20.0.jar
 /org/apache/camel/script/groovy/main/groovy-all-2.4.12.jar
-/org/apache/camel/script/jruby/main/jruby-complete-1.7.18.jar
-/org/apache/camel/script/jruby/main/scriptengines-jruby-1.1.1.jar
-/org/apache/camel/script/python/main/jython-2.5.3.jar
 /org/apache/camel/script/rhino/main/js-1.7R2.jar
 /org/apache/camel/script/rhino/main/livetribe-jsr223-2.0.3.jar
 /org/apache/camel/script/rhino/main/scriptengines-javascript-1.1.1.jar
