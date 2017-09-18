@@ -49,12 +49,6 @@
             <version>${version.apache.camel}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-jbpm</artifactId>
-            <version>${version.apache.camel}</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>

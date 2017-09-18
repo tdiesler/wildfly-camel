@@ -79,36 +79,6 @@
         </dependencies>
     </module>
 
-    <module name="org.apache.camel.component.jbpm">
-        <include artifact="org.apache.camel:camel-jbpm" />
-        <apply-to-dependencies skip="true">
-            <include module="org.apache.camel.apt" />
-            <include module="org.springframework.boot" />
-        </apply-to-dependencies>
-        <dependencies>
-            <module name="org.slf4j"/>
-        </dependencies>
-    </module>
-
-    <module name="org.jbpm">
-        <include artifact="org.kie.remote:kie-remote-client" />
-        <include artifact="org.kie.remote:kie-remote-common" />
-        <include artifact="org.kie.remote:kie-remote-jaxb" />
-        <include artifact="org.kie.remote.ws:kie-remote-ws-common" />
-        <include artifact="org.kie:kie-internal" />
-        <include artifact="org.kie:kie-api" />
-        <apply-to-dependencies skip="true">
-            <include module="com.sun.xml.bind.jaxb.xjc" />
-            <include module="org.osgi.compendium" />
-        </apply-to-dependencies>
-        <dependencies>
-            <module name="com.sun.xml.bind" />
-            <module name="javax.api"/>
-            <module name="javax.jms.api"/>
-            <module name="org.slf4j"/>
-        </dependencies>
-    </module>
-
     <module name="org.apache.logging.log4j" >
         <include artifact="org.apache.logging.log4j:log4j-api" />
         <include artifact="org.apache.logging.log4j:log4j-core" />
