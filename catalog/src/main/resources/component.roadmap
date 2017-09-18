@@ -107,10 +107,8 @@ iec60870-client
 iec60870-server
 imap
 imaps
-infinispan
 influxdb
 irc
-jbpm
 jcache
 jclouds
 jcr
@@ -291,8 +289,10 @@ ignite-idgen                                        #1831 Competitor to JDG
 ignite-messaging                                    #1832 Competitor to JDG
 ignite-queue                                        #1833 Competitor to JDG
 ignite-set                                          #1834 Competitor to JDG
+infinispan                                          # [ENTESB-7285] Unwanted in EAP
 ironmq                                              #2006 Not another messaging system
 javaspace                                           #deprecated
+jbpm                                                # [ENTESB-7285] Unwanted in EAP
 jetty                                               #2009 No alternative HTTP engine
 jira                                                #1451 Requires proprietary binary from Atlassian
 kestrel                                             #deprecated
