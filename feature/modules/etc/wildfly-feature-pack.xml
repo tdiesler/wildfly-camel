@@ -339,7 +339,6 @@
         <artifact groupId="org.apache.camel" artifactId="camel-hystrix" version="2.20.1"/>
         <artifact groupId="org.apache.camel" artifactId="camel-ical" version="2.20.1"/>
         <artifact groupId="org.apache.camel" artifactId="camel-iec60870" version="2.20.1"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-infinispan" version="2.20.1"/>
         <artifact groupId="org.apache.camel" artifactId="camel-influxdb" version="2.20.1"/>
         <artifact groupId="org.apache.camel" artifactId="camel-irc" version="2.20.1"/>
         <artifact groupId="org.apache.camel" artifactId="camel-jackson" version="2.20.1"/>
@@ -654,12 +653,10 @@
         <artifact groupId="org.igniterealtime.smack" artifactId="smack-resolver-javax" version="4.2.1"/>
         <artifact groupId="org.igniterealtime.smack" artifactId="smack-sasl-javax" version="4.2.1"/>
         <artifact groupId="org.igniterealtime.smack" artifactId="smack-tcp" version="4.2.1"/>
-        <artifact groupId="org.infinispan" artifactId="infinispan-client-hotrod" version="8.2.8.Final-redhat-1"/>
         <artifact groupId="org.infinispan" artifactId="infinispan-commons" version="8.2.8.Final-redhat-1"/>
         <artifact groupId="org.infinispan" artifactId="infinispan-core" version="8.2.8.Final-redhat-1"/>
         <artifact groupId="org.infinispan" artifactId="infinispan-jcache" version="8.2.8.Final-redhat-1"/>
         <artifact groupId="org.infinispan" artifactId="infinispan-jcache-commons" version="8.2.8.Final-redhat-1"/>
-        <artifact groupId="org.infinispan" artifactId="infinispan-query-dsl" version="9.1.1.Final"/>
         <artifact groupId="org.influxdb" artifactId="influxdb-java" version="2.7"/>
         <artifact groupId="org.iq80.leveldb" artifactId="leveldb" version="0.9"/>
         <artifact groupId="org.iq80.leveldb" artifactId="leveldb-api" version="0.9"/>
