@@ -156,8 +156,6 @@ include::camel-hystrix.adoc[]
 
 include::camel-iec60870.adoc[]
 
-include::camel-infinispan.adoc[]
-
 include::camel-influxdb.adoc[]
 
 include::camel-irc.adoc[]
@@ -165,8 +163,6 @@ include::camel-irc.adoc[]
 include::camel-jasypt.adoc[]
 
 include::camel-jaxb.adoc[]
-
-include::camel-jbpm.adoc[]
 
 include::camel-jcache.adoc[]
 
