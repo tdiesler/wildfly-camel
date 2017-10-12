@@ -292,7 +292,6 @@ ignite-set                                          #1834 Competitor to JDG
 ironmq                                              #2006 Not another messaging system
 javaspace                                           #deprecated
 jetty                                               #2009 Cannot have alternative HTTP engine in EAP
-jira                                                #1451 Only available from Atlassian
 kestrel                                             #deprecated
 krati                                               #deprecated
 mina                                                #deprecated
