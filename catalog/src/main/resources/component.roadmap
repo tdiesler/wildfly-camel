@@ -66,8 +66,8 @@ dozer
 dropbox
 ehcache
 ejb
-elasticsearch
-elasticsearch5
+elasticsearch                                       #deprecated
+elasticsearch5                                      #deprecated
 elsql
 etcd
 exec
@@ -265,11 +265,13 @@ tika                                                #1850
 websocket                                           #1479
 
 [undecided]
+elasticsearch5-rest
 ganglia                                             #1998 No test coverage for ganglia in camel
 pgevent                                             #2021 No test coverage for pgevent in camel
 solr                                                #2030 No test coverage for solr in camel
 solrCloud                                           #2031 No test coverage for solr in camel
 solrs                                               #2032 No test coverage for solr in camel
+yql
 
 [rejected]
 bonita                                              #1820 We don't want another BPM engine
@@ -292,7 +294,6 @@ ignite-set                                          #1834 Competitor to JDG
 ironmq                                              #2006 Not another messaging system
 javaspace                                           #deprecated
 jetty                                               #2009 Cannot have alternative HTTP engine in EAP
-jira                                                #1451 Only available from Atlassian
 kestrel                                             #deprecated
 krati                                               #deprecated
 mina                                                #deprecated

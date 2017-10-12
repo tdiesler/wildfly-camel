@@ -17,4 +17,7 @@
     <module name="org.eclipse.jetty.server" />
     <module name="javax.servlet.api" />
   </dependencies>
+  <exports>
+    <exclude path="org/eclipse" />
+  </exports>
 </module>

@@ -103,6 +103,7 @@
 	^org/cometd/bayeux(.*)
 	^org/dozer(.*)
 	^org/eclipse/egit/github/core(.*)
+    ^org/eclipse/jetty(.*)
 	^org/eclipse/jgit(.*)
     ^org/eclipse/milo(.*)
 	^org/eclipse/neoscada/protocol/iec60870(.*)
