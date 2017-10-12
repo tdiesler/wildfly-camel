@@ -21,6 +21,24 @@
 <modules xmlns="http://smartics.de/ns/jboss-modules-descriptor/2">
 
     <!-- ================================================ -->
+    <!-- camel-amqp                                        -->
+    <!-- ================================================ -->
+    
+    <module name="io.netty" inherit-slot="false" slot="4.0">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="io.netty:netty-all" />
+        <dependencies>
+            <module name="sun.jdk">
+                <imports>
+                    <include path="sun/misc" />
+                </imports>
+            </module>
+        </dependencies>
+    </module>
+
+    <!-- ================================================ -->
     <!-- camel-hdfs2                                     -->
     <!-- ================================================ -->
     

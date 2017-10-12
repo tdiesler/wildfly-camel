@@ -153,6 +153,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-marketplacemeteringservice" />
         <include artifact="com.amazonaws:aws-java-sdk-mechanicalturkrequester" />
         <include artifact="com.amazonaws:aws-java-sdk-migrationhub" />
+        <include artifact="com.amazonaws:aws-java-sdk-mobile" />
         <include artifact="com.amazonaws:aws-java-sdk-models" />
         <include artifact="com.amazonaws:aws-java-sdk-opsworks" />
         <include artifact="com.amazonaws:aws-java-sdk-opsworkscm" />
@@ -796,11 +797,6 @@
         <include artifact="io.netty:netty" />
         <dependencies>
             <module name="javax.api"/>
-            <module name="sun.jdk">
-                <imports>
-                    <include path="sun/misc" />
-                </imports>
-            </module>
         </dependencies>
     </module>
 
@@ -1002,6 +998,9 @@
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
+        <apply-to-dependencies skip="true">
+            <include module="org.objenesis" />
+        </apply-to-dependencies>
         <include artifact=":commons-compress" />
     </module>
 
@@ -1308,7 +1307,7 @@
         </properties>
         <include artifact="org.apache.kafka:kafka-clients" />
         <include artifact="org.xerial.snappy:snappy-java" />
-        <include artifact="net.jpountz.lz4:lz4" />
+        <include artifact="org.lz4:lz4-java" />
         <dependencies>
             <module name="javax.api"/>
         </dependencies>
@@ -1384,6 +1383,9 @@
         <include artifact="org.apache.pdfbox:fontbox" />
         <include artifact="org.apache.pdfbox:jempbox" />
         <include artifact="org.apache.pdfbox:pdfbox" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
     </module>
 
     <module name="org.apache.qpid">
@@ -1395,7 +1397,7 @@
             <include module="io.netty.skipped" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="io.netty" />
+            <module name="io.netty" slot="4.0"/>
             <module name="javax.api" />
             <module name="javax.xml.bind.api" />
         </dependencies>
@@ -1655,6 +1657,9 @@
             <module name="javax.api" />
             <module name="org.eclipse.jetty.server" />
         </dependencies>
+        <exports>
+            <exclude path="org/eclipse" />
+        </exports>
     </module>
 
     <module name="org.eclipse.jetty.server">
@@ -1834,19 +1839,6 @@
         <include artifact="org.jxmpp:jxmpp-core" />
         <include artifact="org.jxmpp:jxmpp-jid" />
         <include artifact="org.jxmpp:jxmpp-util-cache" />
-    </module>
-
-    <module name="org.kie">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.kie:kie-internal" />
-        <include artifact="org.kie:kie-api" />
-        <include artifact="org.uberfire:uberfire-maven-support" />
-        <apply-to-dependencies skip="true">
-            <include module="com.sun.xml.bind.jaxb.xjc" />
-            <include module="org.osgi.compendium" />
-        </apply-to-dependencies>
     </module>
 
     <module name="org.osgi.core">

@@ -182,6 +182,7 @@
         <include artifact="io.netty:netty-tcnative-boringssl-static" />
         <include artifact="io.netty:netty-transport" />
         <include artifact="io.netty:netty-transport-native-epoll" />
+        <include artifact="io.netty:netty-transport-native-kqueue" />
     </module>
 
     <module name="io.sundr.builder.annotations" skip="true">
@@ -411,6 +412,10 @@
 
     <module name="org.mortbay.jetty" skip="true">
         <include artifact="org.mortbay.jetty:(.*)" />
+    </module>
+
+    <module name="org.objenesis" skip="true">
+        <include artifact="org.objenesis:objenesis" />
     </module>
 
     <module name="org.ops4j" skip="true">
