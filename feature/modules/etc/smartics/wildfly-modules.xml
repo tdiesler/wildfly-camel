@@ -30,6 +30,10 @@
         <include artifact="com.google.guava:guava" />
     </module>
     
+    <module name="io.netty"  skip="true">
+        <include artifact="io.netty:netty-all" />
+    </module>
+
     <module name="org.apache.log4j" skip="true">
         <include artifact="org.apache.log4j:" />
         <include artifact="log4j:" />

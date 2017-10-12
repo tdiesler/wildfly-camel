@@ -5,7 +5,7 @@
   </properties>
   <resources>
     <artifact name="${org.apache.kafka:kafka-clients}" />
-    <artifact name="${net.jpountz.lz4:lz4}" />
+    <artifact name="${org.lz4:lz4-java}" />
     <artifact name="${org.xerial.snappy:snappy-java}" />
   </resources>
   <dependencies>

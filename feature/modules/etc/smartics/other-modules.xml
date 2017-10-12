@@ -160,6 +160,7 @@
         <include artifact="com.amazonaws:aws-java-sdk-marketplacemeteringservice" />
         <include artifact="com.amazonaws:aws-java-sdk-mechanicalturkrequester" />
         <include artifact="com.amazonaws:aws-java-sdk-migrationhub" />
+        <include artifact="com.amazonaws:aws-java-sdk-mobile" />
         <include artifact="com.amazonaws:aws-java-sdk-models" />
         <include artifact="com.amazonaws:aws-java-sdk-opsworks" />
         <include artifact="com.amazonaws:aws-java-sdk-opsworkscm" />
@@ -872,11 +873,6 @@
         <include artifact="io.netty:netty" />
         <dependencies>
             <module name="javax.api"/>
-            <module name="sun.jdk">
-                <imports>
-                    <include path="sun/misc" />
-                </imports>
-            </module>
         </dependencies>
     </module>
 
@@ -1078,6 +1074,9 @@
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
+        <apply-to-dependencies skip="true">
+            <include module="org.objenesis" />
+        </apply-to-dependencies>
         <include artifact=":commons-compress" />
     </module>
 
@@ -1263,7 +1262,7 @@
             <include module="org.apache.flink.skipped" />
             <include module="org.apache.sling" />
             <include module="org.uncommons.maths" />
-            <include module="org.objenisis" />
+            <include module="org.objenesis" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
@@ -1452,7 +1451,7 @@
         </properties>
         <include artifact="org.apache.kafka:kafka-clients" />
         <include artifact="org.xerial.snappy:snappy-java" />
-        <include artifact="net.jpountz.lz4:lz4" />
+        <include artifact="org.lz4:lz4-java" />
         <dependencies>
             <module name="javax.api"/>
         </dependencies>
@@ -1529,6 +1528,9 @@
         <include artifact="org.apache.pdfbox:fontbox" />
         <include artifact="org.apache.pdfbox:jempbox" />
         <include artifact="org.apache.pdfbox:pdfbox" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
     </module>
 
     <module name="org.apache.qpid">
@@ -1540,7 +1542,7 @@
             <include module="io.netty.skipped" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="io.netty" />
+            <module name="io.netty" slot="4.0"/>
             <module name="javax.api" />
             <module name="javax.xml.bind.api" />
         </dependencies>
@@ -1637,10 +1639,12 @@
         <include artifact="org.apache.xmlgraphics:batik-awt-util" />
         <include artifact="org.apache.xmlgraphics:batik-bridge" />
         <include artifact="org.apache.xmlgraphics:batik-css" />
+        <include artifact="org.apache.xmlgraphics:batik-constants" />
         <include artifact="org.apache.xmlgraphics:batik-dom" />
         <include artifact="org.apache.xmlgraphics:batik-ext" />
         <include artifact="org.apache.xmlgraphics:batik-extension" />
         <include artifact="org.apache.xmlgraphics:batik-gvt" />
+        <include artifact="org.apache.xmlgraphics:batik-i18n" />
         <include artifact="org.apache.xmlgraphics:batik-parser" />
         <include artifact="org.apache.xmlgraphics:batik-script" />
         <include artifact="org.apache.xmlgraphics:batik-svg-dom" />
@@ -1800,6 +1804,9 @@
             <module name="javax.api" />
             <module name="org.eclipse.jetty.server" />
         </dependencies>
+        <exports>
+            <exclude path="org/eclipse" />
+        </exports>
     </module>
 
     <module name="org.eclipse.jetty.server">

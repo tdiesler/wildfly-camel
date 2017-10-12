@@ -521,6 +521,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="org.cometd.bayeux" export="true"/>
+            <module name="org.eclipse.jetty" export="true"/>
             <module name="org.slf4j" />
         </dependencies>
     </module>

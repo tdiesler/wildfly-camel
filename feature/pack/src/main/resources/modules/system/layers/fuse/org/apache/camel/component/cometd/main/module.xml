@@ -5,12 +5,12 @@
   </resources>
   <dependencies>
     <module name="org.cometd.bayeux" export="true" />
+    <module name="org.eclipse.jetty" export="true" />
     <module name="org.slf4j" />
     <module name="javax.servlet.api" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
     <module name="org.cometd.server" />
-    <module name="org.eclipse.jetty" />
     <module name="org.eclipse.jetty.server" />
   </dependencies>
 </module>
