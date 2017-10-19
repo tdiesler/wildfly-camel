@@ -80,6 +80,7 @@
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
         <version.fusepatch>3.0.0.fuse-000001</version.fusepatch>
+        <version.fusesource.camel.sap>7.0.0.fuse-000098</version.fusesource.camel.sap>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hbase.guava>14.0.1</version.hbase.guava>
         <version.hawtio>1.5.5</version.hawtio>
