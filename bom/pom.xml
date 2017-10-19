@@ -289,6 +289,11 @@
                 <version>${version.eclipse.egit.github}</version>
             </dependency>
             <dependency>
+                <groupId>org.fusesource</groupId>
+                <artifactId>camel-sap</artifactId>
+                <version>${version.fusesource.camel.sap}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.infinispan</groupId>
                 <artifactId>infinispan-jcache</artifactId>
                 <version>${version.wildfly.infinispan}</version>
