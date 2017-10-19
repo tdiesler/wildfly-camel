@@ -1015,6 +1015,10 @@
             <artifactId>org.eclipse.egit.github.core</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.fusesource</groupId>
+            <artifactId>camel-sap</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-jcache</artifactId>
         </dependency>
