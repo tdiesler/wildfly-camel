@@ -37,6 +37,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 
+import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.PollingConsumer;
@@ -54,9 +55,10 @@ import org.jboss.as.arquillian.container.ManagementClient;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.jms.support.converter.MessageConversionException;
+import org.springframework.jms.support.converter.MessageConverter;
 import org.wildfly.camel.test.common.utils.JMSUtils;
 import org.wildfly.extension.camel.CamelAware;
 
@@ -91,37 +93,37 @@ public class JMSIntegrationTest {
     }
 
     @Deployment
-    public static JavaArchive createdeployment() {
+    public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class, "camel-jms-tests");
     }
 
     @Test
     public void testMessageConsumerRoute() throws Exception {
-
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("jms:queue:" + QUEUE_NAME + "?connectionFactory=ConnectionFactory").
-                transform(body().prepend("Hello ")).to("direct:end");
+                fromF("jms:queue:%s?connectionFactory=ConnectionFactory", QUEUE_NAME)
+                .transform(simple("Hello ${body}"))
+                .to("seda:end");
             }
         });
 
         camelctx.start();
 
-        PollingConsumer consumer = camelctx.getEndpoint("direct:end").createPollingConsumer();
+        PollingConsumer consumer = camelctx.getEndpoint("seda:end").createPollingConsumer();
         consumer.start();
 
         try {
             // Send a message to the queue
             ConnectionFactory cfactory = (ConnectionFactory) initialctx.lookup("java:/ConnectionFactory");
-            Connection conection = cfactory.createConnection();
+            Connection connection = cfactory.createConnection();
             try {
-                sendMessage(conection, QUEUE_JNDI_NAME, "Kermit");
-                String result = consumer.receive().getIn().getBody(String.class);
+                sendMessage(connection, QUEUE_JNDI_NAME, "Kermit");
+                String result = consumer.receive(3000).getIn().getBody(String.class);
                 Assert.assertEquals("Hello Kermit", result);
             } finally {
-                conection.close();
+                connection.close();
             }
         } finally {
             camelctx.stop();
@@ -129,41 +131,72 @@ public class JMSIntegrationTest {
     }
 
     @Test
-    @Ignore("[CAMEL-8711] JMS Session not exposed to Camel route")
     public void testMessageConsumerRouteWithClientAck() throws Exception {
+        final List<String> result = new ArrayList<>();
+        final CountDownLatch latch = new CountDownLatch(3);
 
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("jms:queue:" + QUEUE_NAME + "?connectionFactory=ConnectionFactory&acknowledgementModeName=CLIENT_ACKNOWLEDGE").
-                process(new Processor() {
+                fromF("jms:queue:%s?connectionFactory=ConnectionFactory&acknowledgementModeName=CLIENT_ACKNOWLEDGE", QUEUE_NAME)
+                .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
                         JmsMessage in = (JmsMessage) exchange.getIn();
-                        Message message = in.getJmsMessage();
-                        message.acknowledge();
+                        Session session = in.getJmsSession();
+                        TextMessage message = (TextMessage) in.getJmsMessage();
+                        long count = latch.getCount();
+                        try {
+                            // always append the message text
+                            result.add(message.getText() + " " + (4 - count));
+
+                            if (count == 3) {
+                                // do nothing on first
+                                // note, this message is still acked because of
+                                // [CAMEL-8749] JMS message always acknowledged even with CLIENT_ACKNOWLEDGE
+                            } else if (count == 2) {
+                                // recover causing a redelivery
+                                session.recover();
+                            } else {
+                                // acknowledge
+                                message.acknowledge();
+                            }
+                        } catch (JMSException ex) {
+                            result.add(ex.getMessage());
+                        }
+                        latch.countDown();
                     }
                 }).
-                transform(body().prepend("Hello ")).to("direct:end");
+                transform(simple("Hello ${body}")).to("seda:end");
             }
         });
-
         camelctx.start();
 
-        PollingConsumer consumer = camelctx.getEndpoint("direct:end").createPollingConsumer();
+        PollingConsumer consumer = camelctx.getEndpoint("seda:end").createPollingConsumer();
         consumer.start();
 
         try {
             // Send a message to the queue
             ConnectionFactory cfactory = (ConnectionFactory) initialctx.lookup("java:/ConnectionFactory");
-            Connection conection = cfactory.createConnection();
+            Connection connection = cfactory.createConnection();
+            Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+            connection.start();
+
+            Destination destination = (Destination) initialctx.lookup(QUEUE_JNDI_NAME);
+            MessageProducer producer = session.createProducer(destination);
             try {
-                sendMessage(conection, QUEUE_JNDI_NAME, "Kermit");
-                String result = consumer.receive().getIn().getBody(String.class);
-                Assert.assertEquals("Hello Kermit", result);
+                producer.send(session.createTextMessage("Kermit"));
+                producer.send(session.createTextMessage("Piggy"));
+
+                Assert.assertTrue(latch.await(10, TimeUnit.SECONDS));
+                Assert.assertEquals("Four messages", 3, result.size());
+                Assert.assertEquals("Kermit 1", result.get(0));
+                Assert.assertEquals("Piggy 2", result.get(1));
+                Assert.assertEquals("Piggy 3", result.get(2));
+
             } finally {
-                conection.close();
+                connection.close();
             }
         } finally {
             camelctx.stop();
@@ -172,14 +205,13 @@ public class JMSIntegrationTest {
 
     @Test
     public void testMessageProviderRoute() throws Exception {
-
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("direct:start").
-                transform(body().prepend("Hello ")).
-                to("jms:queue:" + QUEUE_NAME + "?connectionFactory=ConnectionFactory");
+                from("direct:start")
+                .transform(simple("Hello ${body}"))
+                .toF("jms:queue:%s?connectionFactory=ConnectionFactory", QUEUE_NAME);
             }
         });
 
@@ -221,14 +253,13 @@ public class JMSIntegrationTest {
 
     @Test
     public void testMessageProviderRouteWithClientAck() throws Exception {
-
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("direct:start").
-                transform(body().prepend("Hello ")).
-                to("jms:queue:" + QUEUE_NAME + "?connectionFactory=ConnectionFactory");
+                from("direct:start")
+                .transform(simple("Hello ${body}"))
+                .toF("jms:queue:%s?connectionFactory=ConnectionFactory", QUEUE_NAME);
             }
         });
 
@@ -285,6 +316,56 @@ public class JMSIntegrationTest {
             }
         } finally {
             camelctx.stop();
+        }
+    }
+
+    @Test
+    public void testCustomMessageConverter() throws Exception {
+        MessageConverter converter = new MessageConverter() {
+            @Override
+            public Message toMessage(Object o, Session session) throws JMSException, MessageConversionException {
+                return null;
+            }
+
+            @Override
+            public Object fromMessage(Message message) throws JMSException, MessageConversionException {
+                TextMessage originalMessage = (TextMessage) message;
+                TextMessage modifiedMessage = new ActiveMQTextMessage();
+                modifiedMessage.setText(originalMessage.getText() + " Modified");
+                return modifiedMessage;
+            }
+        };
+        initialctx.bind("messageConverter", converter);
+
+        CamelContext camelctx = new DefaultCamelContext();
+        camelctx.addRoutes(new RouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                fromF("jms:queue:%s?connectionFactory=ConnectionFactory&messageConverter=#messageConverter", QUEUE_NAME)
+                .transform(simple("Hello ${body.getText()}"))
+                .to("seda:end");
+            }
+        });
+
+        camelctx.start();
+
+        PollingConsumer consumer = camelctx.getEndpoint("seda:end").createPollingConsumer();
+        consumer.start();
+
+        try {
+            // Send a message to the queue
+            ConnectionFactory cfactory = (ConnectionFactory) initialctx.lookup("java:/ConnectionFactory");
+            Connection connection = cfactory.createConnection();
+            try {
+                sendMessage(connection, QUEUE_JNDI_NAME, "Kermit");
+                String result = consumer.receive(3000).getIn().getBody(String.class);
+                Assert.assertEquals("Hello Kermit Modified", result);
+            } finally {
+                connection.close();
+            }
+        } finally {
+            camelctx.stop();
+            initialctx.unbind("messageConverter");
         }
     }
 

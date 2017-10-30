@@ -7,8 +7,7 @@
 	^io/swagger(.*)
 	^net/sf/saxon(.*)
 	^org/apache/abdera(.*)
-	^org/apache/activemq
-	^org/apache/activemq/camel(.*)
+	^org/apache/activemq(.*)
 	^org/apache/camel(.*)
 	^org/apache/cxf
 	^org/apache/cxf/binding(.*)
