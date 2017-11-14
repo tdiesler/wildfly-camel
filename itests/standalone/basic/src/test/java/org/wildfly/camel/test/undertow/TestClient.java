@@ -36,13 +36,13 @@ import org.slf4j.LoggerFactory;
 
 public class TestClient {
     private static final Logger LOG = LoggerFactory.getLogger(TestClient.class);
-    
+
     private List<Object> received;
     private CountDownLatch latch;
     private AsyncHttpClient client;
     private WebSocket websocket;
     private String url;
-    
+
     public TestClient(String url, AsyncHttpClientConfig conf) {
         this(url, conf, 1);
     }
@@ -61,7 +61,7 @@ public class TestClient {
         this.client = conf == null ? new DefaultAsyncHttpClient() : new DefaultAsyncHttpClient(conf);
         this.url = url;
     }
-    
+
     public void connect() throws InterruptedException, ExecutionException, IOException {
         websocket = client.prepareGet(url).execute(
             new WebSocketUpgradeHandler.Builder()
@@ -114,7 +114,7 @@ public class TestClient {
         }
         return null;
     }
-    
+
     public void close() throws IOException {
         websocket.close();
         client.close();
@@ -144,7 +144,7 @@ public class TestClient {
             latch.countDown();
         }
 
-        
+
         @Override
         public void onMessage(String message) {
             received.add(message);
@@ -152,7 +152,7 @@ public class TestClient {
             latch.countDown();
         }
 
-       
-        
+
+
     }
 }
