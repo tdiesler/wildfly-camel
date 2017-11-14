@@ -15,8 +15,15 @@
     <module name="org.apache.camel.component.netty4" />
     <module name="org.apache.mina.core" />
     <module name="org.slf4j" />
+    <module name="ca.uhn.hapi.hapi-structures-v21" />
+    <module name="ca.uhn.hapi.hapi-structures-v22" />
+    <module name="ca.uhn.hapi.hapi-structures-v23" />
+    <module name="ca.uhn.hapi.hapi-structures-v231" />
+    <module name="ca.uhn.hapi.hapi-structures-v251" />
+    <module name="ca.uhn.hapi.hapi-structures-v26" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
+    <module name="org.joda.time" />
   </dependencies>
   <exports>
     <exclude path="ca/uhn" />
