@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="ca.uhn.hapi.hapi-structures-v251">
+  <resources>
+    <artifact name="${ca.uhn.hapi:hapi-structures-v251}" />
+  </resources>
+  <dependencies>
+    <module name="org.apache.camel.component.hl7" />
+  </dependencies>
+</module>
