@@ -32,11 +32,13 @@ import java.net.URLConnection;
 
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit.Arquillian;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunAsClient
 @RunWith(Arquillian.class)
+@Ignore("[ENTESB-7440] Cannot access HawtIO console")
 public class HawtIOIntegrationTest {
 
     private static final String USERNAME = "admin";
