@@ -73,6 +73,21 @@
         <include artifact="com.sun.jersey:jersey-json"/>
     </module>
 
+    <module name="io.netty" inherit-slot="false" slot="4.0">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="io.netty:netty-all" />
+        <dependencies>
+            <module name="javax.api" />
+            <module name="sun.jdk">
+                <imports>
+                    <include path="sun/misc" />
+                </imports>
+            </module>
+        </dependencies>
+    </module>
+
     <module name="javax.jcr" >
         <include artifact="javax.jcr:jcr" />
     </module>
@@ -157,6 +172,7 @@
         <apply-to-dependencies skip="true">
             <include module="biz.aQute" />
             <include module="com.google.code.findbugs" />
+            <include module="org.osgi.annotation" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
@@ -171,6 +187,28 @@
         </dependencies>
     </module>
 
+    <module name="org.apache.qpid">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.apache.qpid:qpid-jms-client" />
+        <apply-to-dependencies skip="true">
+            <include module="io.netty.skipped" />
+        </apply-to-dependencies>
+        <dependencies>
+            <module name="javax.api" />
+            <module name="javax.xml.bind.api" />
+            <module name="io.netty" slot="4.0" />
+        </dependencies>
+    </module>
+
+    <module name="org.apache.qpid.proton" inherit-slot="false" slot="0.16">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.apache.qpid:proton-j" />
+    </module>
+
     <module name="org.apache.tika" >
         <properties>
             <property name="jboss.api" value="private"/>
@@ -181,6 +219,7 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
+            <module name="javax.xml.bind.api"/>
         </dependencies>
     </module>
 

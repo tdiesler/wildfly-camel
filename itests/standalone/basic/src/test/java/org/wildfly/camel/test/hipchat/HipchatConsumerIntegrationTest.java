@@ -46,6 +46,8 @@ import org.mockito.Mockito;
 import org.objenesis.Objenesis;
 import org.wildfly.extension.camel.CamelAware;
 
+import net.bytebuddy.ByteBuddy;
+
 /**
  * @author <a href="https://github.com/ppalaga">Peter Palaga</a>
  */
@@ -56,8 +58,10 @@ public class HipchatConsumerIntegrationTest {
 
     @Deployment
     public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "camel-hipchat-tests.jar") //
-                .addPackages(true, Mockito.class.getPackage(), Objenesis.class.getPackage(), HipchatProducerIntegrationTest.class.getPackage());
+        JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "camel-hipchat-tests.jar");
+        archive.addPackages(true, Mockito.class.getPackage(), ByteBuddy.class.getPackage(), Objenesis.class.getPackage());
+        archive.addPackages(true, HipchatProducerIntegrationTest.class.getPackage());
+        return archive;
     }
 
     private CamelContext createCamelContext() throws Exception {

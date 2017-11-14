@@ -20,8 +20,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -50,7 +50,6 @@ import org.apache.camel.component.openstack.neutron.NeutronConstants;
 import org.apache.camel.component.openstack.neutron.NeutronEndpoint;
 import org.apache.camel.component.openstack.neutron.producer.NetworkProducer;
 import org.apache.camel.component.openstack.nova.NovaEndpoint;
-import org.apache.camel.component.openstack.nova.producer.KeypairProducer;
 import org.apache.camel.component.openstack.swift.SwiftConstants;
 import org.apache.camel.component.openstack.swift.SwiftEndpoint;
 import org.apache.camel.component.openstack.swift.producer.ContainerProducer;
@@ -66,7 +65,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.objenesis.Objenesis;
 import org.openstack4j.api.Builders;
@@ -108,6 +107,8 @@ import org.openstack4j.model.storage.object.options.CreateUpdateContainerOptions
 import org.openstack4j.openstack.compute.domain.NovaKeypair;
 import org.openstack4j.openstack.image.domain.GlanceImage;
 import org.wildfly.extension.camel.CamelAware;
+
+import net.bytebuddy.ByteBuddy;
 
 @CamelAware
 @RunWith(Arquillian.class)
@@ -165,7 +166,7 @@ public class OpenstackIntegrationTest {
     @Deployment
     public static JavaArchive createDeployment() {
         JavaArchive archive = ShrinkWrap.create(JavaArchive.class, "camel-openstack-tests.jar");
-        archive.addPackages(true, Mockito.class.getPackage(), Objenesis.class.getPackage());
+        archive.addPackages(true, Mockito.class.getPackage(), ByteBuddy.class.getPackage(), Objenesis.class.getPackage());
         return archive;
     }
 
@@ -183,8 +184,8 @@ public class OpenstackIntegrationTest {
         when(computeService.keypairs()).thenReturn(keypairService);
         when(client.compute()).thenReturn(computeService);
 
-        when(keypairService.get(Matchers.anyString())).thenReturn(osTestKeypair);
-        when(keypairService.create(Matchers.anyString(), Matchers.anyString())).thenReturn(osTestKeypair);
+        when(keypairService.get(ArgumentMatchers.anyString())).thenReturn(osTestKeypair);
+        when(keypairService.create(ArgumentMatchers.anyString(), ArgumentMatchers.anyString())).thenReturn(osTestKeypair);
 
         List<Keypair> keypairList = new ArrayList<>();
         keypairList.add(osTestKeypair);
@@ -254,8 +255,8 @@ public class OpenstackIntegrationTest {
         when(blockStorageService.snapshots()).thenReturn(snapshotService);
         when(client.blockStorage()).thenReturn(blockStorageService);
 
-        when(volumeService.create(Matchers.any(org.openstack4j.model.storage.block.Volume.class))).thenReturn(testOSVolume);
-        when(volumeService.get(Matchers.anyString())).thenReturn(testOSVolume);
+        when(volumeService.create(ArgumentMatchers.any(org.openstack4j.model.storage.block.Volume.class))).thenReturn(testOSVolume);
+        when(volumeService.get(ArgumentMatchers.anyString())).thenReturn(testOSVolume);
 
         when(testOSVolume.getId()).thenReturn(UUID.randomUUID().toString());
         when(testOSVolume.getName()).thenReturn(dummyVolume.getName());
@@ -275,7 +276,7 @@ public class OpenstackIntegrationTest {
         Exchange exchange = Mockito.mock(Exchange.class);
         when(exchange.getIn()).thenReturn(msg);
 
-        when(containerService.create(anyString(), any(CreateUpdateContainerOptions.class))).thenReturn(ActionResponse.actionSuccess());
+        when(containerService.create(anyString(), any())).thenReturn(ActionResponse.actionSuccess());
 
         SwiftEndpoint endpoint = Mockito.mock(SwiftEndpoint.class);
         Producer producer = new ContainerProducer(endpoint, client);
@@ -292,41 +293,6 @@ public class OpenstackIntegrationTest {
         assertNull(optionsCaptor.getValue());
 
         assertFalse(msg.isFault());
-    }
-
-    @Test
-    public void testNovaKeypair() throws Exception {
-        when(osTestKeypair.getName()).thenReturn(KEYPAIR_NAME);
-        when(osTestKeypair.getPublicKey()).thenReturn(dummyKeypair.getPublicKey());
-        when(osTestKeypair.getFingerprint()).thenReturn("fp");
-        when(osTestKeypair.getPrivateKey()).thenReturn("prk");
-
-        CamelContext camelContext = Mockito.mock(CamelContext.class);
-        when(camelContext.getHeadersMapFactory()).thenReturn(new DefaultHeadersMapFactory());
-
-        Message msg = new DefaultMessage(camelContext);
-        msg.setHeader(OpenstackConstants.OPERATION, OpenstackConstants.CREATE);
-        msg.setHeader(OpenstackConstants.NAME, KEYPAIR_NAME);
-
-        Exchange exchange = Mockito.mock(Exchange.class);
-        when(exchange.getIn()).thenReturn(msg);
-
-        NovaEndpoint endpoint = Mockito.mock(NovaEndpoint.class);
-        Producer producer = new KeypairProducer(endpoint, client);
-        producer.process(exchange);
-
-        ArgumentCaptor<String> nameCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<String> keypairCaptor = ArgumentCaptor.forClass(String.class);
-        verify(keypairService).create(nameCaptor.capture(), keypairCaptor.capture());
-
-        assertEquals(KEYPAIR_NAME, nameCaptor.getValue());
-        assertNull(keypairCaptor.getValue());
-
-        Keypair result = msg.getBody(Keypair.class);
-        assertEquals("fp", result.getFingerprint());
-        assertEquals("prk", result.getPrivateKey());
-        assertEquals(dummyKeypair.getName(), result.getName());
-        assertEquals(dummyKeypair.getPublicKey(), result.getPublicKey());
     }
 
     @Test

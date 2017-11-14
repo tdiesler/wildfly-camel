@@ -208,6 +208,11 @@
         <include artifact="io.sundr:sundr-codegen" />
     </module>
 
+    <module name="io.zipkin.skipped" skip="true">
+        <include artifact="io.zipkin.reporter:zipkin-reporter" />
+        <include artifact="org.jvnet:animal-sniffer-annotation" />
+    </module>
+
     <module name="jaxmeapi" skip="true">
         <include artifact=":jaxmeapi" />
     </module>
@@ -455,6 +460,10 @@
 
     <module name="org.ops4j" skip="true">
         <include artifact="org.ops4j.base:(.*)" />
+    </module>
+
+    <module name="org.osgi.annotation" skip="true">
+        <include artifact="org.osgi:org.osgi.annotation" />
     </module>
 
     <module name="org.osgi.compendium" skip="true">
