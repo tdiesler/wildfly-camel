@@ -5,12 +5,9 @@
   </properties>
   <resources>
     <artifact name="${org.json:json}" />
-    <artifact name="${com.github.everit-org.json-schema:org.everit.json.schema}" />
   </resources>
   <dependencies>
     <module name="com.damnhandy" />
     <module name="org.apache.commons.collections" />
-    <module name="com.google.guava" />
-    <module name="org.apache.commons.validator" />
   </dependencies>
 </module>
