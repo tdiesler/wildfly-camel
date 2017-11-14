@@ -17,6 +17,7 @@ zipkin
 [planned]
 
 [undecided]
+aws-xray
 
 [rejected]
 bam                                 #deprecated

@@ -30,4 +30,8 @@
         <include artifact="com.google.guava:guava" />
     </module>
 
+    <module name="io.netty" skip="true">
+        <include artifact="io.netty:netty-all" />
+    </module>
+    
 </modules>
