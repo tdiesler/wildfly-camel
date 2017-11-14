@@ -56,6 +56,10 @@
         <include artifact="org.apache.camel:camel-core" />
     </module>
 
+    <module name="org.apache.camel.component.jms" skip="true">
+        <include artifact="org.apache.camel:camel-jms" />
+    </module>
+
     <module name="org.apache.commons.compress" skip="true">
         <include artifact=":commons-compress" />
     </module>
