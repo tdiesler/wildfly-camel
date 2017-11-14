@@ -26,6 +26,8 @@
     <module name="com.fasterxml.jackson.core.jackson-annotations" />
     <module name="com.fasterxml.jackson.core.jackson-core" />
     <module name="com.fasterxml.jackson.dataformat.cbor" />
+    <module name="com.amazonaws.aws-java-sdk-autoscalingplans" />
+    <module name="com.amazonaws.aws-java-sdk-transcribe" />
     <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="org.apache.commons.logging" />
     <module name="org.apache.httpcomponents" />
