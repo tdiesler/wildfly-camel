@@ -648,6 +648,7 @@
         <artifact groupId="org.ehcache" artifactId="ehcache" version="3.4.0"/>
         <artifact groupId="org.facebook4j" artifactId="facebook4j-core" version="2.4.10"/>
         <artifact groupId="org.freemarker" artifactId="freemarker" version="2.3.23"/>
+        <artifact groupId="org.fusesource" artifactId="camel-sap" version="7.0.0.fuse-000113"/>
         <artifact groupId="org.fusesource.hawtbuf" artifactId="hawtbuf" version="1.11"/>
         <artifact groupId="org.fusesource.hawtdispatch" artifactId="hawtdispatch" version="1.22"/>
         <artifact groupId="org.fusesource.hawtdispatch" artifactId="hawtdispatch-transport" version="1.22"/>
