@@ -68,7 +68,7 @@ public class ExportedPathsTest {
     private static final String MODULE_LOADER_OBJECT_NAME = "jboss.modules:type=ModuleLoader,name=LocalModuleLoader-2";
     private static final String MODULE_CAMEL_COMPONENT = "org.apache.camel.component";
     private static final String MODULE_CAMEL = "org.apache.camel";
-    private static final String MODULE_WILDFLY_CAMEL_EXTRAS = "org.wildfly.camel.extras:main";
+    private static final String MODULE_WILDFLY_CAMEL_EXTRAS = "org.wildfly.camel.extras";
 
     @Deployment
     public static JavaArchive deployment() {
