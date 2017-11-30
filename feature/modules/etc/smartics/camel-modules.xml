@@ -3146,4 +3146,19 @@
         </exports>
     </module>
 
+    <module name="org.fusesource.camel.component.sap">
+        <include artifact="org.fusesource:camel-sap" />
+        <dependencies>
+            <module name="com.sap.conn.jco" />
+            <module name="javax.api" />
+            <module name="org.apache.camel.core" />
+            <module name="org.slf4j" />
+        </dependencies>
+        <exports>
+            <exclude path="org/fusesource" />
+            <exclude path="org/fusesource/camel" />
+            <exclude path="org/fusesource/camel/component" />
+            <exclude path="org/eclipse**" />
+        </exports>
+    </module>
 </modules>
