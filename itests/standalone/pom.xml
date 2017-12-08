@@ -25,7 +25,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-itests</artifactId>
-        <version>5.1.0.fuse-SNAPSHOT</version>
+        <version>5.1.0.fuse-000001</version>
     </parent>
 
     <name>Wildfly Camel :: Testsuite :: Standalone</name>
@@ -36,6 +36,7 @@
     <!-- Properties -->
     <properties>
         <jboss.server.name>jboss-eap-${version.wildfly}</jboss.server.name>
+        <local.repository>${env.LOCAL_REPOSITORY}</local.repository>
         <jboss.home>${project.build.directory}/${jboss.server.name}</jboss.home>
         <jvmArgs>-Xmx1G -XX:MaxPermSize=512m -Djava.net.preferIPv4Stack=true -Djava.security.egd=file:/dev/./urandom</jvmArgs>
         <jvmDebugArgs>-agentlib:jdwp=transport=dt_socket,address=8787,server=y,suspend=n</jvmDebugArgs>
@@ -120,7 +121,7 @@
                                 <environmentVariables>
                                     <JBOSS_HOME>${jboss.home}</JBOSS_HOME>
                                 </environmentVariables>
-                                <commandlineArgs>-jar ${jboss.home}/jboss-modules.jar -mp ${jboss.home}/modules org.wildfly.extras.config --configs camel --enable</commandlineArgs>
+                                <commandlineArgs>-DLOCAL_REPOSITORY=${local.repository} -jar ${jboss.home}/jboss-modules.jar -mp ${jboss.home}/modules org.wildfly.extras.config --configs camel --enable</commandlineArgs>
                             </configuration>
                         </execution>
                     </executions>
