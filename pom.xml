@@ -76,7 +76,7 @@
         <version.arquillian.cube>1.6.0</version.arquillian.cube>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusepatch>3.0.0</version.fusepatch>
+        <version.fusepatch>3.0.0.fuse-000014</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>1.5.7</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
