@@ -49,8 +49,6 @@ zipfile
 [planned]
 
 [undecided]
-fhirJson
-fhirXml
 
 [rejected]
 hessian             #deprecated
