@@ -3188,8 +3188,8 @@ org/ehcache/core/config
 org/ehcache/core/config/store
 org/ehcache/core/events
 org/ehcache/core/exceptions
-org/ehcache/core/resilience
 org/ehcache/core/spi
+org/ehcache/core/spi/function
 org/ehcache/core/spi/service
 org/ehcache/core/spi/store
 org/ehcache/core/spi/store/events
@@ -3207,7 +3207,6 @@ org/ehcache/impl/config/executor
 org/ehcache/impl/config/loaderwriter
 org/ehcache/impl/config/loaderwriter/writebehind
 org/ehcache/impl/config/persistence
-org/ehcache/impl/config/resilience
 org/ehcache/impl/config/serializer
 org/ehcache/impl/config/store
 org/ehcache/impl/config/store/disk
@@ -3228,7 +3227,6 @@ org/ehcache/spi
 org/ehcache/spi/copy
 org/ehcache/spi/loaderwriter
 org/ehcache/spi/persistence
-org/ehcache/spi/resilience
 org/ehcache/spi/serialization
 org/ehcache/spi/service
 org/ehcache/xml
