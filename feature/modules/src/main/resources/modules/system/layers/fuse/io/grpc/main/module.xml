@@ -11,7 +11,6 @@
     <artifact name="${io.grpc:grpc-protobuf}" />
     <artifact name="${io.grpc:grpc-protobuf-lite}" />
     <artifact name="${io.grpc:grpc-stub}" />
-    <artifact name="${com.google.instrumentation:instrumentation-api}" />
     <artifact name="${com.auth0:java-jwt}" />
     <artifact name="${io.opencensus:opencensus-api}" />
     <artifact name="${io.opencensus:opencensus-contrib-grpc-metrics}" />
@@ -22,6 +21,7 @@
     <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="com.google.api.grpc.proto-google-common-protos" />
     <module name="com.google.auth.google-auth-library-credentials" />
+    <module name="com.google.code.gson" />
     <module name="com.google.guava" />
     <module name="com.google.protobuf" />
     <module name="org.apache.commons.codec" />
