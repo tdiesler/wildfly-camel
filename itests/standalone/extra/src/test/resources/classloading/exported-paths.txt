@@ -57,7 +57,6 @@ org/apache/camel/component/mock
 org/apache/camel/component/properties
 org/apache/camel/component/ref
 org/apache/camel/component/rest
-org/apache/camel/component/saga
 org/apache/camel/component/scheduler
 org/apache/camel/component/seda
 org/apache/camel/component/stub
@@ -81,7 +80,6 @@ org/apache/camel/impl/converter
 org/apache/camel/impl/health
 org/apache/camel/impl/osgi
 org/apache/camel/impl/osgi/tracker
-org/apache/camel/impl/saga
 org/apache/camel/impl/scan
 org/apache/camel/impl/transformer
 org/apache/camel/impl/validator
@@ -121,10 +119,8 @@ org/apache/camel/processor/idempotent
 org/apache/camel/processor/interceptor
 org/apache/camel/processor/loadbalancer
 org/apache/camel/processor/resequencer
-org/apache/camel/processor/saga
 org/apache/camel/processor/validation
 org/apache/camel/runtimecatalog
-org/apache/camel/saga
 org/apache/camel/spi
 org/apache/camel/spring
 org/apache/camel/spring/converter
@@ -1609,7 +1605,6 @@ org/apache/camel/component/aws/ec2
 org/apache/camel/component/aws/firehose
 org/apache/camel/component/aws/kinesis
 org/apache/camel/component/aws/lambda
-org/apache/camel/component/aws/mq
 org/apache/camel/component/aws/s3
 org/apache/camel/component/aws/sdb
 org/apache/camel/component/aws/ses
@@ -1847,6 +1842,7 @@ org/apache/camel/component/milo/converter
 org/apache/camel/component/milo/server
 org/apache/camel/component/mina2
 org/apache/camel/component/mllp
+org/apache/camel/component/mllp/impl
 org/apache/camel/component/mongodb
 org/apache/camel/component/mongodb/converters
 org/apache/camel/component/mongodb/gridfs
