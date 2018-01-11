@@ -1299,11 +1299,8 @@ io/vertx/core/file/impl
 io/vertx/core/http
 io/vertx/core/http/impl
 io/vertx/core/http/impl/cgbystrom
-io/vertx/core/http/impl/headers
-io/vertx/core/http/impl/pool
 io/vertx/core/http/impl/ws
 io/vertx/core/impl
-io/vertx/core/impl/cpu
 io/vertx/core/impl/launcher
 io/vertx/core/impl/launcher/commands
 io/vertx/core/impl/resolver
@@ -1314,8 +1311,6 @@ io/vertx/core/metrics
 io/vertx/core/metrics/impl
 io/vertx/core/net
 io/vertx/core/net/impl
-io/vertx/core/net/impl/pkcs1
-io/vertx/core/net/impl/transport
 io/vertx/core/parsetools
 io/vertx/core/parsetools/impl
 io/vertx/core/shareddata
