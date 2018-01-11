@@ -296,7 +296,6 @@ ironmq                                              #2006 Not another messaging 
 javaspace                                           #deprecated
 jbpm                                                # [ENTESB-7285] Unwanted in EAP
 jetty                                               #2009 No alternative HTTP engine
-jira                                                #1451 Requires proprietary binary from Atlassian
 kestrel                                             #deprecated
 krati                                               #deprecated
 mina                                                #deprecated
