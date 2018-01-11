@@ -32,23 +32,14 @@
         <artifact groupId="javax.inject" artifactId="javax.inject" version="1"/>
         <artifact groupId="javax.jcr" artifactId="jcr" version="2.0"/>
         <artifact groupId="org.apache.avro" artifactId="avro" version="1.7.4"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-core" version="2.21.0"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-hdfs2" version="2.21.0"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-jbpm" version="2.21.0"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-jcr" version="2.21.0"/>
+        <artifact groupId="org.apache.camel" artifactId="camel-core" version="2.21.0.fuse-000055"/>
+        <artifact groupId="org.apache.camel" artifactId="camel-hdfs2" version="2.21.0.fuse-000055"/>
+        <artifact groupId="org.apache.camel" artifactId="camel-jcr" version="2.21.0.fuse-000055"/>
         <artifact groupId="org.apache.commons" artifactId="commons-compress" version="1.4.1"/>
         <artifact groupId="org.apache.commons" artifactId="commons-math3" version="3.1.1"/>
         <artifact groupId="org.apache.curator" artifactId="curator-client" version="2.7.1"/>
         <artifact groupId="org.apache.curator" artifactId="curator-framework" version="2.7.1"/>
         <artifact groupId="org.apache.curator" artifactId="curator-recipes" version="2.7.1"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-bindings-soap" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-bindings-xml" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-databinding-jaxb" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-frontend-jaxws" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-frontend-simple" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-transports-http" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-ws-addr" version="2.7.18"/>
-        <artifact groupId="org.apache.cxf" artifactId="cxf-rt-ws-policy" version="2.7.18"/>
         <artifact groupId="org.apache.derby" artifactId="derby" version="10.14.1.0"/>
         <artifact groupId="org.apache.directory.api" artifactId="api-asn1-api" version="1.0.0-M20"/>
         <artifact groupId="org.apache.directory.api" artifactId="api-util" version="1.0.0-M20"/>
@@ -70,31 +61,18 @@
         <artifact groupId="org.apache.jackrabbit" artifactId="jackrabbit-spi" version="2.17.1"/>
         <artifact groupId="org.apache.jackrabbit" artifactId="jackrabbit-spi-commons" version="2.17.1"/>
         <artifact groupId="org.apache.lucene" artifactId="lucene-core" version="3.6.0"/>
-        <artifact groupId="org.apache.neethi" artifactId="neethi" version="3.0.3"/>
         <artifact groupId="org.apache.tika" artifactId="tika-core" version="1.17"/>
-        <artifact groupId="org.apache.ws.xmlschema" artifactId="xmlschema-core" version="2.1.0"/>
         <artifact groupId="org.apache.zookeeper" artifactId="zookeeper" version="3.4.6"/>
         <artifact groupId="org.codehaus.jackson" artifactId="jackson-core-asl" version="1.9.12"/>
         <artifact groupId="org.codehaus.jackson" artifactId="jackson-jaxrs" version="1.9.13"/>
         <artifact groupId="org.codehaus.jackson" artifactId="jackson-mapper-asl" version="1.9.12"/>
         <artifact groupId="org.codehaus.jackson" artifactId="jackson-xc" version="1.9.13"/>
         <artifact groupId="org.codehaus.jettison" artifactId="jettison" version="1.1"/>
-        <artifact groupId="org.codehaus.woodstox" artifactId="stax2-api" version="3.1.4"/>
-        <artifact groupId="org.jboss.logging" artifactId="jboss-logging" version="3.1.4.GA"/>
-        <artifact groupId="org.jsoup" artifactId="jsoup" version="1.8.3"/>
-        <artifact groupId="org.kie" artifactId="kie-api" version="6.5.0.Final"/>
-        <artifact groupId="org.kie" artifactId="kie-internal" version="6.5.0.Final"/>
-        <artifact groupId="org.kie.remote" artifactId="kie-remote-client" version="6.5.0.Final"/>
-        <artifact groupId="org.kie.remote" artifactId="kie-remote-common" version="6.5.0.Final"/>
-        <artifact groupId="org.kie.remote" artifactId="kie-remote-jaxb" version="6.5.0.Final"/>
-        <artifact groupId="org.kie.remote.ws" artifactId="kie-remote-ws-common" version="6.5.0.Final"/>
         <artifact groupId="org.slf4j" artifactId="slf4j-api" version="1.7.10"/>
         <artifact groupId="org.wildfly.camel" artifactId="wildfly-camel-feature-modules" version="5.1.0.fuse-SNAPSHOT" extension="zip"/>
         <artifact groupId="org.xerial.snappy" artifactId="snappy-java" version="1.0.4.1"/>
         <artifact groupId="rome" artifactId="rome" version="1.0"/>
-        <artifact groupId="wsdl4j" artifactId="wsdl4j" version="1.6.3"/>
         <artifact groupId="xerces" artifactId="xercesImpl" version="2.9.1"/>
-        <artifact groupId="xml-resolver" artifactId="xml-resolver" version="1.2"/>
         <artifact groupId="xmlenc" artifactId="xmlenc" version="0.52"/>
     </artifact-versions>
 </feature-pack>
