@@ -2,15 +2,12 @@
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.json.validator">
   <resources>
     <artifact name="${org.apache.camel:camel-json-validator}" />
-    <artifact name="${com.networknt:json-schema-validator}" />
   </resources>
   <dependencies>
     <module name="org.slf4j" />
-    <module name="com.fasterxml.jackson.core.jackson-databind" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
-    <module name="org.apache.commons.lang3" />
-    <module name="org.slf4j.ext" />
+    <module name="org.everit.json" />
   </dependencies>
   <exports>
     <exclude path="com/networknt**" />
