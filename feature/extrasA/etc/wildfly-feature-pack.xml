@@ -32,9 +32,9 @@
         <artifact groupId="javax.inject" artifactId="javax.inject" version="1"/>
         <artifact groupId="javax.jcr" artifactId="jcr" version="2.0"/>
         <artifact groupId="org.apache.avro" artifactId="avro" version="1.7.4"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-core" version="2.21.0-SNAPSHOT"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-hdfs2" version="2.21.0-SNAPSHOT"/>
-        <artifact groupId="org.apache.camel" artifactId="camel-jcr" version="2.21.0-SNAPSHOT"/>
+        <artifact groupId="org.apache.camel" artifactId="camel-core" version="2.21.0.fuse-000038"/>
+        <artifact groupId="org.apache.camel" artifactId="camel-hdfs2" version="2.21.0.fuse-000038"/>
+        <artifact groupId="org.apache.camel" artifactId="camel-jcr" version="2.21.0.fuse-000038"/>
         <artifact groupId="org.apache.commons" artifactId="commons-compress" version="1.4.1"/>
         <artifact groupId="org.apache.commons" artifactId="commons-math3" version="3.1.1"/>
         <artifact groupId="org.apache.curator" artifactId="curator-client" version="2.7.1"/>
@@ -69,7 +69,7 @@
         <artifact groupId="org.codehaus.jackson" artifactId="jackson-xc" version="1.9.13"/>
         <artifact groupId="org.codehaus.jettison" artifactId="jettison" version="1.1"/>
         <artifact groupId="org.slf4j" artifactId="slf4j-api" version="1.7.10"/>
-        <artifact groupId="org.wildfly.camel" artifactId="wildfly-camel-feature-modules" version="5.2.0-SNAPSHOT" extension="zip"/>
+        <artifact groupId="org.wildfly.camel" artifactId="wildfly-camel-feature-modules" version="5.1.0.fuse-SNAPSHOT" extension="zip"/>
         <artifact groupId="org.xerial.snappy" artifactId="snappy-java" version="1.0.4.1"/>
         <artifact groupId="rome" artifactId="rome" version="1.0"/>
         <artifact groupId="xerces" artifactId="xercesImpl" version="2.9.1"/>
