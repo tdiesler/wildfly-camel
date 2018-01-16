@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>2.4.0.redhat-630000-SNAPSHOT</version>
+    <version>2.4.0.redhat-630310-10</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildflyext/wildflyext/wildfly-camel</url>
@@ -46,7 +46,7 @@
     <properties>
         
         <!-- Camel version -->
-        <version.apache.camel>2.17.0.redhat-630267</version.apache.camel>
+        <version.apache.camel>2.17.0.redhat-630310-10</version.apache.camel>
         
         <!-- WildFly Versions -->
         <!-- http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven/org/jboss/as/jboss-as-build -->
@@ -54,17 +54,17 @@
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
-        <version.apache.activemq>5.11.0.redhat-630248</version.apache.activemq>
+        <version.apache.activemq>5.11.0.redhat-630310-10</version.apache.activemq>
         <version.apache.ftpserver>1.0.6</version.apache.ftpserver>
         <version.apache.sshd.sftp>0.11.0</version.apache.sshd.sftp>
         <version.apache.xmlbeans>2.6.0</version.apache.xmlbeans>
         <version.args4j>2.0.31</version.args4j>
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.freeside.betamax>1.1.2</version.freeside.betamax>
-        <version.fusesource.camel.sap>6.3.0.redhat-248</version.fusesource.camel.sap>
+        <version.fusesource.camel.sap>6.3.0.redhat-310-10</version.fusesource.camel.sap>
         <version.fusepatch>2.4.0</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>1.4.redhat-630248</version.hawtio>
+        <version.hawtio>1.4.0.redhat-630310-10</version.hawtio>
         <version.hibernate.jpa.api>1.0.1.Final-redhat-3</version.hibernate.jpa.api>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.javax.enterprise>1.2.0.redhat-2</version.javax.enterprise>
