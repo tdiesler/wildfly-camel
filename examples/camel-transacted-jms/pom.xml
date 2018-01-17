@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-example</artifactId>
-        <version>2.4.0.redhat-630000-SNAPSHOT</version>
+        <version>2.4.0.redhat-630310-11</version>
     </parent>
 
     <name>Wildfly Camel :: Example :: Camel Transacted JMS</name>
