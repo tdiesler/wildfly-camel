@@ -63,6 +63,37 @@ public class StandaloneConfigTest extends ConfigTestSupport {
         Element element = ConfigSupport.findChildElement(doc.getRootElement(), "system-properties", NS_DOMAINS);
         Assert.assertNotNull("system-properties not null", element);
         assertElementWithAttributeValueNotNull(element, "property", "name", "hawtio.realm", NS_DOMAINS);
+        assertElementWithAttributeValueNotNull(element, "property", "name", "jolokia.policyLocation", NS_DOMAINS);
+
+        // Verify camel
+        List<Element> profiles = ConfigSupport.findProfileElements(doc, NS_DOMAINS);
+        Assert.assertEquals("One profile", 1, profiles.size());
+        assertElementNotNull(profiles.get(0), "subsystem", NS_CAMEL);
+
+        // Verify hawtio-domain
+        assertElementWithAttributeValueNotNull(doc.getRootElement(), "security-domain", "name", "hawtio-domain", NS_SECURITY);
+
+        //outputDocumentContent(doc, System.out);
+    }
+
+    @Test
+    public void testStandaloneOpenShiftConfig() throws Exception {
+        URL resurl = StandaloneConfigTest.class.getResource("/standalone-openshift.xml");
+        SAXBuilder jdom = new SAXBuilder();
+        Document doc = jdom.build(resurl);
+
+        ConfigPlugin plugin = new WildFlyCamelConfigPlugin();
+        ConfigContext context = ConfigSupport.createContext(null, Paths.get(resurl.toURI()), doc);
+        plugin.applyStandaloneConfigChange(context, true);
+
+        // Verify extension
+        assertElementWithAttributeValueNotNull(doc.getRootElement(), "extension", "module", "org.wildfly.extension.camel", NS_DOMAINS);
+
+        // Verify system-properties
+        Element element = ConfigSupport.findChildElement(doc.getRootElement(), "system-properties", NS_DOMAINS);
+        Assert.assertNotNull("system-properties not null", element);
+        assertElementWithAttributeValueNotNull(element, "property", "name", "hawtio.realm", NS_DOMAINS);
+        assertElementWithAttributeValueNull(element, "property", "name", "jolokia.policyLocation", NS_DOMAINS);
 
         // Verify camel
         List<Element> profiles = ConfigSupport.findProfileElements(doc, NS_DOMAINS);
@@ -143,6 +174,7 @@ public class StandaloneConfigTest extends ConfigTestSupport {
         assertElementWithAttributeValueNull(element, "property", "name", "hawtio.realm", NS_DOMAINS);
         assertElementWithAttributeValueNull(element, "property", "name", "hawtio.offline", NS_DOMAINS);
         assertElementWithAttributeValueNull(element, "property", "name", "hawtio.authenticationEnabled", NS_DOMAINS);
+        assertElementWithAttributeValueNull(element, "property", "name", "jolokia.policyLocation", NS_DOMAINS);
 
         List<Element> profiles = ConfigSupport.findProfileElements(doc, NS_DOMAINS);
 
