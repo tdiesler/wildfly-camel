@@ -105,6 +105,15 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
             removeProperty(propertiesByName, "hawtio.offline");
             removeProperty(propertiesByName, "hawtio.realm");
         }
+
+        boolean openshift = context.getConfiguration().toString().endsWith("-openshift.xml");
+        if (!openshift) {
+            if (enable) {
+                addProperty(element, propertiesByName, "jolokia.policyLocation", "file:${jboss.server.config.dir}/jolokia-access.xml");
+            } else {
+                removeProperty(propertiesByName, "jolokia.policyLocation");
+            }
+        }
     }
 
     private static void updateSubsystem(ConfigContext context, boolean enable) {
