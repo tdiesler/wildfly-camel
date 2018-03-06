@@ -27,7 +27,7 @@
     <description>Wildfly Camel Default Configuration Utility</description>
 
     <properties>
-        <jboss.server.name>wildfly-${version.wildfly}</jboss.server.name>
+        <jboss.server.name>jboss-eap-${version.wildfly}</jboss.server.name>
     </properties>
 
     <dependencyManagement>
@@ -57,8 +57,8 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-parent</artifactId>
+            <groupId>org.jboss.eap</groupId>
+            <artifactId>jboss-eap-parent</artifactId>
             <version>${version.wildfly}</version>
             <scope>test</scope>
             <type>pom</type>
@@ -115,13 +115,10 @@
                 </executions>
                 <configuration>
                     <tasks>
-                        <echo>${basedir}/../pom.xml</echo>
-                        <echo>${maven.dependency.org.apache.camel.camel-parent.pom.path}</echo>
-                        <echo>${maven.dependency.org.wildfly.wildfly-parent.pom.path}</echo>
                         <propertyfile file="target/pom-paths.txt">
                             <entry key="wildfly-camel" value="${basedir}/../pom.xml" />
                             <entry key="camel-parent" value="${maven.dependency.org.apache.camel.camel-parent.pom.path}" />
-                            <entry key="wildfly-parent" value="${maven.dependency.org.wildfly.wildfly-parent.pom.path}" />
+                            <entry key="wildfly-parent" value="${maven.dependency.org.jboss.eap.jboss-eap-parent.pom.path}" />
                         </propertyfile>
                         <copy file="${project.build.directory}/${jboss.server.name}/standalone/configuration/standalone.xml" todir="${project.build.testOutputDirectory}" overwrite="true" />
                     </tasks>
