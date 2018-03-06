@@ -19,6 +19,7 @@ zipkin
 [undecided]
 aws-xray
 lra
+spring-dm
 
 [rejected]
 bam                                 #deprecated
