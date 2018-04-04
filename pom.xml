@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>6.0.0</version>
+    <version>5.1.0.fuse-SNAPSHOT</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildfly-extras/wildfly-camel</url>
