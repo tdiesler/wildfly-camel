@@ -60,9 +60,6 @@
             </fileset>
         </copy>
 
-        <property name="target.net.sf.json.module.dir" value="${output.dir}/managed-jars/modules/system/layers/fuse/net/sf/json/main" />
-        <copy file="${maven.dependency.net.sf.json-lib.json-lib.jdk15.jar.path}" todir="${target.net.sf.json.module.dir}" />
-
         <!-- Sync source tree with Smartics generated XML files -->
         <sync todir="${resources.dir}/modules" overwrite="true" verbose="true">
             <fileset dir="${target.patch.dir}/modules">
