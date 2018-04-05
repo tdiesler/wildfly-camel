@@ -1159,6 +1159,13 @@
         </exports>
     </module>
 
+    <module name="org.apache.commons.lang3">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.apache.commons:commons-lang3" />
+    </module>
+
     <module name="org.apache.commons.math3">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -1378,7 +1385,7 @@
             <include module="io.netty.skipped" />
         </apply-to-dependencies>
         <dependencies>
-            <module name="io.netty"/>
+            <module name="io.netty" slot="4.1"/>
             <module name="javax.api" />
             <module name="javax.xml.bind.api" />
         </dependencies>
@@ -1844,6 +1851,13 @@
         </dependencies>
     </module>
 
+    <module name="org.jgroups" slot="4.0">
+        <include artifact=":jgroups" />
+        <dependencies>
+            <module name="javax.api"/>
+        </dependencies>
+    </module>
+
     <module name="org.jxmpp">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -1906,6 +1920,13 @@
             <exclude path="com/mchange**" />
             <exclude path="org/terracotta**" />
         </exports>
+    </module>
+
+    <module name="org.reactivestreams">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="org.reactivestreams:reactive-streams" />
     </module>
 
     <module name="org.reflections">

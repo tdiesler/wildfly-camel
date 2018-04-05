@@ -34,6 +34,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.utils.TestUtils;
@@ -42,6 +43,7 @@ import org.wildfly.extension.camel.CamelAware;
 @CamelAware
 @RunWith(ArquillianConditionalRunner.class)
 @RequiresDocker
+@Ignore("ENTESB-7469 The productized netty-all JAR does not contain the io/netty/channel/unix/ packages")
 public class DockerIntegrationTest {
 
     @Deployment
