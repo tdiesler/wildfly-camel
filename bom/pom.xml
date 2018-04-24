@@ -334,8 +334,13 @@
             </dependency>
             <dependency>
                 <groupId>org.fusesource</groupId>
+                <artifactId>camel-activemq</artifactId>
+                <version>${version.fusesource.camel.components}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.fusesource</groupId>
                 <artifactId>camel-sap</artifactId>
-                <version>${version.fusesource.camel.sap}</version>
+                <version>${version.fusesource.camel.components}</version>
             </dependency>
             <dependency>
                 <groupId>org.infinispan</groupId>
