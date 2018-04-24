@@ -663,8 +663,8 @@
 /org/igniterealtime/main/smack-resolver-javax-4.2.3.jar
 /org/igniterealtime/main/smack-sasl-javax-4.2.3.jar
 /org/igniterealtime/main/smack-tcp-4.2.3.jar
-/org/infinispan/jcache/main/infinispan-jcache-8.2.9.Final-redhat-1.jar
-/org/infinispan/jcache/main/infinispan-jcache-commons-8.2.9.Final-redhat-1.jar
+/org/infinispan/jcache/main/infinispan-jcache-8.2.10.Final-redhat-1.jar
+/org/infinispan/jcache/main/infinispan-jcache-commons-8.2.10.Final-redhat-1.jar
 /org/iq80/leveldb/main/leveldb-0.9.jar
 /org/iq80/leveldb/main/leveldb-api-0.9.jar
 /org/jboss/gravia/main/gravia-resource-1.3.1.jar
@@ -720,8 +720,8 @@
 /org/springframework/ws/main/spring-xml-2.4.2.RELEASE.jar
 /org/w3c/css/sac/main/sac-1.3.jar
 /org/wildfly/extension/camel/main/gravia-container-wildfly-extension-1.3.1.jar
-/org/wildfly/extras/config/main/fuse-patch-config-3.0.0.fuse-000040.jar
-/org/wildfly/extras/patch/main/fuse-patch-core-3.0.0.fuse-000040.jar
+/org/wildfly/extras/config/main/fuse-patch-config-3.0.0.fuse-000043.jar
+/org/wildfly/extras/patch/main/fuse-patch-core-3.0.0.fuse-000043.jar
 /org/xerial/snappy/main/snappy-java-1.1.1.3.jar
 /xmlenc/main/xmlenc-0.52.jar
 /xmlpull/main/xmlpull-1.1.3.1.jar
