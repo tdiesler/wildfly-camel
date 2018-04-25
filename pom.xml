@@ -463,8 +463,8 @@
             </snapshots>
         </repository>
         <repository>
-            <id>Early Access Repository</id>
-            <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+            <id>jboss-ea</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
