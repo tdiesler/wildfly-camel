@@ -713,6 +713,16 @@
     </issueManagement>
     
     <!-- Repositories -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jboss-ea</id>
+            <!-- url>https://origin-repository.jboss.org/nexus/content/groups/ea</url -->
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <repositories>
         <repository>
             <id>central</id>
