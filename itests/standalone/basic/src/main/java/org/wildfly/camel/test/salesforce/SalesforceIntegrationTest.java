@@ -20,16 +20,32 @@
 
 package org.wildfly.camel.test.salesforce;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.salesforce.SalesforceComponent;
+import org.apache.camel.component.salesforce.SalesforceLoginConfig;
+import org.apache.camel.component.salesforce.api.dto.bulk.ContentType;
+import org.apache.camel.component.salesforce.api.dto.bulk.JobInfo;
+import org.apache.camel.component.salesforce.api.dto.bulk.OperationEnum;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.util.IntrospectionSupport;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.wildfly.camel.test.salesforce.dto.Account;
+import org.wildfly.camel.test.salesforce.dto.Opportunity;
+import org.wildfly.camel.test.salesforce.dto.QueryRecordsAccount;
+import org.wildfly.camel.test.salesforce.dto.QueryRecordsOpportunity;
 import org.wildfly.extension.camel.CamelAware;
 
 @CamelAware
@@ -37,17 +53,137 @@ import org.wildfly.extension.camel.CamelAware;
 public class SalesforceIntegrationTest {
 
     @Deployment
-    public static WebArchive createdeployment() {
-        final WebArchive archive = ShrinkWrap.create(WebArchive.class, "camel-salesforce-tests.war");
-        return archive;
+    public static JavaArchive createDeployment() {
+        return ShrinkWrap.create(JavaArchive.class, "camel-salesforce-tests.jar")
+            .addPackage(Opportunity.class.getPackage());
     }
 
     @Test
     public void testComponentLoads() throws Exception {
-        CamelContext ctx = new DefaultCamelContext();
-        Endpoint endpoint = ctx.getEndpoint("salesforce:getVersions");
+        CamelContext camelctx = new DefaultCamelContext();
+        Endpoint endpoint = camelctx.getEndpoint("salesforce:getVersions");
         Assert.assertNotNull(endpoint);
         Assert.assertEquals(endpoint.getClass().getName(), "org.apache.camel.component.salesforce.SalesforceEndpoint");
-        ctx.stop();
+    }
+
+    @Test
+    public void testSalesforceQueryProducer() throws Exception {
+        Map<String, Object> salesforceOptions = createSalesforceOptions();
+
+        Assume.assumeTrue("[#1676] Enable Salesforce testing in Jenkins",
+                salesforceOptions.size() == SalesforceOption.values().length);
+
+        SalesforceLoginConfig loginConfig = new SalesforceLoginConfig();
+        IntrospectionSupport.setProperties(loginConfig, salesforceOptions);
+
+        SalesforceComponent component = new SalesforceComponent();
+        component.setPackages("org.wildfly.camel.test.salesforce.dto");
+        component.setLoginConfig(loginConfig);
+
+        CamelContext camelctx = new DefaultCamelContext();
+        camelctx.addComponent("salesforce",  component);
+        camelctx.addRoutes(new RouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                from("direct:opportunity")
+                .to("salesforce:query?sObjectQuery=SELECT Id,Name from Opportunity&sObjectClass=" + QueryRecordsOpportunity.class.getName());
+                
+                from("direct:account")
+                .to("salesforce:query?sObjectQuery=SELECT Id,AccountNumber from Account&sObjectClass=" + QueryRecordsAccount.class.getName());
+            }
+        });
+
+        camelctx.start();
+        try {
+            ProducerTemplate template = camelctx.createProducerTemplate();
+
+            QueryRecordsOpportunity oppRecords = template.requestBody("direct:opportunity", null, QueryRecordsOpportunity.class);
+            Assert.assertNotNull("Expected query records result to not be null", oppRecords);
+            Assert.assertTrue("Expected some records", oppRecords.getRecords().size() > 0);
+            
+            Opportunity oppItem = oppRecords.getRecords().get(0);
+            Assert.assertNotNull("Expected Oportunity Id", oppItem.getId());
+            Assert.assertNotNull("Expected Oportunity Name", oppItem.getName());
+
+            QueryRecordsAccount accRecords = template.requestBody("direct:account", null, QueryRecordsAccount.class);
+            Assert.assertNotNull("Expected query records result to not be null", accRecords);
+            Assert.assertTrue("Expected some records", accRecords.getRecords().size() > 0);
+            
+            Account accItem = accRecords.getRecords().get(0);
+            Assert.assertNotNull("Expected Account Id", accItem.getId());
+            Assert.assertNotNull("Expected Account Number", accItem.getAccountNumber());
+        } finally {
+            camelctx.stop();
+        }
+    }
+
+    @Test
+    public void testSalesforceCreateJob() throws Exception {
+        Map<String, Object> salesforceOptions = createSalesforceOptions();
+
+        Assume.assumeTrue("[#1676] Enable Salesforce testing in Jenkins",
+            salesforceOptions.size() == SalesforceOption.values().length);
+
+        SalesforceLoginConfig loginConfig = new SalesforceLoginConfig();
+        IntrospectionSupport.setProperties(loginConfig, salesforceOptions);
+
+        SalesforceComponent component = new SalesforceComponent();
+        component.setPackages("org.wildfly.camel.test.salesforce.dto");
+        component.setLoginConfig(loginConfig);
+
+        JobInfo jobInfo = new JobInfo();
+        jobInfo.setOperation(OperationEnum.QUERY);
+        jobInfo.setContentType(ContentType.CSV);
+        jobInfo.setObject(Opportunity.class.getSimpleName());
+
+        CamelContext camelctx = new DefaultCamelContext();
+        camelctx.addComponent("salesforce",  component);
+        camelctx.addRoutes(new RouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                from("direct:start")
+                .to("salesforce:createJob");
+            }
+        });
+
+        camelctx.start();
+        try {
+            ProducerTemplate template = camelctx.createProducerTemplate();
+            JobInfo result = template.requestBody("direct:start", jobInfo, JobInfo.class);
+
+            Assert.assertNotNull("Expected JobInfo result to not be null", result);
+            Assert.assertNotNull("Expected JobInfo result ID to not be null", result.getId());
+        } finally {
+            camelctx.stop();
+        }
+    }
+
+    protected Map<String, Object> createSalesforceOptions() throws Exception {
+        final Map<String, Object> options = new HashMap<>();
+
+        for (SalesforceOption option : SalesforceOption.values()) {
+            String envVar = System.getenv(option.name());
+            if (envVar == null || envVar.length() == 0) {
+                options.clear();
+            } else {
+                options.put(option.configPropertyName, envVar);
+            }
+        }
+
+        return options;
+    }
+
+    // Enum values correspond to environment variable names
+    private enum SalesforceOption {
+        SALESFORCE_CONSUMER_KEY("clientId"),
+        SALESFORCE_CONSUMER_SECRET("clientSecret"),
+        SALESFORCE_USER("userName"),
+        SALESFORCE_PASSWORD("password");
+
+        private String configPropertyName;
+
+        SalesforceOption(String configPropertyName) {
+            this.configPropertyName = configPropertyName;
+        }
     }
 }

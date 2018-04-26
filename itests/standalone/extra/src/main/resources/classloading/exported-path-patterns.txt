@@ -1,5 +1,6 @@
 [includes]
 	^ca/uhn/hl7v2(.*)
+	^org/codehaus/jackson(.*)
 	^com/fasterxml/jackson/annotation(.*)
 	^com/fasterxml/jackson/databind/annotation(.*)
 	^com/google/protobuf
@@ -29,7 +30,8 @@
 	^org/codehaus/groovy(.*)
 	^org/dozer(.*)
 	^org/elasticsearch(.*)
-	^org/quartz(.*)
+    ^org/joda/time(.*)
+    ^org/quartz(.*)
 	^org/springframework(.*)
 	^org/xmlsoap(.*)
 	^schema/(.*)

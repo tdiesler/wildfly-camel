@@ -13,13 +13,21 @@
   </resources>
   <dependencies>
     <module name="javax.api" />
+    <module name="org.codehaus.jackson.jackson-core-asl" slot="1.9" export="true">
+      <exports>
+        <exclude path="org/codehaus" />
+      </exports>
+    </module>
     <module name="org.codehaus.jackson.jackson-mapper-asl" slot="1.9" />
-    <module name="org.codehaus.jackson.jackson-core-asl" slot="1.9" />
+    <module name="org.joda.time" slot="2.9" export="true">
+      <exports>
+        <exclude path="org/joda" />
+      </exports>
+    </module>
     <module name="com.thoughtworks.xstream" />
     <module name="javax.servlet.api" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />
-    <module name="org.joda.time" slot="2.9" />
     <module name="org.slf4j" />
   </dependencies>
   <exports>
