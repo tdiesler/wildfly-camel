@@ -23,6 +23,7 @@ package org.wildfly.camel.test.castor;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.dataformat.castor.CastorDataFormat;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -53,12 +54,15 @@ public class CastorIntegrationTest {
 
         Assume.assumeFalse("[ENTESB-6646] CastorIntegrationTest fails on AIX", EnvironmentUtils.isAIX());
         
+        final CastorDataFormat castor = new CastorDataFormat();
+        castor.setMappingFile("castor-mapping.xml");
+        
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
                 from("direct:start")
-                .marshal().castor("castor-mapping.xml");
+                .marshal(castor);
             }
         });
 
@@ -75,12 +79,16 @@ public class CastorIntegrationTest {
     @Test
     public void testUnmarshal() throws Exception {
 
+        final CastorDataFormat castor = new CastorDataFormat();
+        castor.setMappingFile("castor-mapping.xml");
+        castor.setAllowClasses(Customer.class);
+        
         CamelContext camelctx = new DefaultCamelContext();
         camelctx.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
                 from("direct:start")
-                .unmarshal().castor("castor-mapping.xml");
+                .unmarshal(castor);
             }
         });
 

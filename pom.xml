@@ -46,7 +46,7 @@
     <properties>
         
         <!-- Camel version -->
-        <version.apache.camel>2.17.0.redhat-630311</version.apache.camel>
+        <version.apache.camel>2.17.0.redhat-630344</version.apache.camel>
         
         <!-- WildFly Versions -->
         <!-- http://download.lab.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven/org/jboss/as/jboss-as-build -->
@@ -54,17 +54,17 @@
         <version.wildfly.arquillian>${version.wildfly}</version.wildfly.arquillian>
 
         <!-- Other versions -->
-        <version.apache.activemq>5.11.0.redhat-630311</version.apache.activemq>
+        <version.apache.activemq>5.11.0.redhat-630344</version.apache.activemq>
         <version.apache.ftpserver>1.0.6</version.apache.ftpserver>
         <version.apache.sshd.sftp>0.11.0</version.apache.sshd.sftp>
         <version.apache.xmlbeans>2.6.0</version.apache.xmlbeans>
         <version.args4j>2.0.31</version.args4j>
         <version.codehaus.plexus.utils>3.0.15</version.codehaus.plexus.utils>
         <version.freeside.betamax>1.1.2</version.freeside.betamax>
-        <version.fusesource.camel.sap>6.3.0.redhat-311</version.fusesource.camel.sap>
+        <version.fusesource.camel.sap>6.3.0.redhat-344</version.fusesource.camel.sap>
         <version.fusepatch>2.4.0</version.fusepatch>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>1.4.0.redhat-630311</version.hawtio>
+        <version.hawtio>1.4.0.redhat-630344</version.hawtio>
         <version.hibernate.jpa.api>1.0.1.Final-redhat-3</version.hibernate.jpa.api>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.javax.enterprise>1.2.0.redhat-2</version.javax.enterprise>
@@ -716,37 +716,50 @@
     <repositories>
         <repository>
             <id>central</id>
-            <name>Central Repository</name>
             <url>http://repo.maven.apache.org/maven2</url>
         </repository>
         <repository>
             <id>jboss-public-repository</id>
-            <url>http://repository.jboss.org/nexus/content/groups/public</url>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
             <id>redhat-ga-repository</id>
-            <url>http://maven.repository.redhat.com/ga</url>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
-            <id>redhat-early-access-repository</id>
-            <url>http://maven.repository.redhat.com/earlyaccess/all</url>
+            <id>jboss-ea</id>
+            <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
-            <id>jbeap-latest-repository</id>
+            <id>jboss-eap-ea</id>
             <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-6.4-rhel-6-build/latest/maven</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
-            <id>jbfuse-latest-repository</id>
+            <id>jboss-fuse-ea</id>
             <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fuse-6.2-build/latest/maven</url>
-        </repository>
-        <repository>
-            <id>fuse-early-access-repository</id>
-            <url>http://origin-repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
         <repository>
             <!-- restlet -->
             <id>springsource-libs-releases</id>
             <url>http://repo.springsource.org/libs-release-remote</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
     
