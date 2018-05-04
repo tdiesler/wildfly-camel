@@ -36,11 +36,11 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.test.AvailablePortFinder;
 import org.apache.sshd.SshServer;
 import org.apache.sshd.common.NamedFactory;
+import org.apache.sshd.common.keyprovider.FileKeyPairProvider;
 import org.apache.sshd.server.Command;
 import org.apache.sshd.server.PasswordAuthenticator;
 import org.apache.sshd.server.PublickeyAuthenticator;
 import org.apache.sshd.server.command.ScpCommandFactory;
-import org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider;
 import org.apache.sshd.server.session.ServerSession;
 import org.apache.sshd.server.sftp.SftpSubsystem;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -49,10 +49,10 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.utils.EnvironmentUtils;
@@ -63,10 +63,11 @@ import org.wildfly.extension.camel.CamelAware;
 public class SftpIntegrationTest {
 
     private static final String FILE_BASEDIR = "basedir.txt";
+    private static final String FILE_PORT = "port.txt";
     private static final Path FTP_ROOT_DIR = Paths.get("target/sftp");
     private static final int PORT = AvailablePortFinder.getNextAvailable(21000);
 
-    private SshServer sshServer;
+    private static SshServer sshServer;
 
     @Deployment
     public static WebArchive createDeployment() throws IOException {
@@ -77,19 +78,20 @@ public class SftpIntegrationTest {
 
         final WebArchive archive = ShrinkWrap.create(WebArchive.class, "camel-ftp-tests.war");
         archive.addAsResource(new StringAsset(System.getProperty("basedir")), FILE_BASEDIR);
+        archive.addAsResource(new StringAsset(String.valueOf(PORT)), FILE_PORT);
         archive.addClasses(EnvironmentUtils.class);
         archive.addAsLibraries(libraryDependencies);
         addJarHolding(archive, AvailablePortFinder.class);
         return archive;
     }
 
-    @Before
-    public void startSshServer() throws Exception {
-        recursiveDelete(resolvePath(FTP_ROOT_DIR).toFile());
-
+    @BeforeClass
+    public static void startSshServer() throws Exception {
+        Path baseDir = Paths.get(System.getProperty("basedir"), FTP_ROOT_DIR.toString());
+        recursiveDelete(baseDir.toFile());
         sshServer = SshServer.setUpDefaultServer();
         sshServer.setPort(PORT);
-        sshServer.setKeyPairProvider(new SimpleGeneratorHostKeyProvider());
+        sshServer.setKeyPairProvider(new FileKeyPairProvider(new String[]{"src/main/resources/ftp/hostkey.pem"}));
         sshServer.setSubsystemFactories(Arrays.<NamedFactory<Command>>asList(new SftpSubsystem.Factory()));
         sshServer.setCommandFactory(new ScpCommandFactory());
         sshServer.setPasswordAuthenticator(new PasswordAuthenticator() {
@@ -108,8 +110,8 @@ public class SftpIntegrationTest {
         sshServer.start();
     }
 
-    @After
-    public void stopSshServer() throws Exception {
+    @AfterClass
+    public static void stopSshServer() throws Exception {
         if (sshServer != null) {
             try {
                 sshServer.stop();
@@ -124,17 +126,24 @@ public class SftpIntegrationTest {
     public void testSendFile() throws Exception {
 
         Assume.assumeFalse("[ENTESB-6648] SftpIntegrationTest fails on AIX", EnvironmentUtils.isAIX());
-        
+
         File testFile = resolvePath(FTP_ROOT_DIR).resolve("test.txt").toFile();
+        String port = getPort();
 
         CamelContext camelctx = new DefaultCamelContext();
         try {
-            Endpoint endpoint = camelctx.getEndpoint("sftp://localhost:" + PORT + "/target/sftp?username=admin&password=admin");
+            Endpoint endpoint = camelctx.getEndpoint("sftp://localhost:" + port + "/target/sftp?username=admin&password=admin");
             Assert.assertFalse(testFile.exists());
             camelctx.createProducerTemplate().sendBodyAndHeader(endpoint, "Hello", "CamelFileName", "test.txt");
             Assert.assertTrue(testFile.exists());
         } finally {
             camelctx.stop();
+        }
+    }
+
+    private String getPort() throws IOException {
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + FILE_PORT)))) {
+            return reader.readLine();
         }
     }
 
@@ -148,7 +157,7 @@ public class SftpIntegrationTest {
         }
     }
 
-    private void recursiveDelete(File file) {
+    private static void recursiveDelete(File file) {
         if (file.exists()) {
             if (file.isDirectory()) {
                 File[] files = file.listFiles();
@@ -162,8 +171,8 @@ public class SftpIntegrationTest {
         }
     }
 
-    private Path resolvePath(Path other) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/" + FILE_BASEDIR)));
+    private static Path resolvePath(Path other) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(SftpIntegrationTest.class.getResourceAsStream("/" + FILE_BASEDIR)));
         try {
             return Paths.get(reader.readLine()).resolve(other);
         } finally {
