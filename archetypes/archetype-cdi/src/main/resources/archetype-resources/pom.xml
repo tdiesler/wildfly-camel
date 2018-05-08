@@ -34,10 +34,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- WildFly versions -->
-        <version.wildfly>${version-wildfly}</version.wildfly>
-
-        <!-- Other versions -->
+        <!-- WildFly Camel versions -->
         <version.wildfly.camel>${version-wildfly-camel}</version.wildfly.camel>
 
         <!-- Plugin versions -->
@@ -52,7 +49,7 @@
 
         <!-- Arquillian application server properties -->
         <jboss.home>${env.JBOSS_HOME}</jboss.home>
-        <server.config>standalone-camel.xml</server.config>
+        <server.config>standalone.xml</server.config>
     </properties>
 
     <!-- DependencyManagement -->
@@ -191,16 +188,20 @@
     <!-- Repositories -->
     <repositories>
         <repository>
+            <id>redhat-ga-repository</id>
+            <url>http://maven.repository.redhat.com/ga</url>
+        </repository>
+        <repository>
+            <id>redhat-early-access-repository</id>
+            <url>http://maven.repository.redhat.com/earlyaccess/all</url>
+        </repository>
+        <repository>
             <id>jboss-public-repository</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>jboss-early-access-repository</id>
-            <url>https://origin-repository.jboss.org/nexus/content/groups/ea</url>
-        </repository>
-        <repository>
-            <id>eap-7.1-early-access-repository</id>
-            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven</url>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
         </repository>
     </repositories>
 </project>

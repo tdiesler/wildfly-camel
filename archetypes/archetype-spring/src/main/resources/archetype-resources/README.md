@@ -1,26 +1,24 @@
-WildFly Camel Spring XML Web Application
-=============
+Red Hat Fuse on EAP Spring XML Web Application
+==============================================
 
-This is a template Apache Camel Spring application for the WildFly Camel subsystem.
+This is a template Apache Camel Spring application for Red Hat Fuse on EAP.
 
 This project is setup to allow you to create a Apache Camel Spring application, which can be deployed to an application
-server running the WildFly Camel subsystem. An example Spring XML Camel Route has been created for you, together with an Arquillian
+server running Red Hat Fuse on EAP. An example Spring XML Camel Route has been created for you, together with an Arquillian
 integration test.
 
 Prerequisites
 =============
 
-* Minimum of Java 1.7
-* Maven 3.2 or greater
-* WildFly application server. Refer to the WildFly Camel compatibility matrix for more information.
-
-http://wildflyext.gitbooks.io/wildfly-camel/content/start/compatibility.html
+* Minimum of Java 1.8
+* Maven 3.3 or greater
+* JBoss EAP 7.1 application server.
 
 
 Getting started
 ---------------
 
-1. Install the WildFly Camel subsystem distribution on your application server
+1. Install the Red Hat Fuse for EAP distribution on your application server
 
 2. Configure a $JBOSS_HOME environment variable to point at your application server installation directory
 
@@ -28,11 +26,11 @@ Getting started
 
 For Linux:
 
-    $JBOSS_HOME/bin/standalone.sh -c standalone-camel.xml
+    $JBOSS_HOME/bin/standalone.sh
 
 For Windows:
 
-    %JBOSS_HOME%\bin\standalone.bat -c standalone-camel.xml
+    %JBOSS_HOME%\bin\standalone.bat
 
 
 Building the application
@@ -83,16 +81,3 @@ Undeploying the application
 ---------------------------
 
     mvn wildfly:undeploy
-
-
-Further reading
----------------
-
-WildFly Camel documentation
-
-http://wildflyext.gitbooks.io/wildfly-camel/content/
-
-
-Apache Camel documentation
-
-http://camel.apache.org/
