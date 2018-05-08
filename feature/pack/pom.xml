@@ -209,6 +209,7 @@
             </activation>
             <build>
                 <plugins>
+                    <!-- Disale lic gen ENTESB-8080
                     <plugin>
                         <groupId>org.codehaus.gmaven</groupId>
                         <artifactId>groovy-maven-plugin</artifactId>
@@ -241,7 +242,7 @@
                                 <version>${version.camel.httpclient}</version>
                             </dependency>
                         </dependencies>
-                    </plugin>
+                    </plugin>-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -260,7 +261,7 @@
                                             <includes>
                                                 <include>*</include>
                                             </includes>
-                                            <filtering>false</filtering>
+                                            <filtering>true</filtering>
                                         </resource>
                                         <resource>
                                             <directory>${license.dir}/assets</directory>
@@ -274,6 +275,7 @@
                             </execution>
                         </executions>
                     </plugin>
+<!--
                     <plugin>
                         <groupId>org.wildfly.maven.plugins</groupId>
                         <artifactId>licenses-plugin</artifactId>
@@ -329,6 +331,7 @@
                             </execution>
                         </executions>
                     </plugin>
+-->
                 </plugins>
             </build>
         </profile>

@@ -483,21 +483,21 @@
             </snapshots>
         </repository>
         <repository>
-            <id>JBoss EA</id>
+            <id>eap71-brew</id>
             <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
-            <id>JBoss Fuse 7</id>
+            <id>fuse7-brew</id>
             <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fuse-7-maven-build/latest/maven</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
         </repository>
         <repository>
-            <id>JBoss EA AMQ</id>
+            <id>fuse62-brew</id>
             <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fuse-6.2-build/latest/maven</url>
             <snapshots>
                 <enabled>false</enabled>
