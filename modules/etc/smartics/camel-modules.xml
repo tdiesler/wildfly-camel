@@ -690,12 +690,16 @@
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
-            <module name="org.codehaus.jackson.jackson-core-asl" slot="1.9" export="true" >
+            <module name="org.codehaus.jackson.jackson-core-asl" slot="1.9" export="true">
                 <exports>
                     <exclude path="org/codehaus" />
                 </exports>
             </module>
-            <module name="org.codehaus.jackson.jackson-mapper-asl" slot="1.9" />
+            <module name="org.codehaus.jackson.jackson-mapper-asl" slot="1.9" export="true">
+                <exports>
+                    <exclude path="org/codehaus" />
+                </exports>
+            </module>
             <module name="org.joda.time" slot="2.9" export="true" >
                 <exports>
                     <exclude path="org/joda" />
