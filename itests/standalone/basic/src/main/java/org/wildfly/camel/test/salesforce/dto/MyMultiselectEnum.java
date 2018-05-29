@@ -8,22 +8,20 @@ import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 
 /**
- * Salesforce Enumeration DTO for picklist StatusCode
+ * Salesforce Enumeration DTO for picklist MyMultiselect__c
  */
-public enum StatusCodeEnum {
+public enum MyMultiselectEnum {
 
-    // A
-    A("A"),
-    // C
-    C("C"),
-    // D
-    D("D"),
-    // E
-    E("E");
+    // bar
+    BAR("bar"),
+    // cheese
+    CHEESE("cheese"),
+    // foo
+    FOO("foo");
 
     final String value;
 
-    private StatusCodeEnum(String value) {
+    private MyMultiselectEnum(String value) {
         this.value = value;
     }
 
@@ -33,8 +31,8 @@ public enum StatusCodeEnum {
     }
 
     @JsonCreator
-    public static StatusCodeEnum fromValue(String value) {
-        for (StatusCodeEnum e : StatusCodeEnum.values()) {
+    public static MyMultiselectEnum fromValue(String value) {
+        for (MyMultiselectEnum e : MyMultiselectEnum.values()) {
             if (e.value.equals(value)) {
                 return e;
             }
