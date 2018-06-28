@@ -1768,6 +1768,7 @@ org/apache/camel/component/google/bigquery
 org/apache/camel/component/google/calendar
 org/apache/camel/component/google/drive
 org/apache/camel/component/google/mail
+org/apache/camel/component/google/mail/stream
 org/apache/camel/component/google/pubsub
 org/apache/camel/component/google/pubsub/consumer
 org/apache/camel/component/grpc

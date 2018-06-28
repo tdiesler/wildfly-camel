@@ -85,6 +85,7 @@ google-bigquery
 google-calendar
 google-drive
 google-mail
+google-mail-stream
 google-pubsub
 grpc
 guava-eventbus
