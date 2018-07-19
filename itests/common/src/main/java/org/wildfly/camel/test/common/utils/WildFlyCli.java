@@ -105,7 +105,7 @@ public class WildFlyCli {
     public WildFlyCliResult run(URL cliScript, String... cliArgs) throws IOException, InterruptedException {
         Path path = Files.createTempFile(WildFlyCli.class.getSimpleName(), ".cli");
         FileUtils.copy(cliScript, path);
-        return run(path);
+        return run(path, cliArgs);
     }
 
     /**
