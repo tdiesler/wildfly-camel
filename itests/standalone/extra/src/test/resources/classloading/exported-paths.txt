@@ -1766,6 +1766,7 @@ org/apache/camel/component/github/producer
 org/apache/camel/component/google
 org/apache/camel/component/google/bigquery
 org/apache/camel/component/google/calendar
+org/apache/camel/component/google/calendar/stream
 org/apache/camel/component/google/drive
 org/apache/camel/component/google/mail
 org/apache/camel/component/google/mail/stream
@@ -2308,6 +2309,7 @@ org/apache/cxf/jaxrs/provider/xmlbeans
 org/apache/cxf/jaxrs/security
 org/apache/cxf/jaxrs/servlet
 org/apache/cxf/jaxrs/spring
+org/apache/cxf/jaxrs/springmvc
 org/apache/cxf/jaxrs/utils
 org/apache/cxf/jaxrs/utils/multipart
 org/apache/cxf/jaxrs/utils/schemas
