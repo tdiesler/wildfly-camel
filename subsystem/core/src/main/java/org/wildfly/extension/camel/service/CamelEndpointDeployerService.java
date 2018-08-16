@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.function.Supplier;
 import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
@@ -379,12 +378,19 @@ public class CamelEndpointDeployerService implements Service<CamelEndpointDeploy
         /*
          * Now that the injectedMainDeploymentInfo is ready, we can link this to CamelEndpointDeploymentSchedulerService
          */
-        final DeploymentInfo mainDeploymentInfo = deploymentInfoSupplier.getValue();
         deploymentSchedulerServiceSupplier.getValue().registerDeployer(this);
     }
 
     @Override
     public void stop(StopContext context) {
+        synchronized (deployments) {
+            for (Deployment deployment : deployments.values()) {
+                CamelLogger.LOGGER.debug("Undeploying endpoint {}",
+                        deployment.getDeploymentInfo().getDeploymentName());
+                hostSupplier.getValue().unregisterDeployment(deployment);
+            }
+            deployments.clear();
+        }
     }
 
     /**
@@ -398,7 +404,12 @@ public class CamelEndpointDeployerService implements Service<CamelEndpointDeploy
             if (removedDeployment != null) {
                 CamelLogger.LOGGER.debug("Undeploying endpoint {}",
                         removedDeployment.getDeploymentInfo().getDeploymentName());
-                hostSupplier.getValue().unregisterDeployment(removedDeployment);
+                try {
+                    hostSupplier.getValue().unregisterDeployment(removedDeployment);
+                } catch (IllegalStateException e) {
+                    CamelLogger.LOGGER.warn("Could not undeploy endpoint "
+                            + removedDeployment.getDeploymentInfo().getDeploymentName(), e);
+                }
             }
         }
     }
