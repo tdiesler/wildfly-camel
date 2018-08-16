@@ -33,7 +33,7 @@ public class ClientCertSecurityDomainSetup implements ServerSetupTask {
             um.addRole(CLIENT_ALIAS, APPLICATION_ROLE);
         }
         URL cliUrl = this.getClass().getClassLoader().getResource("security/cli/client-cert/setup.cli");
-        wildFlyCli.run(cliUrl, "--timeout=15000").assertSuccess();
+        wildFlyCli.run(cliUrl).assertSuccess();
     }
 
     @Override
@@ -42,6 +42,6 @@ public class ClientCertSecurityDomainSetup implements ServerSetupTask {
             um.removeRole(CLIENT_ALIAS, APPLICATION_ROLE);
         }
         URL cliUrl = this.getClass().getClassLoader().getResource("security/cli/client-cert/tear-down.cli");
-        wildFlyCli.run(cliUrl, "--timeout=15000").assertSuccess();
+        wildFlyCli.run(cliUrl).assertSuccess();
     }
 }

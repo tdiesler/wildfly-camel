@@ -41,6 +41,7 @@ import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wildfly.camel.test.common.utils.EnvironmentUtils;
 import org.wildfly.camel.test.common.utils.FileUtils;
 import org.wildfly.camel.test.common.utils.WildFlyCli;
 
@@ -184,7 +185,7 @@ public class SecurityUtils {
                 .collect(Collectors.joining());
         final String webXml = String.format(WEB_XML_TEMPLATE, securityConstraints, authMethod);
 
-        archive.addClasses(WildFlyCli.class, SecurityUtils.class)
+        archive.addClasses(WildFlyCli.class, SecurityUtils.class, EnvironmentUtils.class)
                 .addAsWebInfResource(new StringAsset(String.format(JBOSS_WEB_XML_TEMPLATE, securityDomain)),
                         "jboss-web.xml")//
                 .addAsWebInfResource(new StringAsset(webXml), "web.xml");

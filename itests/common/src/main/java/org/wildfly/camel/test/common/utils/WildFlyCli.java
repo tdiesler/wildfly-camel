@@ -1,22 +1,22 @@
 /*
-* #%L
-* Wildfly Camel :: Testsuite
-* %%
-* Copyright (C) 2013 - 2018 RedHat
-* %%
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-* #L%
-*/
+ * #%L
+ * Wildfly Camel :: Testsuite
+ * %%
+ * Copyright (C) 2013 - 2018 RedHat
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
 package org.wildfly.camel.test.common.utils;
 
 import java.io.IOException;
@@ -26,7 +26,9 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * A utility to run WildFly CLI scripts using {@code jboss-cli.[sh|bat]}.
@@ -35,6 +37,7 @@ import java.util.Arrays;
  */
 public class WildFlyCli {
 
+    private static final String DEFAULT_TIMEOUT = "60000";
     private final Path wildFlyHome;
 
     public WildFlyCli(Path wildFlyHome) {
@@ -54,18 +57,22 @@ public class WildFlyCli {
      */
     public WildFlyCliResult run(Path cliScript, String... cliArgs) throws IOException, InterruptedException {
         final ProcessBuilder pb = new ProcessBuilder();
-        final String ext = System.getProperty("os.name").toLowerCase().contains("win") ? "bat" : "sh";
+        final String ext = EnvironmentUtils.isWindows() ? "bat" : "sh";
         final String jbossCliPath = wildFlyHome.resolve("bin/jboss-cli." + ext).normalize().toString();
-        final String[] command = new String[cliArgs.length + 4];
-        int i = 0;
-        command[i++] = jbossCliPath;
-        command[i++] = "--connect";
-        command[i++] = "--echo-command";
-        command[i++] = "--file=" + cliScript.normalize().toString();
-        for (String arg : cliArgs) {
-            command[i++] = arg;
+        final List<String> command = new ArrayList<>();
+        command.add(jbossCliPath);
+        command.add("--connect");
+        command.add("--echo-command");
+        command.add("--file=" + cliScript.normalize().toString());
+        command.addAll(Arrays.asList(cliArgs));
+
+        // Add default timeout arg if not provided
+        if (!command.stream().anyMatch(arg -> arg.startsWith("--timeout"))) {
+            command.add("--timeout=" + DEFAULT_TIMEOUT);
         }
+
         pb.command(command);
+        pb.environment().put("NOPAUSE", "Y");
         Process process = pb.start();
         StreamGobbler stdOut = new StreamGobbler(process.getInputStream());
         stdOut.start();
@@ -145,12 +152,12 @@ public class WildFlyCli {
      * Encapsulates a result of running a WildFly CLI script.
      */
     public static class WildFlyCliResult {
-        private final String[] command;
+        private final List<String> command;
         private final int exitValue;
         private final String stdErr;
         private final String stdOut;
 
-        WildFlyCliResult(String[] command, int exitValue, String stdOut, String stdErr) {
+        WildFlyCliResult(List<String> command, int exitValue, String stdOut, String stdErr) {
             super();
             this.command = command;
             this.exitValue = exitValue;
@@ -165,11 +172,11 @@ public class WildFlyCli {
         public WildFlyCliResult assertSuccess() {
             if (exitValue != 0) {
                 throw new RuntimeException(String.format("Command %s returned %d.\n\nstdout: %s\n\nstdErr: %s",
-                        Arrays.toString(command), exitValue, stdOut, stdErr));
+                    String.join(",", command), exitValue, stdOut, stdErr));
             }
             if (!stdErr.isEmpty()) {
                 throw new RuntimeException(
-                        String.format("Command %s exited with non empty stdErr: %s", Arrays.toString(command), stdErr));
+                    String.format("Command %s exited with non empty stdErr: %s", String.join(",", command), stdErr));
             }
             return this;
         }
