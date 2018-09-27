@@ -17,7 +17,7 @@
  * limitations under the License.
  * #L%
  */
-package org.wildfly.camel.test.cxf.ws.secure;
+package org.wildfly.camel.test.cxf.rs.secure;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -37,8 +37,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.security.BasicSecurityDomainASetup;
 import org.wildfly.camel.test.common.security.SecurityUtils;
-import org.wildfly.camel.test.cxf.ws.secure.subA.GreetingService;
-import org.wildfly.camel.test.cxf.ws.secure.subA.GreetingsProcessor;
+import org.wildfly.camel.test.common.utils.EnvironmentUtils;
+import org.wildfly.camel.test.cxf.rs.secure.subA.GreetingsProcessor;
+import org.wildfly.camel.test.cxf.rs.secure.subA.GreetingsService;
 import org.wildfly.extension.camel.CamelAware;
 
 /**
@@ -48,23 +49,23 @@ import org.wildfly.extension.camel.CamelAware;
 @RunAsClient
 @RunWith(Arquillian.class)
 @ServerSetup(BasicSecurityDomainASetup.class)
-public class CXFWSSpringBasicSecureProducerIntegrationTest {
-    static final Path WILDFLY_HOME = Paths.get(System.getProperty("jbossHome"));
+public class CXFRSSpringBasicSecureProducerIntegrationTest {
     private static final Map<String, String> PATH_ROLE_MAP = new LinkedHashMap<String, String>() {{
         try {
-            put("//" + new URI(CXFWSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS).getPath(), BasicSecurityDomainASetup.APPLICATION_ROLE);
+            put("//" + new URI(CXFRSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS).getPath(), BasicSecurityDomainASetup.APPLICATION_ROLE);
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }};
+    static final Path WILDFLY_HOME = Paths.get(System.getProperty("jbossHome"));
 
     @Deployment
     public static Archive<?> deployment() {
         final WebArchive archive = ShrinkWrap
-                .create(WebArchive.class, CXFWSSpringBasicSecureProducerIntegrationTest.class.getSimpleName() + ".war")
-                .addClasses(BasicSecurityDomainASetup.class, CXFWSSecureUtils.class, GreetingService.class,
+                .create(WebArchive.class, CXFRSSpringBasicSecureProducerIntegrationTest.class.getSimpleName() + ".war")
+                .addClasses(BasicSecurityDomainASetup.class, CXFRSSecureUtils.class, GreetingsService.class,
                         GreetingsProcessor.class);
-        SecurityUtils.addSpringXmlWs(archive, CXFWSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS);
+        SecurityUtils.addSpringXmlRs(archive, CXFRSSecureUtils.SPRING_CONSUMER_ENDPOINT_BASE_ADDRESS);
         SecurityUtils.enhanceArchive(archive, BasicSecurityDomainASetup.SECURITY_DOMAIN,
                 BasicSecurityDomainASetup.AUTH_METHOD, PATH_ROLE_MAP);
         return archive;
@@ -72,19 +73,19 @@ public class CXFWSSpringBasicSecureProducerIntegrationTest {
 
     @Test
     public void greetAnonymous() throws Exception {
-        CXFWSSecureUtils.assertGreet(WILDFLY_HOME, CXFWSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS, null, null, 401, null);
+        CXFRSSecureUtils.assertGreet(WILDFLY_HOME, CXFRSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS, null, null, 401, null);
     }
 
     @Test
     public void greetBasicGoodUser() throws Exception {
-        CXFWSSecureUtils.assertGreet(WILDFLY_HOME, CXFWSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS,
+        CXFRSSecureUtils.assertGreet(WILDFLY_HOME, CXFRSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS,
                 BasicSecurityDomainASetup.APPLICATION_USER, BasicSecurityDomainASetup.APPLICATION_PASSWORD, 200,
                 "Hi Joe");
     }
 
     @Test
     public void greetBasicBadUser() throws Exception {
-        CXFWSSecureUtils.assertGreet(WILDFLY_HOME, CXFWSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS,
+        CXFRSSecureUtils.assertGreet(WILDFLY_HOME, CXFRSSecureUtils.SPRING_CONSUMER_ENDPOINT_ADDRESS,
                 BasicSecurityDomainASetup.APPLICATION_USER_SUB, BasicSecurityDomainASetup.APPLICATION_PASSWORD_SUB, 403,
                 null);
     }
