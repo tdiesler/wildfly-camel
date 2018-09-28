@@ -76,20 +76,20 @@ public final class CamelDeploymentSettings {
         return false;
     }
 
-    public List<ModuleIdentifier> getModuleDependencies() {
+    public synchronized List<ModuleIdentifier> getModuleDependencies() {
         return Collections.unmodifiableList(dependencies);
     }
 
-    public void addModuleDependency(String moduleSpec) {
+    public synchronized void addModuleDependency(String moduleSpec) {
         dependencies.add(ModuleIdentifier.create(moduleSpec));
         disabledByJbossAll = false;
     }
 
-    public List<URL> getCamelContextUrls() {
+    public synchronized List<URL> getCamelContextUrls() {
         return Collections.unmodifiableList(camelContextUrls);
     }
 
-    public void addCamelContextUrl(URL url) {
+    public synchronized void addCamelContextUrl(URL url) {
         camelContextUrls.add(url);
     }
 
@@ -101,11 +101,11 @@ public final class CamelDeploymentSettings {
         this.deploymentValid = deploymentValid;
     }
 
-    public List<CamelDeploymentSettings> getChildren() {
+    public synchronized List<CamelDeploymentSettings> getChildren() {
         return Collections.unmodifiableList(children);
     }
 
-    public void addChild(CamelDeploymentSettings child) {
+    public synchronized void addChild(CamelDeploymentSettings child) {
         children.add(child);
     }
 

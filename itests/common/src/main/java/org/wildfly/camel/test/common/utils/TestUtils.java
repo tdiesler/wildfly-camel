@@ -24,6 +24,7 @@ import java.net.URI;
 
 import org.jboss.gravia.utils.IOUtils;
 import org.jboss.gravia.utils.IllegalStateAssertion;
+import org.jboss.modules.ModuleClassLoader;
 
 public final class TestUtils {
     private TestUtils() {
@@ -56,5 +57,14 @@ public final class TestUtils {
             IOUtils.copyStream(in, out);
             return new String(out.toByteArray());
         }
+    }
+
+    public static String getClassLoaderModuleName(ClassLoader classLoader) {
+        if (classLoader instanceof ModuleClassLoader) {
+            ModuleClassLoader moduleClassLoader = (ModuleClassLoader) classLoader;
+            return moduleClassLoader.getModule().getName();
+        }
+
+        throw new IllegalArgumentException("ClassLoader must be of type ModuleClassLoader");
     }
 }

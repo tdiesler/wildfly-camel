@@ -19,6 +19,7 @@
  */
 package org.wildfly.extension.camel.deployment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.as.server.deployment.Attachments;
@@ -43,18 +44,31 @@ public final class CamelDependenciesProcessor implements DeploymentUnitProcessor
     private static final String GRAVIA_MODULE = "org.jboss.gravia";
     private static final String APACHE_CAMEL_MODULE = "org.apache.camel";
     private static final String APACHE_CAMEL_COMPONENT_MODULE = "org.apache.camel.component";
+    private static final String APACHE_CAMEL_COMPONENT_CDI_MODULE = "org.apache.camel.component.cdi";
     private static final String WILDFLY_CAMEL_MODULE = "org.wildfly.extension.camel";
 
     public void deploy(DeploymentPhaseContext phaseContext) throws DeploymentUnitProcessingException {
-
         DeploymentUnit depUnit = phaseContext.getDeploymentUnit();
-        CamelDeploymentSettings depSettings = depUnit.getAttachment(CamelDeploymentSettings.ATTACHMENT_KEY);
 
-        // Camel dependencies disabled
-        if (!depSettings.isEnabled()) {
+        // Only operate on top level deployments
+        if (depUnit.getParent() != null) {
             return;
         }
 
+        List<DeploymentUnit> deployments = new ArrayList<>();
+        List<DeploymentUnit> subDeployments = depUnit.getAttachmentList(Attachments.SUB_DEPLOYMENTS);
+        deployments.add(depUnit);
+        deployments.addAll(subDeployments);
+
+        for (DeploymentUnit deployment : deployments) {
+            CamelDeploymentSettings depSettings = deployment.getAttachment(CamelDeploymentSettings.ATTACHMENT_KEY);
+            if (depSettings.isEnabled()) {
+                addDeploymentDependencies(deployment, depSettings);
+            }
+        }
+    }
+
+    private void addDeploymentDependencies(DeploymentUnit depUnit, CamelDeploymentSettings depSettings) {
         ModuleLoader moduleLoader = depUnit.getAttachment(Attachments.SERVICE_MODULE_LOADER);
         ModuleSpecification moduleSpec = depUnit.getAttachment(Attachments.MODULE_SPECIFICATION);
         moduleSpec.addUserDependency(new ModuleDependency(moduleLoader, ModuleIdentifier.create(GRAVIA_MODULE), false, false, false, false));
@@ -76,7 +90,7 @@ public final class CamelDependenciesProcessor implements DeploymentUnitProcessor
             moddep.addImportFilter(PathFilters.isOrIsChildOf("META-INF/cxf"), true);
             moduleSpec.addUserDependency(moddep);
 
-            moddep = new ModuleDependency(moduleLoader, ModuleIdentifier.create("org.apache.camel.component.cdi"), true, false, false, false);
+            moddep = new ModuleDependency(moduleLoader, ModuleIdentifier.create(APACHE_CAMEL_COMPONENT_CDI_MODULE), true, false, false, false);
             moddep.addImportFilter(PathFilters.getMetaInfSubdirectoriesFilter(), true);
             moddep.addImportFilter(PathFilters.getMetaInfFilter(), true);
             moduleSpec.addUserDependency(moddep);
