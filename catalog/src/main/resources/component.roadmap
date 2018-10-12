@@ -155,7 +155,7 @@ mock
 mongodb
 mongodb-gridfs
 mongodb3
-mqtt
+mqtt                                                #deprecated
 msv
 mustache
 mvel
