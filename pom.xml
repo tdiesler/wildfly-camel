@@ -59,8 +59,8 @@
 
         <!-- WildFly versions -->
         <!-- http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.1-rhel-7-maven-build/latest/maven/org/jboss/eap/wildfly-dist -->
-        <version.wildfly>7.1.4.GA-redhat-1</version.wildfly>
-        <version.wildfly.arquillian>2.1.0.Final</version.wildfly.arquillian>
+        <version.wildfly>7.1.5.GA-redhat-00002</version.wildfly>
+        <version.wildfly.arquillian>2.1.1.Final</version.wildfly.arquillian>
         <version.wildfly.cxf>3.1.16.redhat-1</version.wildfly.cxf>
         <version.wildfly.fasterxml.jackson>2.8.11</version.wildfly.fasterxml.jackson>
         <version.wildfly.infinispan>8.2.11.Final-redhat-1</version.wildfly.infinispan>
@@ -79,7 +79,7 @@
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
         <!-- When updating this, make sure the eap versions match -->
-        <version.fusepatch>3.1.0.fuse-720017</version.fusepatch>
+        <version.fusepatch>3.1.0.fuse-720018</version.fusepatch>
         <version.fusesource.camel.components>7.2.0.fuse-720025</version.fusesource.camel.components>
         <version.greenmail>1.4.0</version.greenmail>
         <version.hawtio>2.0.0.fuse-720024</version.hawtio>
@@ -459,7 +459,11 @@
         <url>https://github.com/${github.namespace}/${github.project}/issues</url>
     </issueManagement>
 
-    <!-- Repositories -->
+    <!--
+        Repositories
+
+        Please keep these repository definitions in sync with the archetype templates
+    -->
     <repositories>
         <repository>
             <id>central</id>
@@ -472,6 +476,13 @@
         <repository>
             <id>jboss-public-repository</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>redhat-ga-repository</id>
+            <url>http://maven.repository.redhat.com/ga</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -491,15 +502,8 @@
             </snapshots>
         </repository>
         <repository>
-            <id>fuse7-brew</id>
-            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fuse-7-maven-build/latest/maven</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>fuse62-brew</id>
-            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-fuse-6.2-build/latest/maven</url>
+            <id>redhat-early-access-repository</id>
+            <url>http://maven.repository.redhat.com/earlyaccess/all</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>

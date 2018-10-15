@@ -715,8 +715,8 @@
 /org/springframework/ws/main/spring-xml-2.4.2.RELEASE.jar
 /org/w3c/css/sac/main/sac-1.3.jar
 /org/wildfly/extension/camel/main/gravia-container-wildfly-extension-1.3.1.jar
-/org/wildfly/extras/config/main/fuse-patch-config-3.1.0.fuse-720017.jar
-/org/wildfly/extras/patch/main/fuse-patch-core-3.1.0.fuse-720017.jar
+/org/wildfly/extras/config/main/fuse-patch-config-3.1.0.fuse-720018.jar
+/org/wildfly/extras/patch/main/fuse-patch-core-3.1.0.fuse-720018.jar
 /org/xerial/snappy/main/snappy-java-1.1.1.3.jar
 /xmlenc/main/xmlenc-0.52.jar
 /xmlpull/main/xmlpull-1.1.3.1.jar

@@ -204,10 +204,10 @@
         <artifact groupId="io.swagger" artifactId="swagger-jaxrs" version="1.5.18.fuse70-1-redhat-1"/>
         <artifact groupId="io.swagger" artifactId="swagger-models" version="1.5.18.fuse70-1-redhat-1"/>
         <artifact groupId="io.swagger" artifactId="swagger-parser" version="1.0.33"/>
-        <artifact groupId="io.undertow" artifactId="undertow-core" version="1.4.18.SP8-redhat-1"/>
-        <artifact groupId="io.undertow" artifactId="undertow-servlet" version="1.4.18.SP8-redhat-1"/>
-        <artifact groupId="io.undertow" artifactId="undertow-websockets-jsr" version="1.4.18.SP8-redhat-1"/>
-        <artifact groupId="io.undertow.jastow" artifactId="jastow" version="2.0.3.Final-redhat-1"/>
+        <artifact groupId="io.undertow" artifactId="undertow-core" version="1.4.18.SP9-redhat-00001"/>
+        <artifact groupId="io.undertow" artifactId="undertow-servlet" version="1.4.18.SP9-redhat-00001"/>
+        <artifact groupId="io.undertow" artifactId="undertow-websockets-jsr" version="1.4.18.SP9-redhat-00001"/>
+        <artifact groupId="io.undertow.jastow" artifactId="jastow" version="2.0.6.Final-redhat-00001"/>
         <artifact groupId="io.vertx" artifactId="vertx-core" version="3.5.3"/>
         <artifact groupId="io.zipkin.brave" artifactId="brave-core" version="4.13.4"/>
         <artifact groupId="io.zipkin.brave" artifactId="brave-spancollector-scribe" version="4.13.4"/>
@@ -672,21 +672,21 @@
         <artifact groupId="org.jboss" artifactId="jandex" version="2.0.3.Final-redhat-1"/>
         <artifact groupId="org.jboss" artifactId="jboss-dmr" version="1.4.1.Final-redhat-1"/>
         <artifact groupId="org.jboss" artifactId="jboss-transaction-spi" version="7.6.0.Final-redhat-1"/>
-        <artifact groupId="org.jboss" artifactId="jboss-vfs" version="3.2.12.Final-redhat-1"/>
+        <artifact groupId="org.jboss" artifactId="jboss-vfs" version="3.2.13.Final-redhat-1"/>
         <artifact groupId="org.jboss" artifactId="staxmapper" version="1.3.0.Final-redhat-1"/>
         <artifact groupId="org.jboss.common" artifactId="jboss-common-beans" version="2.0.0.Final-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-common" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-infinispan-spi" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-marshalling-api" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-service" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-ee" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-feature-pack" version="7.1.4.GA-redhat-1" extension="zip"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-iiop-openjdk" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-naming" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-security" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-transactions" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-undertow" version="7.1.4.GA-redhat-1"/>
-        <artifact groupId="org.jboss.eap" artifactId="wildfly-web-common" version="7.1.4.GA-redhat-1"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-common" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-infinispan-spi" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-marshalling-api" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-clustering-service" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-ee" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-feature-pack" version="7.1.5.GA-redhat-00002" extension="zip"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-iiop-openjdk" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-naming" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-security" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-transactions" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-undertow" version="7.1.5.GA-redhat-00002"/>
+        <artifact groupId="org.jboss.eap" artifactId="wildfly-web-common" version="7.1.5.GA-redhat-00002"/>
         <artifact groupId="org.jboss.gravia" artifactId="gravia-container-wildfly-extension" version="1.3.1"/>
         <artifact groupId="org.jboss.gravia" artifactId="gravia-resource" version="1.3.1"/>
         <artifact groupId="org.jboss.gravia" artifactId="gravia-runtime-api" version="1.3.1"/>
@@ -694,13 +694,13 @@
         <artifact groupId="org.jboss.invocation" artifactId="jboss-invocation" version="1.5.0.Final-redhat-1"/>
         <artifact groupId="org.jboss.logging" artifactId="jboss-logging" version="3.3.1.Final-redhat-1"/>
         <artifact groupId="org.jboss.logmanager" artifactId="jboss-logmanager" version="2.0.10.Final-redhat-1"/>
-        <artifact groupId="org.jboss.marshalling" artifactId="jboss-marshalling" version="2.0.5.Final-redhat-1"/>
-        <artifact groupId="org.jboss.marshalling" artifactId="jboss-marshalling-river" version="2.0.5.Final-redhat-1"/>
+        <artifact groupId="org.jboss.marshalling" artifactId="jboss-marshalling" version="2.0.6.Final-redhat-00001"/>
+        <artifact groupId="org.jboss.marshalling" artifactId="jboss-marshalling-river" version="2.0.6.Final-redhat-00001"/>
         <artifact groupId="org.jboss.metadata" artifactId="jboss-metadata-common" version="10.0.2.Final-redhat-1"/>
         <artifact groupId="org.jboss.metadata" artifactId="jboss-metadata-ear" version="10.0.2.Final-redhat-1"/>
         <artifact groupId="org.jboss.metadata" artifactId="jboss-metadata-ejb" version="10.0.2.Final-redhat-1"/>
         <artifact groupId="org.jboss.metadata" artifactId="jboss-metadata-web" version="10.0.2.Final-redhat-1"/>
-        <artifact groupId="org.jboss.modules" artifactId="jboss-modules" version="1.6.4.Final-redhat-1"/>
+        <artifact groupId="org.jboss.modules" artifactId="jboss-modules" version="1.6.5.Final-redhat-00001"/>
         <artifact groupId="org.jboss.msc" artifactId="jboss-msc" version="1.2.7.SP1-redhat-1"/>
         <artifact groupId="org.jboss.narayana.compensations" artifactId="compensations" version="5.5.32.Final-redhat-1"/>
         <artifact groupId="org.jboss.narayana.jts" artifactId="narayana-jts-idlj" version="5.5.32.Final-redhat-1"/>
@@ -724,8 +724,8 @@
         <artifact groupId="org.jboss.spec.javax.websocket" artifactId="jboss-websocket-api_1.1_spec" version="1.1.1.Final-redhat-1"/>
         <artifact groupId="org.jboss.stdio" artifactId="jboss-stdio" version="1.0.2.GA-redhat-2"/>
         <artifact groupId="org.jboss.threads" artifactId="jboss-threads" version="2.2.1.Final-redhat-1"/>
-        <artifact groupId="org.jboss.xnio" artifactId="xnio-api" version="3.5.5.Final-redhat-1"/>
-        <artifact groupId="org.jboss.xnio" artifactId="xnio-nio" version="3.5.5.Final-redhat-1"/>
+        <artifact groupId="org.jboss.xnio" artifactId="xnio-api" version="3.5.6.Final-redhat-00001"/>
+        <artifact groupId="org.jboss.xnio" artifactId="xnio-nio" version="3.5.6.Final-redhat-00001"/>
         <artifact groupId="org.jdom" artifactId="jdom" version="1.1.3"/>
         <artifact groupId="org.jgroups" artifactId="jgroups" version="4.0.10.Final"/>
         <artifact groupId="org.jibx" artifactId="jibx-run" version="1.2.6"/>
@@ -752,9 +752,9 @@
         <artifact groupId="org.osgi" artifactId="org.osgi.enterprise" version="5.0.0"/>
         <artifact groupId="org.pacesys" artifactId="openstack4j-core" version="3.0.2"/>
         <artifact groupId="org.pacesys.openstack4j.connectors" artifactId="openstack4j-okhttp" version="3.0.2"/>
-        <artifact groupId="org.picketbox" artifactId="picketbox" version="5.0.3.Final-redhat-1"/>
+        <artifact groupId="org.picketbox" artifactId="picketbox" version="5.0.3.Final-redhat-3"/>
         <artifact groupId="org.picketbox" artifactId="picketbox-commons" version="1.0.0.final-redhat-5"/>
-        <artifact groupId="org.picketbox" artifactId="picketbox-infinispan" version="5.0.3.Final-redhat-1"/>
+        <artifact groupId="org.picketbox" artifactId="picketbox-infinispan" version="5.0.3.Final-redhat-3"/>
         <artifact groupId="org.projectodd.vdx" artifactId="vdx-core" version="1.1.6.redhat-1"/>
         <artifact groupId="org.projectodd.vdx" artifactId="vdx-wildfly" version="1.1.6.redhat-1"/>
         <artifact groupId="org.quartz-scheduler" artifactId="quartz" version="2.3.0"/>
@@ -804,30 +804,30 @@
         <artifact groupId="org.wildfly.camel" artifactId="wildfly-camel-subsystem-core" version="5.2.0.fuse-SNAPSHOT"/>
         <artifact groupId="org.wildfly.camel" artifactId="wildfly-camel-subsystem-security" version="5.2.0.fuse-SNAPSHOT"/>
         <artifact groupId="org.wildfly.camel" artifactId="wildfly-camel-subsystem-undertow" version="5.2.0.fuse-SNAPSHOT"/>
-        <artifact groupId="org.wildfly.client" artifactId="wildfly-client-config" version="1.0.0.Final-redhat-1"/>
+        <artifact groupId="org.wildfly.client" artifactId="wildfly-client-config" version="1.0.1.Final-redhat-00001"/>
         <artifact groupId="org.wildfly.common" artifactId="wildfly-common" version="1.2.0.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-controller" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-controller-client" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-core-management-client" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-core-security" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-core-security-api" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-deployment-repository" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-domain-http-interface" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-domain-management" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-io" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-network" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-platform-mbean" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-process-controller" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-protocol" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-remoting" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-request-controller" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-server" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.core" artifactId="wildfly-version" version="3.0.17.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.extras.patch" artifactId="fuse-patch-config" version="3.1.0.fuse-720017"/>
-        <artifact groupId="org.wildfly.extras.patch" artifactId="fuse-patch-feature-pack" version="3.1.0.fuse-720017" extension="zip"/>
-        <artifact groupId="org.wildfly.openssl" artifactId="wildfly-openssl-java" version="1.0.6.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.security" artifactId="wildfly-elytron" version="1.1.10.Final-redhat-1"/>
-        <artifact groupId="org.wildfly.security.elytron-web" artifactId="undertow-server" version="1.0.1.Final-redhat-1"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-controller" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-controller-client" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-core-management-client" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-core-security" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-core-security-api" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-deployment-repository" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-domain-http-interface" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-domain-management" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-io" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-network" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-platform-mbean" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-process-controller" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-protocol" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-remoting" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-request-controller" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-server" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.core" artifactId="wildfly-version" version="3.0.19.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.extras.patch" artifactId="fuse-patch-config" version="3.1.0.fuse-720018"/>
+        <artifact groupId="org.wildfly.extras.patch" artifactId="fuse-patch-feature-pack" version="3.1.0.fuse-720018" extension="zip"/>
+        <artifact groupId="org.wildfly.openssl" artifactId="wildfly-openssl-java" version="1.0.6.Final-redhat-2"/>
+        <artifact groupId="org.wildfly.security" artifactId="wildfly-elytron" version="1.1.11.Final-redhat-00001"/>
+        <artifact groupId="org.wildfly.security.elytron-web" artifactId="undertow-server" version="1.0.2.Final-redhat-00001"/>
         <artifact groupId="org.wildfly.transaction" artifactId="wildfly-transaction-client" version="1.0.4.Final-redhat-1"/>
         <artifact groupId="org.wildfly.wildfly-http-client" artifactId="wildfly-http-client-common" version="1.0.9.Final-redhat-1"/>
         <artifact groupId="org.wildfly.wildfly-http-client" artifactId="wildfly-http-naming-client" version="1.0.9.Final-redhat-1"/>
