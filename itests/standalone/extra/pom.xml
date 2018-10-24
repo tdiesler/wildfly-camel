@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-itests-standalone</artifactId>
-        <version>5.2.0.fuse-710021</version>
+        <version>5.2.0.fuse-710023</version>
     </parent>
 
     <name>Wildfly Camel :: Testsuite :: Standalone :: Extra</name>
