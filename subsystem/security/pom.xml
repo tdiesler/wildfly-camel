@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.wildfly.camel</groupId>
         <artifactId>wildfly-camel-subsystem</artifactId>
-        <version>5.2.0.fuse-710021</version>
+        <version>5.2.0.fuse-710025</version>
     </parent>
 
     <name>Wildfly Camel :: Subsystem :: Security</name>
