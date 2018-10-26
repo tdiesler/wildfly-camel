@@ -1253,6 +1253,9 @@
         <include artifact="org.apache.kafka:kafka_2.11" />
         <include artifact="net.sf.jopt-simple:jopt-simple" />
         <include artifact="com.101tec:zkclient" />
+        <apply-to-dependencies skip="true">
+            <include module="com.typesafe.scala.logging" />
+        </apply-to-dependencies>
         <dependencies>
             <module name="javax.api"/>
             <module name="org.scala.lang" />
@@ -1915,6 +1918,7 @@
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="org.scala-lang:scala-library" />
+        <include artifact="org.scala-lang:scala-reflect" />
         <dependencies>
             <module name="sun.jdk">
                 <imports>

@@ -5,6 +5,7 @@
   </properties>
   <resources>
     <artifact name="${org.scala-lang:scala-library}" />
+    <artifact name="${org.scala-lang:scala-reflect}" />
   </resources>
   <dependencies>
     <module name="sun.jdk">
