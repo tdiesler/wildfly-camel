@@ -21,8 +21,6 @@
 package org.wildfly.camel.test.kafka;
 
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -80,19 +78,19 @@ public class KafkaConsumerIntegrationTest {
     @BeforeClass
     public static void before() throws Exception {
         embeddedZookeeper = new EmbeddedZookeeper();
-        List<Integer> kafkaPorts = Collections.singletonList(KAFKA_PORT);
-        embeddedKafkaBroker = new EmbeddedKafkaBroker(embeddedZookeeper.getConnection(), new Properties(), kafkaPorts);
+        String zkConnection = embeddedZookeeper.getConnection();
+        embeddedKafkaBroker = new EmbeddedKafkaBroker(0, KAFKA_PORT, zkConnection, new Properties());
 
         embeddedZookeeper.startup(1, TimeUnit.SECONDS);
-        System.out.println("### Embedded Zookeeper connection: " + embeddedZookeeper.getConnection());
+        System.out.println("### Embedded Zookeeper connection: " + zkConnection);
 
-        embeddedKafkaBroker.startup();
+        embeddedKafkaBroker.before();
         System.out.println("### Embedded Kafka cluster broker list: " + embeddedKafkaBroker.getBrokerList());
     }
 
     @AfterClass
     public static void after() throws Exception {
-        embeddedKafkaBroker.shutdown();
+        embeddedKafkaBroker.after();
         embeddedZookeeper.shutdown();
     }
 

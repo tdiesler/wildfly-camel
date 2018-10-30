@@ -167,6 +167,10 @@
         <include artifact="com.sun.xml.bind:jaxb-xjc" />
     </module>
 
+    <module name="com.typesafe.scala.logging" skip="true">
+        <include artifact="com.typesafe.scala-logging:scala-logging_2.11" />
+    </module>
+
     <module name="com.twitter.chill" skip="true">
         <include artifact="com.twitter:chill_2.11" />
         <include artifact="com.twitter:chill-java" />

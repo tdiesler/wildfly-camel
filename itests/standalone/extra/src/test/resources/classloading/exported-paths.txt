@@ -3021,6 +3021,7 @@ org/apache/kafka/common/acl
 org/apache/kafka/common/annotation
 org/apache/kafka/common/cache
 org/apache/kafka/common/config
+org/apache/kafka/common/config/provider
 org/apache/kafka/common/config/types
 org/apache/kafka/common/errors
 org/apache/kafka/common/header
@@ -3037,13 +3038,17 @@ org/apache/kafka/common/security
 org/apache/kafka/common/security/auth
 org/apache/kafka/common/security/authenticator
 org/apache/kafka/common/security/kerberos
+org/apache/kafka/common/security/oauthbearer
 org/apache/kafka/common/security/plain
 org/apache/kafka/common/security/scram
 org/apache/kafka/common/security/ssl
+org/apache/kafka/common/security/token
+org/apache/kafka/common/security/token/delegation
 org/apache/kafka/common/serialization
 org/apache/kafka/common/utils
 org/apache/kafka/server
 org/apache/kafka/server/policy
+org/apache/kafka/server/quota
 org/apache/olingo
 org/apache/olingo/client
 org/apache/olingo/client/api
