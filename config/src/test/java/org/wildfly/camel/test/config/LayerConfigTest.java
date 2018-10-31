@@ -20,6 +20,8 @@
 package org.wildfly.camel.test.config;
 
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,6 +43,10 @@ public class LayerConfigTest {
             @Override
             public String getConfigName() {
                 return "foo";
+            }
+
+            @Override
+            public void verifyTargetVersion(Path jbossHome) throws IOException {
             }
 
             @Override
@@ -93,6 +99,10 @@ public class LayerConfigTest {
             @Override
             public String getConfigName() {
                 return "foo";
+            }
+
+            @Override
+            public void verifyTargetVersion(Path jbossHome) throws IOException {
             }
 
             @Override

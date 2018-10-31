@@ -15,7 +15,13 @@
  */
 package org.wildfly.extension.camel.config;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +30,7 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 import org.jdom.Text;
 import org.wildfly.extras.config.ConfigContext;
+import org.wildfly.extras.config.ConfigLogger;
 import org.wildfly.extras.config.ConfigPlugin;
 import org.wildfly.extras.config.ConfigSupport;
 import org.wildfly.extras.config.LayerConfig;
@@ -43,6 +50,11 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
     }
 
     @Override
+    public void verifyTargetVersion(Path jbossHome) throws IOException {
+        verifyWildflyVersion(jbossHome);
+    }
+
+    @Override
     public List<LayerConfig> getLayerConfigs() {
         return Arrays.asList(LayerConfig.FUSE_LAYER);
     }
@@ -53,6 +65,32 @@ public final class WildFlyCamelConfigPlugin implements ConfigPlugin {
         updateSystemProperties(context, enable);
         updateSubsystem(context, enable);
         updateSecurityDomain(context, enable);
+        return true;
+    }
+
+    private boolean verifyWildflyVersion(Path jbossHome) throws IOException {
+        String targetVersion;
+        try (FileReader reader = new FileReader(jbossHome.resolve("version.txt").toFile())) {
+            BufferedReader br = new BufferedReader(reader);
+            String line = br.readLine();
+            int idx = line.lastIndexOf("Version");
+            String[] toks = line.substring(idx).split(" ");
+            targetVersion = toks[1];
+        }
+        String expectedVersion;
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream("/expected-wildfly-version.txt"))) {
+            BufferedReader br = new BufferedReader(reader);
+            expectedVersion = br.readLine();
+            int idx = expectedVersion.indexOf("-redhat");
+            if (idx > 0) {
+                expectedVersion = expectedVersion.substring(0, idx);
+            }
+        }
+        ConfigLogger.info(String.format("Target Version: %s", targetVersion));
+        if (!targetVersion.equals(expectedVersion)) {
+            String errmsg = String.format("Version Missmatch: %s != %s", targetVersion, expectedVersion);
+            throw new IllegalStateException(errmsg);
+        }
         return true;
     }
 
