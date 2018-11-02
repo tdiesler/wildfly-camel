@@ -30,7 +30,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Test;
@@ -53,8 +53,8 @@ public class SAPNetweaverIntegrationTest {
     static final String SAP_PASSWORD = System.getenv("SAP_PASSWORD");
 
     @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "camel-sap-netweaver-tests.jar");
+    public static WebArchive createDeployment() {
+        return ShrinkWrap.create(WebArchive.class, "SAPNetweaverIntegrationTest.war");
     }
 
     @Test
