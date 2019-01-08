@@ -668,14 +668,6 @@
         </dependencies>
     </module>
 
-    <module name="com.querydsl.skip" skip="true">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":querydsl-apt" />
-        <include artifact=":querydsl-codegen" />
-    </module>
-
     <module name="com.rometools.rome">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -1296,10 +1288,6 @@
             <exclude path="org/apache/logging" />
             <exclude path="org/apache/logging/slf4j" />
         </exports>
-    </module>
-
-    <module name="org.apache.logging.log4j.core" skip="true">
-        <include artifact="org.apache.logging.log4j:log4j-core" />
     </module>
 
     <module name="org.apache.lucene" inherit-slot="false" slot="5.5">

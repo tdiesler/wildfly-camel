@@ -137,6 +137,11 @@
         <include artifact="com.martiansoftware:nailgun-server" />
     </module>
 
+    <module name="com.querydsl.skip" skip="true">
+        <include artifact=":querydsl-apt" />
+        <include artifact=":querydsl-codegen" />
+    </module>
+
     <module name="com.sun.codemodel" skip="true">
         <include artifact="com.sun.codemodel:codemodel" />
     </module>
@@ -210,6 +215,11 @@
 
     <module name="io.sundr.codegen" skip="true">
         <include artifact="io.sundr:sundr-codegen" />
+    </module>
+
+    <module name="io.zipkin.skipped" skip="true">
+        <include artifact="io.zipkin.reporter:zipkin-reporter" />
+        <include artifact="org.jvnet:animal-sniffer-annotation" />
     </module>
 
     <module name="jaxmeapi" skip="true">
@@ -300,6 +310,10 @@
 
     <module name="org.apache.httpcomponents.skipped" skip="true">
         <include artifact="org.apache.httpcomponents:httpclient-osgi" />
+    </module>
+
+    <module name="org.apache.logging.log4j.core" skip="true">
+        <include artifact="org.apache.logging.log4j:log4j-core" />
     </module>
 
     <module name="org.apache.log4j" skip="true">

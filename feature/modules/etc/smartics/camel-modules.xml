@@ -1373,6 +1373,7 @@
             <include module="org.springframework.boot" />
         </apply-to-dependencies>
         <dependencies>
+            <module name="javax.api"/>
             <module name="org.slf4j"/>
         </dependencies>
         <exports>
@@ -3094,11 +3095,6 @@
             <exclude path="zipkin2/**" />
             <exclude path="zipkin/**" />
         </exports>
-    </module>
-
-    <module name="io.zipkin.skipped" skip="true">
-        <include artifact="io.zipkin.reporter:zipkin-reporter" />
-        <include artifact="org.jvnet:animal-sniffer-annotation" />
     </module>
 
     <module name="org.apache.camel.component.zookeeper">
