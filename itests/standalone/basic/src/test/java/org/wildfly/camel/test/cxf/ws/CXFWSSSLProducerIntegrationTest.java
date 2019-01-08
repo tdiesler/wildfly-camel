@@ -29,6 +29,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.common.http.HttpRequest;
@@ -61,6 +62,7 @@ public class CXFWSSSLProducerIntegrationTest {
     }
 
     @Test
+    @Ignore("[ENTESB-9843] Adjust jboss-fuse/camel/2.21.x.redhat-7-x to work with CXF 3.2")
     public void testCxfWSSSLProducer() {
         CamelContext camelctx = contextRegistry.getCamelContext("cxfws-ssl-context");
         Assert.assertNotNull("Expected cxfrs-producer-context to not be null", camelctx);
