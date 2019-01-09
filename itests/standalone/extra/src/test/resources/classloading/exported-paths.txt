@@ -734,6 +734,7 @@ com/hazelcast/aggregation/impl
 com/hazelcast/cache
 com/hazelcast/cache/impl
 com/hazelcast/cache/impl/event
+com/hazelcast/cache/impl/eviction
 com/hazelcast/cache/impl/journal
 com/hazelcast/cache/impl/maxsize
 com/hazelcast/cache/impl/maxsize/impl
@@ -764,6 +765,8 @@ com/hazelcast/client/impl/protocol/task/cache
 com/hazelcast/client/impl/protocol/task/cardinality
 com/hazelcast/client/impl/protocol/task/condition
 com/hazelcast/client/impl/protocol/task/countdownlatch
+com/hazelcast/client/impl/protocol/task/crdt
+com/hazelcast/client/impl/protocol/task/crdt/pncounter
 com/hazelcast/client/impl/protocol/task/dynamicconfig
 com/hazelcast/client/impl/protocol/task/executorservice
 com/hazelcast/client/impl/protocol/task/executorservice/durable
@@ -807,9 +810,6 @@ com/hazelcast/collection/impl/txnlist
 com/hazelcast/collection/impl/txnqueue
 com/hazelcast/collection/impl/txnqueue/operations
 com/hazelcast/collection/impl/txnset
-com/hazelcast/com
-com/hazelcast/com/eclipsesource
-com/hazelcast/com/eclipsesource/json
 com/hazelcast/concurrent
 com/hazelcast/concurrent/atomiclong
 com/hazelcast/concurrent/atomiclong/operations
@@ -825,18 +825,25 @@ com/hazelcast/concurrent/semaphore/operations
 com/hazelcast/config
 com/hazelcast/config/matcher
 com/hazelcast/config/properties
+com/hazelcast/config/replacer
+com/hazelcast/config/replacer/spi
 com/hazelcast/console
 com/hazelcast/core
 com/hazelcast/core/server
+com/hazelcast/crdt
+com/hazelcast/crdt/pncounter
+com/hazelcast/crdt/pncounter/operations
 com/hazelcast/durableexecutor
 com/hazelcast/durableexecutor/impl
 com/hazelcast/durableexecutor/impl/operations
 com/hazelcast/executor
 com/hazelcast/executor/impl
 com/hazelcast/executor/impl/operations
+com/hazelcast/flakeidgen
+com/hazelcast/flakeidgen/impl
+com/hazelcast/flakeidgen/impl/client
 com/hazelcast/hotrestart
 com/hazelcast/instance
-com/hazelcast/journal
 com/hazelcast/logging
 com/hazelcast/map
 com/hazelcast/map/eviction
@@ -932,6 +939,7 @@ com/hazelcast/spi/impl/eventservice/impl
 com/hazelcast/spi/impl/eventservice/impl/operations
 com/hazelcast/spi/impl/executionservice
 com/hazelcast/spi/impl/executionservice/impl
+com/hazelcast/spi/impl/merge
 com/hazelcast/spi/impl/operationexecutor
 com/hazelcast/spi/impl/operationexecutor/impl
 com/hazelcast/spi/impl/operationexecutor/slowoperationdetector
@@ -939,7 +947,6 @@ com/hazelcast/spi/impl/operationparker
 com/hazelcast/spi/impl/operationparker/impl
 com/hazelcast/spi/impl/operationservice
 com/hazelcast/spi/impl/operationservice/impl
-com/hazelcast/spi/impl/operationservice/impl/batching
 com/hazelcast/spi/impl/operationservice/impl/operations
 com/hazelcast/spi/impl/operationservice/impl/responses
 com/hazelcast/spi/impl/operationutil
@@ -949,6 +956,7 @@ com/hazelcast/spi/impl/proxyservice/impl/operations
 com/hazelcast/spi/impl/sequence
 com/hazelcast/spi/impl/servicemanager
 com/hazelcast/spi/impl/servicemanager/impl
+com/hazelcast/spi/merge
 com/hazelcast/spi/partition
 com/hazelcast/spi/partitiongroup
 com/hazelcast/spi/properties
@@ -970,6 +978,7 @@ com/hazelcast/util/scheduler
 com/hazelcast/version
 com/hazelcast/wan
 com/hazelcast/wan/impl
+com/hazelcast/wan/merkletree
 com/ibm/as400
 com/ibm/as400/access
 com/ibm/as400/access/jdbcClient
