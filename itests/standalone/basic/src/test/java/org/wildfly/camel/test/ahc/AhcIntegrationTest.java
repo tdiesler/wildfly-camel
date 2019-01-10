@@ -61,7 +61,7 @@ public class AhcIntegrationTest {
             Response res = f.get();
             Assert.assertEquals(200, res.getStatusCode());
             final String body = res.getResponseBody();
-            Assert.assertTrue("Got body " + body, body.contains("Welcome to WildFly"));
+            Assert.assertTrue("Got body " + body, body.contains("Welcome to JBoss EAP 7"));
         }
     }
 
@@ -90,7 +90,7 @@ public class AhcIntegrationTest {
             Message message = mockep.getExchanges().get(0).getIn();
             Assert.assertEquals(200, (int) message.getHeader(Exchange.HTTP_RESPONSE_CODE, Integer.class));
             final String body = message.getBody(String.class);
-            Assert.assertTrue("Got body " + body, body.contains("Welcome to WildFly"));
+            Assert.assertTrue("Got body " + body, body.contains("Welcome to JBoss EAP 7"));
 
         } finally {
             camelctx.stop();

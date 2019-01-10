@@ -61,8 +61,8 @@
                 <type>pom</type>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-parent</artifactId>
+                <groupId>org.jboss.eap</groupId>
+                <artifactId>jboss-eap-parent</artifactId>
                 <version>${version.wildfly}</version>
                 <scope>import</scope>
                 <type>pom</type>
@@ -336,6 +336,16 @@
                 <groupId>org.eclipse.mylyn.github</groupId>
                 <artifactId>org.eclipse.egit.github.core</artifactId>
                 <version>${version.eclipse.egit.github}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.fusesource</groupId>
+                <artifactId>camel-activemq</artifactId>
+                <version>${version.fusesource.camel.components}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.fusesource</groupId>
+                <artifactId>camel-sap</artifactId>
+                <version>${version.fusesource.camel.components}</version>
             </dependency>
             <dependency>
                 <groupId>org.infinispan</groupId>

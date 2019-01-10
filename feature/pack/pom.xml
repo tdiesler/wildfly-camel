@@ -97,7 +97,7 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.wildfly</groupId>
+                                    <groupId>org.jboss.eap</groupId>
                                     <artifactId>wildfly-feature-pack</artifactId>
                                     <version>${version.wildfly}</version>
                                     <type>zip</type>

@@ -36,10 +36,10 @@
 
     <!-- Source Control -->
     <scm>
-        <connection>scm:git:https://github.com/wildfly-extras/wildfly-camel.git</connection>
-        <developerConnection>scm:git:https://github.com/wildfly-extras/wildfly-camel.git</developerConnection>
-        <url>http://github.com/wildfly-extras/wildfly-camel</url>
-        <tag>8.0.0</tag>
+        <connection>scm:git:https://github.com/jboss-fuse/wildfly-camel.git</connection>
+        <developerConnection>scm:git:https://github.com/jboss-fuse/wildfly-camel.git</developerConnection>
+        <url>http://github.com/jboss-fuse/wildfly-camel</url>
+        <tag>HEAD</tag>
     </scm>
 
     <!-- Properties -->
@@ -63,11 +63,12 @@
         <version.camel.rxjava2>2.1.16</version.camel.rxjava2>
 
         <!-- WildFly versions -->
-        <version.wildfly>14.0.1.Final</version.wildfly>
+        <!-- http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven/org/jboss/eap/wildfly-dist -->
+        <version.wildfly>7.2.0.GA-redhat-00005</version.wildfly>
         <version.wildfly.arquillian>2.1.1.Final</version.wildfly.arquillian>
-        <version.wildfly.cxf>3.2.5-jbossorg-1</version.wildfly.cxf>
+        <version.wildfly.cxf>3.2.5.redhat-00001</version.wildfly.cxf>
         <version.wildfly.fasterxml.jackson>2.9.5</version.wildfly.fasterxml.jackson>
-        <version.wildfly.infinispan>9.3.1.Final</version.wildfly.infinispan>
+        <version.wildfly.infinispan>9.3.3.Final-redhat-00001</version.wildfly.infinispan>
         <version.wildfly.okhttp3>3.9.0</version.wildfly.okhttp3>
 
         <!-- Other versions -->
@@ -482,6 +483,34 @@
         <repository>
             <id>jboss-public-repository</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>redhat-ga-repository</id>
+            <url>http://maven.repository.redhat.com/ga</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>jboss-ea</id>
+            <url>https://repository.jboss.org/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>eap72-brew</id>
+            <url>http://download.eng.bos.redhat.com/brewroot/repos/jb-eap-7.2-maven-build/latest/maven</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>redhat-early-access-repository</id>
+            <url>http://maven.repository.redhat.com/earlyaccess/all</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>

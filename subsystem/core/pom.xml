@@ -49,23 +49,28 @@
 
         <!-- Provided -->
         <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-server</artifactId>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core-xml</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-ee</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.jboss.eap</groupId>
             <artifactId>wildfly-naming</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-core-xml</artifactId>
+            <groupId>org.jboss.eap</groupId>
+            <artifactId>wildfly-undertow</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.eap</groupId>
+            <artifactId>wildfly-web-common</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -74,13 +79,8 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-undertow</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-web-common</artifactId>
+            <groupId>org.wildfly.core</groupId>
+            <artifactId>wildfly-server</artifactId>
             <scope>provided</scope>
         </dependency>
 

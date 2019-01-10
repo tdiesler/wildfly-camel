@@ -1102,6 +1102,30 @@
         <include artifact="net.sf.json-lib:json-lib" />
     </module>
 
+    <module name="net.sf.saxon">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="net.sf.saxon:Saxon-HE" />
+        <dependencies>
+            <module name="javax.api" />
+        </dependencies>
+        <exports>
+            <exclude path="net/sf" />
+            <exclude path="w3c**" />
+        </exports>
+    </module>
+
+    <module name="net.spy.spymemcached">
+        <properties>
+            <property name="jboss.api" value="private"/>
+        </properties>
+        <include artifact="net.spy:spymemcached"/>
+        <dependencies>
+            <module name="javax.api"/>
+        </dependencies>
+    </module>
+
     <module name="net.sourceforge.cssparser">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -2205,28 +2229,8 @@
         </apply-to-dependencies>
     </module>
 
-    <module name="net.sf.saxon">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="net.sf.saxon:Saxon-HE" />
-        <dependencies>
-            <module name="javax.api" />
-        </dependencies>
-        <exports>
-            <exclude path="net/sf" />
-            <exclude path="w3c**" />
-        </exports>
-    </module>
-
-    <module name="net.spy.spymemcached">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="net.spy:spymemcached"/>
-        <dependencies>
-            <module name="javax.api"/>
-        </dependencies>
+    <module name="relaxng">
+        <include artifact=":relaxngDatatype" />
     </module>
 
     <module name="xmlpull">

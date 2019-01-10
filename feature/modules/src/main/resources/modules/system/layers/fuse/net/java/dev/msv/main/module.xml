@@ -11,6 +11,6 @@
   </resources>
   <dependencies>
     <module name="javax.api" />
-    <module name="com.github.relaxng" />
+    <module name="relaxng" />
   </dependencies>
 </module>

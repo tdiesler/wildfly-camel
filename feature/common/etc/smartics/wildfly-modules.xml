@@ -60,10 +60,6 @@
         <include artifact="com.github.ben-manes.caffeine:caffeine" />
     </module>
 
-    <module name="com.github.relaxng" skip="true">
-        <include artifact=":relaxngDatatype" />
-    </module>
-
     <module name="com.github.spullara.mustache" skip="true">
         <include artifact="com.github.spullara.mustache.java:compiler" />
     </module>
@@ -125,6 +121,7 @@
     <module name="javax.annotation.api" skip="true">
         <include artifact=":javax.annotation-api" />
         <include artifact=":javax.annotation" />
+        <include artifact=":jboss-annotations-api_1.3_spec" />
         <include artifact=":jsr250-api" />
         <include artifact=":geronimo-annotation_1.0_spec" />
         <include artifact=":geronimo-annotation_1.1_spec" />
@@ -143,6 +140,7 @@
         <include artifact=":geronimo-el_2.2_spec" />
         <include artifact=":javax.el-api" />
         <include artifact=":javax.el" />
+        <include artifact=":jboss-el-api_3.0_spec" />
         <include artifact=":el-api" />
         <include artifact=":el-impl" />
     </module>
@@ -194,6 +192,10 @@
         <include artifact=":geronimo-jpa_2.1_spec" />
     </module>
 
+    <module name="javax.security.auth.message.api" skip="true">
+        <include artifact=":jboss-jaspi-api_1.1_spec" />
+    </module>
+
     <module name="javax.security.jacc.api" skip="true">
         <include artifact=":geronimo-jacc_1.1_spec" />
     </module>
@@ -202,11 +204,13 @@
         <include artifact=":geronimo-servlet_3.0_spec" />
         <include artifact=":javax.servlet-api" />
         <include artifact=":jboss-servlet-api_3.1_spec" />
+        <include artifact=":jboss-servlet-api_4.0_spec" />
         <include artifact=":servlet-api" />
     </module>
 
     <module name="javax.servlet.jsp.api" skip="true">
         <include artifact=":jsp-api" />
+        <include artifact=":jboss-jsp-api_2.3_spec" />
     </module>
 
     <module name="javax.servlet:jstl" skip="true">
@@ -473,7 +477,7 @@
     </module>
 
     <module name="org.jboss.as.web-common" skip="true">
-        <include artifact="org.wildfly:wildfly-web-common" />
+        <include artifact=":wildfly-web-common" />
     </module>
 
     <module name="org.jboss.as.weld" skip="true">
@@ -482,6 +486,14 @@
         <include artifact=":weld-core" />
         <include artifact=":weld-osgi-bundle" />
         <include artifact=":weld-spi" />
+    </module>
+
+    <module name="org.jboss.metadata.common" skip="true">
+        <include artifact=":jboss-metadata-common"/>
+    </module>
+
+    <module name="org.jboss.metadata.web" skip="true">
+        <include artifact=":jboss-metadata-web"/>
     </module>
 
     <module name="org.jboss.logging" skip="true">
