@@ -404,13 +404,6 @@
         <include artifact="com.github.virtuald:curvesapi" />
     </module>
 
-    <module name="com.github.wnameless.json-flattener">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="com.github.wnameless:json-flattener" />
-    </module>
-
     <module name="com.google.code.json-simple">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -785,13 +778,6 @@
         </dependencies>
     </module>
 
-    <module name="com.sun.activation.javax.activation">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="com.sun.activation:javax.activation" />
-    </module>
-
     <module name="com.thoughtworks.xstream">
         <properties>
             <property name="jboss.api" value="private"/>
@@ -1003,13 +989,6 @@
             <module name="io.netty"/>
             <module name="javax.api"/>
         </dependencies>
-    </module>
-
-    <module name="io.micrometer">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="io.micrometer:micrometer-core" />
     </module>
 
     <module name="io.netty" inherit-slot="false" slot="3.10">
@@ -2107,25 +2086,11 @@
         <include artifact="org.jxmpp:jxmpp-util-cache" />
     </module>
 
-    <module name="org.latencyutils">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.latencyutils:LatencyUtils" />
-    </module>
-
     <module name="org.lz4">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
         <include artifact="org.lz4:lz4-java" />
-    </module>
-
-    <module name="org.objenesis" >
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.objenesis:objenesis" />
     </module>
 
     <module name="org.opengis.geoapi">

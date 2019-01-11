@@ -486,6 +486,10 @@
         <include artifact="org.mortbay.jetty:(.*)" />
     </module>
 
+    <module name="org.objenesis" skip="true">
+        <include artifact="org.objenesis:objenesis" />
+    </module>
+
     <module name="org.ops4j" skip="true">
         <include artifact="org.ops4j.base:(.*)" />
     </module>

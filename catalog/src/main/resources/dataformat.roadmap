@@ -11,8 +11,6 @@ boon
 castor              #deprecated
 crypto
 csv
-fhirJson
-fhirXml
 flatpack
 gzip
 hl7
@@ -54,5 +52,4 @@ zipfile
 hessian             #deprecated
 xmlBeans            #deprecated
 xmljson             #deprecated
-xmlrpc              #2507 xmlrpc is no longer maintained
 

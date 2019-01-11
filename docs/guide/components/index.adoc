@@ -220,8 +220,6 @@ include::camel-master.adoc[]
 
 include::camel-metrics.adoc[]
 
-include::camel-micrometer.adoc[]
-
 include::camel-milo.adoc[]
 
 include::camel-mina2.adoc[]
@@ -291,8 +289,6 @@ include::camel-rest-swagger.adoc[]
 include::camel-rmi.adoc[]
 
 include::camel-rss.adoc[]
-
-include::camel-rxjava2.adoc[]
 
 include::camel-salesforce.adoc[]
 

@@ -73,6 +73,7 @@ elsql
 etcd
 exec
 facebook
+fhir
 file
 flatpack
 fop
@@ -85,6 +86,7 @@ git
 github
 google-bigquery
 google-calendar
+google-calendar-stream
 google-drive
 google-mail
 google-mail-stream
@@ -150,7 +152,6 @@ lucene
 lumberjack
 master
 metrics
-micrometer
 milo-client
 milo-server
 mina2
@@ -159,12 +160,11 @@ mock
 mongodb
 mongodb-gridfs
 mongodb3
-mqtt
+mqtt                                                #deprecated
 msv
 mustache
 mvel
 mybatis
-mybatis-bean
 nagios
 nats
 netty4
@@ -266,11 +266,7 @@ zookeeper-master
 restlet                                             #2024 Blocked by camel-2.21.x
 
 [undecided]
-as2
-service
-web3j
 xchange
-yql
 
 [rejected]
 atmos                                               #1984 Jersey clashes with RestEasy
@@ -301,7 +297,6 @@ ignite-set                                          #1834 Competitor to JDG
 ironmq                                              #2006 Not another messaging system
 javaspace                                           #deprecated
 jetty                                               #2009 No alternative HTTP engine
-jira                                                #deprecated
 kestrel                                             #deprecated
 krati                                               #deprecated
 mina                                                #deprecated
@@ -315,5 +310,4 @@ routebox                                            #deprecated
 spark                                               #1469 Scala/Jackson stack overflow
 spark-rest                                          #1470 Scala/Jackson stack overflow
 websocket                                           #1479 No alternative HTTP engine
-xmlrpc                                              #2507 xmlrpc is no longer maintained
 

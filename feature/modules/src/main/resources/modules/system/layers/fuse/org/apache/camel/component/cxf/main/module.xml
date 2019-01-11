@@ -56,7 +56,6 @@
     <module name="org.apache.camel.component.http.common" />
     <module name="org.apache.camel.core" />
     <module name="org.apache.camel.spring" />
-    <module name="org.apache.cxf" />
   </dependencies>
   <exports>
     <exclude path="OSGI-INF/blueprint" />

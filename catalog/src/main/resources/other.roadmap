@@ -9,7 +9,6 @@ lra
 opentracing
 reactor
 ribbon
-rxjava2
 shiro
 spring-javaconfig
 spring-security
@@ -19,6 +18,7 @@ zipkin
 [planned]
 
 [undecided]
+as2-parent
 aws-xray
 
 [rejected]
@@ -36,17 +36,13 @@ scr                                 #deprecated
 servletlistener                     #deprecated
 spring-boot                         #2051 SpringBoot specific
 spring-cloud                        #2066 SpringBoot specific
-spring-cloud-consul                 #2591 SpringBoot specific
 spring-cloud-netflix                #2067 SpringBoot specific
-spring-cloud-zookeeper              #2592 SpringBoot specific
 swagger                             #deprecated
 test                                #2052 Testing utility
 test-blueprint                      #2053 Testing utility
 test-cdi                            #2054 Testing utility
 test-karaf                          #2055 Testing utility
 test-spring                         #2056 Testing utility
-testcontainers                      #2593 Testing utility
-testcontainers-spring               #2593 Testing utility
 testng                              #deprecated
 urlrewrite                          #deprecated
 

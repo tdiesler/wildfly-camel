@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.1" name="org.apache.camel.component.zipkin">
   <resources>
-    <artifact name="${io.zipkin.brave:brave}" />
+    <artifact name="${io.zipkin.brave:brave-core}" />
+    <artifact name="${io.zipkin.brave:brave-spancollector-scribe}" />
     <artifact name="${org.apache.camel:camel-zipkin}" />
+    <artifact name="${io.zipkin.java:zipkin}" />
     <artifact name="${io.zipkin.zipkin2:zipkin}" />
     <artifact name="${io.zipkin.reporter2:zipkin-reporter}" />
-    <artifact name="${io.zipkin.reporter2:zipkin-sender-libthrift}" />
     <artifact name="${io.zipkin.reporter2:zipkin-sender-urlconnection}" />
   </resources>
   <dependencies>
@@ -17,6 +18,10 @@
   </dependencies>
   <exports>
     <exclude path="brave**" />
+    <exclude path="com/github" />
+    <exclude path="com/github/kristofa/brave/internal" />
+    <exclude path="com/twitter" />
+    <exclude path="zipkin/internal**" />
     <exclude path="zipkin2/codec**" />
     <exclude path="zipkin2/internal**" />
     <exclude path="zipkin2/reporter/libthrift**" />

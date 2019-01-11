@@ -8,6 +8,8 @@
   </resources>
   <dependencies>
     <module name="org.springframework.context" />
+    <module name="javax.servlet.api" />
+    <module name="org.springframework.aop" />
     <module name="org.springframework.beans" />
     <module name="org.springframework.core" />
   </dependencies>

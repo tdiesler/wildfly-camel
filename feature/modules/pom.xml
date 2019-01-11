@@ -89,10 +89,6 @@
 
         <dependency>
             <groupId>ca.uhn.hapi</groupId>
-            <artifactId>hapi-structures-v21</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ca.uhn.hapi</groupId>
             <artifactId>hapi-structures-v22</artifactId>
         </dependency>
         <dependency>
@@ -122,11 +118,6 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>${version.camel.rxjava2}</version>
         </dependency>
         <dependency>
             <groupId>javax.cache</groupId>
@@ -608,10 +599,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-micrometer</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-milo</artifactId>
         </dependency>
         <dependency>
@@ -749,10 +736,6 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-rss</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-rxjava2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
