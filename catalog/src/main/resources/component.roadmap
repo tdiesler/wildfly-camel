@@ -112,10 +112,8 @@ iec60870-client
 iec60870-server
 imap
 imaps
-infinispan
 influxdb
 irc
-jbpm
 jcache
 jclouds
 jcr
@@ -266,6 +264,8 @@ zookeeper-master
 restlet                                             #2024 Blocked by camel-2.21.x
 
 [undecided]
+infinispan
+jbpm
 xchange
 
 [rejected]

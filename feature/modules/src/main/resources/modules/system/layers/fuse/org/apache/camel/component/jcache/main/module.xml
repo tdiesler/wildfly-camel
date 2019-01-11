@@ -6,11 +6,6 @@
   <dependencies>
     <module name="javax.cache.api" export="true" />
     <module name="org.ehcache" />
-    <module name="org.infinispan.jcache" export="true" services="export">
-      <exports>
-        <exclude path="OSGI-INF/blueprint" />
-      </exports>
-    </module>
     <module name="org.slf4j" />
     <module name="javax.xml.bind.api" />
     <module name="org.apache.camel.core" />

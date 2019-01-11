@@ -102,7 +102,6 @@
     ^org/fusesource/stomp(.*)
 	^org/quartz(.*)
 	^org/hl7/fhir(.*)
-	^org/infinispan(.*)
 	^org/influxdb(.*)
 	^org/lightcouch(.*)
     ^org/jclouds(.*)

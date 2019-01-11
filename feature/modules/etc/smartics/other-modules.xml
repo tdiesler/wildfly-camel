@@ -2018,33 +2018,6 @@
         </dependencies>
     </module>
 
-    <module name="org.infinispan.jcache" >
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.infinispan:infinispan-jcache" />
-        <include artifact="org.infinispan:infinispan-jcache-commons" />
-        <apply-to-dependencies skip="true">
-            <include module="org.jboss.logging.processor" />
-            <include module="org.infinispan.skipped" />
-        </apply-to-dependencies>
-        <dependencies>
-            <module name="javax.api"/>
-            <module name="org.jboss.logging"/>
-        </dependencies>
-    </module>
-
-    <module name="org.infinispan.query.dsl" >
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact="org.infinispan:infinispan-query-dsl" />
-        <apply-to-dependencies skip="true">
-            <include module="org.jboss.logging.processor" />
-            <include module="org.infinispan.skipped" />
-        </apply-to-dependencies>
-    </module>
-
     <module name="org.iq80.leveldb">
         <properties>
             <property name="jboss.api" value="private"/>

@@ -54,10 +54,10 @@ public class JCacheProducerIntegrationTest {
         camelctx.addRoutes(new RouteBuilder() {
             public void configure() {
                 from("direct:put")
-                .to("jcache://test-cache")
+                .to("jcache://test-cache?cachingProvider=org.ehcache.jsr107.EhcacheCachingProvider")
                     .to("mock:put");
                 from("direct:get")
-                    .to("jcache://test-cache")
+                    .to("jcache://test-cache?cachingProvider=org.ehcache.jsr107.EhcacheCachingProvider")
                         .to("mock:get");
             }
         });
@@ -119,9 +119,6 @@ public class JCacheProducerIntegrationTest {
 
                 from("jcache://test-cacheB?cachingProvider=org.ehcache.jsr107.EhcacheCachingProvider")
                 .to("mock:resultB");
-
-                from("jcache://test-cacheC?cachingProvider=org.infinispan.jcache.embedded.JCachingProvider")
-                .to("mock:resultC");
             }
         });
 

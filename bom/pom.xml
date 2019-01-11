@@ -348,11 +348,6 @@
                 <version>${version.fusesource.camel.components}</version>
             </dependency>
             <dependency>
-                <groupId>org.infinispan</groupId>
-                <artifactId>infinispan-jcache</artifactId>
-                <version>${version.wildfly.infinispan}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.jgroups</groupId>
                 <artifactId>jgroups</artifactId>
                 <version>${version.camel.jgroups}</version>
