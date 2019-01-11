@@ -192,7 +192,7 @@
 /org/apache/avalon/framework/main/avalon-framework-api-4.3.1.jar
 /org/apache/avalon/framework/main/avalon-framework-impl-4.3.1.jar
 /org/apache/camel/catalog/main/camel-catalog-2.21.0.fuse-730024.jar
-/org/apache/camel/component/activemq/main/activemq-camel-5.11.0.redhat-630356.jar
+/org/apache/camel/component/activemq/main/camel-activemq-7.3.0.fuse-730024.jar
 /org/apache/camel/component/ahc-ws/main/camel-ahc-ws-2.21.0.fuse-730024.jar
 /org/apache/camel/component/ahc/main/camel-ahc-2.21.0.fuse-730024.jar
 /org/apache/camel/component/amqp/main/camel-amqp-2.21.0.fuse-730024.jar
@@ -708,6 +708,7 @@
 /org/elasticsearch/main/parent-join-client-6.1.1.jar
 /org/elasticsearch/main/securesm-1.2.jar
 /org/elasticsearch/main/t-digest-3.0.jar
+/org/fusesource/camel/component/sap/main/camel-sap-7.3.0.fuse-730024.jar
 /org/fusesource/hawtbuf/main/hawtbuf-1.11.jar
 /org/fusesource/hawtdispatch/main/hawtdispatch-1.22.jar
 /org/fusesource/hawtdispatch/main/hawtdispatch-transport-1.22.jar

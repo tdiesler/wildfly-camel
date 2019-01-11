@@ -40,6 +40,9 @@
             <module name="javax.resource.api" />
             <module name="org.springframework.beans" />
         </dependencies>
+        <exports>
+            <exclude path="org/apache/activemq/util/osgi**"/>
+        </exports>
     </module>
 
     <module name="org.apache.activemq.skipped" skip="true">

@@ -26,4 +26,7 @@
     <module name="org.fusesource.hawtdispatch" />
     <module name="org.slf4j" />
   </dependencies>
+  <exports>
+    <exclude path="org/apache/activemq/util/osgi**" />
+  </exports>
 </module>

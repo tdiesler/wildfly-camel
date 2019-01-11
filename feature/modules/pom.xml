@@ -128,8 +128,8 @@
             <artifactId>bsh</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-camel</artifactId>
+            <groupId>org.fusesource</groupId>
+            <artifactId>camel-activemq</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -999,6 +999,10 @@
         <dependency>
             <groupId>org.eclipse.mylyn.github</groupId>
             <artifactId>org.eclipse.egit.github.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.fusesource</groupId>
+            <artifactId>camel-sap</artifactId>
         </dependency>
         <dependency>
             <groupId>rhino</groupId>

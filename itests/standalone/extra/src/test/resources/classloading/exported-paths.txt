@@ -1594,9 +1594,7 @@ org/apache/activemq
 org/apache/activemq/advisory
 org/apache/activemq/blob
 org/apache/activemq/camel
-org/apache/activemq/camel/camelplugin
 org/apache/activemq/camel/component
-org/apache/activemq/camel/component/broker
 org/apache/activemq/camel/converter
 org/apache/activemq/command
 org/apache/activemq/filter
