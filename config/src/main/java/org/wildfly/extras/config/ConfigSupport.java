@@ -24,7 +24,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -41,7 +40,6 @@ import java.util.ServiceLoader;
 
 import org.jboss.modules.Module;
 import org.jboss.modules.ModuleClassLoader;
-import org.jboss.modules.ModuleIdentifier;
 import org.jboss.modules.ModuleLoader;
 import org.jdom.Attribute;
 import org.jdom.Document;
@@ -73,8 +71,7 @@ public class ConfigSupport {
             List<ConfigPlugin> plugins = new ArrayList<>();
             for (String config : configs) {
                 ModuleLoader moduleLoader = Module.getCallerModuleLoader();
-                ModuleIdentifier modid = ModuleIdentifier.create("org.wildfly.extras.config.plugin." + config);
-                ModuleClassLoader modcl = moduleLoader.loadModule(modid).getClassLoader();
+                ModuleClassLoader modcl = moduleLoader.loadModule("org.wildfly.extras.config.plugin." + config).getClassLoader();
                 Iterator<ConfigPlugin> auxit = ServiceLoader.load(ConfigPlugin.class, modcl).iterator();
                 while (auxit.hasNext()) {
                     plugins.add(auxit.next());
@@ -88,6 +85,8 @@ public class ConfigSupport {
         while (itsrv.hasNext()) {
             ConfigPlugin plugin = itsrv.next();
             if (configs.contains(plugin.getConfigName())) {
+
+                plugin.verifyTargetVersion(jbossHome);
 
                 ConfigLogger.info("Processing config for: " + plugin.getConfigName());
 
@@ -311,7 +310,11 @@ public class ConfigSupport {
         return Files.write(path, bytes, StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
     }
 
-    public static Path getJBossHome() throws UnsupportedEncodingException {
+    public static Path getJBossHome() {
+        return getJBossHome(false);
+    }
+
+    public static Path getJBossHome(boolean optional) {
 
         String jbossHome = System.getProperty("jboss.home");
         if (jbossHome == null) {
@@ -327,16 +330,15 @@ public class ConfigSupport {
             }
         }
 
-        if (!Paths.get(jbossHome).toFile().isDirectory())
+        if (optional && jbossHome == null)
+            return null;
+
+        if (jbossHome == null || !Paths.get(jbossHome).toFile().isDirectory())
             throw new ConfigException("Cannot obtain JBOSS_HOME: " + jbossHome);
 
         Path standalonePath = Paths.get(jbossHome, "standalone", "configuration");
         if (!standalonePath.toFile().exists())
             throw new ConfigException("Path to standalone configutration does not exist: " + standalonePath);
-
-        Path domainPath = Paths.get(jbossHome, "domain", "configuration");
-        if (!domainPath.toFile().exists())
-            throw new ConfigException("Path to domain configutration does not exist: " + domainPath);
 
         return Paths.get(jbossHome);
     }

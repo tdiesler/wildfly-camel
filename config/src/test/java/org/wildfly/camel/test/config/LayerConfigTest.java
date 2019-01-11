@@ -19,7 +19,12 @@
  */
 package org.wildfly.camel.test.config;
 
+import static org.wildfly.extras.config.LayerConfig.Type.INSTALLING;
+import static org.wildfly.extras.config.LayerConfig.Type.OPTIONAL;
+import static org.wildfly.extras.config.LayerConfig.Type.REQUIRED;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,12 +35,12 @@ import org.wildfly.extras.config.ConfigContext;
 import org.wildfly.extras.config.ConfigPlugin;
 import org.wildfly.extras.config.ConfigSupport;
 import org.wildfly.extras.config.LayerConfig;
-import org.wildfly.extras.config.LayerConfig.Type;
 
 public class LayerConfigTest {
 
     @Test
     public void testApplyLayerConfigChange() throws Exception {
+
         ConfigPlugin plugin = new ConfigPlugin () {
 
             @Override
@@ -44,11 +49,15 @@ public class LayerConfigTest {
             }
 
             @Override
+            public void verifyTargetVersion(Path jbossHome) throws IOException {
+            }
+
+            @Override
             public List<LayerConfig> getLayerConfigs() {
                 return Arrays.asList(
-                        new LayerConfig("fuse_6.2.1", Type.INSTALLING, -10),
-                        new LayerConfig("soa_6.2.1", Type.INSTALLING, -10),
-                        new LayerConfig("brms_6.2.1", Type.OPTIONAL, -11)
+                        new LayerConfig("fuse_6.2.1", INSTALLING, -10),
+                        new LayerConfig("soa_6.2.1", INSTALLING, -10),
+                        new LayerConfig("brms_6.2.1", OPTIONAL, -11)
                 );
             }
 
@@ -64,7 +73,7 @@ public class LayerConfigTest {
         };
 
         // Install/Uninstall scenario.
-        List<String> layers;
+        List<String> layers = list("foo", "example");
         layers = ConfigSupport.applyLayerChanges(plugin, list("foo", "example"), true);
         Assert.assertEquals(list("fuse_6.2.1", "soa_6.2.1", "foo", "example"), layers);
         layers = ConfigSupport.applyLayerChanges(plugin, layers, false);
@@ -88,6 +97,7 @@ public class LayerConfigTest {
 
     @Test
     public void testApplyLayerConfigChange2() throws Exception {
+
         ConfigPlugin plugin = new ConfigPlugin() {
 
             @Override
@@ -96,11 +106,15 @@ public class LayerConfigTest {
             }
 
             @Override
+            public void verifyTargetVersion(Path jbossHome) throws IOException {
+            }
+
+            @Override
             public List<LayerConfig> getLayerConfigs() {
                 return Arrays.asList(
-                        new LayerConfig("fuse_6.2.1", Type.REQUIRED, -10),
-                        new LayerConfig("soa_6.2.1", Type.REQUIRED, -10),
-                        new LayerConfig("brms_6.2.1", Type.INSTALLING, -9)
+                        new LayerConfig("fuse_6.2.1", REQUIRED, -10),
+                        new LayerConfig("soa_6.2.1", REQUIRED, -10),
+                        new LayerConfig("brms_6.2.1", INSTALLING, -9)
                 );
             }
 
@@ -116,7 +130,7 @@ public class LayerConfigTest {
         };
 
         // Install/Uninstall scenario.
-        List<String> layers;
+        List<String> layers = null;
         try {
             layers = list("foo", "example");
             ConfigSupport.applyLayerChanges(plugin, layers, true);
@@ -130,6 +144,7 @@ public class LayerConfigTest {
     }
 
     private ArrayList<String> list(String... args) {
-        return new ArrayList<>(Arrays.asList(args));
+        return new ArrayList<String>(Arrays.asList(args));
     }
 }
+

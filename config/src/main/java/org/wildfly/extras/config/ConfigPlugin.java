@@ -15,12 +15,16 @@
  */
 package org.wildfly.extras.config;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 
 
 public interface ConfigPlugin {
 
     String getConfigName();
+
+    void verifyTargetVersion(Path jbossHome) throws IOException;
 
     List<LayerConfig> getLayerConfigs();
 
