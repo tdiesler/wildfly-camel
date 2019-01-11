@@ -705,15 +705,7 @@
         </exports>
     </module>
 
-    <module name="com.querydsl.skip" skip="true">
-        <properties>
-            <property name="jboss.api" value="private"/>
-        </properties>
-        <include artifact=":querydsl-apt" />
-        <include artifact=":querydsl-codegen" />
-    </module>
-
-    <module name="com.pff.java-libpst">
+j    <module name="com.pff.java-libpst">
         <properties>
             <property name="jboss.api" value="private"/>
         </properties>
@@ -1068,17 +1060,11 @@
         <include artifact="net.sf.ehcache:ehcache-core" />
         <apply-to-dependencies skip="true">
             <include module="javax.transaction.jta"/>
-            <include module="net.sf.ehcache.sizeof-agent"/>
+            <include module="net.sf.skipped"/>
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.transaction.api" />
         </dependencies>
-    </module>
-
-    <!-- skipped here, managed manually  -->
-    <module name="net.sf.json" skip="true">
-        <include artifact="net.sf.ezmorph:ezmorph" />
-        <include artifact="net.sf.json-lib:json-lib" />
     </module>
 
     <module name="net.sf.saxon">
@@ -1365,7 +1351,7 @@
         <include artifact="org.apache.directory.server:apacheds-kerberos-codec" />
         <apply-to-dependencies skip="true">
             <include module="com.google.code.findbugs" />
-            <include module="net.sf.ehcache" />
+            <include module="net.sf.skipped" />
         </apply-to-dependencies>
         <dependencies>
             <module name="javax.api" />
@@ -1411,10 +1397,6 @@
         <apply-to-dependencies skip="true">
             <include module="org.osgi.core" />
         </apply-to-dependencies>
-    </module>
-
-    <module name="org.apache.logging.log4j.log4j-to-slf4j" skip="true">
-        <include artifact="org.apache.logging.log4j:log4j-to-slf4j" />
     </module>
 
     <module name="org.apache.lucene" inherit-slot="false" slot="7.2">

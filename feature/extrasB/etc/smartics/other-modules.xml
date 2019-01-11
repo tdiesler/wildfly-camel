@@ -94,9 +94,4 @@
         </exports>
     </module>
 
-    <module name="org.elasticsearch.skipped" skip="true">
-        <include artifact="com.vividsolutions:jts" />
-        <include artifact="org.locationtech.spatial4j" />
-    </module>
-
 </modules>

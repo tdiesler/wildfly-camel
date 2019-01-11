@@ -52,6 +52,11 @@
         <include artifact="org.apache.camel:camel-core" />
     </module>
 
+    <module name="org.elasticsearch.skipped" skip="true">
+        <include artifact="com.vividsolutions:jts" />
+        <include artifact="org.locationtech.spatial4j" />
+    </module>
+
     <module name="org.hdrhistogram" skip="true">
         <include artifact="org.hdrhistogram:HdrHistogram" />
     </module>
