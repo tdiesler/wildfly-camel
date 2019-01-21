@@ -26,11 +26,6 @@ import java.util.List;
 
 import javax.naming.InitialContext;
 
-import com.google.code.geocoder.model.GeocodeResponse;
-import com.google.code.geocoder.model.GeocoderResult;
-import com.google.code.geocoder.model.GeocoderStatus;
-import com.google.code.geocoder.model.LatLng;
-
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
@@ -43,10 +38,16 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Assert;
 import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.wildfly.camel.test.geocoder.subA.GeocoderHttpClientConfigurer;
 import org.wildfly.extension.camel.CamelAware;
+
+import com.google.code.geocoder.model.GeocodeResponse;
+import com.google.code.geocoder.model.GeocoderResult;
+import com.google.code.geocoder.model.GeocoderStatus;
+import com.google.code.geocoder.model.LatLng;
 
 @CamelAware
 @RunWith(Arquillian.class)
@@ -62,6 +63,7 @@ public class GeocoderIntegrationTest {
     }
 
     @Test
+    @Ignore("[ENTESB-10038] Geocoder may fail when endpoint is offline")
     public void testGeocoderComponent() throws Exception {
         HttpClientConfigurer configurer = new GeocoderHttpClientConfigurer();
         initialContext.bind("httpClientConfigurer", configurer);
