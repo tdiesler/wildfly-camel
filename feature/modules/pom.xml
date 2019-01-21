@@ -966,7 +966,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-to-slf4j</artifactId>
+            <artifactId>log4j-core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -1059,6 +1059,10 @@
                         <exclude>
                             <groupId>org.apache.logging.log4j</groupId>
                             <artifactId>log4j-api-java9</artifactId>
+                        </exclude>
+                        <exclude>
+                            <groupId>org.apache.logging.log4j</groupId>
+                            <artifactId>log4j-core-java9</artifactId>
                         </exclude>
                         <exclude>
                             <groupId>org.osgi</groupId>
