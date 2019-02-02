@@ -29,7 +29,7 @@
     <artifactId>wildfly-camel</artifactId>
     <packaging>pom</packaging>
 
-    <version>5.3.0.fuse-SNAPSHOT</version>
+    <version>5.3.0.fuse-730011</version>
 
     <description>WildFly Camel Integration</description>
     <url>https://github.com/wildfly-extras/wildfly-camel</url>
@@ -46,7 +46,7 @@
     <properties>
 
         <!-- Camel versions -->
-        <version.apache.camel>2.21.0.fuse-730031</version.apache.camel>
+        <version.apache.camel>2.21.0.fuse-730042</version.apache.camel>
         <version.camel.apns>1.0.0.Beta6</version.camel.apns>
         <version.camel.elasticsearch.rest>6.1.1</version.camel.elasticsearch.rest>
         <version.camel.hadoop2>2.7.4</version.camel.hadoop2>
@@ -78,9 +78,9 @@
         <version.arquillian.cube>1.6.0</version.arquillian.cube>
         <version.eclipse.egit.github>2.1.5</version.eclipse.egit.github>
         <version.flapdoodle.embed.mongo>1.50.1</version.flapdoodle.embed.mongo>
-        <version.fusesource.camel.components>7.3.0.fuse-730032</version.fusesource.camel.components>
+        <version.fusesource.camel.components>7.3.0.fuse-730044</version.fusesource.camel.components>
         <version.greenmail>1.4.0</version.greenmail>
-        <version.hawtio>2.0.0.fuse-730027</version.hawtio>
+        <version.hawtio>2.0.0.fuse-730039</version.hawtio>
         <version.javax.cache.api>1.0.0</version.javax.cache.api>
         <version.jboss.arquillian.core>1.1.13.Final</version.jboss.arquillian.core>
         <version.jboss.shrinkwrap>1.2.2</version.jboss.shrinkwrap>
@@ -539,7 +539,6 @@
                 </property>
             </activation>
             <modules>
-                <module>docs</module>
             </modules>
         </profile>
         <profile>
@@ -570,7 +569,6 @@
             </activation>
             <modules>
                 <module>archetypes</module>
-                <module>docs</module>
                 <module>patch</module>
             </modules>
         </profile>
